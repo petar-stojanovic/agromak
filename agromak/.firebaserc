@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "agromak-1e9c8": {
+      "hosting": {
+        "app": [
+          "agromak-1e9c8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "agromak-1e9c8"
+  }
+}

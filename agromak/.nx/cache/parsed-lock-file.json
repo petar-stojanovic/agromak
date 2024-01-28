@@ -270,6 +270,357 @@
         "hash": "sha512-JtNYM9eHr8eUSrGPq/kn0+/F+TSZ7EBWxZhM1ZndOlGu1gA4fGhrDid4ZXIHIs07DbM4NZjMn+LhRyx02YDsSA=="
       }
     },
+    "npm:@angular/fire": {
+      "type": "npm",
+      "name": "npm:@angular/fire",
+      "data": {
+        "version": "17.0.1",
+        "packageName": "@angular/fire",
+        "hash": "sha512-bhbogL4m50AKzSVn4kdZX3/2XrYTMvpsgP/4xnTPuMoTFgOrjV24CDc+1lOL+Z0QXRIupj84/Pg4KNFD4lXXzQ=="
+      }
+    },
+    "npm:ansi-styles@4.3.0": {
+      "type": "npm",
+      "name": "npm:ansi-styles@4.3.0",
+      "data": {
+        "version": "4.3.0",
+        "packageName": "ansi-styles",
+        "hash": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg=="
+      }
+    },
+    "npm:ansi-styles@6.2.1": {
+      "type": "npm",
+      "name": "npm:ansi-styles@6.2.1",
+      "data": {
+        "version": "6.2.1",
+        "packageName": "ansi-styles",
+        "hash": "sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug=="
+      }
+    },
+    "npm:ansi-styles": {
+      "type": "npm",
+      "name": "npm:ansi-styles",
+      "data": {
+        "version": "3.2.1",
+        "packageName": "ansi-styles",
+        "hash": "sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA=="
+      }
+    },
+    "npm:ansi-styles@5.2.0": {
+      "type": "npm",
+      "name": "npm:ansi-styles@5.2.0",
+      "data": {
+        "version": "5.2.0",
+        "packageName": "ansi-styles",
+        "hash": "sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA=="
+      }
+    },
+    "npm:chalk@4.1.2": {
+      "type": "npm",
+      "name": "npm:chalk@4.1.2",
+      "data": {
+        "version": "4.1.2",
+        "packageName": "chalk",
+        "hash": "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
+      }
+    },
+    "npm:chalk": {
+      "type": "npm",
+      "name": "npm:chalk",
+      "data": {
+        "version": "2.4.2",
+        "packageName": "chalk",
+        "hash": "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
+      }
+    },
+    "npm:chalk@5.3.0": {
+      "type": "npm",
+      "name": "npm:chalk@5.3.0",
+      "data": {
+        "version": "5.3.0",
+        "packageName": "chalk",
+        "hash": "sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w=="
+      }
+    },
+    "npm:cli-width@3.0.0": {
+      "type": "npm",
+      "name": "npm:cli-width@3.0.0",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "cli-width",
+        "hash": "sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw=="
+      }
+    },
+    "npm:cli-width": {
+      "type": "npm",
+      "name": "npm:cli-width",
+      "data": {
+        "version": "4.1.0",
+        "packageName": "cli-width",
+        "hash": "sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ=="
+      }
+    },
+    "npm:color-convert@2.0.1": {
+      "type": "npm",
+      "name": "npm:color-convert@2.0.1",
+      "data": {
+        "version": "2.0.1",
+        "packageName": "color-convert",
+        "hash": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="
+      }
+    },
+    "npm:color-convert": {
+      "type": "npm",
+      "name": "npm:color-convert",
+      "data": {
+        "version": "1.9.3",
+        "packageName": "color-convert",
+        "hash": "sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg=="
+      }
+    },
+    "npm:color-name@1.1.4": {
+      "type": "npm",
+      "name": "npm:color-name@1.1.4",
+      "data": {
+        "version": "1.1.4",
+        "packageName": "color-name",
+        "hash": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="
+      }
+    },
+    "npm:color-name": {
+      "type": "npm",
+      "name": "npm:color-name",
+      "data": {
+        "version": "1.1.3",
+        "packageName": "color-name",
+        "hash": "sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw=="
+      }
+    },
+    "npm:figures@3.2.0": {
+      "type": "npm",
+      "name": "npm:figures@3.2.0",
+      "data": {
+        "version": "3.2.0",
+        "packageName": "figures",
+        "hash": "sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg=="
+      }
+    },
+    "npm:figures": {
+      "type": "npm",
+      "name": "npm:figures",
+      "data": {
+        "version": "5.0.0",
+        "packageName": "figures",
+        "hash": "sha512-ej8ksPF4x6e5wvK9yevct0UCXh8TTFlWGVLlgjZuoBH1HwjIfKE/IdL5mq89sFA7zELi1VhKpmtDnrs7zWyeyg=="
+      }
+    },
+    "npm:fs-extra@8.1.0": {
+      "type": "npm",
+      "name": "npm:fs-extra@8.1.0",
+      "data": {
+        "version": "8.1.0",
+        "packageName": "fs-extra",
+        "hash": "sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g=="
+      }
+    },
+    "npm:fs-extra@9.1.0": {
+      "type": "npm",
+      "name": "npm:fs-extra@9.1.0",
+      "data": {
+        "version": "9.1.0",
+        "packageName": "fs-extra",
+        "hash": "sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ=="
+      }
+    },
+    "npm:fs-extra": {
+      "type": "npm",
+      "name": "npm:fs-extra",
+      "data": {
+        "version": "11.2.0",
+        "packageName": "fs-extra",
+        "hash": "sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw=="
+      }
+    },
+    "npm:has-flag@4.0.0": {
+      "type": "npm",
+      "name": "npm:has-flag@4.0.0",
+      "data": {
+        "version": "4.0.0",
+        "packageName": "has-flag",
+        "hash": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ=="
+      }
+    },
+    "npm:has-flag": {
+      "type": "npm",
+      "name": "npm:has-flag",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "has-flag",
+        "hash": "sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw=="
+      }
+    },
+    "npm:inquirer@8.2.6": {
+      "type": "npm",
+      "name": "npm:inquirer@8.2.6",
+      "data": {
+        "version": "8.2.6",
+        "packageName": "inquirer",
+        "hash": "sha512-M1WuAmb7pn9zdFRtQYk26ZBoY043Sse0wVDdk4Bppr+JOXyQYybdtvK+l9wUibhtjdjvtoiNy8tk+EgsYIUqKg=="
+      }
+    },
+    "npm:inquirer": {
+      "type": "npm",
+      "name": "npm:inquirer",
+      "data": {
+        "version": "9.2.12",
+        "packageName": "inquirer",
+        "hash": "sha512-mg3Fh9g2zfuVWJn6lhST0O7x4n03k7G8Tx5nvikJkbq8/CK47WDVm+UznF0G6s5Zi0KcyUisr6DU8T67N5U+1Q=="
+      }
+    },
+    "npm:inquirer-autocomplete-prompt@1.4.0": {
+      "type": "npm",
+      "name": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "data": {
+        "version": "1.4.0",
+        "packageName": "inquirer-autocomplete-prompt",
+        "hash": "sha512-qHgHyJmbULt4hI+kCmwX92MnSxDs/Yhdt4wPA30qnoa01OF6uTXV8yvH4hKXgdaTNmkZ9D01MHjqKYEuJN+ONw=="
+      }
+    },
+    "npm:rxjs@6.6.7": {
+      "type": "npm",
+      "name": "npm:rxjs@6.6.7",
+      "data": {
+        "version": "6.6.7",
+        "packageName": "rxjs",
+        "hash": "sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ=="
+      }
+    },
+    "npm:rxjs": {
+      "type": "npm",
+      "name": "npm:rxjs",
+      "data": {
+        "version": "7.8.1",
+        "packageName": "rxjs",
+        "hash": "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg=="
+      }
+    },
+    "npm:tslib@1.14.1": {
+      "type": "npm",
+      "name": "npm:tslib@1.14.1",
+      "data": {
+        "version": "1.14.1",
+        "packageName": "tslib",
+        "hash": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+      }
+    },
+    "npm:tslib": {
+      "type": "npm",
+      "name": "npm:tslib",
+      "data": {
+        "version": "2.6.2",
+        "packageName": "tslib",
+        "hash": "sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q=="
+      }
+    },
+    "npm:jsonfile@4.0.0": {
+      "type": "npm",
+      "name": "npm:jsonfile@4.0.0",
+      "data": {
+        "version": "4.0.0",
+        "packageName": "jsonfile",
+        "hash": "sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg=="
+      }
+    },
+    "npm:jsonfile": {
+      "type": "npm",
+      "name": "npm:jsonfile",
+      "data": {
+        "version": "6.1.0",
+        "packageName": "jsonfile",
+        "hash": "sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ=="
+      }
+    },
+    "npm:mute-stream@0.0.8": {
+      "type": "npm",
+      "name": "npm:mute-stream@0.0.8",
+      "data": {
+        "version": "0.0.8",
+        "packageName": "mute-stream",
+        "hash": "sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA=="
+      }
+    },
+    "npm:mute-stream": {
+      "type": "npm",
+      "name": "npm:mute-stream",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "mute-stream",
+        "hash": "sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA=="
+      }
+    },
+    "npm:run-async@2.4.1": {
+      "type": "npm",
+      "name": "npm:run-async@2.4.1",
+      "data": {
+        "version": "2.4.1",
+        "packageName": "run-async",
+        "hash": "sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ=="
+      }
+    },
+    "npm:run-async": {
+      "type": "npm",
+      "name": "npm:run-async",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "run-async",
+        "hash": "sha512-540WwVDOMxA6dN6We19EcT9sc3hkXPw5mzRNGM3FkdN/vtE9NFvj5lFAPNwUDmJjXidm3v7TC1cTE7t17Ulm1Q=="
+      }
+    },
+    "npm:supports-color@7.2.0": {
+      "type": "npm",
+      "name": "npm:supports-color@7.2.0",
+      "data": {
+        "version": "7.2.0",
+        "packageName": "supports-color",
+        "hash": "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="
+      }
+    },
+    "npm:supports-color@8.1.1": {
+      "type": "npm",
+      "name": "npm:supports-color@8.1.1",
+      "data": {
+        "version": "8.1.1",
+        "packageName": "supports-color",
+        "hash": "sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q=="
+      }
+    },
+    "npm:supports-color": {
+      "type": "npm",
+      "name": "npm:supports-color",
+      "data": {
+        "version": "5.5.0",
+        "packageName": "supports-color",
+        "hash": "sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow=="
+      }
+    },
+    "npm:universalify@0.1.2": {
+      "type": "npm",
+      "name": "npm:universalify@0.1.2",
+      "data": {
+        "version": "0.1.2",
+        "packageName": "universalify",
+        "hash": "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
+      }
+    },
+    "npm:universalify": {
+      "type": "npm",
+      "name": "npm:universalify",
+      "data": {
+        "version": "2.0.1",
+        "packageName": "universalify",
+        "hash": "sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw=="
+      }
+    },
     "npm:@angular/forms": {
       "type": "npm",
       "name": "npm:@angular/forms",
@@ -1530,6 +1881,24 @@
         "hash": "sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ=="
       }
     },
+    "npm:@colors/colors@1.6.0": {
+      "type": "npm",
+      "name": "npm:@colors/colors@1.6.0",
+      "data": {
+        "version": "1.6.0",
+        "packageName": "@colors/colors",
+        "hash": "sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA=="
+      }
+    },
+    "npm:@dabh/diagnostics": {
+      "type": "npm",
+      "name": "npm:@dabh/diagnostics",
+      "data": {
+        "version": "2.0.3",
+        "packageName": "@dabh/diagnostics",
+        "hash": "sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA=="
+      }
+    },
     "npm:@discoveryjs/json-ext": {
       "type": "npm",
       "name": "npm:@discoveryjs/json-ext",
@@ -1890,6 +2259,438 @@
         "hash": "sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA=="
       }
     },
+    "npm:@firebase/analytics": {
+      "type": "npm",
+      "name": "npm:@firebase/analytics",
+      "data": {
+        "version": "0.10.0",
+        "packageName": "@firebase/analytics",
+        "hash": "sha512-Locv8gAqx0e+GX/0SI3dzmBY5e9kjVDtD+3zCFLJ0tH2hJwuCAiL+5WkHuxKj92rqQj/rvkBUCfA1ewlX2hehg=="
+      }
+    },
+    "npm:@firebase/analytics-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/analytics-compat",
+      "data": {
+        "version": "0.2.6",
+        "packageName": "@firebase/analytics-compat",
+        "hash": "sha512-4MqpVLFkGK7NJf/5wPEEP7ePBJatwYpyjgJ+wQHQGHfzaCDgntOnl9rL2vbVGGKCnRqWtZDIWhctB86UWXaX2Q=="
+      }
+    },
+    "npm:@firebase/analytics-types": {
+      "type": "npm",
+      "name": "npm:@firebase/analytics-types",
+      "data": {
+        "version": "0.8.0",
+        "packageName": "@firebase/analytics-types",
+        "hash": "sha512-iRP+QKI2+oz3UAh4nPEq14CsEjrjD6a5+fuypjScisAh9kXKFvdJOZJDwk7kikLvWVLGEs9+kIUS4LPQV7VZVw=="
+      }
+    },
+    "npm:@firebase/app": {
+      "type": "npm",
+      "name": "npm:@firebase/app",
+      "data": {
+        "version": "0.9.26",
+        "packageName": "@firebase/app",
+        "hash": "sha512-zCjo6KhNhbuFB+V+Z4H9g4+BZ78E7n3ShxaBtuIcRkpwdm7+1BsafzChOsDYuI86m97HUWsyLPurLBhqcupFFA=="
+      }
+    },
+    "npm:@firebase/app-check": {
+      "type": "npm",
+      "name": "npm:@firebase/app-check",
+      "data": {
+        "version": "0.8.1",
+        "packageName": "@firebase/app-check",
+        "hash": "sha512-zi3vbM5tb/eGRWyiqf+1DXbxFu9Q07dnm46rweodgUpH9B8svxYkHfNwYWx7F5mjHU70SQDuaojH1We5ws9OKA=="
+      }
+    },
+    "npm:@firebase/app-check-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/app-check-compat",
+      "data": {
+        "version": "0.3.8",
+        "packageName": "@firebase/app-check-compat",
+        "hash": "sha512-EaETtChR4UgMokJFw+r6jfcIyCTUZSe0a6ivF37D9MxlG9G3wzK1COyXgxoX96GzXmDPc2aubX4PxCrdVHhrnA=="
+      }
+    },
+    "npm:@firebase/app-check-interop-types": {
+      "type": "npm",
+      "name": "npm:@firebase/app-check-interop-types",
+      "data": {
+        "version": "0.3.0",
+        "packageName": "@firebase/app-check-interop-types",
+        "hash": "sha512-xAxHPZPIgFXnI+vb4sbBjZcde7ZluzPPaSK7Lx3/nmuVk4TjZvnL8ONnkd4ERQKL8WePQySU+pRcWkh8rDf5Sg=="
+      }
+    },
+    "npm:@firebase/app-check-types": {
+      "type": "npm",
+      "name": "npm:@firebase/app-check-types",
+      "data": {
+        "version": "0.5.0",
+        "packageName": "@firebase/app-check-types",
+        "hash": "sha512-uwSUj32Mlubybw7tedRzR24RP8M8JUVR3NPiMk3/Z4bCmgEKTlQBwMXrehDAZ2wF+TsBq0SN1c6ema71U/JPyQ=="
+      }
+    },
+    "npm:@firebase/app-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/app-compat",
+      "data": {
+        "version": "0.2.26",
+        "packageName": "@firebase/app-compat",
+        "hash": "sha512-tVNOYvB3lIFkN3RmcTieo5qYRIkYak9iC6E7dZMxax52uMIUJiIKKtPkarbwZh6EnUxru5hJRo8tfUZGuaQDQw=="
+      }
+    },
+    "npm:@firebase/app-types": {
+      "type": "npm",
+      "name": "npm:@firebase/app-types",
+      "data": {
+        "version": "0.9.0",
+        "packageName": "@firebase/app-types",
+        "hash": "sha512-AeweANOIo0Mb8GiYm3xhTEBVCmPwTYAu9Hcd2qSkLuga/6+j9b1Jskl5bpiSQWy9eJ/j5pavxj6eYogmnuzm+Q=="
+      }
+    },
+    "npm:@firebase/auth": {
+      "type": "npm",
+      "name": "npm:@firebase/auth",
+      "data": {
+        "version": "1.5.1",
+        "packageName": "@firebase/auth",
+        "hash": "sha512-sVi7rq2YneLGJFqHa5S6nDfCHix9yuVV3RLhj/pWPlB4a36ofXal4E6PJwpeMc8uLjWEr1aovYN1jkXWNB6Avw=="
+      }
+    },
+    "npm:@firebase/auth-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/auth-compat",
+      "data": {
+        "version": "0.5.1",
+        "packageName": "@firebase/auth-compat",
+        "hash": "sha512-rgDZnrDoekRvtzXVji8Z61wxxkof6pTkjYEkybILrjM8tGP9tx4xa9qGpF4ax3AzF+rKr7mIa9NnoXEK4UNqmQ=="
+      }
+    },
+    "npm:undici@5.26.5": {
+      "type": "npm",
+      "name": "npm:undici@5.26.5",
+      "data": {
+        "version": "5.26.5",
+        "packageName": "undici",
+        "hash": "sha512-cSb4bPFd5qgR7qr2jYAi0hlX9n5YKK2ONKkLFkxl+v/9BvC0sOpZjBHDBSXc5lWAf5ty9oZdRXytBIHzgUcerw=="
+      }
+    },
+    "npm:undici": {
+      "type": "npm",
+      "name": "npm:undici",
+      "data": {
+        "version": "6.2.1",
+        "packageName": "undici",
+        "hash": "sha512-7Wa9thEM6/LMnnKtxJHlc8SrTlDmxqJecgz1iy8KlsN0/iskQXOQCuPkrZLXbElPaSw5slFFyKIKXyJ3UtbApw=="
+      }
+    },
+    "npm:@firebase/auth-interop-types": {
+      "type": "npm",
+      "name": "npm:@firebase/auth-interop-types",
+      "data": {
+        "version": "0.2.1",
+        "packageName": "@firebase/auth-interop-types",
+        "hash": "sha512-VOaGzKp65MY6P5FI84TfYKBXEPi6LmOCSMMzys6o2BN2LOsqy7pCuZCup7NYnfbk5OkkQKzvIfHOzTm0UDpkyg=="
+      }
+    },
+    "npm:@firebase/auth-types": {
+      "type": "npm",
+      "name": "npm:@firebase/auth-types",
+      "data": {
+        "version": "0.12.0",
+        "packageName": "@firebase/auth-types",
+        "hash": "sha512-pPwaZt+SPOshK8xNoiQlK5XIrS97kFYc3Rc7xmy373QsOJ9MmqXxLaYssP5Kcds4wd2qK//amx/c+A8O2fVeZA=="
+      }
+    },
+    "npm:@firebase/component": {
+      "type": "npm",
+      "name": "npm:@firebase/component",
+      "data": {
+        "version": "0.6.4",
+        "packageName": "@firebase/component",
+        "hash": "sha512-rLMyrXuO9jcAUCaQXCMjCMUsWrba5fzHlNK24xz5j2W6A/SRmK8mZJ/hn7V0fViLbxC0lPMtrK1eYzk6Fg03jA=="
+      }
+    },
+    "npm:@firebase/database": {
+      "type": "npm",
+      "name": "npm:@firebase/database",
+      "data": {
+        "version": "1.0.2",
+        "packageName": "@firebase/database",
+        "hash": "sha512-8X6NBJgUQzDz0xQVaCISoOLINKat594N2eBbMR3Mu/MH/ei4WM+aAMlsNzngF22eljXu1SILP5G3evkyvsG3Ng=="
+      }
+    },
+    "npm:@firebase/database-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/database-compat",
+      "data": {
+        "version": "1.0.2",
+        "packageName": "@firebase/database-compat",
+        "hash": "sha512-09ryJnXDvuycsxn8aXBzLhBTuCos3HEnCOBWY6hosxfYlNCGnLvG8YMlbSAt5eNhf7/00B095AEfDsdrrLjxqA=="
+      }
+    },
+    "npm:@firebase/database-types": {
+      "type": "npm",
+      "name": "npm:@firebase/database-types",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "@firebase/database-types",
+        "hash": "sha512-SjnXStoE0Q56HcFgNQ+9SsmJc0c8TqGARdI/T44KXy+Ets3r6x/ivhQozT66bMnCEjJRywYoxNurRTMlZF8VNg=="
+      }
+    },
+    "npm:@firebase/firestore": {
+      "type": "npm",
+      "name": "npm:@firebase/firestore",
+      "data": {
+        "version": "4.4.1",
+        "packageName": "@firebase/firestore",
+        "hash": "sha512-LCWZZ+rgNET1qw3vpugmGCJZVbz7c5NkgKect5pZn36gaBzGVb8+pRQ8WSZ1veYVMOK6SKrBkS1Rw6EqcmPnyw=="
+      }
+    },
+    "npm:@firebase/firestore-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/firestore-compat",
+      "data": {
+        "version": "0.3.24",
+        "packageName": "@firebase/firestore-compat",
+        "hash": "sha512-Wj5cgqmQwTnqHS4KabOpXCNIaSTtVDP1NitnhjXff04Q4QK0aeIbeO1TPlSSTmUb6S7KzoKD4XR99hfKZDYbfA=="
+      }
+    },
+    "npm:@firebase/firestore-types": {
+      "type": "npm",
+      "name": "npm:@firebase/firestore-types",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "@firebase/firestore-types",
+        "hash": "sha512-Meg4cIezHo9zLamw0ymFYBD4SMjLb+ZXIbuN7T7ddXN6MGoICmOTq3/ltdCGoDCS2u+H1XJs2u/cYp75jsX9Qw=="
+      }
+    },
+    "npm:@firebase/functions": {
+      "type": "npm",
+      "name": "npm:@firebase/functions",
+      "data": {
+        "version": "0.11.0",
+        "packageName": "@firebase/functions",
+        "hash": "sha512-n1PZxKnJ++k73Q8khTPwihlbeKo6emnGzE0hX6QVQJsMq82y/XKmNpw2t/q30VJgwaia3ZXU1fd1C5wHncL+Zg=="
+      }
+    },
+    "npm:@firebase/functions-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/functions-compat",
+      "data": {
+        "version": "0.3.6",
+        "packageName": "@firebase/functions-compat",
+        "hash": "sha512-RQpO3yuHtnkqLqExuAT2d0u3zh8SDbeBYK5EwSCBKI9mjrFeJRXBnd3pEG+x5SxGJLy56/5pQf73mwt0OuH5yg=="
+      }
+    },
+    "npm:@firebase/functions-types": {
+      "type": "npm",
+      "name": "npm:@firebase/functions-types",
+      "data": {
+        "version": "0.6.0",
+        "packageName": "@firebase/functions-types",
+        "hash": "sha512-hfEw5VJtgWXIRf92ImLkgENqpL6IWpYaXVYiRkFY1jJ9+6tIhWM7IzzwbevwIIud/jaxKVdRzD7QBWfPmkwCYw=="
+      }
+    },
+    "npm:@firebase/installations": {
+      "type": "npm",
+      "name": "npm:@firebase/installations",
+      "data": {
+        "version": "0.6.4",
+        "packageName": "@firebase/installations",
+        "hash": "sha512-u5y88rtsp7NYkCHC3ElbFBrPtieUybZluXyzl7+4BsIz4sqb4vSAuwHEUgCgCeaQhvsnxDEU6icly8U9zsJigA=="
+      }
+    },
+    "npm:@firebase/installations-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/installations-compat",
+      "data": {
+        "version": "0.2.4",
+        "packageName": "@firebase/installations-compat",
+        "hash": "sha512-LI9dYjp0aT9Njkn9U4JRrDqQ6KXeAmFbRC0E7jI7+hxl5YmRWysq5qgQl22hcWpTk+cm3es66d/apoDU/A9n6Q=="
+      }
+    },
+    "npm:@firebase/installations-types": {
+      "type": "npm",
+      "name": "npm:@firebase/installations-types",
+      "data": {
+        "version": "0.5.0",
+        "packageName": "@firebase/installations-types",
+        "hash": "sha512-9DP+RGfzoI2jH7gY4SlzqvZ+hr7gYzPODrbzVD82Y12kScZ6ZpRg/i3j6rleto8vTFC8n6Len4560FnV1w2IRg=="
+      }
+    },
+    "npm:idb@7.0.1": {
+      "type": "npm",
+      "name": "npm:idb@7.0.1",
+      "data": {
+        "version": "7.0.1",
+        "packageName": "idb",
+        "hash": "sha512-UUxlE7vGWK5RfB/fDwEGgRf84DY/ieqNha6msMV99UsEMQhJ1RwbCd8AYBj3QMgnE3VZnfQvm4oKVCJTYlqIgg=="
+      }
+    },
+    "npm:idb": {
+      "type": "npm",
+      "name": "npm:idb",
+      "data": {
+        "version": "7.1.1",
+        "packageName": "idb",
+        "hash": "sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ=="
+      }
+    },
+    "npm:@firebase/logger": {
+      "type": "npm",
+      "name": "npm:@firebase/logger",
+      "data": {
+        "version": "0.4.0",
+        "packageName": "@firebase/logger",
+        "hash": "sha512-eRKSeykumZ5+cJPdxxJRgAC3G5NknY2GwEbKfymdnXtnT0Ucm4pspfR6GT4MUQEDuJwRVbVcSx85kgJulMoFFA=="
+      }
+    },
+    "npm:@firebase/messaging": {
+      "type": "npm",
+      "name": "npm:@firebase/messaging",
+      "data": {
+        "version": "0.12.5",
+        "packageName": "@firebase/messaging",
+        "hash": "sha512-i/rrEI2k9ueFhdIr8KQsptWGskrsnkC5TkohCTrJKz9P0C/PbNv14IAMkwhMJTqIur5VwuOnrUkc9Kdz7awekw=="
+      }
+    },
+    "npm:@firebase/messaging-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/messaging-compat",
+      "data": {
+        "version": "0.2.5",
+        "packageName": "@firebase/messaging-compat",
+        "hash": "sha512-qHQZxm4hEG8/HFU/ls5/bU+rpnlPDoZoqi3ATMeb6s4hovYV9+PfV5I7ZrKV5eFFv47Hx1PWLe5uPnS4e7gMwQ=="
+      }
+    },
+    "npm:@firebase/messaging-interop-types": {
+      "type": "npm",
+      "name": "npm:@firebase/messaging-interop-types",
+      "data": {
+        "version": "0.2.0",
+        "packageName": "@firebase/messaging-interop-types",
+        "hash": "sha512-ujA8dcRuVeBixGR9CtegfpU4YmZf3Lt7QYkcj693FFannwNuZgfAYaTmbJ40dtjB81SAu6tbFPL9YLNT15KmOQ=="
+      }
+    },
+    "npm:@firebase/performance": {
+      "type": "npm",
+      "name": "npm:@firebase/performance",
+      "data": {
+        "version": "0.6.4",
+        "packageName": "@firebase/performance",
+        "hash": "sha512-HfTn/bd8mfy/61vEqaBelNiNnvAbUtME2S25A67Nb34zVuCSCRIX4SseXY6zBnOFj3oLisaEqhVcJmVPAej67g=="
+      }
+    },
+    "npm:@firebase/performance-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/performance-compat",
+      "data": {
+        "version": "0.2.4",
+        "packageName": "@firebase/performance-compat",
+        "hash": "sha512-nnHUb8uP9G8islzcld/k6Bg5RhX62VpbAb/Anj7IXs/hp32Eb2LqFPZK4sy3pKkBUO5wcrlRWQa6wKOxqlUqsg=="
+      }
+    },
+    "npm:@firebase/performance-types": {
+      "type": "npm",
+      "name": "npm:@firebase/performance-types",
+      "data": {
+        "version": "0.2.0",
+        "packageName": "@firebase/performance-types",
+        "hash": "sha512-kYrbr8e/CYr1KLrLYZZt2noNnf+pRwDq2KK9Au9jHrBMnb0/C9X9yWSXmZkFt4UIdsQknBq8uBB7fsybZdOBTA=="
+      }
+    },
+    "npm:@firebase/remote-config": {
+      "type": "npm",
+      "name": "npm:@firebase/remote-config",
+      "data": {
+        "version": "0.4.4",
+        "packageName": "@firebase/remote-config",
+        "hash": "sha512-x1ioTHGX8ZwDSTOVp8PBLv2/wfwKzb4pxi0gFezS5GCJwbLlloUH4YYZHHS83IPxnua8b6l0IXUaWd0RgbWwzQ=="
+      }
+    },
+    "npm:@firebase/remote-config-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/remote-config-compat",
+      "data": {
+        "version": "0.2.4",
+        "packageName": "@firebase/remote-config-compat",
+        "hash": "sha512-FKiki53jZirrDFkBHglB3C07j5wBpitAaj8kLME6g8Mx+aq7u9P7qfmuSRytiOItADhWUj7O1JIv7n9q87SuwA=="
+      }
+    },
+    "npm:@firebase/remote-config-types": {
+      "type": "npm",
+      "name": "npm:@firebase/remote-config-types",
+      "data": {
+        "version": "0.3.0",
+        "packageName": "@firebase/remote-config-types",
+        "hash": "sha512-RtEH4vdcbXZuZWRZbIRmQVBNsE7VDQpet2qFvq6vwKLBIQRQR5Kh58M4ok3A3US8Sr3rubYnaGqZSurCwI8uMA=="
+      }
+    },
+    "npm:@firebase/storage": {
+      "type": "npm",
+      "name": "npm:@firebase/storage",
+      "data": {
+        "version": "0.12.0",
+        "packageName": "@firebase/storage",
+        "hash": "sha512-SGs02Y/mmWBRsqZiYLpv4Sf7uZYZzMWVNN+aKiDqPsFBCzD6hLvGkXz+u98KAl8FqcjgB8BtSu01wm4pm76KHA=="
+      }
+    },
+    "npm:@firebase/storage-compat": {
+      "type": "npm",
+      "name": "npm:@firebase/storage-compat",
+      "data": {
+        "version": "0.3.3",
+        "packageName": "@firebase/storage-compat",
+        "hash": "sha512-WNtjYPhpOA1nKcRu5lIodX0wZtP8pI0VxDJnk6lr+av7QZNS1s6zvr+ERDTve+Qu4Hq/ZnNaf3kBEQR2ccXn6A=="
+      }
+    },
+    "npm:@firebase/storage-types": {
+      "type": "npm",
+      "name": "npm:@firebase/storage-types",
+      "data": {
+        "version": "0.8.0",
+        "packageName": "@firebase/storage-types",
+        "hash": "sha512-isRHcGrTs9kITJC0AVehHfpraWFui39MPaU7Eo8QfWlqW7YPymBmRgjDrlOgFdURh6Cdeg07zmkLP5tzTKRSpg=="
+      }
+    },
+    "npm:@firebase/util": {
+      "type": "npm",
+      "name": "npm:@firebase/util",
+      "data": {
+        "version": "1.9.3",
+        "packageName": "@firebase/util",
+        "hash": "sha512-DY02CRhOZwpzO36fHpuVysz6JZrscPiBXD0fXp6qSrL9oNOx5KWICKdR95C0lSITzxp0TZosVyHqzatE8JbcjA=="
+      }
+    },
+    "npm:@firebase/webchannel-wrapper": {
+      "type": "npm",
+      "name": "npm:@firebase/webchannel-wrapper",
+      "data": {
+        "version": "0.10.5",
+        "packageName": "@firebase/webchannel-wrapper",
+        "hash": "sha512-eSkJsnhBWv5kCTSU1tSUVl9mpFu+5NXXunZc83le8GMjMlsWwQArSc7cJJ4yl+aDFY0NGLi0AjZWMn1axOrkRg=="
+      }
+    },
+    "npm:@grpc/grpc-js": {
+      "type": "npm",
+      "name": "npm:@grpc/grpc-js",
+      "data": {
+        "version": "1.9.14",
+        "packageName": "@grpc/grpc-js",
+        "hash": "sha512-nOpuzZ2G3IuMFN+UPPpKrC6NsLmWsTqSsm66IRfnBt1D4pwTqE27lmbpcPM+l2Ua4gE7PfjRHI6uedAy7hoXUw=="
+      }
+    },
+    "npm:@grpc/proto-loader": {
+      "type": "npm",
+      "name": "npm:@grpc/proto-loader",
+      "data": {
+        "version": "0.7.10",
+        "packageName": "@grpc/proto-loader",
+        "hash": "sha512-CAqDfoaQ8ykFd9zqBDn4k6iWT9loLAlc2ETmDFS9JCD70gDcnA4L3AFEo2iV7KyAtAAHFW9ftq1Fz+Vsgq80RQ=="
+      }
+    },
     "npm:@humanwhocodes/config-array": {
       "type": "npm",
       "name": "npm:@humanwhocodes/config-array",
@@ -1962,42 +2763,6 @@
         "hash": "sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA=="
       }
     },
-    "npm:rxjs@6.6.7": {
-      "type": "npm",
-      "name": "npm:rxjs@6.6.7",
-      "data": {
-        "version": "6.6.7",
-        "packageName": "rxjs",
-        "hash": "sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ=="
-      }
-    },
-    "npm:rxjs": {
-      "type": "npm",
-      "name": "npm:rxjs",
-      "data": {
-        "version": "7.8.1",
-        "packageName": "rxjs",
-        "hash": "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg=="
-      }
-    },
-    "npm:tslib@1.14.1": {
-      "type": "npm",
-      "name": "npm:tslib@1.14.1",
-      "data": {
-        "version": "1.14.1",
-        "packageName": "tslib",
-        "hash": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
-      }
-    },
-    "npm:tslib": {
-      "type": "npm",
-      "name": "npm:tslib",
-      "data": {
-        "version": "2.6.2",
-        "packageName": "tslib",
-        "hash": "sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q=="
-      }
-    },
     "npm:@ionic/cli-framework-output": {
       "type": "npm",
       "name": "npm:@ionic/cli-framework-output",
@@ -2034,33 +2799,6 @@
         "hash": "sha512-2EknRvMVfhnyhL1VhFkSLa5gOcycK91VnjfrTB0kbqkTFCOXyXgVLI5whzq7SLrgD9t1aqos3lMMQyVzaQ5gVA=="
       }
     },
-    "npm:fs-extra@9.1.0": {
-      "type": "npm",
-      "name": "npm:fs-extra@9.1.0",
-      "data": {
-        "version": "9.1.0",
-        "packageName": "fs-extra",
-        "hash": "sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ=="
-      }
-    },
-    "npm:fs-extra": {
-      "type": "npm",
-      "name": "npm:fs-extra",
-      "data": {
-        "version": "11.2.0",
-        "packageName": "fs-extra",
-        "hash": "sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw=="
-      }
-    },
-    "npm:fs-extra@8.1.0": {
-      "type": "npm",
-      "name": "npm:fs-extra@8.1.0",
-      "data": {
-        "version": "8.1.0",
-        "packageName": "fs-extra",
-        "hash": "sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g=="
-      }
-    },
     "npm:@ionic/utils-object": {
       "type": "npm",
       "name": "npm:@ionic/utils-object",
@@ -2095,78 +2833,6 @@
         "version": "2.3.5",
         "packageName": "@ionic/utils-terminal",
         "hash": "sha512-3cKScz9Jx2/Pr9ijj1OzGlBDfcmx7OMVBt4+P1uRR0SSW4cm1/y3Mo4OY3lfkuaYifMNBW8Wz6lQHbs1bihr7A=="
-      }
-    },
-    "npm:ansi-styles@4.3.0": {
-      "type": "npm",
-      "name": "npm:ansi-styles@4.3.0",
-      "data": {
-        "version": "4.3.0",
-        "packageName": "ansi-styles",
-        "hash": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg=="
-      }
-    },
-    "npm:ansi-styles@6.2.1": {
-      "type": "npm",
-      "name": "npm:ansi-styles@6.2.1",
-      "data": {
-        "version": "6.2.1",
-        "packageName": "ansi-styles",
-        "hash": "sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug=="
-      }
-    },
-    "npm:ansi-styles": {
-      "type": "npm",
-      "name": "npm:ansi-styles",
-      "data": {
-        "version": "3.2.1",
-        "packageName": "ansi-styles",
-        "hash": "sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA=="
-      }
-    },
-    "npm:ansi-styles@5.2.0": {
-      "type": "npm",
-      "name": "npm:ansi-styles@5.2.0",
-      "data": {
-        "version": "5.2.0",
-        "packageName": "ansi-styles",
-        "hash": "sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA=="
-      }
-    },
-    "npm:color-convert@2.0.1": {
-      "type": "npm",
-      "name": "npm:color-convert@2.0.1",
-      "data": {
-        "version": "2.0.1",
-        "packageName": "color-convert",
-        "hash": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="
-      }
-    },
-    "npm:color-convert": {
-      "type": "npm",
-      "name": "npm:color-convert",
-      "data": {
-        "version": "1.9.3",
-        "packageName": "color-convert",
-        "hash": "sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg=="
-      }
-    },
-    "npm:color-name@1.1.4": {
-      "type": "npm",
-      "name": "npm:color-name@1.1.4",
-      "data": {
-        "version": "1.1.4",
-        "packageName": "color-name",
-        "hash": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="
-      }
-    },
-    "npm:color-name": {
-      "type": "npm",
-      "name": "npm:color-name",
-      "data": {
-        "version": "1.1.3",
-        "packageName": "color-name",
-        "hash": "sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw=="
       }
     },
     "npm:wrap-ansi@7.0.0": {
@@ -2718,6 +3384,96 @@
         "hash": "sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg=="
       }
     },
+    "npm:@protobufjs/aspromise": {
+      "type": "npm",
+      "name": "npm:@protobufjs/aspromise",
+      "data": {
+        "version": "1.1.2",
+        "packageName": "@protobufjs/aspromise",
+        "hash": "sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ=="
+      }
+    },
+    "npm:@protobufjs/base64": {
+      "type": "npm",
+      "name": "npm:@protobufjs/base64",
+      "data": {
+        "version": "1.1.2",
+        "packageName": "@protobufjs/base64",
+        "hash": "sha512-AZkcAA5vnN/v4PDqKyMR5lx7hZttPDgClv83E//FMNhR2TMcLUhfRUBHCmSl0oi9zMgDDqRUJkSxO3wm85+XLg=="
+      }
+    },
+    "npm:@protobufjs/codegen": {
+      "type": "npm",
+      "name": "npm:@protobufjs/codegen",
+      "data": {
+        "version": "2.0.4",
+        "packageName": "@protobufjs/codegen",
+        "hash": "sha512-YyFaikqM5sH0ziFZCN3xDC7zeGaB/d0IUb9CATugHWbd1FRFwWwt4ld4OYMPWu5a3Xe01mGAULCdqhMlPl29Jg=="
+      }
+    },
+    "npm:@protobufjs/eventemitter": {
+      "type": "npm",
+      "name": "npm:@protobufjs/eventemitter",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "@protobufjs/eventemitter",
+        "hash": "sha512-j9ednRT81vYJ9OfVuXG6ERSTdEL1xVsNgqpkxMsbIabzSo3goCjDIveeGv5d03om39ML71RdmrGNjG5SReBP/Q=="
+      }
+    },
+    "npm:@protobufjs/fetch": {
+      "type": "npm",
+      "name": "npm:@protobufjs/fetch",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "@protobufjs/fetch",
+        "hash": "sha512-lljVXpqXebpsijW71PZaCYeIcE5on1w5DlQy5WH6GLbFryLUrBD4932W/E2BSpfRJWseIL4v/KPgBFxDOIdKpQ=="
+      }
+    },
+    "npm:@protobufjs/float": {
+      "type": "npm",
+      "name": "npm:@protobufjs/float",
+      "data": {
+        "version": "1.0.2",
+        "packageName": "@protobufjs/float",
+        "hash": "sha512-Ddb+kVXlXst9d+R9PfTIxh1EdNkgoRe5tOX6t01f1lYWOvJnSPDBlG241QLzcyPdoNTsblLUdujGSE4RzrTZGQ=="
+      }
+    },
+    "npm:@protobufjs/inquire": {
+      "type": "npm",
+      "name": "npm:@protobufjs/inquire",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "@protobufjs/inquire",
+        "hash": "sha512-kdSefcPdruJiFMVSbn801t4vFK7KB/5gd2fYvrxhuJYg8ILrmn9SKSX2tZdV6V+ksulWqS7aXjBcRXl3wHoD9Q=="
+      }
+    },
+    "npm:@protobufjs/path": {
+      "type": "npm",
+      "name": "npm:@protobufjs/path",
+      "data": {
+        "version": "1.1.2",
+        "packageName": "@protobufjs/path",
+        "hash": "sha512-6JOcJ5Tm08dOHAbdR3GrvP+yUUfkjG5ePsHYczMFLq3ZmMkAD98cDgcT2iA1lJ9NVwFd4tH/iSSoe44YWkltEA=="
+      }
+    },
+    "npm:@protobufjs/pool": {
+      "type": "npm",
+      "name": "npm:@protobufjs/pool",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "@protobufjs/pool",
+        "hash": "sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw=="
+      }
+    },
+    "npm:@protobufjs/utf8": {
+      "type": "npm",
+      "name": "npm:@protobufjs/utf8",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "@protobufjs/utf8",
+        "hash": "sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw=="
+      }
+    },
     "npm:@rollup/rollup-android-arm-eabi": {
       "type": "npm",
       "name": "npm:@rollup/rollup-android-arm-eabi",
@@ -3193,6 +3949,15 @@
         "version": "0.3.36",
         "packageName": "@types/sockjs",
         "hash": "sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q=="
+      }
+    },
+    "npm:@types/triple-beam": {
+      "type": "npm",
+      "name": "npm:@types/triple-beam",
+      "data": {
+        "version": "1.3.5",
+        "packageName": "@types/triple-beam",
+        "hash": "sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw=="
       }
     },
     "npm:@types/ws": {
@@ -4194,33 +4959,6 @@
         "hash": "sha512-mtj5ur2FFPZcCEpXFy8ADXbDACuNFXg6mxVDqp7tqooX6l3zwm+d8EPoeOSIFRDvHs8qu7/SLFOGniULkcH2iA=="
       }
     },
-    "npm:chalk": {
-      "type": "npm",
-      "name": "npm:chalk",
-      "data": {
-        "version": "2.4.2",
-        "packageName": "chalk",
-        "hash": "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
-      }
-    },
-    "npm:chalk@4.1.2": {
-      "type": "npm",
-      "name": "npm:chalk@4.1.2",
-      "data": {
-        "version": "4.1.2",
-        "packageName": "chalk",
-        "hash": "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
-      }
-    },
-    "npm:chalk@5.3.0": {
-      "type": "npm",
-      "name": "npm:chalk@5.3.0",
-      "data": {
-        "version": "5.3.0",
-        "packageName": "chalk",
-        "hash": "sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w=="
-      }
-    },
     "npm:chardet": {
       "type": "npm",
       "name": "npm:chardet",
@@ -4284,15 +5022,6 @@
         "hash": "sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g=="
       }
     },
-    "npm:cli-width": {
-      "type": "npm",
-      "name": "npm:cli-width",
-      "data": {
-        "version": "4.1.0",
-        "packageName": "cli-width",
-        "hash": "sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ=="
-      }
-    },
     "npm:cliui": {
       "type": "npm",
       "name": "npm:cliui",
@@ -4329,6 +5058,24 @@
         "hash": "sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ=="
       }
     },
+    "npm:color": {
+      "type": "npm",
+      "name": "npm:color",
+      "data": {
+        "version": "3.2.1",
+        "packageName": "color",
+        "hash": "sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA=="
+      }
+    },
+    "npm:color-string": {
+      "type": "npm",
+      "name": "npm:color-string",
+      "data": {
+        "version": "1.9.1",
+        "packageName": "color-string",
+        "hash": "sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg=="
+      }
+    },
     "npm:colorette": {
       "type": "npm",
       "name": "npm:colorette",
@@ -4345,6 +5092,15 @@
         "version": "1.4.0",
         "packageName": "colors",
         "hash": "sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA=="
+      }
+    },
+    "npm:colorspace": {
+      "type": "npm",
+      "name": "npm:colorspace",
+      "data": {
+        "version": "1.1.4",
+        "packageName": "colorspace",
+        "hash": "sha512-BgvKJiuVu1igBUF2kEjRCZXol6wiiGbY5ipL/oVPwm0BL9sIpMIzM8IK7vwuxIIzOXMV3Ey5w+vxhm0rR/TN8w=="
       }
     },
     "npm:combined-stream": {
@@ -4624,51 +5380,6 @@
         "version": "0.0.20",
         "packageName": "critters",
         "hash": "sha512-CImNRorKOl5d8TWcnAz5n5izQ6HFsvz29k327/ELy6UFcmbiZNOsinaKvzv16WZR0P6etfSWYzE47C4/56B3Uw=="
-      }
-    },
-    "npm:has-flag@4.0.0": {
-      "type": "npm",
-      "name": "npm:has-flag@4.0.0",
-      "data": {
-        "version": "4.0.0",
-        "packageName": "has-flag",
-        "hash": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ=="
-      }
-    },
-    "npm:has-flag": {
-      "type": "npm",
-      "name": "npm:has-flag",
-      "data": {
-        "version": "3.0.0",
-        "packageName": "has-flag",
-        "hash": "sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw=="
-      }
-    },
-    "npm:supports-color@7.2.0": {
-      "type": "npm",
-      "name": "npm:supports-color@7.2.0",
-      "data": {
-        "version": "7.2.0",
-        "packageName": "supports-color",
-        "hash": "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="
-      }
-    },
-    "npm:supports-color@8.1.1": {
-      "type": "npm",
-      "name": "npm:supports-color@8.1.1",
-      "data": {
-        "version": "8.1.1",
-        "packageName": "supports-color",
-        "hash": "sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q=="
-      }
-    },
-    "npm:supports-color": {
-      "type": "npm",
-      "name": "npm:supports-color",
-      "data": {
-        "version": "5.5.0",
-        "packageName": "supports-color",
-        "hash": "sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow=="
       }
     },
     "npm:cross-spawn": {
@@ -5047,6 +5758,15 @@
         "version": "3.0.0",
         "packageName": "emojis-list",
         "hash": "sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q=="
+      }
+    },
+    "npm:enabled": {
+      "type": "npm",
+      "name": "npm:enabled",
+      "data": {
+        "version": "2.0.0",
+        "packageName": "enabled",
+        "hash": "sha512-AKrN98kuwOzMIdAizXGI86UFBoo26CL21UM763y1h/GMSJ4/OHU9k2YlsmBpyScFo/wbLzWQJBMCW4+IO3/+OQ=="
       }
     },
     "npm:encodeurl": {
@@ -5688,22 +6408,13 @@
         "hash": "sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g=="
       }
     },
-    "npm:figures": {
+    "npm:fecha": {
       "type": "npm",
-      "name": "npm:figures",
+      "name": "npm:fecha",
       "data": {
-        "version": "5.0.0",
-        "packageName": "figures",
-        "hash": "sha512-ej8ksPF4x6e5wvK9yevct0UCXh8TTFlWGVLlgjZuoBH1HwjIfKE/IdL5mq89sFA7zELi1VhKpmtDnrs7zWyeyg=="
-      }
-    },
-    "npm:figures@3.2.0": {
-      "type": "npm",
-      "name": "npm:figures@3.2.0",
-      "data": {
-        "version": "3.2.0",
-        "packageName": "figures",
-        "hash": "sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg=="
+        "version": "4.2.3",
+        "packageName": "fecha",
+        "hash": "sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw=="
       }
     },
     "npm:file-entry-cache": {
@@ -5787,6 +6498,15 @@
         "hash": "sha512-NWzkk0jSJtTt08+FBFMvXoeZnOJD+jTtsRmBYbAIzJdX6l7dLgR7CTubCM5/eDdPUBvLCeVasP1brfVR/9/EZQ=="
       }
     },
+    "npm:firebase": {
+      "type": "npm",
+      "name": "npm:firebase",
+      "data": {
+        "version": "10.7.2",
+        "packageName": "firebase",
+        "hash": "sha512-zED3kAJyf+Xx5tXpC3vjmlWTm/SIVoJJ6MOLuXYJkqKAUJLG7Q1Jxy6l1DxCzGgBqZHxc0Jh6q+qG++9kimHsw=="
+      }
+    },
     "npm:flat": {
       "type": "npm",
       "name": "npm:flat",
@@ -5812,6 +6532,15 @@
         "version": "3.2.9",
         "packageName": "flatted",
         "hash": "sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ=="
+      }
+    },
+    "npm:fn.name": {
+      "type": "npm",
+      "name": "npm:fn.name",
+      "data": {
+        "version": "1.1.0",
+        "packageName": "fn.name",
+        "hash": "sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw=="
       }
     },
     "npm:follow-redirects": {
@@ -5983,6 +6712,15 @@
         "version": "1.2.3",
         "packageName": "functions-have-names",
         "hash": "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ=="
+      }
+    },
+    "npm:fuzzy": {
+      "type": "npm",
+      "name": "npm:fuzzy",
+      "data": {
+        "version": "0.1.3",
+        "packageName": "fuzzy",
+        "hash": "sha512-/gZffu4ykarLrCiP3Ygsa86UAo1E5vEVlvTrpkKywXSbP9Xhln3oSp9QSV57gEq3JFFpGJ4GZ+5zdEp3FcUh4w=="
       }
     },
     "npm:gensync": {
@@ -6480,15 +7218,6 @@
         "hash": "sha512-QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g=="
       }
     },
-    "npm:inquirer": {
-      "type": "npm",
-      "name": "npm:inquirer",
-      "data": {
-        "version": "9.2.12",
-        "packageName": "inquirer",
-        "hash": "sha512-mg3Fh9g2zfuVWJn6lhST0O7x4n03k7G8Tx5nvikJkbq8/CK47WDVm+UznF0G6s5Zi0KcyUisr6DU8T67N5U+1Q=="
-      }
-    },
     "npm:internal-slot": {
       "type": "npm",
       "name": "npm:internal-slot",
@@ -6550,6 +7279,15 @@
         "version": "0.2.1",
         "packageName": "is-arrayish",
         "hash": "sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg=="
+      }
+    },
+    "npm:is-arrayish@0.3.2": {
+      "type": "npm",
+      "name": "npm:is-arrayish@0.3.2",
+      "data": {
+        "version": "0.3.2",
+        "packageName": "is-arrayish",
+        "hash": "sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ=="
       }
     },
     "npm:is-bigint": {
@@ -7065,24 +7803,6 @@
         "hash": "sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w=="
       }
     },
-    "npm:jsonfile": {
-      "type": "npm",
-      "name": "npm:jsonfile",
-      "data": {
-        "version": "6.1.0",
-        "packageName": "jsonfile",
-        "hash": "sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ=="
-      }
-    },
-    "npm:jsonfile@4.0.0": {
-      "type": "npm",
-      "name": "npm:jsonfile@4.0.0",
-      "data": {
-        "version": "4.0.0",
-        "packageName": "jsonfile",
-        "hash": "sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg=="
-      }
-    },
     "npm:jsonparse": {
       "type": "npm",
       "name": "npm:jsonparse",
@@ -7225,6 +7945,15 @@
         "version": "2.0.6",
         "packageName": "klona",
         "hash": "sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA=="
+      }
+    },
+    "npm:kuler": {
+      "type": "npm",
+      "name": "npm:kuler",
+      "data": {
+        "version": "2.0.0",
+        "packageName": "kuler",
+        "hash": "sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A=="
       }
     },
     "npm:launch-editor": {
@@ -7416,6 +8145,15 @@
         "hash": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
       }
     },
+    "npm:lodash.camelcase": {
+      "type": "npm",
+      "name": "npm:lodash.camelcase",
+      "data": {
+        "version": "4.3.0",
+        "packageName": "lodash.camelcase",
+        "hash": "sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA=="
+      }
+    },
     "npm:lodash.debounce": {
       "type": "npm",
       "name": "npm:lodash.debounce",
@@ -7459,6 +8197,24 @@
         "version": "6.9.1",
         "packageName": "log4js",
         "hash": "sha512-1somDdy9sChrr9/f4UlzhdaGfDR2c/SaD2a4T7qEkG4jTS57/B3qmnjLYePwQ8cqWnUHZI0iAKxMBpCZICiZ2g=="
+      }
+    },
+    "npm:logform": {
+      "type": "npm",
+      "name": "npm:logform",
+      "data": {
+        "version": "2.6.0",
+        "packageName": "logform",
+        "hash": "sha512-1ulHeNPp6k/LD8H91o7VYFBng5i1BDE7HoKxVbZiGFidS1Rj65qcywLxX+pVfAPoQJEjRdvKcusKwOupHCVOVQ=="
+      }
+    },
+    "npm:long": {
+      "type": "npm",
+      "name": "npm:long",
+      "data": {
+        "version": "5.2.3",
+        "packageName": "long",
+        "hash": "sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q=="
       }
     },
     "npm:make-error": {
@@ -7695,15 +8451,6 @@
         "hash": "sha512-2eznPJP8z2BFLX50tf0LuODrpINqP1RVIm/CObbTcBRITQgmC/TjcREF1NeTBzIcR5XO/ukWo+YHOjBbFwIupg=="
       }
     },
-    "npm:mute-stream": {
-      "type": "npm",
-      "name": "npm:mute-stream",
-      "data": {
-        "version": "1.0.0",
-        "packageName": "mute-stream",
-        "hash": "sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA=="
-      }
-    },
     "npm:nanoid": {
       "type": "npm",
       "name": "npm:nanoid",
@@ -7774,6 +8521,15 @@
         "version": "3.2.1",
         "packageName": "node-addon-api",
         "hash": "sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A=="
+      }
+    },
+    "npm:node-fetch": {
+      "type": "npm",
+      "name": "npm:node-fetch",
+      "data": {
+        "version": "2.7.0",
+        "packageName": "node-fetch",
+        "hash": "sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A=="
       }
     },
     "npm:node-forge": {
@@ -8044,6 +8800,15 @@
         "version": "1.4.0",
         "packageName": "once",
         "hash": "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w=="
+      }
+    },
+    "npm:one-time": {
+      "type": "npm",
+      "name": "npm:one-time",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "one-time",
+        "hash": "sha512-5DXOiRKwuSEcQ/l0kGCF6Q3jcADFv5tSmRaJck/OqkVFcOzutB134KRSfF0xDrL39MNnqxbHBbUUcjZIhTgb2g=="
       }
     },
     "npm:onetime": {
@@ -8559,6 +9324,15 @@
         "hash": "sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q=="
       }
     },
+    "npm:protobufjs": {
+      "type": "npm",
+      "name": "npm:protobufjs",
+      "data": {
+        "version": "7.2.6",
+        "packageName": "protobufjs",
+        "hash": "sha512-dgJaEDDL6x8ASUZ1YqWciTRrdOuYNzoOf27oHNfdyvKqHr5i0FV7FSLU+aIeFjyFgVxrpTOtQUi0BLLBymZaBw=="
+      }
+    },
     "npm:proxy-addr": {
       "type": "npm",
       "name": "npm:proxy-addr",
@@ -8874,15 +9648,6 @@
         "hash": "sha512-05lzkCS2uASX0CiLFybYfVkwNbKZG5NFQ6Go0VWyogFTXXbR039UVsegViTntkk4OglHBdF54ccApXRRuXRbsg=="
       }
     },
-    "npm:run-async": {
-      "type": "npm",
-      "name": "npm:run-async",
-      "data": {
-        "version": "3.0.0",
-        "packageName": "run-async",
-        "hash": "sha512-540WwVDOMxA6dN6We19EcT9sc3hkXPw5mzRNGM3FkdN/vtE9NFvj5lFAPNwUDmJjXidm3v7TC1cTE7t17Ulm1Q=="
-      }
-    },
     "npm:run-parallel": {
       "type": "npm",
       "name": "npm:run-parallel",
@@ -8890,6 +9655,15 @@
         "version": "1.2.0",
         "packageName": "run-parallel",
         "hash": "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA=="
+      }
+    },
+    "npm:rxfire": {
+      "type": "npm",
+      "name": "npm:rxfire",
+      "data": {
+        "version": "6.0.5",
+        "packageName": "rxfire",
+        "hash": "sha512-ycBsANGbya3GNtOBKzZVATLEV+0S9gUrlTfwnN15TCXtgG8OgIMAuv2k9+kMeVaevp/DRp1KT+vYf6Wkop6gvw=="
       }
     },
     "npm:safe-array-concat": {
@@ -8908,6 +9682,15 @@
         "version": "1.0.2",
         "packageName": "safe-regex-test",
         "hash": "sha512-83S9w6eFq12BBIJYvjMux6/dkirb8+4zJRA9cxNBVb7Wq5fJBW+Xze48WqR8pxua7bDuAaaAxtVVd4Idjp1dBQ=="
+      }
+    },
+    "npm:safe-stable-stringify": {
+      "type": "npm",
+      "name": "npm:safe-stable-stringify",
+      "data": {
+        "version": "2.4.3",
+        "packageName": "safe-stable-stringify",
+        "hash": "sha512-e2bDA2WJT0wxseVd4lsDP4+3ONX6HpMXQa1ZhFQ7SU+GjvORCmShbCMltrtIDfkYhVHrOcPtj+KhmDBdPdZD1g=="
       }
     },
     "npm:safer-buffer": {
@@ -9099,6 +9882,15 @@
         "hash": "sha512-fcU9clHwEss2/M/11FFM8Jwc4PjBgbhXoNskoK5guoK0qGQBSeUbQZRJ+B2fDFIvhyf0gqCaPrel9mszbhAxug=="
       }
     },
+    "npm:simple-swizzle": {
+      "type": "npm",
+      "name": "npm:simple-swizzle",
+      "data": {
+        "version": "0.2.2",
+        "packageName": "simple-swizzle",
+        "hash": "sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg=="
+      }
+    },
     "npm:sisteransi": {
       "type": "npm",
       "name": "npm:sisteransi",
@@ -9288,6 +10080,15 @@
         "hash": "sha512-bSf16tAFkGeRlUNDjXu8FzaMQt6g2HZJrun7mtMbIPOddxt3GLMSz5VWUWcqTJUPfLEaDIepGxv+bYQW49596A=="
       }
     },
+    "npm:stack-trace": {
+      "type": "npm",
+      "name": "npm:stack-trace",
+      "data": {
+        "version": "0.0.10",
+        "packageName": "stack-trace",
+        "hash": "sha512-KGzahc7puUKkzyMt+IqAep+TVNbKP+k2Lmwhub39m1AsTSkaDutx56aDCo+HLDzf/D26BIHTJWNiTG1KAJiQCg=="
+      }
+    },
     "npm:streamroller": {
       "type": "npm",
       "name": "npm:streamroller",
@@ -9295,24 +10096,6 @@
         "version": "3.1.5",
         "packageName": "streamroller",
         "hash": "sha512-KFxaM7XT+irxvdqSP1LGLgNWbYN7ay5owZ3r/8t77p+EtSUAfUgtl7be3xtqtOmGUl9K9YPO2ca8133RlTjvKw=="
-      }
-    },
-    "npm:universalify@0.1.2": {
-      "type": "npm",
-      "name": "npm:universalify@0.1.2",
-      "data": {
-        "version": "0.1.2",
-        "packageName": "universalify",
-        "hash": "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
-      }
-    },
-    "npm:universalify": {
-      "type": "npm",
-      "name": "npm:universalify",
-      "data": {
-        "version": "2.0.1",
-        "packageName": "universalify",
-        "hash": "sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw=="
       }
     },
     "npm:string-width-cjs": {
@@ -9477,6 +10260,15 @@
         "hash": "sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w=="
       }
     },
+    "npm:text-hex": {
+      "type": "npm",
+      "name": "npm:text-hex",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "text-hex",
+        "hash": "sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg=="
+      }
+    },
     "npm:text-table": {
       "type": "npm",
       "name": "npm:text-table",
@@ -9540,6 +10332,15 @@
         "hash": "sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA=="
       }
     },
+    "npm:tr46": {
+      "type": "npm",
+      "name": "npm:tr46",
+      "data": {
+        "version": "0.0.3",
+        "packageName": "tr46",
+        "hash": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw=="
+      }
+    },
     "npm:tree-kill": {
       "type": "npm",
       "name": "npm:tree-kill",
@@ -9547,6 +10348,15 @@
         "version": "1.2.2",
         "packageName": "tree-kill",
         "hash": "sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A=="
+      }
+    },
+    "npm:triple-beam": {
+      "type": "npm",
+      "name": "npm:triple-beam",
+      "data": {
+        "version": "1.4.1",
+        "packageName": "triple-beam",
+        "hash": "sha512-aZbgViZrg1QNcG+LULa7nhZpJTZSLm/mXnHXnbAbjmN5aSa0y7V+wvv6+4WaBtpISJzThKy+PIPxc1Nq1EJ9mg=="
       }
     },
     "npm:ts-api-utils": {
@@ -9664,15 +10474,6 @@
         "version": "1.0.2",
         "packageName": "unbox-primitive",
         "hash": "sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw=="
-      }
-    },
-    "npm:undici": {
-      "type": "npm",
-      "name": "npm:undici",
-      "data": {
-        "version": "6.2.1",
-        "packageName": "undici",
-        "hash": "sha512-7Wa9thEM6/LMnnKtxJHlc8SrTlDmxqJecgz1iy8KlsN0/iskQXOQCuPkrZLXbElPaSw5slFFyKIKXyJ3UtbApw=="
       }
     },
     "npm:undici-types": {
@@ -9882,6 +10683,15 @@
         "hash": "sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg=="
       }
     },
+    "npm:webidl-conversions": {
+      "type": "npm",
+      "name": "npm:webidl-conversions",
+      "data": {
+        "version": "3.0.1",
+        "packageName": "webidl-conversions",
+        "hash": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
+      }
+    },
     "npm:webpack": {
       "type": "npm",
       "name": "npm:webpack",
@@ -9990,6 +10800,15 @@
         "hash": "sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg=="
       }
     },
+    "npm:whatwg-url": {
+      "type": "npm",
+      "name": "npm:whatwg-url",
+      "data": {
+        "version": "5.0.0",
+        "packageName": "whatwg-url",
+        "hash": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw=="
+      }
+    },
     "npm:which-boxed-primitive": {
       "type": "npm",
       "name": "npm:which-boxed-primitive",
@@ -10015,6 +10834,24 @@
         "version": "2.0.1",
         "packageName": "wildcard",
         "hash": "sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ=="
+      }
+    },
+    "npm:winston": {
+      "type": "npm",
+      "name": "npm:winston",
+      "data": {
+        "version": "3.11.0",
+        "packageName": "winston",
+        "hash": "sha512-L3yR6/MzZAOl0DsysUXHVjOwv8mKZ71TrA/41EIduGpOOV5LQVodqN+QdQ6BS6PJ/RdIshZhq84P/fStEZkk7g=="
+      }
+    },
+    "npm:winston-transport": {
+      "type": "npm",
+      "name": "npm:winston-transport",
+      "data": {
+        "version": "4.6.0",
+        "packageName": "winston-transport",
+        "hash": "sha512-wbBA9PbPAHxKiygo7ub7BYRiKxms0tpfU2ljtWzb3SjRjv5yl6Ozuy/TkXf00HTAt+Uylo3gSkNwzc4ME0wiIg=="
       }
     },
     "npm:wrap-ansi-cjs": {
@@ -10972,6 +11809,271 @@
     {
       "source": "npm:@angular/core",
       "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@angular/platform-browser",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@angular/platform-browser-dynamic",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@angular-devkit/schematics",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:@schematics/angular",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:firebase",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:fs-extra@8.1.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:fuzzy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:inquirer@8.2.6",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:jsonc-parser",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:node-fetch",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:open",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:ora",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:rxfire",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:semver",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:triple-beam",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/fire",
+      "target": "npm:winston",
+      "type": "static"
+    },
+    {
+      "source": "npm:ansi-styles@4.3.0",
+      "target": "npm:color-convert@2.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:chalk@4.1.2",
+      "target": "npm:ansi-styles@4.3.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:chalk@4.1.2",
+      "target": "npm:supports-color@7.2.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:color-convert@2.0.1",
+      "target": "npm:color-name@1.1.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:figures@3.2.0",
+      "target": "npm:escape-string-regexp",
+      "type": "static"
+    },
+    {
+      "source": "npm:fs-extra@8.1.0",
+      "target": "npm:graceful-fs",
+      "type": "static"
+    },
+    {
+      "source": "npm:fs-extra@8.1.0",
+      "target": "npm:jsonfile@4.0.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:fs-extra@8.1.0",
+      "target": "npm:universalify@0.1.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:ansi-escapes",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:chalk@4.1.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:cli-cursor",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:cli-width@3.0.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:external-editor",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:figures@3.2.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:lodash",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:mute-stream@0.0.8",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:ora",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:run-async@2.4.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:string-width",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:strip-ansi",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:through",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer@8.2.6",
+      "target": "npm:wrap-ansi",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:inquirer@8.2.6",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:ansi-escapes",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:chalk@4.1.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:figures@3.2.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:run-async@2.4.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:inquirer-autocomplete-prompt@1.4.0",
+      "target": "npm:rxjs@6.6.7",
+      "type": "static"
+    },
+    {
+      "source": "npm:rxjs@6.6.7",
+      "target": "npm:tslib@1.14.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:jsonfile@4.0.0",
+      "target": "npm:graceful-fs",
+      "type": "static"
+    },
+    {
+      "source": "npm:supports-color@7.2.0",
+      "target": "npm:has-flag@4.0.0",
       "type": "static"
     },
     {
@@ -13135,6 +14237,21 @@
       "type": "static"
     },
     {
+      "source": "npm:@dabh/diagnostics",
+      "target": "npm:colorspace",
+      "type": "static"
+    },
+    {
+      "source": "npm:@dabh/diagnostics",
+      "target": "npm:enabled",
+      "type": "static"
+    },
+    {
+      "source": "npm:@dabh/diagnostics",
+      "target": "npm:kuler",
+      "type": "static"
+    },
+    {
       "source": "npm:@eslint-community/eslint-utils",
       "target": "npm:eslint",
       "type": "static"
@@ -13227,6 +14344,871 @@
     {
       "source": "npm:minimatch@3.1.2",
       "target": "npm:brace-expansion@1.1.11",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:@firebase/analytics",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:@firebase/analytics-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/analytics-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app",
+      "target": "npm:idb",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/app-check",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/app-check-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-check-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-compat",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-compat",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/app-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth",
+      "target": "npm:undici@5.26.5",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:@firebase/auth",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:@firebase/auth-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-compat",
+      "target": "npm:undici@5.26.5",
+      "type": "static"
+    },
+    {
+      "source": "npm:undici@5.26.5",
+      "target": "npm:@fastify/busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-types",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/auth-types",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:undici@5.26.5",
+      "target": "npm:@fastify/busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/component",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/component",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:@firebase/app-check-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:@firebase/auth-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:faye-websocket",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:@firebase/database",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:@firebase/database-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-types",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/database-types",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@firebase/webchannel-wrapper",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@grpc/grpc-js",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:@grpc/proto-loader",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore",
+      "target": "npm:undici@5.26.5",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:@firebase/firestore",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:@firebase/firestore-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-types",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/firestore-types",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:undici@5.26.5",
+      "target": "npm:@fastify/busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/app-check-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/auth-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/messaging-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions",
+      "target": "npm:undici@5.26.5",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:@firebase/functions",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:@firebase/functions-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/functions-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:undici@5.26.5",
+      "target": "npm:@fastify/busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations",
+      "target": "npm:idb@7.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:@firebase/installations-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/installations-types",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/logger",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:@firebase/messaging-interop-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:idb",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging-compat",
+      "target": "npm:@firebase/messaging",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/messaging-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/performance",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/performance-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/performance-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/logger",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/remote-config",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/remote-config-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/remote-config-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage",
+      "target": "npm:undici@5.26.5",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:@firebase/component",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:@firebase/storage",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:@firebase/storage-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-compat",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-types",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/storage-types",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
+      "source": "npm:undici@5.26.5",
+      "target": "npm:@fastify/busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@firebase/util",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/grpc-js",
+      "target": "npm:@grpc/proto-loader",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/grpc-js",
+      "target": "npm:@types/node",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/proto-loader",
+      "target": "npm:lodash.camelcase",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/proto-loader",
+      "target": "npm:long",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/proto-loader",
+      "target": "npm:protobufjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@grpc/proto-loader",
+      "target": "npm:yargs",
       "type": "static"
     },
     {
@@ -14182,6 +16164,16 @@
     {
       "source": "npm:semver@7.5.3",
       "target": "npm:lru-cache@6.0.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:@protobufjs/fetch",
+      "target": "npm:@protobufjs/aspromise",
+      "type": "static"
+    },
+    {
+      "source": "npm:@protobufjs/fetch",
+      "target": "npm:@protobufjs/inquire",
       "type": "static"
     },
     {
@@ -15755,8 +17747,38 @@
       "type": "static"
     },
     {
+      "source": "npm:color",
+      "target": "npm:color-convert",
+      "type": "static"
+    },
+    {
+      "source": "npm:color",
+      "target": "npm:color-string",
+      "type": "static"
+    },
+    {
       "source": "npm:color-convert",
       "target": "npm:color-name",
+      "type": "static"
+    },
+    {
+      "source": "npm:color-string",
+      "target": "npm:color-name",
+      "type": "static"
+    },
+    {
+      "source": "npm:color-string",
+      "target": "npm:simple-swizzle",
+      "type": "static"
+    },
+    {
+      "source": "npm:colorspace",
+      "target": "npm:color",
+      "type": "static"
+    },
+    {
+      "source": "npm:colorspace",
+      "target": "npm:text-hex",
       "type": "static"
     },
     {
@@ -17630,6 +19652,136 @@
       "type": "static"
     },
     {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/analytics",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/analytics-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/app",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/app-check",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/app-check-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/app-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/app-types",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/auth",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/auth-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/database",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/database-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/firestore",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/firestore-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/functions",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/functions-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/installations",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/installations-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/messaging",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/messaging-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/performance",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/performance-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/remote-config",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/remote-config-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/storage",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/storage-compat",
+      "type": "static"
+    },
+    {
+      "source": "npm:firebase",
+      "target": "npm:@firebase/util",
+      "type": "static"
+    },
+    {
       "source": "npm:flat-cache",
       "target": "npm:flatted",
       "type": "static"
@@ -18990,6 +21142,36 @@
       "type": "static"
     },
     {
+      "source": "npm:logform",
+      "target": "npm:@colors/colors@1.6.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:logform",
+      "target": "npm:@types/triple-beam",
+      "type": "static"
+    },
+    {
+      "source": "npm:logform",
+      "target": "npm:fecha",
+      "type": "static"
+    },
+    {
+      "source": "npm:logform",
+      "target": "npm:ms",
+      "type": "static"
+    },
+    {
+      "source": "npm:logform",
+      "target": "npm:safe-stable-stringify",
+      "type": "static"
+    },
+    {
+      "source": "npm:logform",
+      "target": "npm:triple-beam",
+      "type": "static"
+    },
+    {
       "source": "npm:lru-cache",
       "target": "npm:yallist",
       "type": "static"
@@ -19272,6 +21454,16 @@
     {
       "source": "npm:nice-napi",
       "target": "npm:node-gyp-build",
+      "type": "static"
+    },
+    {
+      "source": "npm:node-fetch",
+      "target": "npm:encoding",
+      "type": "static"
+    },
+    {
+      "source": "npm:node-fetch",
+      "target": "npm:whatwg-url",
       "type": "static"
     },
     {
@@ -19850,6 +22042,11 @@
       "type": "static"
     },
     {
+      "source": "npm:one-time",
+      "target": "npm:fn.name",
+      "type": "static"
+    },
+    {
       "source": "npm:onetime",
       "target": "npm:mimic-fn",
       "type": "static"
@@ -20335,6 +22532,66 @@
       "type": "static"
     },
     {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/aspromise",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/base64",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/codegen",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/eventemitter",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/fetch",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/float",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/inquire",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/path",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/pool",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@protobufjs/utf8",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:@types/node",
+      "type": "static"
+    },
+    {
+      "source": "npm:protobufjs",
+      "target": "npm:long",
+      "type": "static"
+    },
+    {
       "source": "npm:proxy-addr",
       "target": "npm:forwarded",
       "type": "static"
@@ -20735,6 +22992,16 @@
       "type": "static"
     },
     {
+      "source": "npm:rxfire",
+      "target": "npm:firebase",
+      "type": "static"
+    },
+    {
+      "source": "npm:rxfire",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
       "source": "npm:rxjs",
       "target": "npm:tslib",
       "type": "static"
@@ -21092,6 +23359,11 @@
     {
       "source": "npm:sigstore",
       "target": "npm:@sigstore/verify",
+      "type": "static"
+    },
+    {
+      "source": "npm:simple-swizzle",
+      "target": "npm:is-arrayish@0.3.2",
       "type": "static"
     },
     {
@@ -22425,6 +24697,16 @@
       "type": "static"
     },
     {
+      "source": "npm:whatwg-url",
+      "target": "npm:tr46",
+      "type": "static"
+    },
+    {
+      "source": "npm:whatwg-url",
+      "target": "npm:webidl-conversions",
+      "type": "static"
+    },
+    {
       "source": "npm:which",
       "target": "npm:isexe",
       "type": "static"
@@ -22477,6 +24759,76 @@
     {
       "source": "npm:which-typed-array",
       "target": "npm:has-tostringtag",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:@colors/colors@1.6.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:@dabh/diagnostics",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:async",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:is-stream",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:logform",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:one-time",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:readable-stream",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:safe-stable-stringify",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:stack-trace",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:triple-beam",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston",
+      "target": "npm:winston-transport",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston-transport",
+      "target": "npm:logform",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston-transport",
+      "target": "npm:readable-stream",
+      "type": "static"
+    },
+    {
+      "source": "npm:winston-transport",
+      "target": "npm:triple-beam",
       "type": "static"
     },
     {
