@@ -91,6 +91,10 @@
         "hash": "4462205925370081679"
       },
       {
+        "file": "android/app/capacitor.build.gradle",
+        "hash": "321577693221425197"
+      },
+      {
         "file": "android/app/proguard-rules.pro",
         "hash": "16319704539319765030"
       },
@@ -255,6 +259,10 @@
         "hash": "15247024166514751308"
       },
       {
+        "file": "android/capacitor.settings.gradle",
+        "hash": "14622451423594914531"
+      },
+      {
         "file": "android/gradle.properties",
         "hash": "2024862945433011340"
       },
@@ -284,11 +292,11 @@
       },
       {
         "file": "angular.json",
-        "hash": "10618098369361505948"
+        "hash": "8739525249911790161"
       },
       {
         "file": "capacitor.config.ts",
-        "hash": "16643908138565291067"
+        "hash": "12345496820141673674"
       },
       {
         "file": "ionic.config.json",
@@ -315,48 +323,36 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/app.component.spec.ts",
-        "hash": "1169920908592744977"
-      },
-      {
         "file": "src/app/app.component.ts",
-        "hash": "14255712435515673760"
+        "hash": "7667001771861253623"
       },
       {
         "file": "src/app/app.routes.ts",
-        "hash": "18257155905323275827"
+        "hash": "16504313526850680961"
       },
       {
         "file": "src/app/explore-container/explore-container.component.html",
-        "hash": "11276277544007458628"
+        "hash": "2539983172253955892"
       },
       {
         "file": "src/app/explore-container/explore-container.component.scss",
         "hash": "14250411118003398491"
       },
       {
-        "file": "src/app/explore-container/explore-container.component.spec.ts",
-        "hash": "13935599920762330903"
-      },
-      {
         "file": "src/app/explore-container/explore-container.component.ts",
-        "hash": "9627812680309577193"
+        "hash": "11872239804773117840"
       },
       {
-        "file": "src/app/tab1/tab1.page.html",
-        "hash": "13207509910740934786"
+        "file": "src/app/home/home.page.html",
+        "hash": "16620927018651306212"
       },
       {
-        "file": "src/app/tab1/tab1.page.scss",
+        "file": "src/app/home/home.page.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/tab1/tab1.page.spec.ts",
-        "hash": "8711086944190325156"
-      },
-      {
-        "file": "src/app/tab1/tab1.page.ts",
-        "hash": "16961603846796942878"
+        "file": "src/app/home/home.page.ts",
+        "hash": "3064617949583713819"
       },
       {
         "file": "src/app/tab2/tab2.page.html",
@@ -367,12 +363,8 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/tab2/tab2.page.spec.ts",
-        "hash": "10330460238115220644"
-      },
-      {
         "file": "src/app/tab2/tab2.page.ts",
-        "hash": "10239354924764746526"
+        "hash": "16785872633309628535"
       },
       {
         "file": "src/app/tab3/tab3.page.html",
@@ -383,32 +375,24 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/tab3/tab3.page.spec.ts",
-        "hash": "10649680478453371633"
-      },
-      {
         "file": "src/app/tab3/tab3.page.ts",
-        "hash": "5581557519451467703"
+        "hash": "14446230231292115043"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
-        "hash": "10373639428334637925"
+        "hash": "16554413778362593585"
       },
       {
         "file": "src/app/tabs/tabs.page.scss",
         "hash": "4055606894390288348"
       },
       {
-        "file": "src/app/tabs/tabs.page.spec.ts",
-        "hash": "10096415410414342163"
-      },
-      {
         "file": "src/app/tabs/tabs.page.ts",
-        "hash": "1949349525049344554"
+        "hash": "16050595049947368118"
       },
       {
         "file": "src/app/tabs/tabs.routes.ts",
-        "hash": "5577488371678327876"
+        "hash": "4840596832622735595"
       },
       {
         "file": "src/assets/icon/favicon.png",
@@ -416,7 +400,7 @@
       },
       {
         "file": "src/assets/shapes.svg",
-        "hash": "4708889011185296100"
+        "hash": "15415707240671085314"
       },
       {
         "file": "src/environments/environment.prod.ts",
@@ -432,23 +416,23 @@
       },
       {
         "file": "src/index.html",
-        "hash": "5962093970713772175"
+        "hash": "13227188448987370599"
       },
       {
         "file": "src/main.ts",
-        "hash": "282009733975285211"
+        "hash": "4109780165952562714"
       },
       {
         "file": "src/polyfills.ts",
-        "hash": "11812151144158597559"
+        "hash": "904466970859024605"
       },
       {
         "file": "src/test.ts",
-        "hash": "12412031923219697029"
+        "hash": "15402624248843243268"
       },
       {
         "file": "src/theme/variables.scss",
-        "hash": "10683809365950317113"
+        "hash": "12401277069900609777"
       },
       {
         "file": "src/zone-flags.ts",
