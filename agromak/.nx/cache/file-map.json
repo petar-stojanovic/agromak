@@ -69,8 +69,12 @@
         "hash": "18210278994710539225"
       },
       {
+        "file": ".firebaserc",
+        "hash": "16758362547958668263"
+      },
+      {
         "file": ".gitignore",
-        "hash": "91109559695469517"
+        "hash": "14555918630938920276"
       },
       {
         "file": ".vscode/extensions.json",
@@ -294,11 +298,15 @@
       },
       {
         "file": "angular.json",
-        "hash": "8739525249911790161"
+        "hash": "3067923236582681779"
       },
       {
         "file": "capacitor.config.ts",
         "hash": "12345496820141673674"
+      },
+      {
+        "file": "firebase.json",
+        "hash": "6027613154799111727"
       },
       {
         "file": "ionic.config.json",
@@ -310,11 +318,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "809572477678497064"
+        "hash": "17124341223842361946"
       },
       {
         "file": "package.json",
-        "hash": "9568144345367294540"
+        "hash": "13602516447661410732"
       },
       {
         "file": "src/app/app.component.html",
@@ -346,7 +354,7 @@
       },
       {
         "file": "src/app/home/home.page.html",
-        "hash": "16620927018651306212"
+        "hash": "12719396841499173083"
       },
       {
         "file": "src/app/home/home.page.scss",
@@ -394,7 +402,7 @@
       },
       {
         "file": "src/app/tabs/tabs.routes.ts",
-        "hash": "4840596832622735595"
+        "hash": "2724798012089836689"
       },
       {
         "file": "src/assets/icon/favicon.png",
@@ -422,7 +430,7 @@
       },
       {
         "file": "src/main.ts",
-        "hash": "4109780165952562714"
+        "hash": "1608622298188077739"
       },
       {
         "file": "src/polyfills.ts",
