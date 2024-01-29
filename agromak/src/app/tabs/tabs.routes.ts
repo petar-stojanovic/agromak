@@ -1,23 +1,7 @@
 import {Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
 
-import {redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
-
-
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
-
 export const routes: Routes = [
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('../pages/auth/login/login.page').then((m) => m.LoginPage),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('../pages/auth/register/register.page').then((m) => m.RegisterPage),
-  },
   {
     path: 'app',
     component: TabsPage,
