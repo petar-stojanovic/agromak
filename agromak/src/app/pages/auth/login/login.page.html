@@ -1,14 +1,14 @@
 <ion-content class="ion-padding">
 
   <!-- Login Page -->
-  <div *ngIf="screen === 'signin'">
+  <div *ngIf="screen === 'login'">
     <div>
       <h1 class="heading">Welcome</h1>
       <p class="subheading">Sign in to continue!</p>
     </div>
 
-    <form [formGroup]="formData" (ngSubmit)="login()">
-      <ion-item class="ion-item" lines="none">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item class="ion-item">
         <ion-input
           aria-label="Email"
           clearInput
@@ -22,12 +22,12 @@
 
       <ng-container *ngFor="let validation of formErrorMessages.email">
         <div class="error-message"
-             *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+             *ngIf="loginEmail.hasError(validation.type) && (loginEmail.dirty || loginEmail.touched)">
           {{ validation.message }}
         </div>
       </ng-container>
 
-      <ion-item class="ion-item ion-margin-top" lines="none">
+      <ion-item class="ion-item ion-margin-top">
         <ion-input
           aria-label="Email"
           clearInput
@@ -41,7 +41,7 @@
 
       <ng-container *ngFor="let validation of formErrorMessages.password">
         <div class="error-message"
-             *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
+             *ngIf="loginPassword.hasError(validation.type) && (loginPassword.dirty || loginPassword.touched)">
           {{ validation.message }}
 
         </div>
@@ -50,71 +50,98 @@
       <br/>
       <div class="signup-text ion-margin-top">
         Don't have an account?
-        <ion-text color="primary" (click)="change('signup')"> Register Here</ion-text>
+        <ion-text color="primary" (click)="changeScreen('register')"> Register Here</ion-text>
       </div>
 
       <ion-item class="ion-item ion-margin-top ion-margin-bottom">
-        <ion-button type="submit" class="button login-button" [disabled]="formData.invalid">Sign in</ion-button>
+        <ion-button type="submit" class="button login-button" [disabled]="loginForm.invalid">Sign in</ion-button>
       </ion-item>
     </form>
-    <ion-item class="ion-item">
-      <ion-button class="button google-button" color="light" (click)="logout()">
-        <ion-icon name="logo-google"></ion-icon>&nbsp;&nbsp;Sign in with Google
-      </ion-button>
-    </ion-item>
   </div>
 
   <!-- Sign up page -->
-  <div class="container" *ngIf="screen === 'signup'">
-    <h1 class="heading">🚀 Create Account
-      <br>
-      <br>
-    </h1>
-    <p class="para">Sign up to get started!</p>
-    <form [formGroup]="formData">
-      <ion-item lines="none" class="ion-item">
-        <fieldset class="input-item">
-          <legend>Full Name</legend>
-          <ion-input formControlName="name" type="text" placeholder="John Doe"></ion-input>
-        </fieldset>
+  <div class="container" *ngIf="screen === 'register'">
+    <div>
+      <h1 class="heading">Create Account</h1>
+      <p class="subheading">Sign up to get started!</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="login()">
+      <ion-item class="ion-item">
+        <ion-input
+          aria-label="Email"
+          clearInput
+          formControlName="email"
+          placeholder="Email"
+          type="email"
+        >
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+        </ion-input>
       </ion-item>
-      <ion-item lines="none" class="ion-item">
-        <fieldset class="input-item">
-          <legend>Email Id</legend>
-          <ion-input formControlName="email" type="email" placeholder="john@doe.com"></ion-input>
-        </fieldset>
+
+      <ng-container *ngFor="let validation of formErrorMessages.email">
+        <div class="error-message"
+             *ngIf="registerEmail.hasError(validation.type) && (registerEmail.dirty || registerEmail.touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+
+      <ion-item class="ion-item ion-margin-top">
+        <ion-input
+          aria-label="Password"
+          formControlName="password"
+          placeholder="Password"
+          type="password"
+        >
+          <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
+        </ion-input>
       </ion-item>
-      <ion-item lines="none" class="ion-item">
-        <fieldset class="input-item">
-          <legend>Password</legend>
-          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
-        </fieldset>
+
+      <ng-container *ngFor="let validation of formErrorMessages.password">
+        <div class="error-message"
+             *ngIf="registerPassword.hasError(validation.type) && (registerPassword.dirty || registerPassword.touched)">
+          {{ validation.message }}
+
+        </div>
+      </ng-container>
+
+
+      <ion-item class="ion-item ion-margin-top">
+        <ion-input
+          aria-label="Confirm Password"
+          formControlName="confirmPassword"
+          placeholder="Confirm password"
+          type="password"
+        >
+          <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
+        </ion-input>
       </ion-item>
-      <p class="signup-text">I'm already a member&nbsp;<a (click)="change('signin')">Sign In?</a>
-      </p>
-      <ion-button class="login-button" (click)="register()" expand="block">Sign Up</ion-button>
-      <ion-button class="google-button" expand="block" color="light">
-        <ion-icon name="logo-google"></ion-icon>&nbsp;&nbsp;Google Signin
-      </ion-button>
+
+      <ng-container *ngFor="let validation of formErrorMessages.password">
+        <div class="error-message"
+             *ngIf="registerConfirmPassword.hasError(validation.type) && (registerConfirmPassword.dirty || registerConfirmPassword.touched)">
+          {{ validation.message }}
+
+        </div>
+      </ng-container>
+      <br/>
+
+
+      <div class="signup-text ion-margin-top">
+        Already have an account?
+        <ion-text color="primary" (click)="changeScreen('login')"> Sign In</ion-text>
+      </div>
+
+      <ion-item class="ion-item ion-margin-top ion-margin-bottom">
+        <ion-button type="submit" class="button login-button" [disabled]="registerForm.invalid">Register</ion-button>
+      </ion-item>
     </form>
   </div>
-
-  <!-- Forget password page -->
-  <div class="container" *ngIf="screen === 'forget'">
-    <h1 class="heading">Forget Password?
-      <br>
-      <br>
-    </h1>
-    <p class="para">Enter email to reset</p>
-    <ion-item lines="none" class="ion-item">
-      <fieldset class="input-item">
-        <legend>Email Id</legend>
-        <ion-input type="email" placeholder="name@domain.com"></ion-input>
-      </fieldset>
-    </ion-item>
-    <p class="signup-text">Rememberd Password&nbsp;<a (click)="change('signin')">Sign In?</a>
-    </p>
-    <ion-button class="login-button" expand="block">Reset Password</ion-button>
-  </div>
+  <ion-item class="ion-item">
+    <ion-button class="button google-button" color="dark">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      Login with Google
+    </ion-button>
+  </ion-item>
 
 </ion-content>

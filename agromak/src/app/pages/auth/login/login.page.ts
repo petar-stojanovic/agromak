@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {addIcons} from "ionicons";
 import {lockClosed, logoGoogle, personOutline} from "ionicons/icons";
@@ -29,8 +29,11 @@ export class LoginPage {
   }
 
   _authService = inject(AuthenticationService);
-  screen: any = 'signin';
-  formData: FormGroup;
+
+  loginForm: FormGroup;
+  registerForm: FormGroup
+  screen: string = 'login';
+
   isLoading: boolean = false;
 
   constructor(private fb: FormBuilder,
@@ -40,61 +43,83 @@ export class LoginPage {
 
     addIcons({personOutline, lockClosed, logoGoogle})
 
-    this.formData = this.fb.group({
-      // name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+
+    this.registerForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', Validators.required]
+      },
+      {
+        validators: this.passwordMatchValidator
+      });
   }
 
-
-  get email() {
-    return this.formData.get('email')!;
+  passwordMatchValidator(control: AbstractControl) {
+    const password = control.get("password")?.value;
+    const confirmPassword = control.get("confirmPassword")?.value;
+    return password === confirmPassword ? null : {mismatch: true};
   }
 
-  get password() {
-    return this.formData.get('password')!;
+  get loginEmail() {
+    return this.loginForm.get('email')!;
   }
 
-  change(event: any) {
-    this.screen = event;
+  get loginPassword() {
+    return this.loginForm.get('password')!;
+  }
+
+  get registerEmail() {
+    return this.registerForm.get('email')!;
+  }
+
+  get registerPassword() {
+    return this.registerForm.get('password')!;
+  }
+
+  get registerConfirmPassword() {
+    return this.registerForm.get('confirmPassword')!;
+  }
+
+  changeScreen(screen: string) {
+    this.screen = screen;
   }
 
   login() {
     const formData: any = new FormData();
-    console.log(this.formData.value);
-    if (this.formData.valid) {
+    console.log(this.loginForm.value);
+    if (this.loginForm.valid) {
       this.isLoading = true
-      formData.append('email', this.formData.get('email')?.value);
-      formData.append('password', this.formData.get('password')?.value);
-      console.log(this.formData)
-      this._authService.login(this.formData.get('email')?.value, this.formData.get('password')?.value).then(value => {
-          console.log(value)
-        }
-      );
-
-      // this.auth.userLogin(formData).subscribe((data:any)=>{
-      //   console.log(data);
-      // });
+      formData.append('email', this.loginForm.get('email')?.value);
+      formData.append('password', this.loginForm.get('password')?.value);
+      console.log(this.loginForm)
+      // this._authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then(value => {
+      //     console.log(value)
+      //   }
+      // );
     }
   }
 
   register() {
     const formData: any = new FormData();
-    if (this.formData.valid) {
+    if (this.registerForm.valid) {
       this.isLoading = true
-      formData.append('name', this.formData.get('name')?.value);
-      formData.append('email', this.formData.get('email')?.value);
-      formData.append('password', this.formData.get('password')?.value);
-      console.log(this.formData)
-      this._authService.register(this.formData.get('email')?.value, this.formData.get('password')?.value).then(value => {
-          if (value !== null) {
-            this.router.navigateByUrl('/app/home', {replaceUrl: true});
-          } else {
-            this.showAlert('Registration failed', 'Please try again!');
-          }
-        }
-      );
+      formData.append('name', this.registerForm.get('name')?.value);
+      formData.append('email', this.registerForm.get('email')?.value);
+      formData.append('password', this.registerForm.get('password')?.value);
+      console.log(this.registerForm)
+      // this._authService.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value).then(user => {
+      //     if (user !== null) {
+      //       this.router.navigateByUrl('/app/home', {replaceUrl: true});
+      //     } else {
+      //       this.showAlert('Registration failed', 'Please try again!');
+      //     }
+      //   }
+      // );
     }
   }
 
