@@ -9,7 +9,6 @@ import {environment} from './environments/environment';
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
-import {getDatabase, provideDatabase} from '@angular/fire/database';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 
 if (environment.production) {
@@ -21,10 +20,13 @@ bootstrapApplication(AppComponent, {
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     provideIonicAngular(),
     provideRouter(routes),
-    importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))),
-    importProvidersFrom(provideAuth(() => getAuth())),
-    importProvidersFrom(provideFirestore(() => getFirestore())),
-    importProvidersFrom(provideDatabase(() => getDatabase())),
-    importProvidersFrom(provideStorage(() => getStorage())),
+
+    importProvidersFrom([
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideAuth(() => getAuth()),
+      provideFirestore(() => getFirestore()),
+      provideStorage(() => getStorage())
+    ]),
+    // importProvidersFrom(provideDatabase(() => getDatabase())),
   ],
 });

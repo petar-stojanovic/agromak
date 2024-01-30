@@ -4,44 +4,18 @@
   margin-top: 70px;
 }
 
-.para {
+.subheading {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 70px;
   color: var(--ion-color-medium-shade);
 }
 
-.input-item {
-  padding-left: 20px;
-  border: 2px solid #e2e2e2;
-  height: 70px;
 
-  ion-input {
-    margin-top: -12px;
-  }
-}
-
-.ion-item {
-  margin-top: 20px;
-}
-
-.forget-text {
-  a {
-    text-decoration: none;
-    color: var(--ion-color-base);
-  }
-
-  text-align: end;
-}
-
-.login-button {
+.button {
   height: 50px;
-  --border-radius: 12px;
-}
-
-.google-button {
-  height: 50px;
-  --border-radius: 12px;
+  width: 100%;
+  --border-radius: 100px;
 }
 
 .signup-text {
@@ -50,7 +24,7 @@
 
 .error-message {
   color: red;
-  font-size: smaller;
+  font-size: 0.75rem;
   padding-left: 10px;
 }
 
@@ -59,5 +33,5 @@ ion-content {
 }
 
 ion-icon {
-  margin: 0 !important;
+  margin-left: 10px !important;
 }
