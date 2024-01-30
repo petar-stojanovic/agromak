@@ -338,55 +338,83 @@
       },
       {
         "file": "src/app/app.routes.ts",
-        "hash": "16504313526850680961"
+        "hash": "10755719023801760800"
       },
       {
-        "file": "src/app/explore-container/explore-container.component.html",
-        "hash": "2539983172253955892"
+        "file": "src/app/pages/auth/landing/landing.page.html",
+        "hash": "15689261825214021679"
       },
       {
-        "file": "src/app/explore-container/explore-container.component.scss",
-        "hash": "14250411118003398491"
+        "file": "src/app/pages/auth/landing/landing.page.scss",
+        "hash": "15939080172959539121"
       },
       {
-        "file": "src/app/explore-container/explore-container.component.ts",
-        "hash": "11872239804773117840"
+        "file": "src/app/pages/auth/landing/landing.page.ts",
+        "hash": "16347986035411773435"
       },
       {
-        "file": "src/app/home/home.page.html",
-        "hash": "12719396841499173083"
+        "file": "src/app/pages/auth/login/login.page.html",
+        "hash": "13726301542020466696"
       },
       {
-        "file": "src/app/home/home.page.scss",
+        "file": "src/app/pages/auth/login/login.page.scss",
+        "hash": "10975654002619198972"
+      },
+      {
+        "file": "src/app/pages/auth/login/login.page.ts",
+        "hash": "790156897180700776"
+      },
+      {
+        "file": "src/app/pages/auth/register/register.page.html",
+        "hash": "17258828111589525522"
+      },
+      {
+        "file": "src/app/pages/auth/register/register.page.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/home/home.page.ts",
-        "hash": "3064617949583713819"
+        "file": "src/app/pages/auth/register/register.page.ts",
+        "hash": "5131508110455113240"
       },
       {
-        "file": "src/app/tab2/tab2.page.html",
-        "hash": "13340392613393970086"
+        "file": "src/app/pages/home/home.page.html",
+        "hash": "12394813613461883462"
       },
       {
-        "file": "src/app/tab2/tab2.page.scss",
+        "file": "src/app/pages/home/home.page.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/tab2/tab2.page.ts",
-        "hash": "16785872633309628535"
+        "file": "src/app/pages/home/home.page.ts",
+        "hash": "14976277668463354079"
       },
       {
-        "file": "src/app/tab3/tab3.page.html",
-        "hash": "1640442279298071434"
+        "file": "src/app/pages/tab2/tab2.page.html",
+        "hash": "15460999026553621721"
       },
       {
-        "file": "src/app/tab3/tab3.page.scss",
+        "file": "src/app/pages/tab2/tab2.page.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/tab3/tab3.page.ts",
-        "hash": "14446230231292115043"
+        "file": "src/app/pages/tab2/tab2.page.ts",
+        "hash": "10797965002712849963"
+      },
+      {
+        "file": "src/app/pages/tab3/tab3.page.html",
+        "hash": "5684372772237940295"
+      },
+      {
+        "file": "src/app/pages/tab3/tab3.page.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/tab3/tab3.page.ts",
+        "hash": "3279868802903509162"
+      },
+      {
+        "file": "src/app/services/authentication.service.ts",
+        "hash": "5567871557778063831"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
@@ -402,7 +430,7 @@
       },
       {
         "file": "src/app/tabs/tabs.routes.ts",
-        "hash": "2724798012089836689"
+        "hash": "11556248004622070586"
       },
       {
         "file": "src/assets/icon/favicon.png",
@@ -418,7 +446,7 @@
       },
       {
         "file": "src/environments/environment.ts",
-        "hash": "17458466784506237106"
+        "hash": "2783733034666865617"
       },
       {
         "file": "src/global.scss",
@@ -430,7 +458,7 @@
       },
       {
         "file": "src/main.ts",
-        "hash": "1608622298188077739"
+        "hash": "1610063707080892170"
       },
       {
         "file": "src/polyfills.ts",
