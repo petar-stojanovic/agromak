@@ -1,7 +1,7 @@
 <ion-content class="ion-padding">
 
   <!-- Login Page -->
-  <div *ngIf="screen === 'login'">
+  <div *ngIf="screen === 'login' && loginForm">
     <div>
       <h1 class="heading">Welcome</h1>
       <p class="subheading">Sign in to continue!</p>
@@ -60,7 +60,7 @@
   </div>
 
   <!-- Sign up page -->
-  <div class="container" *ngIf="screen === 'register'">
+  <div class="container" *ngIf="screen === 'register' && registerForm">
     <div>
       <h1 class="heading">Create Account</h1>
       <p class="subheading">Sign up to get started!</p>
@@ -89,6 +89,7 @@
       <ion-item class="ion-item ion-margin-top">
         <ion-input
           aria-label="Password"
+          clearOnEdit="false"
           formControlName="password"
           placeholder="Password"
           type="password"
@@ -109,6 +110,7 @@
       <ion-item class="ion-item ion-margin-top">
         <ion-input
           aria-label="Confirm Password"
+          clearOnEdit="false"
           formControlName="confirmPassword"
           placeholder="Confirm password"
           type="password"
@@ -117,11 +119,9 @@
         </ion-input>
       </ion-item>
 
-      <ng-container *ngFor="let validation of formErrorMessages.password">
-        <div class="error-message"
-             *ngIf="registerConfirmPassword.hasError(validation.type) && (registerConfirmPassword.dirty || registerConfirmPassword.touched)">
-          {{ validation.message }}
-
+      <ng-container *ngIf="registerForm.errors && registerForm.errors['mismatch'] !== null">
+        <div class="error-message">
+          The passwords must match
         </div>
       </ng-container>
       <br/>

@@ -30,8 +30,8 @@ export class LoginPage {
 
   _authService = inject(AuthenticationService);
 
-  loginForm: FormGroup;
-  registerForm: FormGroup
+  loginForm?: FormGroup;
+  registerForm?: FormGroup
   screen: string = 'login';
 
   isLoading: boolean = false;
@@ -42,21 +42,14 @@ export class LoginPage {
               private router: Router) {
 
     addIcons({personOutline, lockClosed, logoGoogle})
+    this.initLoginForm();
+  }
 
-
+  initLoginForm() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
-
-    this.registerForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPassword: ['', Validators.required]
-      },
-      {
-        validators: this.passwordMatchValidator
-      });
   }
 
   passwordMatchValidator(control: AbstractControl) {
@@ -66,33 +59,43 @@ export class LoginPage {
   }
 
   get loginEmail() {
-    return this.loginForm.get('email')!;
+    return this.loginForm?.get('email')!;
   }
 
   get loginPassword() {
-    return this.loginForm.get('password')!;
+    return this.loginForm?.get('password')!;
   }
 
   get registerEmail() {
-    return this.registerForm.get('email')!;
+    return this.registerForm?.get('email')!;
   }
 
   get registerPassword() {
-    return this.registerForm.get('password')!;
+    return this.registerForm?.get('password')!;
   }
 
   get registerConfirmPassword() {
-    return this.registerForm.get('confirmPassword')!;
+    return this.registerForm?.get('confirmPassword')!;
   }
 
   changeScreen(screen: string) {
     this.screen = screen;
+    if (screen === "register") {
+      this.registerForm = this.fb.group({
+          email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+          password: ['', [Validators.required, Validators.minLength(8)]],
+          confirmPassword: ['', Validators.required]
+        },
+        {
+          validators: this.passwordMatchValidator
+        });
+    }
   }
 
   login() {
     const formData: any = new FormData();
-    console.log(this.loginForm.value);
-    if (this.loginForm.valid) {
+    console.log(this.loginForm?.value);
+    if (this.loginForm && this.loginForm.valid) {
       this.isLoading = true
       formData.append('email', this.loginForm.get('email')?.value);
       formData.append('password', this.loginForm.get('password')?.value);
@@ -106,7 +109,7 @@ export class LoginPage {
 
   register() {
     const formData: any = new FormData();
-    if (this.registerForm.valid) {
+    if (this.registerForm && this.registerForm.valid) {
       this.isLoading = true
       formData.append('name', this.registerForm.get('name')?.value);
       formData.append('email', this.registerForm.get('email')?.value);
