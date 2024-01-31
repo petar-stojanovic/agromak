@@ -17,9 +17,9 @@ export const routes: Routes = [
           import('../pages/tab2/tab2.page').then((m) => m.Tab2Page),
       },
       {
-        path: 'tab3',
+        path: 'profile',
         loadComponent: () =>
-          import('../pages/tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../pages/profile/profile.page').then((m) => m.ProfilePage),
       },
       {
         path: '',

@@ -1,7 +1,7 @@
 import {Component, EnvironmentInjector, inject} from '@angular/core';
 import {IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs} from '@ionic/angular/standalone';
 import {addIcons} from 'ionicons';
-import {home, settings, sparkles} from 'ionicons/icons';
+import {home, settings, sparkles, person} from 'ionicons/icons';
 
 @Component({
   selector: 'app-tabs',
@@ -14,6 +14,6 @@ export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {
-    addIcons({home, sparkles, settings});
+    addIcons({home, sparkles, settings, person});
   }
 }
