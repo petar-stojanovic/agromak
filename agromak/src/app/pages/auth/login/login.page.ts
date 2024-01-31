@@ -4,9 +4,11 @@ import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModul
 import {IonicModule} from '@ionic/angular';
 import {addIcons} from "ionicons";
 import {lockClosed, logoGoogle, personOutline} from "ionicons/icons";
-import {AuthenticationService} from "../../../services/authentication.service";
+import {AuthService} from "../../../services/auth.service";
 import {AlertController, LoadingController} from "@ionic/angular/standalone";
 import {Router} from "@angular/router";
+import firebase from "firebase/compat";
+import FirebaseError = firebase.FirebaseError;
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ export class LoginPage {
     ]
   }
 
-  _authService = inject(AuthenticationService);
+  _authService = inject(AuthService);
 
   loginForm?: FormGroup;
   registerForm?: FormGroup
@@ -108,19 +110,21 @@ export class LoginPage {
     if (this.registerForm && this.registerForm.valid) {
       this.isLoading = true
       const formValue = this.registerForm.value;
-      console.log('Register Form Data:', formValue);
 
-      this._authService.register(formValue.email, formValue.password).then(user => {
-          if (user !== null) {
+      this._authService
+        .register(formValue.email, formValue.password)
+        .then(user => {
             this.router.navigateByUrl('/app/home', {replaceUrl: true});
-          } else {
-            this.showAlert('Registration failed', 'Please try again!');
           }
-        }
-      )
-        .catch(error => {
-          console.error('Registration error:', error);
-          this.showAlert('Registration Error', 'An error occurred during registration. Please try again.');
+        )
+        .catch((error: FirebaseError) => {
+          let errorMessage = 'An error occurred during registration. Please try again';
+          if (error.code === 'auth/email-already-in-use') {
+            errorMessage = 'This Email is already in use';
+          } else if (error.message) {
+            errorMessage = error.message;
+          }
+          this.showAlert('Registration Error', errorMessage);
         })
         .finally(() => {
           this.isLoading = false;
@@ -128,18 +132,12 @@ export class LoginPage {
     }
   }
 
-  logout() {
-    this._authService.signOut().then(r => {
-      console.log(r)
-    });
-  }
-
-
-  showAlert(header: string, message: string) {
-    const alert = this.alertController.create({
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
       header,
       message,
       buttons: ['OK']
-    })
+    });
+    await alert.present();
   }
 }
