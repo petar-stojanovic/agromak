@@ -354,15 +354,15 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "4620598309807207455"
+        "hash": "12531101419134406745"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
-        "hash": "17706335736803618795"
+        "hash": "12543528756476014660"
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "16293037288458429208"
+        "hash": "3363031382118161924"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",

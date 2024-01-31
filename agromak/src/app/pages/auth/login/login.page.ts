@@ -74,17 +74,14 @@ export class LoginPage {
     return this.registerForm?.get('password')!;
   }
 
-  get registerConfirmPassword() {
-    return this.registerForm?.get('confirmPassword')!;
-  }
 
   changeScreen(screen: string) {
     this.screen = screen;
     if (screen === "register") {
       this.registerForm = this.fb.group({
-          email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-          password: ['', [Validators.required, Validators.minLength(8)]],
-          confirmPassword: ['', Validators.required]
+          email: ['2001petarstojanovic@gmail.com', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+          password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+          confirmPassword: ['Test123!', Validators.required]
         },
         {
           validators: this.passwordMatchValidator
@@ -108,21 +105,26 @@ export class LoginPage {
   }
 
   register() {
-    const formData: any = new FormData();
     if (this.registerForm && this.registerForm.valid) {
       this.isLoading = true
-      formData.append('name', this.registerForm.get('name')?.value);
-      formData.append('email', this.registerForm.get('email')?.value);
-      formData.append('password', this.registerForm.get('password')?.value);
-      console.log(this.registerForm)
-      // this._authService.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value).then(user => {
-      //     if (user !== null) {
-      //       this.router.navigateByUrl('/app/home', {replaceUrl: true});
-      //     } else {
-      //       this.showAlert('Registration failed', 'Please try again!');
-      //     }
-      //   }
-      // );
+      const formValue = this.registerForm.value;
+      console.log('Register Form Data:', formValue);
+
+      this._authService.register(formValue.email, formValue.password).then(user => {
+          if (user !== null) {
+            this.router.navigateByUrl('/app/home', {replaceUrl: true});
+          } else {
+            this.showAlert('Registration failed', 'Please try again!');
+          }
+        }
+      )
+        .catch(error => {
+          console.error('Registration error:', error);
+          this.showAlert('Registration Error', 'An error occurred during registration. Please try again.');
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
     }
   }
 

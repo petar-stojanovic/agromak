@@ -7,7 +7,7 @@ import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "
 })
 export class AuthenticationService {
 
-  constructor(public auth: Auth) {
+  constructor(private auth: Auth) {
   }
 
   async register(email: string, password: string) {
@@ -31,5 +31,6 @@ export class AuthenticationService {
   }
 
   async getProfile() {
+    return this.auth.currentUser;
   }
 }
