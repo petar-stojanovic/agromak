@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {IonButton, IonContent, IonHeader, IonIcon, IonItem, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import {IonButton, IonContent, IonHeader, IonIcon, IonItem, IonTitle, IonToolbar, LoadingController} from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
 import {logOutOutline} from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
@@ -15,16 +15,20 @@ import {Router} from "@angular/router";
 export class ProfilePage {
   private _authService = inject(AuthService);
 
-  constructor(private router: Router) {
-    this._authService.getProfile().then(x => {
-      console.log(x)
-    })
+  constructor(private router: Router,
+              private loadingController: LoadingController) {
+
     addIcons({logOutOutline})
   }
 
-  logOut() {
+  async logOut() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
     this._authService.signOut().then(_ => {
       this.router.navigateByUrl('/login', {replaceUrl: true});
-    })
+    }).finally(() => {
+      loading.dismiss();
+    });
   }
 }

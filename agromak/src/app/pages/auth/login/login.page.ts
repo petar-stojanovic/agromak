@@ -9,6 +9,7 @@ import {AlertController, LoadingController} from "@ionic/angular/standalone";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
+import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,6 @@ export class LoginPage {
   registerForm?: FormGroup
   screen: string = 'login';
 
-  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder,
               private loadingController: LoadingController,
@@ -49,8 +49,8 @@ export class LoginPage {
 
   initLoginForm() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['test@test.com', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+      password: ['Test123!', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -91,24 +91,42 @@ export class LoginPage {
     }
   }
 
-  login() {
-    const formData: any = new FormData();
-    console.log(this.loginForm?.value);
+  async login() {
     if (this.loginForm && this.loginForm.valid) {
-      this.isLoading = true
-      formData.append('email', this.loginForm.get('email')?.value);
-      formData.append('password', this.loginForm.get('password')?.value);
-      console.log(this.loginForm)
-      // this._authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then(value => {
-      //     console.log(value)
-      //   }
-      // );
+      const loading = await this.loadingController.create();
+      await loading.present();
+
+      const formValue = this.loginForm.value;
+
+      this._authService
+        .login(formValue.email, formValue.password)
+        .then(user => {
+            this.router.navigateByUrl('/app/home', {replaceUrl: true});
+          }
+        )
+        .catch((error: FirebaseError) => {
+          console.log(error.code)
+          console.log(error.message)
+
+          let errorMessage = 'An error occurred during Sign In. Please try again';
+          if (error.code === 'auth/invalid-credential') {
+            errorMessage = 'Invalid credentials';
+          } else if (error.message) {
+            errorMessage = error.message;
+          }
+          this.showAlert('Registration Error', errorMessage);
+        })
+        .finally(() => {
+          loading.dismiss();
+        });
     }
   }
 
-  register() {
+  async register() {
     if (this.registerForm && this.registerForm.valid) {
-      this.isLoading = true
+      const loading = await this.loadingController.create();
+      await loading.present();
+
       const formValue = this.registerForm.value;
 
       this._authService
@@ -127,7 +145,7 @@ export class LoginPage {
           this.showAlert('Registration Error', errorMessage);
         })
         .finally(() => {
-          this.isLoading = false;
+          loading.dismiss();
         });
     }
   }
