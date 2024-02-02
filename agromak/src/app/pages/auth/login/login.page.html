@@ -28,16 +28,17 @@
       </ng-container>
 
       <ion-item class="ion-item ion-margin-top">
-        <ion-input
-          aria-label="Email"
-          clearInput
-          clearOnEdit="false"
-          formControlName="password"
-          placeholder="Password"
-          type="password"
-        >
-          <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-        </ion-input>
+        <app-show-hide-password>
+          <ion-input
+            aria-label="Password"
+            clearOnEdit="false"
+            formControlName="password"
+            placeholder="Password"
+            type="password"
+          >
+            <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
+          </ion-input>
+        </app-show-hide-password>
       </ion-item>
 
       <ng-container *ngFor="let validation of formErrorMessages.password">
@@ -88,15 +89,17 @@
       </ng-container>
 
       <ion-item class="ion-item ion-margin-top">
-        <ion-input
-          aria-label="Password"
-          clearOnEdit="false"
-          formControlName="password"
-          placeholder="Password"
-          type="password"
-        >
-          <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-        </ion-input>
+        <app-show-hide-password>
+          <ion-input
+            aria-label="Password"
+            clearOnEdit="false"
+            formControlName="password"
+            placeholder="Password"
+            type="password"
+          >
+            <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
+          </ion-input>
+        </app-show-hide-password>
       </ion-item>
 
       <ng-container *ngFor="let validation of formErrorMessages.password">
@@ -109,15 +112,17 @@
 
 
       <ion-item class="ion-item ion-margin-top">
-        <ion-input
-          aria-label="Confirm Password"
-          clearOnEdit="false"
-          formControlName="confirmPassword"
-          placeholder="Confirm password"
-          type="password"
-        >
-          <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-        </ion-input>
+        <app-show-hide-password>
+          <ion-input
+            aria-label="Confirm Password"
+            clearOnEdit="false"
+            formControlName="confirmPassword"
+            placeholder="Confirm password"
+            type="password"
+          >
+            <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
+          </ion-input>
+        </app-show-hide-password>
       </ion-item>
 
       <ng-container *ngIf="registerForm.errors && registerForm.errors['mismatch'] !== null">

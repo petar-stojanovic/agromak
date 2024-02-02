@@ -35,3 +35,18 @@ ion-content {
 ion-icon {
   margin-left: 10px !important;
 }
+
+.eyeIcon {
+  font-size: 1.5rem;
+}
+
+button {
+  & ion-icon {
+  --ion-size: 2rem;
+    padding-left: 0.5rem !important;
+  }
+
+  & ion-icon.input-clear-icon{
+    padding-left: 0.5rem !important;
+  }
+}

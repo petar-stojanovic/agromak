@@ -3,20 +3,21 @@ import {CommonModule} from '@angular/common';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {addIcons} from "ionicons";
-import {lockClosed, logoGoogle, personOutline} from "ionicons/icons";
+import {eye, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
 import {AlertController, LoadingController} from "@ionic/angular/standalone";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
 import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
+import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent]
 })
 export class LoginPage {
 
@@ -43,7 +44,7 @@ export class LoginPage {
               private alertController: AlertController,
               private router: Router) {
 
-    addIcons({personOutline, lockClosed, logoGoogle})
+    addIcons({personOutline, lockClosed, logoGoogle,eye})
     this.initLoginForm();
   }
 
