@@ -354,15 +354,15 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "14787365598750493321"
+        "hash": "1669545466332611920"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
-        "hash": "11686969454864481484"
+        "hash": "9782181499563967800"
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "16992929122075239191"
+        "hash": "5357482826982869358"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",
@@ -375,6 +375,18 @@
       {
         "file": "src/app/pages/auth/register/register.page.ts",
         "hash": "5131508110455113240"
+      },
+      {
+        "file": "src/app/pages/auth/show-hide-password/show-hide-password.component.html",
+        "hash": "2701640767904262990"
+      },
+      {
+        "file": "src/app/pages/auth/show-hide-password/show-hide-password.component.scss",
+        "hash": "15069306543045705708"
+      },
+      {
+        "file": "src/app/pages/auth/show-hide-password/show-hide-password.component.ts",
+        "hash": "4481644505248733206"
       },
       {
         "file": "src/app/pages/home/home.page.html",
@@ -470,7 +482,7 @@
       },
       {
         "file": "src/theme/variables.scss",
-        "hash": "7284624091691771929"
+        "hash": "10900089511596304149"
       },
       {
         "file": "src/zone-flags.ts",

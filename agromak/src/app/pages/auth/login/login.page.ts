@@ -1,23 +1,21 @@
 import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {IonicModule} from '@ionic/angular';
 import {addIcons} from "ionicons";
 import {eye, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {AlertController, LoadingController} from "@ionic/angular/standalone";
+import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonText, LoadingController} from "@ionic/angular/standalone";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
-import FirebaseError = firebase.FirebaseError;
-import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
+import FirebaseError = firebase.FirebaseError;
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent]
 })
 export class LoginPage {
 
