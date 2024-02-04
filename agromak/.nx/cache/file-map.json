@@ -110,7 +110,7 @@
       },
       {
         "file": "android/app/src/main/AndroidManifest.xml",
-        "hash": "15143078514206279353"
+        "hash": "9431730187767591613"
       },
       {
         "file": "android/app/src/main/java/io/ionic/starter/MainActivity.java",
@@ -342,19 +342,19 @@
       },
       {
         "file": "src/app/pages/auth/landing/landing.page.html",
-        "hash": "15689261825214021679"
+        "hash": "5783817907068920295"
       },
       {
         "file": "src/app/pages/auth/landing/landing.page.scss",
-        "hash": "15939080172959539121"
+        "hash": "13078036507579210413"
       },
       {
         "file": "src/app/pages/auth/landing/landing.page.ts",
-        "hash": "16347986035411773435"
+        "hash": "7133461074401478089"
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "1669545466332611920"
+        "hash": "1120821175840454762"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
@@ -362,7 +362,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "5357482826982869358"
+        "hash": "14331625753840838532"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",
@@ -443,6 +443,10 @@
       {
         "file": "src/app/tabs/tabs.routes.ts",
         "hash": "18375678705309612470"
+      },
+      {
+        "file": "src/assets/bg.png",
+        "hash": "6251017765890100944"
       },
       {
         "file": "src/assets/icon/favicon.png",
