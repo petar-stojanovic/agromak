@@ -262,7 +262,7 @@
       },
       {
         "file": "android/build.gradle",
-        "hash": "15247024166514751308"
+        "hash": "1666481855943434846"
       },
       {
         "file": "android/capacitor.settings.gradle",
@@ -318,11 +318,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "17124341223842361946"
+        "hash": "3514904071297872463"
       },
       {
         "file": "package.json",
-        "hash": "13602516447661410732"
+        "hash": "3936081691434060781"
       },
       {
         "file": "src/app/app.component.html",
@@ -341,6 +341,10 @@
         "hash": "5877270560730635238"
       },
       {
+        "file": "src/app/interfaces/user.ts",
+        "hash": "12462902469396906475"
+      },
+      {
         "file": "src/app/pages/auth/landing/landing.page.html",
         "hash": "5783817907068920295"
       },
@@ -350,19 +354,19 @@
       },
       {
         "file": "src/app/pages/auth/landing/landing.page.ts",
-        "hash": "7133461074401478089"
+        "hash": "1026239660061902767"
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "1120821175840454762"
+        "hash": "10160550358673082048"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
-        "hash": "9782181499563967800"
+        "hash": "6352833372150172798"
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "14331625753840838532"
+        "hash": "11297514274285183499"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",
@@ -398,7 +402,7 @@
       },
       {
         "file": "src/app/pages/home/home.page.ts",
-        "hash": "14976277668463354079"
+        "hash": "13919651227763206292"
       },
       {
         "file": "src/app/pages/profile/profile.page.html",
@@ -426,7 +430,7 @@
       },
       {
         "file": "src/app/services/auth.service.ts",
-        "hash": "9590004611268406314"
+        "hash": "603878714879090591"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
@@ -474,7 +478,7 @@
       },
       {
         "file": "src/main.ts",
-        "hash": "9758850451171699208"
+        "hash": "790835127798959413"
       },
       {
         "file": "src/polyfills.ts",

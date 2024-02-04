@@ -154,6 +154,24 @@ export class LoginPage {
     }
   }
 
+  async signInWithGoogle() {
+    await this._authService
+      .signInWithGoogle()
+      .then(user => {
+        this.router.navigateByUrl('/app/home', {replaceUrl: true});
+      })
+      .catch((error: FirebaseError) => {
+        let errorMessage = 'An error occurred during Sign In with Google. Please try again';
+        if (error.code === 'auth/invalid-credential') {
+          errorMessage = 'Invalid credentials';
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        this.showAlert('Google Sign In Error', errorMessage);
+      });
+  }
+
+
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,
@@ -163,7 +181,4 @@ export class LoginPage {
     await alert.present();
   }
 
-  async signInWithGoogle() {
-
-  }
 }

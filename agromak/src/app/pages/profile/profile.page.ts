@@ -25,9 +25,7 @@ export class ProfilePage {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this._authService.signOut().then(_ => {
-      this.router.navigateByUrl('/login', {replaceUrl: true});
-    }).finally(() => {
+    this._authService.signOut().finally(() => {
       loading.dismiss();
     });
   }
