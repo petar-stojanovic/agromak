@@ -1,14 +1,18 @@
-.heading {
-  font-size: 32px;
-  font-weight: bold;
-  margin-top: 70px;
-}
-
-.subheading {
-  font-size: 22px;
-  font-weight: 500;
+.header {
+  margin-top: 100px;
   margin-bottom: 70px;
-  color: var(--ion-color-medium-shade);
+  text-align: center;
+
+  .title{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .subtitle{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ion-color-medium-shade);
+  }
 }
 
 
@@ -38,11 +42,11 @@ ion-icon {
 
 button {
   & ion-icon {
-  --ion-size: 2rem;
+    --ion-size: 2rem;
     padding-left: 0.5rem !important;
   }
 
-  & ion-icon.input-clear-icon{
+  & ion-icon.input-clear-icon {
     padding-left: 0.5rem !important;
   }
 }

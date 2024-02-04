@@ -3,9 +3,11 @@
   <!-- Login Page -->
   @if (screen === 'login' && loginForm) {
     <div>
-      <div>
-        <h1 class="heading">Welcome</h1>
-        <p class="subheading">Sign in to continue!</p>
+      <div class="header">
+        <ion-title class="title">
+          Welcome
+          <p class="subtitle">Sign in to continue</p>
+        </ion-title>
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -57,7 +59,7 @@
         </div>
 
         <ion-item class="ion-item ion-margin-top ion-margin-bottom">
-          <ion-button type="submit" class="button login-button" [disabled]="loginForm.invalid">Sign in</ion-button>
+          <ion-button type="submit" class="button" [disabled]="loginForm.invalid">Sign in</ion-button>
         </ion-item>
       </form>
     </div>
@@ -67,9 +69,11 @@
   <!-- Sign up page -->
   @if (screen === 'register' && registerForm) {
     <div class="container">
-      <div>
-        <h1 class="heading">Create Account</h1>
-        <p class="subheading">Sign up to get started!</p>
+      <div class="header">
+        <ion-title class="title">
+          Create Account
+          <p class="subtitle">Sign up to get started</p>
+        </ion-title>
       </div>
 
       <form [formGroup]="registerForm" (ngSubmit)="register()">
@@ -143,15 +147,15 @@
         </div>
 
         <ion-item class="ion-item ion-margin-top ion-margin-bottom">
-          <ion-button type="submit" class="button login-button" [disabled]="registerForm.invalid">Register</ion-button>
+          <ion-button type="submit" class="button" [disabled]="registerForm.invalid">Register</ion-button>
         </ion-item>
       </form>
     </div>
   }
 
 
-  <ion-item class="ion-item">
-    <ion-button class="button google-button" color="dark">
+  <ion-item>
+    <ion-button class="button" color="dark" (click)="signInWithGoogle()">
       <ion-icon name="logo-google" slot="start"></ion-icon>
       Login with Google
     </ion-button>

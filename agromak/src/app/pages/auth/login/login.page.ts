@@ -4,7 +4,7 @@ import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModul
 import {addIcons} from "ionicons";
 import {eye, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonText, LoadingController} from "@ionic/angular/standalone";
+import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonText, IonTitle, LoadingController} from "@ionic/angular/standalone";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
@@ -15,7 +15,7 @@ import FirebaseError = firebase.FirebaseError;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle]
 })
 export class LoginPage {
 
@@ -42,14 +42,16 @@ export class LoginPage {
               private alertController: AlertController,
               private router: Router) {
 
-    addIcons({personOutline, lockClosed, logoGoogle,eye})
+    addIcons({personOutline, lockClosed, logoGoogle, eye})
     this.initLoginForm();
   }
 
   initLoginForm() {
     this.loginForm = this.fb.group({
-      email: ['test@test.com', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-      password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+      // email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+      // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -80,9 +82,12 @@ export class LoginPage {
     this.screen = screen;
     if (screen === "register") {
       this.registerForm = this.fb.group({
-          email: ['2001petarstojanovic@gmail.com', [Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-          password: ['Test123!', [Validators.required, Validators.minLength(8)]],
-          confirmPassword: ['Test123!', Validators.required]
+          // email: ['2001petarstojanovic@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+          // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+          // confirmPassword: ['Test123!', Validators.required],
+          email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+          password: ['', [Validators.required, Validators.minLength(8)]],
+          confirmPassword: ['', Validators.required]
         },
         {
           validators: this.passwordMatchValidator
@@ -156,5 +161,9 @@ export class LoginPage {
       buttons: ['OK']
     });
     await alert.present();
+  }
+
+  async signInWithGoogle() {
+
   }
 }
