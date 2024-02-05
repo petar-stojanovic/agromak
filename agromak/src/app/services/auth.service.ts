@@ -33,7 +33,6 @@ export class AuthService {
     );
   }
 
-
   async register(email: string, password: string) {
     return await this.afAuth.createUserWithEmailAndPassword(email, password);
   }
@@ -45,23 +44,18 @@ export class AuthService {
 
   async signInWithGoogle() {
     const user = await GoogleAuth.signIn();
-    console.log(user);
     if (user) {
-      console.log(user);
-      // Sign in with credential from the Google user.
       const result = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));
       if (result) {
         return this.updateUserData(result.user as User);
       }
     }
-
   }
 
 
   private updateUserData(user: User | null) {
     if (user) {
       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
-      console.log(user)
       const data = {
         uid: user.uid,
         email: user.email,
@@ -72,7 +66,6 @@ export class AuthService {
         phoneNumber: user.phoneNumber,
         refreshToken: user.refreshToken,
       };
-      console.log(data)
       return userRef.set(data, {merge: true});
     } else {
       return Promise.reject("User is null");

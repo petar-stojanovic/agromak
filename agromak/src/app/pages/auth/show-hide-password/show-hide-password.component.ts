@@ -24,8 +24,6 @@ export class ShowHidePasswordComponent {
   }
 
   toggleShow() {
-    console.log(this.showPassword)
-    console.log(this.input.type)
     this.showPassword = !this.showPassword;
     this.input.type = this.showPassword ? 'text' : 'password';
   }

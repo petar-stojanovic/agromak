@@ -109,9 +109,6 @@ export class LoginPage {
           }
         )
         .catch((error: FirebaseError) => {
-          console.log(error.code)
-          console.log(error.message)
-
           let errorMessage = 'An error occurred during Sign In. Please try again';
           if (error.code === 'auth/invalid-credential') {
             errorMessage = 'Invalid credentials';
@@ -140,6 +137,7 @@ export class LoginPage {
           }
         )
         .catch((error: FirebaseError) => {
+          console.log(error)
           let errorMessage = 'An error occurred during registration. Please try again';
           if (error.code === 'auth/email-already-in-use') {
             errorMessage = 'This Email is already in use';
@@ -166,9 +164,7 @@ export class LoginPage {
       .catch((error: any) => {
         console.log(error)
         let errorMessage = 'An error occurred during Sign In with Google. Please try again';
-        if (error.code === 'auth/invalid-credential') {
-          errorMessage = 'Invalid credentials';
-        } else if (error.message) {
+        if (error.message) {
           errorMessage = error.message;
         }
         this.showAlert('Google Sign In Error', errorMessage);
