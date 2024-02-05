@@ -4,7 +4,6 @@ import {Observable, of, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
-import {getRedirectResult} from "@angular/fire/auth";
 import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
 
@@ -17,7 +16,7 @@ export class AuthService {
   user$: Observable<User | undefined | null>;
 
   constructor(private afAuth: AngularFireAuth,
-              private afs: AngularFirestore,
+              private firestore: AngularFirestore,
               private router: Router) {
 
     GoogleAuth.initialize();
@@ -25,7 +24,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.firestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -41,7 +40,6 @@ export class AuthService {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-
   async signInWithGoogle() {
     const user = await GoogleAuth.signIn();
     if (user) {
@@ -55,7 +53,7 @@ export class AuthService {
 
   private updateUserData(user: User | null) {
     if (user) {
-      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+      const userRef: AngularFirestoreDocument<User> = this.firestore.doc(`users/${user.uid}`);
       const data = {
         uid: user.uid,
         email: user.email,
