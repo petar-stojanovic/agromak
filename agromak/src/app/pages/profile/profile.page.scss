@@ -1,4 +1,30 @@
-.logout{
+ion-avatar {
+  width: 8rem;
+  height: 8rem;
+}
+
+.preview {
+  --vertical-margin: 2rem;
+  margin-top: var(--vertical-margin);
+  margin-bottom: var(--vertical-margin);
+  display: flex;
+  justify-content: center;
+}
+
+.fallback {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-color: var(--ion-color-medium);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  //color: var(--ion-color-dark);
+}
+
+.logout {
   width: 100%;
   height: 3rem;
   --border-radius: 50px;

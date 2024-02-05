@@ -58,7 +58,7 @@
           <ion-text color="primary" (click)="changeScreen('register')"> Register Here</ion-text>
         </div>
 
-        <ion-item class="ion-item ion-margin-top ion-margin-bottom">
+        <ion-item class="ion-item ion-margin-top ion-margin-bottom" lines="none">
           <ion-button type="submit" class="button" [disabled]="loginForm.invalid">Sign in</ion-button>
         </ion-item>
       </form>
@@ -145,7 +145,7 @@
           <ion-text color="primary" (click)="changeScreen('login')"> Sign In</ion-text>
         </div>
 
-        <ion-item class="ion-item ion-margin-top ion-margin-bottom">
+        <ion-item class="ion-item ion-margin-top ion-margin-bottom" lines="none">
           <ion-button type="submit" class="button" [disabled]="registerForm.invalid">Register</ion-button>
         </ion-item>
       </form>
@@ -153,7 +153,7 @@
   }
 
 
-  <ion-item>
+  <ion-item lines="none">
     <ion-button class="button" color="dark" (click)="signInWithGoogle()">
       <ion-icon name="logo-google" slot="start"></ion-icon>
       Login with Google

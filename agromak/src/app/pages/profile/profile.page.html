@@ -7,7 +7,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h1>Main Content</h1>
+  <div class="preview">
+    <ion-avatar (click)="changeImage()">
+      <img *ngIf="profile?.photoURL; else placeholder_avatar;" [src]="profile.photoURL" alt="Profile Picture"/>
+
+      <ng-template #placeholder_avatar>
+        <div class="fallback">
+          <p>Select avatar</p>
+        </div>
+      </ng-template>
+    </ion-avatar>
+  </div>
+
+
+<!--  <ion-item>-->
+<!--    <ion-text [(ngModel)]="profile.displayName"></ion-text>-->
+<!--  </ion-item>-->
+
   <ion-button class="logout" (click)="logOut()">
     <ion-icon name="log-out-outline" slot="start"></ion-icon>
     Logout

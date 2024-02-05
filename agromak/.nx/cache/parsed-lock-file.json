@@ -1674,6 +1674,15 @@
         "hash": "sha512-6ZXVdnNmaYILasC/RjQw+yfTmq2ZO7Q3v5lFcDVfq3PFGnybyYQh+RstBrYri+376OmXOXxBD7E6UxBhrMzXGA=="
       }
     },
+    "npm:@capacitor/camera": {
+      "type": "npm",
+      "name": "npm:@capacitor/camera",
+      "data": {
+        "version": "5.0.9",
+        "packageName": "@capacitor/camera",
+        "hash": "sha512-ibuctDzQWVABnJCtIuiFdVYvLbiQNln9gKMZGNN0bZ6oSqoxzDlN7etueJwyFaaRZZlVrXc/sMWuhOkeVJEHcQ=="
+      }
+    },
     "npm:@capacitor/cli": {
       "type": "npm",
       "name": "npm:@capacitor/cli",
@@ -14107,6 +14116,11 @@
     },
     {
       "source": "npm:@capacitor/app",
+      "target": "npm:@capacitor/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@capacitor/camera",
       "target": "npm:@capacitor/core",
       "type": "static"
     },
