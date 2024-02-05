@@ -1,8 +1,7 @@
 import {Component, ContentChild} from '@angular/core';
-import {IonInput} from "@ionic/angular";
 import {addIcons} from "ionicons";
 import {eye, eyeOff} from "ionicons/icons";
-import {IonIcon} from "@ionic/angular/standalone";
+import {IonIcon, IonInput} from "@ionic/angular/standalone";
 import {NgIf} from "@angular/common";
 
 @Component({

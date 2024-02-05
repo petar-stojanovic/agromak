@@ -17,11 +17,13 @@
     "@capacitor/haptics": "5.0.6",
     "@capacitor/keyboard": "5.0.7",
     "@capacitor/status-bar": "5.0.6",
+    "@codetrix-studio/capacitor-google-auth": "^3.3.6",
     "@ionic/angular": "^7.5.0",
     "firebase": "^10.7.2",
     "ionicons": "^7.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "ws": "^8.16.0",
     "zone.js": "~0.14.2",
     "@angular-devkit/build-angular": "^17.0.0",
     "@angular-eslint/builder": "^17.0.0",
@@ -98,7 +100,7 @@
       },
       {
         "file": "android/app/capacitor.build.gradle",
-        "hash": "321577693221425197"
+        "hash": "7680489683482113802"
       },
       {
         "file": "android/app/proguard-rules.pro",
@@ -114,7 +116,7 @@
       },
       {
         "file": "android/app/src/main/java/io/ionic/starter/MainActivity.java",
-        "hash": "18189106575645248423"
+        "hash": "12628990635380544914"
       },
       {
         "file": "android/app/src/main/res/drawable-land-hdpi/splash.png",
@@ -246,7 +248,7 @@
       },
       {
         "file": "android/app/src/main/res/values/strings.xml",
-        "hash": "9372147594195990861"
+        "hash": "9910333713657373635"
       },
       {
         "file": "android/app/src/main/res/values/styles.xml",
@@ -266,7 +268,7 @@
       },
       {
         "file": "android/capacitor.settings.gradle",
-        "hash": "14622451423594914531"
+        "hash": "17340899692929393624"
       },
       {
         "file": "android/gradle.properties",
@@ -278,7 +280,7 @@
       },
       {
         "file": "android/gradle/wrapper/gradle-wrapper.properties",
-        "hash": "10340632815092109200"
+        "hash": "7787779767832145847"
       },
       {
         "file": "android/gradlew",
@@ -302,7 +304,7 @@
       },
       {
         "file": "capacitor.config.ts",
-        "hash": "12345496820141673674"
+        "hash": "9862412545210082018"
       },
       {
         "file": "firebase.json",
@@ -318,11 +320,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "3514904071297872463"
+        "hash": "8821285602879363049"
       },
       {
         "file": "package.json",
-        "hash": "3936081691434060781"
+        "hash": "14182605075248380425"
       },
       {
         "file": "src/app/app.component.html",
@@ -358,7 +360,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "10160550358673082048"
+        "hash": "11641036560162481847"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
@@ -366,7 +368,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "11297514274285183499"
+        "hash": "17137362972414706393"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",
@@ -390,7 +392,7 @@
       },
       {
         "file": "src/app/pages/auth/show-hide-password/show-hide-password.component.ts",
-        "hash": "4481644505248733206"
+        "hash": "1992494163067532650"
       },
       {
         "file": "src/app/pages/home/home.page.html",
@@ -402,7 +404,7 @@
       },
       {
         "file": "src/app/pages/home/home.page.ts",
-        "hash": "13919651227763206292"
+        "hash": "3594845198503198940"
       },
       {
         "file": "src/app/pages/profile/profile.page.html",
@@ -414,7 +416,7 @@
       },
       {
         "file": "src/app/pages/profile/profile.page.ts",
-        "hash": "18382276853970176881"
+        "hash": "6112210247706766961"
       },
       {
         "file": "src/app/pages/tab2/tab2.page.html",
@@ -430,7 +432,7 @@
       },
       {
         "file": "src/app/services/auth.service.ts",
-        "hash": "603878714879090591"
+        "hash": "806468135228360810"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
@@ -474,11 +476,11 @@
       },
       {
         "file": "src/index.html",
-        "hash": "13227188448987370599"
+        "hash": "11102968709573834509"
       },
       {
         "file": "src/main.ts",
-        "hash": "790835127798959413"
+        "hash": "8238510087463179852"
       },
       {
         "file": "src/polyfills.ts",

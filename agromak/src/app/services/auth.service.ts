@@ -4,7 +4,10 @@ import {Observable, of, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
-import {GoogleAuthProvider} from "firebase/auth";
+import {getRedirectResult} from "@angular/fire/auth";
+import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
+import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +16,11 @@ export class AuthService {
 
   user$: Observable<User | undefined | null>;
 
-
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
+
+    GoogleAuth.initialize();
 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -29,6 +33,7 @@ export class AuthService {
     );
   }
 
+
   async register(email: string, password: string) {
     return await this.afAuth.createUserWithEmailAndPassword(email, password);
   }
@@ -37,16 +42,21 @@ export class AuthService {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
+
   async signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credential.user as User);
+    const user = await GoogleAuth.signIn();
+    console.log(user);
+    if (user) {
+      console.log(user);
+      // Sign in with credential from the Google user.
+      const result = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));
+      if (result) {
+        return this.updateUserData(result.user as User);
+      }
+    }
+
   }
 
-  async signOut() {
-    await this.afAuth.signOut();
-    return this.router.navigate(['/login']);
-  }
 
   private updateUserData(user: User | null) {
     if (user) {
@@ -67,7 +77,11 @@ export class AuthService {
     } else {
       return Promise.reject("User is null");
     }
+  }
 
+  async signOut() {
+    await this.afAuth.signOut();
+    return this.router.navigate(['/login']);
   }
 
   async getProfile() {

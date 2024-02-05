@@ -1873,6 +1873,15 @@
         "hash": "sha512-7od8CxsBnot1XMK3IeOkproFL4hgoKoWAc3pwUvmDOkQsXoxwQm4SR9mLwQavv1XfxtHbFV9Ukd7FwMxOPSViw=="
       }
     },
+    "npm:@codetrix-studio/capacitor-google-auth": {
+      "type": "npm",
+      "name": "npm:@codetrix-studio/capacitor-google-auth",
+      "data": {
+        "version": "3.3.6",
+        "packageName": "@codetrix-studio/capacitor-google-auth",
+        "hash": "sha512-SiMjYq5O2rWzEdKrmu3VZQ2nmFdq6LUXPzsNbjs4Ri6WTJVCtzp1HI12t4Dcwi5YoSw8g94Iyi3Can8msj57QA=="
+      }
+    },
     "npm:@colors/colors": {
       "type": "npm",
       "name": "npm:@colors/colors",
@@ -5831,6 +5840,24 @@
         "version": "5.2.1",
         "packageName": "engine.io-parser",
         "hash": "sha512-9JktcM3u18nU9N2Lz3bWeBgxVgOKpw7yhRaoxQA3FUDZzzw+9WlA6p4G4u0RixNkg14fH7EfEc/RhpurtiROTQ=="
+      }
+    },
+    "npm:ws@8.11.0": {
+      "type": "npm",
+      "name": "npm:ws@8.11.0",
+      "data": {
+        "version": "8.11.0",
+        "packageName": "ws",
+        "hash": "sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg=="
+      }
+    },
+    "npm:ws": {
+      "type": "npm",
+      "name": "npm:ws",
+      "data": {
+        "version": "8.16.0",
+        "packageName": "ws",
+        "hash": "sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ=="
       }
     },
     "npm:enhanced-resolve": {
@@ -10729,24 +10756,6 @@
         "hash": "sha512-5hbAst3h3C3L8w6W4P96L5vaV0PxSmJhxZvWKYIdgxOQm8pNZ5dEOmmSLBVpP85ReeyRt6AS1QJNyo/oFFPeVA=="
       }
     },
-    "npm:ws@8.16.0": {
-      "type": "npm",
-      "name": "npm:ws@8.16.0",
-      "data": {
-        "version": "8.16.0",
-        "packageName": "ws",
-        "hash": "sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ=="
-      }
-    },
-    "npm:ws": {
-      "type": "npm",
-      "name": "npm:ws",
-      "data": {
-        "version": "8.11.0",
-        "packageName": "ws",
-        "hash": "sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg=="
-      }
-    },
     "npm:webpack-merge": {
       "type": "npm",
       "name": "npm:webpack-merge",
@@ -14521,6 +14530,13 @@
     "npm:@capacitor/status-bar": [
       {
         "source": "npm:@capacitor/status-bar",
+        "target": "npm:@capacitor/core",
+        "type": "static"
+      }
+    ],
+    "npm:@codetrix-studio/capacitor-google-auth": [
+      {
+        "source": "npm:@codetrix-studio/capacitor-google-auth",
         "target": "npm:@capacitor/core",
         "type": "static"
       }
@@ -18743,7 +18759,7 @@
       },
       {
         "source": "npm:engine.io",
-        "target": "npm:ws",
+        "target": "npm:ws@8.11.0",
         "type": "static"
       }
     ],
@@ -23914,7 +23930,7 @@
     "npm:socket.io-adapter": [
       {
         "source": "npm:socket.io-adapter",
-        "target": "npm:ws",
+        "target": "npm:ws@8.11.0",
         "type": "static"
       }
     ],
@@ -25111,7 +25127,7 @@
       },
       {
         "source": "npm:webpack-dev-server",
-        "target": "npm:ws@8.16.0",
+        "target": "npm:ws",
         "type": "static"
       }
     ],

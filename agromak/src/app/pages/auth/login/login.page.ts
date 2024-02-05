@@ -48,10 +48,10 @@ export class LoginPage {
 
   initLoginForm() {
     this.loginForm = this.fb.group({
-      // email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-      // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
-      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+      password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+      // email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+      // password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -155,12 +155,16 @@ export class LoginPage {
   }
 
   async signInWithGoogle() {
+    const loading = await this.loadingController.create();
+
     await this._authService
       .signInWithGoogle()
-      .then(user => {
-        this.router.navigateByUrl('/app/home', {replaceUrl: true});
+      .then(async user => {
+        await loading.present();
+        await this.router.navigateByUrl('/app/home', {replaceUrl: true});
       })
-      .catch((error: FirebaseError) => {
+      .catch((error: any) => {
+        console.log(error)
         let errorMessage = 'An error occurred during Sign In with Google. Please try again';
         if (error.code === 'auth/invalid-credential') {
           errorMessage = 'Invalid credentials';
@@ -168,7 +172,11 @@ export class LoginPage {
           errorMessage = error.message;
         }
         this.showAlert('Google Sign In Error', errorMessage);
+      })
+      .finally(() => {
+        loading.dismiss();
       });
+
   }
 
 
