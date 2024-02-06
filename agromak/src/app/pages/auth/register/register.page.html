@@ -14,54 +14,34 @@
         <form [formGroup]="form" (ngSubmit)="register()">
           <ion-list>
 
-            <!--            <ion-item>-->
-            <!--              <ion-input-->
-            <!--                fill="solid"-->
-            <!--                label="Email Address"-->
-            <!--                labelPlacement="stacked"-->
-            <!--                clearInput-->
-            <!--                formControlName="email"-->
-            <!--                type="email">-->
-            <!--                <ion-icon name="person-outline" slot="start" aria-hidden="true"></ion-icon>-->
-            <!--                <ion-button fill="clear" slot="end" aria-label="Show/hide">-->
-            <!--                  <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>-->
-            <!--                </ion-button>-->
-            <!--              </ion-input>-->
-            <!--            </ion-item>-->
-
             <ion-item lines="none">
+              <ion-input
+                labelPlacement="stacked"
+                label="Name"
+                placeholder="Full Name"
+                formControlName="name"
+                type="text"
+                errorText="Invalid name"
+                helperText="Don't worry, you can change this later"
+              >
+                <ion-icon slot="start" name="person" aria-hidden="true"></ion-icon>
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="ion-margin-top" lines="none">
               <ion-input
                 labelPlacement="stacked"
                 label="Email"
                 placeholder="Email Address"
                 formControlName="email"
                 type="email"
-                helperText="Enter a valid email"
                 errorText="Invalid email"
               >
-                <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
+                <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
               </ion-input>
             </ion-item>
 
-
-            <!--          <ng-container *ngFor="let validation of formErrorMessages.email">-->
-            <!--            <div class="error-message"-->
-            <!--                 *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">-->
-            <!--              {{ validation.message }}-->
-            <!--            </div>-->
-            <!--          </ng-container>-->
-
-<!--            <ion-item class="ion-margin-top" fill="solid">-->
-<!--              <ion-input-->
-<!--                clearOnEdit="false"-->
-<!--                formControlName="password"-->
-<!--                label="Password"-->
-<!--                labelPlacement="floating"-->
-<!--                placeholder="Password"-->
-<!--              />-->
-<!--              <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>-->
-
-<!--            </ion-item>-->
+            <!--            helperText="Enter a valid password"-->
 
             <ion-item class="ion-margin-top" lines="none">
               <ion-input
@@ -70,57 +50,37 @@
                 label="Password"
                 placeholder="Password"
                 formControlName="password"
-                type="password"
+                [type]="showPassword ? 'text' : 'password'"
                 errorText="Password must be at least 8 characters long"
               >
                 <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-                <ion-button fill="clear" slot="end" aria-label="Show/hide">
-                  <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+                <ion-button fill="clear" slot="end" aria-label="Show/hide" (click)="togglePasswordVisibility()">
+                  <ion-icon slot="icon-only" [name]="showPassword ? 'eye-off' : 'eye'" aria-hidden="true"></ion-icon>
                 </ion-button>
               </ion-input>
             </ion-item>
 
-<!--            <ng-container *ngFor="let validation of formErrorMessages.password">-->
-<!--              <div class="error-message"-->
-<!--                   *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">-->
-<!--                {{ validation.message }}-->
-<!--              </div>-->
-<!--            </ng-container>-->
-
-
-<!--            <ion-item class="ion-margin-top" fill="solid">-->
-<!--              <ion-input-->
-<!--                clearOnEdit="false"-->
-<!--                formControlName="confirmPassword"-->
-<!--                label="Confirm Password"-->
-<!--                labelPlacement="floating"-->
-<!--                placeholder="Confirm password"-->
-<!--                type="password"-->
-<!--              />-->
-<!--              <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>-->
-<!--            </ion-item>-->
-
-            <ion-item class="ion-margin-top" lines="none">
+            <ion-item class="ion-margin-top">
               <ion-input
                 clearOnEdit="false"
                 labelPlacement="stacked"
                 label="Confirm Password"
                 placeholder="Confirm Password"
                 formControlName="confirmPassword"
-                type="password"
-                errorText="Passwords must match"
+                [type]="showConfirmPassword ? 'text' : 'password'"
               >
                 <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-                <ion-button fill="clear" slot="end" aria-label="Show/hide">
-                  <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+                <ion-button fill="clear" slot="end" aria-label="Show/hide" (click)="toggleConfirmPasswordVisibility()">
+                  <ion-icon slot="icon-only" [name]="showConfirmPassword ? 'eye-off' : 'eye'" aria-hidden="true"></ion-icon>
                 </ion-button>
               </ion-input>
             </ion-item>
-            <ng-container *ngIf="form.errors && form.errors['mismatch'] !== null && confirmPassword.touched && confirmPassword.value">
-              <div class="error-message">
-                Passwords must match
-              </div>
-            </ng-container>
+
+
+            <div class="error-message" *ngIf="form.errors && confirmPassword.touched">
+              Passwords must match
+            </div>
+
             <br/>
 
           </ion-list>

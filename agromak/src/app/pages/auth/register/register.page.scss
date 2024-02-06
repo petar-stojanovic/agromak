@@ -1,6 +1,6 @@
 .header {
-  margin-top: 2.5rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 
   .title {
@@ -22,7 +22,7 @@
 .error-message {
   color: var(--ion-color-danger);
   font-size: 0.75rem;
-  padding-left: 10px;
+  padding-left: 1rem;
 }
 
 
@@ -46,4 +46,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
 }
+
+
+//TODO: fix green validation
+//:host ion-input.ion-dirty.ion-valid,
+//:host ion-input.ion-touched,
+//:host ion-input.has-focus{
+//  color: yellow !important;
+//
+//  & .input-wrapper {
+//    color: red !important;
+//  }
+//
+//  & label .label-text {
+//    color: blue !important;
+//  }
+//}
