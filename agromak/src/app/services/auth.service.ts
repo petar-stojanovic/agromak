@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
 import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
+import {doc, docData, Firestore} from "@angular/fire/firestore";
+import {Auth} from "@angular/fire/auth";
 
 
 @Injectable({
@@ -16,7 +18,9 @@ export class AuthService {
   user$: Observable<User | undefined | null>;
 
   constructor(private afAuth: AngularFireAuth,
-              private firestore: AngularFirestore,
+              private angularFirestore: AngularFirestore,
+              private auth: Auth,
+              private firestore: Firestore,
               private router: Router) {
 
     GoogleAuth.initialize();
@@ -24,7 +28,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.firestore.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -53,7 +57,7 @@ export class AuthService {
 
   private updateUserData(user: User | null) {
     if (user) {
-      const userRef: AngularFirestoreDocument<User> = this.firestore.doc(`users/${user.uid}`);
+      const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${user.uid}`);
       const data = {
         uid: user.uid,
         email: user.email,
@@ -75,7 +79,10 @@ export class AuthService {
     return this.router.navigate(['/login']);
   }
 
-  async getProfile() {
-    // return this.afAuth.user;
+  getUserProfile() {
+    const user = this.auth.currentUser as User;
+    const userDocRef = doc(this.firestore, `users/${user.uid}`)
+    return docData(userDocRef);
   }
+
 }

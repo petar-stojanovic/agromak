@@ -101,7 +101,7 @@
       },
       {
         "file": "android/app/capacitor.build.gradle",
-        "hash": "7680489683482113802"
+        "hash": "9794820484333696055"
       },
       {
         "file": "android/app/proguard-rules.pro",
@@ -113,11 +113,11 @@
       },
       {
         "file": "android/app/src/main/AndroidManifest.xml",
-        "hash": "9431730187767591613"
+        "hash": "708262120046457875"
       },
       {
         "file": "android/app/src/main/java/io/ionic/starter/MainActivity.java",
-        "hash": "12628990635380544914"
+        "hash": "14071167285170642493"
       },
       {
         "file": "android/app/src/main/res/drawable-land-hdpi/splash.png",
@@ -249,7 +249,7 @@
       },
       {
         "file": "android/app/src/main/res/values/strings.xml",
-        "hash": "9910333713657373635"
+        "hash": "1430903046755368654"
       },
       {
         "file": "android/app/src/main/res/values/styles.xml",
@@ -269,7 +269,7 @@
       },
       {
         "file": "android/capacitor.settings.gradle",
-        "hash": "17340899692929393624"
+        "hash": "4137298541541293211"
       },
       {
         "file": "android/gradle.properties",
@@ -281,7 +281,7 @@
       },
       {
         "file": "android/gradle/wrapper/gradle-wrapper.properties",
-        "hash": "7787779767832145847"
+        "hash": "6753234728690795217"
       },
       {
         "file": "android/gradlew",
@@ -301,11 +301,11 @@
       },
       {
         "file": "angular.json",
-        "hash": "6497054321197684189"
+        "hash": "3828427954847878595"
       },
       {
         "file": "capacitor.config.ts",
-        "hash": "9862412545210082018"
+        "hash": "10008185656697967379"
       },
       {
         "file": "firebase.json",
@@ -321,11 +321,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "8821285602879363049"
+        "hash": "18031452413072563509"
       },
       {
         "file": "package.json",
-        "hash": "14182605075248380425"
+        "hash": "6684640199250647834"
       },
       {
         "file": "src/app/app.component.html",
@@ -361,7 +361,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.html",
-        "hash": "11641036560162481847"
+        "hash": "10160698891678110055"
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
@@ -369,7 +369,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
-        "hash": "17137362972414706393"
+        "hash": "8787030068767228561"
       },
       {
         "file": "src/app/pages/auth/register/register.page.html",
@@ -393,7 +393,7 @@
       },
       {
         "file": "src/app/pages/auth/show-hide-password/show-hide-password.component.ts",
-        "hash": "1992494163067532650"
+        "hash": "14148315249507453808"
       },
       {
         "file": "src/app/pages/home/home.page.html",
@@ -409,15 +409,15 @@
       },
       {
         "file": "src/app/pages/profile/profile.page.html",
-        "hash": "13576221649113225201"
+        "hash": "9768940404033382280"
       },
       {
         "file": "src/app/pages/profile/profile.page.scss",
-        "hash": "3737552103577288470"
+        "hash": "5058056437497809014"
       },
       {
         "file": "src/app/pages/profile/profile.page.ts",
-        "hash": "6112210247706766961"
+        "hash": "1132481234155260298"
       },
       {
         "file": "src/app/pages/tab2/tab2.page.html",
@@ -433,7 +433,11 @@
       },
       {
         "file": "src/app/services/auth.service.ts",
-        "hash": "806468135228360810"
+        "hash": "12592083678722524886"
+      },
+      {
+        "file": "src/app/services/image.service.ts",
+        "hash": "17838215524433630524"
       },
       {
         "file": "src/app/tabs/tabs.page.html",
@@ -477,7 +481,7 @@
       },
       {
         "file": "src/index.html",
-        "hash": "11102968709573834509"
+        "hash": "6068282950869758220"
       },
       {
         "file": "src/main.ts",

@@ -38,7 +38,7 @@ export class ProfilePage {
               private imageService: ImageService,
               private alertController: AlertController) {
     addIcons({logOutOutline})
-    this.imageService.getUserProfile().subscribe((data) => {
+    this._authService.getUserProfile().subscribe((data) => {
       this.profile = data;
       console.log(data)
     })
