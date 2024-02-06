@@ -2,12 +2,23 @@ import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {addIcons} from "ionicons";
-import {eye, eyeOff, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
+import {eye, eyeOff, lockClosed, logoGoogle, mail, personOutline} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonText, IonTitle, LoadingController} from "@ionic/angular/standalone";
+import {
+  AlertController,
+  IonButton,
+  IonContent,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonText,
+  IonTitle,
+  LoadingController
+} from "@ionic/angular/standalone";
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
-import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
 import FirebaseError = firebase.FirebaseError;
 
 @Component({
@@ -15,7 +26,7 @@ import FirebaseError = firebase.FirebaseError;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink, IonList]
 })
 export class LoginPage {
 
@@ -34,6 +45,7 @@ export class LoginPage {
 
   form!: FormGroup;
   screen: string = 'login';
+  showPassword = false;
 
 
   constructor(private fb: FormBuilder,
@@ -41,7 +53,7 @@ export class LoginPage {
               private alertController: AlertController,
               private router: Router) {
 
-    addIcons({personOutline, lockClosed, logoGoogle, eye, eyeOff})
+    addIcons({mail, lockClosed, logoGoogle, eye, eyeOff})
     this.initForm();
   }
 
@@ -58,6 +70,9 @@ export class LoginPage {
     return this.form.get('email')!;
   }
 
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
   get password() {
     return this.form.get('password')!;
   }

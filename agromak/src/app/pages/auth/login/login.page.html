@@ -11,44 +11,47 @@
       </div>
 
       <form [formGroup]="form" (ngSubmit)="login()">
-        <ion-item class="ion-item">
-          <ion-input
-            aria-label="Email"
-            clearInput
-            formControlName="email"
-            placeholder="Email"
-            type="email"
-          >
-            <ion-icon name="person-outline" slot="start"></ion-icon>
-          </ion-input>
-        </ion-item>
 
-        <ng-container *ngFor="let validation of formErrorMessages.email">
-          <div class="error-message"
-               *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
+        <ion-list>
 
-        <ion-item class="ion-item ion-margin-top">
-          <ion-input
-            aria-label="Password"
-            clearOnEdit="false"
-            formControlName="password"
-            placeholder="Password"
-            type="password"
-          >
-            <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-          </ion-input>
-        </ion-item>
+          <ion-item lines="none">
+            <ion-input
+              labelPlacement="stacked"
+              label="Email"
+              placeholder="Email Address"
+              formControlName="email"
+              type="email"
+              errorText="Invalid email"
+              helperText="Enter a valid email"
+            >
+              <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+            </ion-input>
+          </ion-item>
 
-        <ng-container *ngFor="let validation of formErrorMessages.password">
-          <div class="error-message"
-               *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
-            {{ validation.message }}
+          <!--            helperText="Enter a valid password"-->
 
-          </div>
-        </ng-container>
+          <ion-item class="ion-margin-top" lines="none">
+            <ion-input
+              clearOnEdit="false"
+              labelPlacement="stacked"
+              label="Password"
+              placeholder="Password"
+              formControlName="password"
+              [type]="showPassword ? 'text' : 'password'"
+              errorText="Invalid password"
+              helperText="Password must be at least 8 characters long"
+            >
+              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+              <ion-button fill="clear" slot="end" aria-label="Show/hide" (click)="togglePasswordVisibility()">
+                <ion-icon slot="icon-only" [name]="showPassword ? 'eye-off' : 'eye'" aria-hidden="true"></ion-icon>
+              </ion-button>
+            </ion-input>
+          </ion-item>
+
+          <br/>
+
+        </ion-list>
+
 
         <br/>
 
@@ -58,11 +61,13 @@
       </form>
 
     </div>
-    <div class="signup-text ion-margin-top">
+
+    <div class="signup-text text-center">
       Don't have an account?
       <br>
       <ion-text color="primary" class="ion-text" [routerLink]="['/register']">Sign Up</ion-text>
     </div>
+
   </div>
 
 </ion-content>
