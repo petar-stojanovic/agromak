@@ -68,7 +68,7 @@ export class RegisterPage {
         // name: ['Test Testing', [Validators.required]],
         // email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
         // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
-        // confirmPassword: ['Test123!', [Validators.required, matchPasswordValidator()]],
+        // confirmPassword: ['Test123!', [Validators.required]],
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
         password: ['', [Validators.required, Validators.minLength(8)]],
@@ -78,9 +78,6 @@ export class RegisterPage {
         validators: this.passwordMatchValidator
       });
 
-    this.form.valueChanges.subscribe(() => {
-      console.log(this.form.errors)
-    })
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -117,7 +114,7 @@ export class RegisterPage {
       const formValue = this.form.value;
 
       this._authService
-        .register(formValue.email, formValue.password)
+        .register(formValue.email, formValue.password,formValue.name)
         .then(user => {
             this.router.navigateByUrl('/app/home', {replaceUrl: true});
           }
