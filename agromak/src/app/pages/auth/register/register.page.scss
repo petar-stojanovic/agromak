@@ -1,0 +1,49 @@
+.header {
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ion-color-medium-shade);
+  }
+}
+
+.button {
+  font-size: 0.75rem;
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+  font-size: 0.75rem;
+  padding-left: 10px;
+}
+
+
+.eye {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.signup-text {
+  ion-text {
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+}
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

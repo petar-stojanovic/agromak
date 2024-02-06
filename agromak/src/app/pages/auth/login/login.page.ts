@@ -1,11 +1,11 @@
 import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {addIcons} from "ionicons";
-import {eye, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
+import {eye, eyeOff, lockClosed, logoGoogle, personOutline} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonText, IonTitle, LoadingController} from "@ionic/angular/standalone";
-import {Router} from "@angular/router";
+import {AlertController, IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonText, IonTitle, LoadingController} from "@ionic/angular/standalone";
+import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
 import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
 import FirebaseError = firebase.FirebaseError;
@@ -15,7 +15,7 @@ import FirebaseError = firebase.FirebaseError;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink]
 })
 export class LoginPage {
 
@@ -32,8 +32,7 @@ export class LoginPage {
 
   _authService = inject(AuthService);
 
-  loginForm?: FormGroup;
-  registerForm?: FormGroup
+  form!: FormGroup;
   screen: string = 'login';
 
 
@@ -42,12 +41,12 @@ export class LoginPage {
               private alertController: AlertController,
               private router: Router) {
 
-    addIcons({personOutline, lockClosed, logoGoogle, eye})
-    this.initLoginForm();
+    addIcons({personOutline, lockClosed, logoGoogle, eye, eyeOff})
+    this.initForm();
   }
 
-  initLoginForm() {
-    this.loginForm = this.fb.group({
+  initForm() {
+    this.form = this.fb.group({
       email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
       password: ['Test123!', [Validators.required, Validators.minLength(8)]],
       // email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
@@ -55,124 +54,39 @@ export class LoginPage {
     });
   }
 
-  passwordMatchValidator(control: AbstractControl) {
-    const password = control.get("password")?.value;
-    const confirmPassword = control.get("confirmPassword")?.value;
-    return password === confirmPassword ? null : {mismatch: true};
+  get email() {
+    return this.form.get('email')!;
   }
 
-  get loginEmail() {
-    return this.loginForm?.get('email')!;
+  get password() {
+    return this.form.get('password')!;
   }
 
-  get loginPassword() {
-    return this.loginForm?.get('password')!;
-  }
-
-  get registerEmail() {
-    return this.registerForm?.get('email')!;
-  }
-
-  get registerPassword() {
-    return this.registerForm?.get('password')!;
-  }
-
-
-  changeScreen(screen: string) {
-    this.screen = screen;
-    if (screen === "register") {
-      this.registerForm = this.fb.group({
-          // email: ['2001petarstojanovic@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-          // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
-          // confirmPassword: ['Test123!', Validators.required],
-          email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-          password: ['', [Validators.required, Validators.minLength(8)]],
-          confirmPassword: ['', Validators.required]
-        },
-        {
-          validators: this.passwordMatchValidator
-        });
-    }
-  }
 
   async login() {
-    if (this.loginForm && this.loginForm.valid) {
-      const loading = await this.loadingController.create();
-      await loading.present();
-
-      const formValue = this.loginForm.value;
-
-      this._authService
-        .login(formValue.email, formValue.password)
-        .then(user => {
-            this.router.navigateByUrl('/app/home', {replaceUrl: true});
-          }
-        )
-        .catch((error: FirebaseError) => {
-          let errorMessage = 'An error occurred during Sign In. Please try again';
-          if (error.code === 'auth/invalid-credential') {
-            errorMessage = 'Invalid credentials';
-          } else if (error.message) {
-            errorMessage = error.message;
-          }
-          this.showAlert('Registration Error', errorMessage);
-        })
-        .finally(() => {
-          loading.dismiss();
-        });
-    }
-  }
-
-  async register() {
-    if (this.registerForm && this.registerForm.valid) {
-      const loading = await this.loadingController.create();
-      await loading.present();
-
-      const formValue = this.registerForm.value;
-
-      this._authService
-        .register(formValue.email, formValue.password)
-        .then(user => {
-            this.router.navigateByUrl('/app/home', {replaceUrl: true});
-          }
-        )
-        .catch((error: FirebaseError) => {
-          console.log(error)
-          let errorMessage = 'An error occurred during registration. Please try again';
-          if (error.code === 'auth/email-already-in-use') {
-            errorMessage = 'This Email is already in use';
-          } else if (error.message) {
-            errorMessage = error.message;
-          }
-          this.showAlert('Registration Error', errorMessage);
-        })
-        .finally(() => {
-          loading.dismiss();
-        });
-    }
-  }
-
-  async signInWithGoogle() {
     const loading = await this.loadingController.create();
+    await loading.present();
 
-    await this._authService
-      .signInWithGoogle()
-      .then(async user => {
-        await loading.present();
-        await this.router.navigateByUrl('/app/home', {replaceUrl: true});
-      })
-      .catch((error: any) => {
-        console.log(error)
-        let errorMessage = 'An error occurred during Sign In with Google. Please try again';
-        if (error.message) {
+    const formValue = this.form.value;
+
+    this._authService
+      .login(formValue.email, formValue.password)
+      .then(user => {
+          this.router.navigateByUrl('/app/home',);
+        }
+      )
+      .catch((error: FirebaseError) => {
+        let errorMessage = 'An error occurred during Sign In. Please try again';
+        if (error.code === 'auth/invalid-credential') {
+          errorMessage = 'Invalid credentials';
+        } else if (error.message) {
           errorMessage = error.message;
         }
-        this.showAlert('Google Sign In Error', errorMessage);
+        this.showAlert('Login Error', errorMessage);
       })
       .finally(() => {
         loading.dismiss();
       });
-
   }
 
 

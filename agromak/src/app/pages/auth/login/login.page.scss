@@ -1,20 +1,19 @@
 .header {
-  margin-top: 100px;
-  margin-bottom: 70px;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
   text-align: center;
 
-  .title{
+  .title {
     font-size: 2rem;
     font-weight: bold;
   }
 
-  .subtitle{
+  .subtitle {
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--ion-color-medium-shade);
   }
 }
-
 
 .button {
   height: 3rem;
@@ -24,6 +23,11 @@
 
 .signup-text {
   text-align: center;
+
+  ion-text {
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
 }
 
 .error-message {
@@ -32,21 +36,17 @@
   padding-left: 10px;
 }
 
-ion-icon {
-  margin-left: 10px !important;
+.button {
+  font-size: 0.75rem;
 }
 
-.eyeIcon {
+.eye {
   font-size: 1.5rem;
 }
 
-button {
-  & ion-icon {
-    --ion-size: 2rem;
-    padding-left: 0.5rem !important;
-  }
-
-  & ion-icon.input-clear-icon {
-    padding-left: 0.5rem !important;
-  }
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

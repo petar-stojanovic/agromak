@@ -44,7 +44,7 @@ export class AuthService {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  async signInWithGoogle() {
+  async signUpWithGoogle() {
     const user = await GoogleAuth.signIn();
     if (user) {
       const result = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));

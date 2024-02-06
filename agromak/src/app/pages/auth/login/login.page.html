@@ -1,7 +1,7 @@
 <ion-content class="ion-padding">
 
   <!-- Login Page -->
-  @if (screen === 'login' && loginForm) {
+  <div class="page">
     <div>
       <div class="header">
         <ion-title class="title">
@@ -10,7 +10,7 @@
         </ion-title>
       </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="form" (ngSubmit)="login()">
         <ion-item class="ion-item">
           <ion-input
             aria-label="Email"
@@ -25,139 +25,44 @@
 
         <ng-container *ngFor="let validation of formErrorMessages.email">
           <div class="error-message"
-               *ngIf="loginEmail.hasError(validation.type) && (loginEmail.dirty || loginEmail.touched)">
+               *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
             {{ validation.message }}
           </div>
         </ng-container>
 
         <ion-item class="ion-item ion-margin-top">
-          <app-show-hide-password>
-            <ion-input
-              aria-label="Password"
-              clearOnEdit="false"
-              formControlName="password"
-              placeholder="Password"
-              type="password"
-            >
-              <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-            </ion-input>
-          </app-show-hide-password>
-        </ion-item>
-
-        <ng-container *ngFor="let validation of formErrorMessages.password">
-          <div class="error-message"
-               *ngIf="loginPassword.hasError(validation.type) && (loginPassword.dirty || loginPassword.touched)">
-            {{ validation.message }}
-
-          </div>
-        </ng-container>
-
-        <br/>
-        <div class="signup-text ion-margin-top">
-          Don't have an account?
-          <ion-text color="primary" (click)="changeScreen('register')"> Register Here</ion-text>
-        </div>
-
-        <ion-item class="ion-item ion-margin-top ion-margin-bottom" lines="none">
-          <ion-button type="submit" class="button" [disabled]="loginForm.invalid">Sign in</ion-button>
-        </ion-item>
-      </form>
-    </div>
-  }
-
-
-  <!-- Sign up page -->
-  @if (screen === 'register' && registerForm) {
-    <div class="container">
-      <div class="header">
-        <ion-title class="title">
-          Create Account
-          <p class="subtitle">Sign up to get started</p>
-        </ion-title>
-      </div>
-
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
-        <ion-item class="ion-item">
           <ion-input
-            aria-label="Email"
-            clearInput
-            formControlName="email"
-            placeholder="Email"
-            type="email"
+            aria-label="Password"
+            clearOnEdit="false"
+            formControlName="password"
+            placeholder="Password"
+            type="password"
           >
-            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
           </ion-input>
         </ion-item>
 
-        <ng-container *ngFor="let validation of formErrorMessages.email">
-          <div class="error-message"
-               *ngIf="registerEmail.hasError(validation.type) && (registerEmail.dirty || registerEmail.touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-
-        <ion-item class="ion-item ion-margin-top">
-          <app-show-hide-password>
-            <ion-input
-              aria-label="Password"
-              clearOnEdit="false"
-              formControlName="password"
-              placeholder="Password"
-              type="password"
-            >
-              <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-            </ion-input>
-          </app-show-hide-password>
-        </ion-item>
-
         <ng-container *ngFor="let validation of formErrorMessages.password">
           <div class="error-message"
-               *ngIf="registerPassword.hasError(validation.type) && (registerPassword.dirty || registerPassword.touched)">
+               *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
             {{ validation.message }}
 
           </div>
         </ng-container>
 
-
-        <ion-item class="ion-item ion-margin-top">
-          <app-show-hide-password>
-            <ion-input
-              aria-label="Confirm Password"
-              clearOnEdit="false"
-              formControlName="confirmPassword"
-              placeholder="Confirm password"
-              type="password"
-            >
-              <ion-icon name="lock-closed" slot="start" size="medium"></ion-icon>
-            </ion-input>
-          </app-show-hide-password>
-        </ion-item>
-
-        <ng-container *ngIf="registerForm.errors && registerForm.errors['mismatch'] !== null">
-          <div class="error-message">
-            The passwords must match
-          </div>
-        </ng-container>
         <br/>
 
-        <div class="signup-text ion-margin-top">
-          Already have an account?
-          <ion-text color="primary" (click)="changeScreen('login')"> Sign In</ion-text>
-        </div>
 
-        <ion-item class="ion-item ion-margin-top ion-margin-bottom" lines="none">
-          <ion-button type="submit" class="button" [disabled]="registerForm.invalid">Register</ion-button>
-        </ion-item>
+        <ion-button [disabled]="form.invalid" expand="block" shape="round" size="large" type="submit">Login</ion-button>
+
       </form>
+
     </div>
-  }
-
-
-  <ion-item lines="none">
-    <ion-button class="button" color="dark" (click)="signInWithGoogle()">
-      <ion-icon name="logo-google" slot="start"></ion-icon>
-      Login with Google
-    </ion-button>
-  </ion-item>
+    <div class="signup-text ion-margin-top">
+      Don't have an account?
+      <br>
+      <ion-text color="primary" class="ion-text" [routerLink]="['/register']">Sign Up</ion-text>
+    </div>
+  </div>
 
 </ion-content>
