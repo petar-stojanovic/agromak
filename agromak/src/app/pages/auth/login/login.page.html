@@ -58,9 +58,18 @@
 
         <ion-button [disabled]="form.invalid" expand="block" shape="round" size="large" type="submit">Login</ion-button>
 
+        <div class="text-center ion-margin-top ion-margin-bottom">
+          or
+        </div>
+
+        <ion-button (click)="signUpWithGoogle()" color="dark" expand="block" size="large" shape="round">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          Sign in with Google
+        </ion-button>
       </form>
 
     </div>
+
 
     <div class="signup-text text-center">
       Don't have an account?
