@@ -60,7 +60,6 @@ ion-avatar {
 
 ion-item {
   & ion-thumbnail {
-    //margin: 0 10px 0 0;
     --border-radius: 50%;
     background-color: rgba(70, 123, 244, 0.15);
     --size: 2.5rem;
@@ -73,6 +72,10 @@ ion-item {
   border-radius: 1rem;
 }
 
+.background-danger {
+  background-color: rgba(235, 68, 90, 0.15);
+}
+
 ion-list-header {
   font-size: 1.1rem;
   font-weight: 500;
@@ -83,3 +86,4 @@ ion-list-header {
 .font-size-12 {
   font-size: 12px;
 }
+
