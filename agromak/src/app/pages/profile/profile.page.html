@@ -19,20 +19,81 @@
         </ion-avatar>
       </div>
 
-      <ion-item class="ion-margin-bottom" lines="none">
-        <ion-text>
-          {{ user.displayName }}
-        </ion-text>
-      </ion-item>
+      <div class="text-center">
+        <h2>{{ user.displayName }}</h2>
+        <p>{{ user.email }}</p>
+      </div>
+
+      <ion-list class="background-white">
+        <ion-list-header>General</ion-list-header>
+
+        <ion-item>
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+            <ion-icon class="icon-color-dark-blue" name="person-outline"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-text>
+              <h2 class="font-weight-500">Edit Profile</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p class="font-size-12">Change profile picture, number, name</p>
+            </ion-text>
+          </ion-label>
+
+          <ion-icon slot="end" class="ion-margin-none" name="chevron-forward-outline"></ion-icon>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+            <ion-icon class="icon-color-dark-blue" name="lock-closed"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-text>
+              <h2 class="font-weight-500">Change Password</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p class="font-size-12">Update and strengthen your security</p>
+            </ion-text>
+          </ion-label>
+
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list class="background-white ion-margin-vertical">
+        <ion-list-header>Preferences</ion-list-header>
+
+        <ion-item>
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+            <ion-icon class="icon-color-dark-blue" name="log-out-outline"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-text>
+              <h2 class="font-weight-500">Log Out</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p class="font-size-12">Securely log out of Account</p>
+            </ion-text>
+          </ion-label>
+
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+
+        </ion-item>
+
+      </ion-list>
 
       <ion-button class="logout" (click)="logOut()">
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
         Logout
       </ion-button>
+
     }
   } @placeholder (minimum 1000ms) {
-    <div class="ion-thumbnail">
-      <ion-thumbnail>
+    <div class="skeleton">
+      <ion-thumbnail class="thumbnail-skeleton">
         <ion-skeleton-text [animated]="true"></ion-skeleton-text>
       </ion-thumbnail>
     </div>
@@ -53,7 +114,6 @@
       </ion-text>
     </div>
   }
-
 
 
 </ion-content>

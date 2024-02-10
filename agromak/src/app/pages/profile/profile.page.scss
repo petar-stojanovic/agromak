@@ -21,7 +21,6 @@ ion-avatar {
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  //color: var(--ion-color-dark);
 }
 
 .logout {
@@ -34,7 +33,7 @@ ion-avatar {
   text-align: center;
 }
 
-.ion-thumbnail {
+.skeleton {
   --vertical-margin: 1.4rem;
   margin-top: var(--vertical-margin);
   margin-bottom: var(--vertical-margin);
@@ -43,10 +42,44 @@ ion-avatar {
   justify-content: center;
 }
 
-ion-thumbnail {
+.thumbnail-skeleton {
   --size: 8rem;
 
   & ion-skeleton-text {
     --border-radius: 9999px;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+
+ion-item {
+  & ion-thumbnail {
+    //margin: 0 10px 0 0;
+    --border-radius: 50%;
+    background-color: rgba(70, 123, 244, 0.15);
+    --size: 2.5rem;
+  }
+}
+
+
+.background-white {
+  --ion-background-color: white;
+  border-radius: 1rem;
+}
+
+ion-list-header {
+  font-size: 1.1rem;
+  font-weight: 500;
+  --color: var(--ion-color-medium-tint);
+}
+
+
+.font-size-12 {
+  font-size: 12px;
 }

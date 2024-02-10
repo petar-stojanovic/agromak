@@ -134,29 +134,6 @@ export class RegisterPage {
     }
   }
 
-  async signUpWithGoogle() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    await this._authService
-      .signUpWithGoogle()
-      .then(async user => {
-        await loading.present();
-        await this.router.navigateByUrl('/app/home', {replaceUrl: true});
-      })
-      .catch((error: any) => {
-        console.log(error)
-        let errorMessage = 'An error occurred during Sign In with Google. Please try again';
-        if (error.message) {
-          errorMessage = error.message;
-        }
-        this.showAlert('Google Sign In Error', errorMessage);
-      })
-      .finally(() => {
-        loading.dismiss();
-      });
-
-  }
 
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({

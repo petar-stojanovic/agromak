@@ -8,6 +8,9 @@ import {
   IonHeader,
   IonIcon,
   IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
   IonSkeletonText,
   IonSpinner,
   IonText,
@@ -17,7 +20,7 @@ import {
   LoadingController
 } from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
-import {exit, logOutOutline} from "ionicons/icons";
+import {chevronForwardOutline, lockClosed, logOutOutline, personOutline} from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {ImageService} from "../../services/image.service";
@@ -44,7 +47,10 @@ import {CommonModule} from "@angular/common";
     IonThumbnail,
     IonSkeletonText,
     IonSpinner,
-    CommonModule
+    CommonModule,
+    IonList,
+    IonListHeader,
+    IonLabel,
   ],
 })
 export class ProfilePage {
@@ -56,7 +62,7 @@ export class ProfilePage {
               private loadingController: LoadingController,
               private imageService: ImageService,
               private alertController: AlertController) {
-    addIcons({logOutOutline, exit})
+    addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed})
     this._authService.getUserProfile().subscribe((data) => {
       this.user = data as User;
       console.log(data)
