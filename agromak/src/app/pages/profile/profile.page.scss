@@ -29,3 +29,24 @@ ion-avatar {
   height: 3rem;
   --border-radius: 50px;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.ion-thumbnail {
+  --vertical-margin: 1.4rem;
+  margin-top: var(--vertical-margin);
+  margin-bottom: var(--vertical-margin);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+ion-thumbnail {
+  --size: 8rem;
+
+  & ion-skeleton-text {
+    --border-radius: 9999px;
+  }
+}

@@ -1,31 +1,57 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Profile
-    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="logOut()">
+        <ion-icon slot="icon-only" color="primary" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="preview">
-    <ion-avatar (click)="changeImage()">
-      <img *ngIf="profile?.photoURL; else placeholder_avatar;" [src]="profile.photoURL" alt="Profile Picture"/>
+  @defer (when user !== null) {
+    @if (user) {
+      <div class="preview">
+        <ion-avatar (click)="changeImage()">
+          <img *ngIf="user.photoURL; else placeholder_avatar;" [src]="user.photoURL" alt="Profile Picture"/>
 
-      <ng-template #placeholder_avatar>
-        <div class="fallback">
-          <p>Select avatar</p>
-        </div>
-      </ng-template>
-    </ion-avatar>
-  </div>
+          <ng-template #placeholder_avatar>
+            <div class="fallback">
+              <p>Select avatar</p>
+            </div>
+          </ng-template>
+        </ion-avatar>
+      </div>
 
+      <ion-item class="ion-margin-bottom" lines="none">
+        <ion-text>
+          {{ user?.displayName }}
+        </ion-text>
+      </ion-item>
+    }
+  } @placeholder (minimum 1000ms) {
+    <div class="ion-thumbnail">
+      <ion-thumbnail>
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+    </div>
 
-<!--  <ion-item>-->
-<!--    <ion-text [(ngModel)]="profile.displayName"></ion-text>-->
-<!--  </ion-item>-->
+    <ion-item class="ion-margin-bottom" lines="none">
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
+    </ion-item>
 
-  <ion-button class="logout" (click)="logOut()">
-    <ion-icon name="log-out-outline" slot="start"></ion-icon>
-    Logout
-  </ion-button>
+  } @loading (after 100ms; minimum 1000ms) {
+    <div class="text-center">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  } @error {
+    <div class="text-center">
+      <ion-text color="danger">
+        There was an error loading the user profile
+      </ion-text>
+    </div>
+  }
+
 </ion-content>

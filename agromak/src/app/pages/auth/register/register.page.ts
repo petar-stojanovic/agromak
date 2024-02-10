@@ -19,7 +19,6 @@ import {addIcons} from "ionicons";
 import {eye, eyeOff, lockClosed, logoGoogle, mail, person} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
 import firebase from "firebase/compat";
-import {ShowHidePasswordComponent} from "../show-hide-password/show-hide-password.component";
 import FirebaseError = firebase.FirebaseError;
 
 @Component({
@@ -27,7 +26,7 @@ import FirebaseError = firebase.FirebaseError;
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ShowHidePasswordComponent, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink, IonList]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink, IonList]
 })
 export class RegisterPage {
 
