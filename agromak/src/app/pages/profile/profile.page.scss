@@ -61,7 +61,7 @@ ion-avatar {
 ion-item {
   & ion-thumbnail {
     --border-radius: 50%;
-    background-color: rgba(70, 123, 244, 0.15);
+    background-color: rgba(70, 123, 244, 0.125);
     --size: 2.5rem;
   }
 }
@@ -73,7 +73,7 @@ ion-item {
 }
 
 .background-danger {
-  background-color: rgba(235, 68, 90, 0.15);
+  background-color: rgba(235, 68, 90, 0.1) !important;
 }
 
 ion-list-header {

@@ -66,6 +66,22 @@
       <ion-list class="background-white ion-margin-vertical">
         <ion-list-header>Preferences</ion-list-header>
 
+        <ion-item>
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+            <ion-icon class="icon-color-dark-blue" name="notifications-outline"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-text>
+              <h2 class="font-weight-500">Notifications</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p class="font-size-12">Customize your notification preferences</p>
+            </ion-text>
+          </ion-label>
+
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+
         <ion-item lines="none" (click)="logOut()">
           <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center background-danger" slot="start">
             <ion-icon color="danger" name="log-out-outline"></ion-icon>
