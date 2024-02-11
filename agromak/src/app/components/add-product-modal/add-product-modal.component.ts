@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {
   IonButton,
   IonButtons,
@@ -16,6 +16,7 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AdService} from "../../services/ad.service";
 
 @Component({
   selector: 'app-add-product-modal',
@@ -46,7 +47,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
   ],
 })
 export class AddProductModalComponent implements OnInit {
-  buyOrSell: any;
+  private _adService = inject(AdService);
 
   form: FormGroup;
 
@@ -84,7 +85,8 @@ export class AddProductModalComponent implements OnInit {
   }
 
   submit() {
-    return this.modalCtrl.dismiss(this.form.value, 'confirm');
+    this._adService.createAd(this.form.value);
+    // return this.modalCtrl.dismiss(this.form.value, 'confirm');
   }
 
   protected readonly screen = screen;

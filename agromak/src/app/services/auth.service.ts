@@ -73,9 +73,6 @@ export class AuthService {
   private updateUserData(user: User | null, additionalData: any = {}) {
     if (user) {
       const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${user.uid}`);
-      userRef.get().subscribe((data) => {
-        console.log(data);
-      });
 
       const data = {
         uid: user.uid,
