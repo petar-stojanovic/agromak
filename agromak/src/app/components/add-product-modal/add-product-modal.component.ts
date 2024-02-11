@@ -1,5 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonTitle, IonToolbar, ModalController} from "@ionic/angular/standalone";
+import {
+  IonButton,
+  IonButtons,
+  IonCol,
+  IonContent,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonLabel, IonList,
+  IonRadio,
+  IonRadioGroup,
+  IonRow, IonText,
+  IonTitle,
+  IonToolbar,
+  ModalController
+} from "@ionic/angular/standalone";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -16,11 +31,19 @@ import {FormsModule} from "@angular/forms";
     IonContent,
     IonItem,
     IonInput,
-    FormsModule
+    FormsModule,
+    IonRadioGroup,
+    IonRadio,
+    IonLabel,
+    IonRow,
+    IonCol,
+    IonText,
+    IonList
   ],
 })
 export class AddProductModalComponent implements OnInit {
   name = "";
+  buyOrSell: any;
 
   constructor(private modalCtrl: ModalController) {
   }

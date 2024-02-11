@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
@@ -11,10 +11,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  <ion-radio-group [(ngModel)]="buyOrSell" class="flex ion-margin">
+    <ion-text>I want to:</ion-text>
+    <ion-radio class="ion-margin-horizontal" value="buy" labelPlacement="end">Buy</ion-radio>
+    <ion-radio value="sell" labelPlacement="end">Sell</ion-radio>
+  </ion-radio-group>
+
   <ion-item>
     <ion-input labelPlacement="stacked" label="Enter your name" [(ngModel)]="name" placeholder="Your name"></ion-input>
   </ion-item>
 
-<!--  <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>-->
+  <!--  <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>-->
+
 
 </ion-content>
