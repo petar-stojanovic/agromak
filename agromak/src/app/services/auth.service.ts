@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Observable, of, startWith, switchMap} from "rxjs";
+import {map, Observable, of, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
 import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
-import {doc, docData, Firestore} from "@angular/fire/firestore";
+import {Firestore} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 
 
@@ -15,7 +15,7 @@ import {Auth} from "@angular/fire/auth";
 })
 export class AuthService {
 
-  user$: Observable<User | undefined | null>;
+  user$: Observable<User | null>;
 
   constructor(private afAuth: AngularFireAuth,
               private angularFirestore: AngularFirestore,
@@ -28,7 +28,11 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.angularFirestore.doc<User>(`users/${user.uid}`)
+            .valueChanges()
+            .pipe(
+              map(userData => userData || null)
+            );
         } else {
           return of(null);
         }

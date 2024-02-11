@@ -56,7 +56,7 @@ import {CommonModule} from "@angular/common";
 export class ProfilePage {
   private _authService = inject(AuthService);
 
-  user: User | undefined | null = null;
+  user: User | null = null;
 
   constructor(private router: Router,
               private loadingController: LoadingController,
