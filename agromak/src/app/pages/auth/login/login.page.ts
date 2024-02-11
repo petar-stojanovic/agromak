@@ -57,13 +57,6 @@ export class LoginPage {
 
     addIcons({mail, lockClosed, logoGoogle, eye, eyeOff})
     this.initForm();
-
-
-    this._authService.getUserProfile().subscribe((data) => {
-      // this.user = data as User;
-      console.log(data)
-    })
-
   }
 
   initForm() {
@@ -118,7 +111,7 @@ export class LoginPage {
     await loading.present();
 
     await this._authService
-      .signUpWithGoogle()
+      .signInWithGoogle()
       .then(async user => {
         await loading.present();
         await this.router.navigateByUrl('/app/home', {replaceUrl: true});

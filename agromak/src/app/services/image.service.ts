@@ -19,17 +19,6 @@ export class ImageService {
               private afAuth: AngularFireAuth,
               private authService: AuthService,
               private storage: Storage) {
-    // console.log(this.auth.currentUser)
-    // this.afAuth.currentUser.then(value => console.log(value))
-    // authService.user$.subscribe(value => console.log(value))
-    // console.log(this.getUserProfile())
-  }
-
-
-  getUserProfile() {
-    const user = this.auth.currentUser as User;
-    const userDocRef = doc(this.firestore, `users/${user.uid}`)
-    return docData(userDocRef);
   }
 
   async uploadImage(cameraFile: Photo) {
@@ -52,7 +41,7 @@ export class ImageService {
       return true;
 
     } catch (e) {
-      console.log("ERROR- ", e)
+      console.log("ERROR - ", e)
       return null;
     }
   }

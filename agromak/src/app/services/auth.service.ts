@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {fromEvent, Observable, of, startWith, switchMap} from "rxjs";
+import {Observable, of, startWith, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
@@ -36,13 +36,6 @@ export class AuthService {
     );
   }
 
-  onAuthStateChanged(): Observable<User | null> {
-    return this.afAuth.authState.pipe(
-      startWith(undefined),
-      switchMap(() => this.getUserProfile())
-    );
-  }
-
 
   async register(email: string, password: string, displayName: string) {
     const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
@@ -54,12 +47,21 @@ export class AuthService {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  async signUpWithGoogle() {
+  async signInWithGoogle() {
     const user = await GoogleAuth.signIn();
     if (user) {
       const userCredential = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));
       if (userCredential) {
-        return this.updateUserData(userCredential.user as User);
+        // Check if the user already exists in Firestore
+        const userRef = this.angularFirestore.doc(`users/${userCredential.user.uid}`);
+        userRef.get().subscribe((data) => {
+          if (data.exists) {
+            console.log("USER REF DATA -", data);
+            return of(null)
+          } else {
+            return this.updateUserData(userCredential.user as User);
+          }
+        });
       }
     }
   }
@@ -67,6 +69,10 @@ export class AuthService {
   private updateUserData(user: User | null, additionalData: any = {}) {
     if (user) {
       const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${user.uid}`);
+      userRef.get().subscribe((data) => {
+        console.log(data);
+      });
+
       const data = {
         uid: user.uid,
         email: user.email,
@@ -89,14 +95,4 @@ export class AuthService {
       this.router.navigate(['/login']);
     });
   }
-
-  getUserProfile(): Observable<User | null> {
-    const user = this.auth.currentUser as User;
-    if (user === null) {
-      return of(null);
-    }
-    const userDocRef = doc(this.firestore, `users/${user.uid}`)
-    return docData(userDocRef) as Observable<User>;
-  }
-
 }

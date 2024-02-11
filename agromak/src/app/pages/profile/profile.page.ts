@@ -56,7 +56,7 @@ import {CommonModule} from "@angular/common";
 export class ProfilePage {
   private _authService = inject(AuthService);
 
-  user: User | null = null;
+  user: User | undefined | null = null;
 
   constructor(private router: Router,
               private loadingController: LoadingController,
@@ -64,14 +64,15 @@ export class ProfilePage {
               private alertController: AlertController) {
     addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline})
 
-    // this._authService.getUserProfile().subscribe((data) => {
-    //   this.user = data as User;
-    //   console.log(data)
-    // })
+    this.fetchData();
 
-    this._authService.onAuthStateChanged().subscribe((data) => {
-      this.user = data as User;
-      console.log(data);
+
+  }
+
+  fetchData() {
+    this._authService.user$.subscribe((data) => {
+      this.user = data;
+      console.log(data)
     });
   }
 
