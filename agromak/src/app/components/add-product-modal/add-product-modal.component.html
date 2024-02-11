@@ -1,12 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
-    <ion-title>Create Ad</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+      <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
+    <ion-title>Create</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,8 +14,9 @@
   </div>
 
 
-  <form [formGroup]="form" (ngSubmit)="confirm()">
-    <ion-item>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <ion-item class="ion-margin-vertical">
       <ion-select
         label="I want to:"
         formControlName="buyOrSell">
@@ -27,7 +25,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-margin-vertical">
       <ion-textarea
         label="Title"
         labelPlacement="stacked"
@@ -37,7 +35,15 @@
         type="text"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-input
+        label="City:"
+        placeholder="Enter City"
+        formControlName="city">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-vertical">
       <div class="flex">
         <ion-input
           formControlName="price"
@@ -49,14 +55,14 @@
         <ion-select
           label="Currency:"
           formControlName="currency">
-          <ion-select-option value="den">DEN</ion-select-option>
+          <ion-select-option value="mkd">MKD</ion-select-option>
           <ion-select-option value="eur">EUR</ion-select-option>
         </ion-select>
       </div>
     </ion-item>
 
 
-    <ion-item>
+    <ion-item class="ion-margin-vertical">
       <ion-input
         formControlName="phone"
         label="Phone"
@@ -64,7 +70,7 @@
     </ion-item>
 
 
-    <ion-item>
+    <ion-item class="ion-margin-vertical">
       <div class="flex">
         <ion-input
           label="Quantity:"
@@ -84,7 +90,7 @@
     </ion-item>
 
 
-    <ion-item>
+    <ion-item class="ion-margin-vertical">
       <ion-textarea
         labelPlacement="stacked"
         label="Description"

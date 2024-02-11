@@ -1,7 +1,3 @@
-ion-title {
-  text-align: center;
-}
-
 ::ng-deep ion-input .label-text,
 ::ng-deep ion-textarea .label-text,
 ::ng-deep ion-select .label-text {
@@ -17,6 +13,11 @@ ion-item {
   display: flex;
 }
 
-.text-center{
+.text-center {
   text-align: center;
+}
+
+
+ion-toolbar {
+  --background: rgba(0, 128, 0, 0.15);
 }
