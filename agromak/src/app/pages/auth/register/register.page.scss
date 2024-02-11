@@ -43,18 +43,6 @@
   justify-content: space-around;
 }
 
-
-//TODO: fix green validation
-//:host ion-input.ion-dirty.ion-valid,
-//:host ion-input.ion-touched,
-//:host ion-input.has-focus{
-//  color: yellow !important;
-//
-//  & .input-wrapper {
-//    color: red !important;
-//  }
-//
-//  & label .label-text {
-//    color: blue !important;
-//  }
-//}
+::ng-deep ion-input .label-text{
+  color: var(--ion-color-dark);
+}

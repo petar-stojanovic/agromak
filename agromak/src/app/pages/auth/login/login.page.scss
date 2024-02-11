@@ -42,3 +42,7 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+::ng-deep ion-input .label-text {
+  color: var(--ion-color-dark);
+}

@@ -1,0 +1,7 @@
+ion-title {
+  text-align: center;
+}
+
+::ng-deep ion-input .label-text{
+  color: var(--ion-color-dark);
+}

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import {IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController} from '@ionic/angular/standalone';
+import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,20 @@ import {IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar} from '@
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon],
 })
 export class HomePage {
-  constructor() {
+  constructor(private modalCtrl: ModalController) {
   }
 
-  addSale() {
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddProductModalComponent,
+    });
+    await modal.present();
 
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      console.log('Data:', data);
+    }
   }
+
 }
