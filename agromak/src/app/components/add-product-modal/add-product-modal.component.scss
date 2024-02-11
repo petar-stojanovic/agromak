@@ -2,10 +2,21 @@ ion-title {
   text-align: center;
 }
 
-::ng-deep ion-input .label-text {
-  color: var(--ion-color-dark);
+::ng-deep ion-input .label-text,
+::ng-deep ion-textarea .label-text,
+::ng-deep ion-select .label-text {
+  color: var(--ion-color-dark) !important;
+  font-weight: 500 !important;
+}
+
+ion-item {
+  --highlight-background: var(--ion-color-primary);
 }
 
 .flex {
   display: flex;
+}
+
+.text-center{
+  text-align: center;
 }
