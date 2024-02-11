@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Observable, of, switchMap} from "rxjs";
+import {fromEvent, Observable, of, startWith, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../interfaces/user";
@@ -36,6 +36,14 @@ export class AuthService {
     );
   }
 
+  onAuthStateChanged(): Observable<User | null> {
+    return this.afAuth.authState.pipe(
+      startWith(undefined),
+      switchMap(() => this.getUserProfile())
+    );
+  }
+
+
   async register(email: string, password: string, displayName: string) {
     const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
 
@@ -55,7 +63,6 @@ export class AuthService {
       }
     }
   }
-
 
   private updateUserData(user: User | null, additionalData: any = {}) {
     if (user) {
@@ -78,14 +85,18 @@ export class AuthService {
   }
 
   async signOut() {
-    await this.afAuth.signOut();
-    return this.router.navigate(['/login']);
+    await this.afAuth.signOut().finally(() => {
+      this.router.navigate(['/login']);
+    });
   }
 
-  getUserProfile() {
+  getUserProfile(): Observable<User | null> {
     const user = this.auth.currentUser as User;
+    if (user === null) {
+      return of(null);
+    }
     const userDocRef = doc(this.firestore, `users/${user.uid}`)
-    return docData(userDocRef);
+    return docData(userDocRef) as Observable<User>;
   }
 
 }

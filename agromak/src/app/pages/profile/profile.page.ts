@@ -64,11 +64,15 @@ export class ProfilePage {
               private alertController: AlertController) {
     addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline})
 
-    this._authService.getUserProfile().subscribe((data) => {
-      this.user = data as User;
-      console.log(data)
-    })
+    // this._authService.getUserProfile().subscribe((data) => {
+    //   this.user = data as User;
+    //   console.log(data)
+    // })
 
+    this._authService.onAuthStateChanged().subscribe((data) => {
+      this.user = data as User;
+      console.log(data);
+    });
   }
 
   async logOut() {

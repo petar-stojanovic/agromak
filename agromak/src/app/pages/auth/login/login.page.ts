@@ -20,6 +20,7 @@ import {
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
+import {User} from "../../../interfaces/user";
 
 @Component({
   selector: 'app-login',
@@ -47,6 +48,7 @@ export class LoginPage {
   screen: string = 'login';
   showPassword = false;
 
+  user: User | null = null;
 
   constructor(private fb: FormBuilder,
               private loadingController: LoadingController,
@@ -55,6 +57,13 @@ export class LoginPage {
 
     addIcons({mail, lockClosed, logoGoogle, eye, eyeOff})
     this.initForm();
+
+
+    this._authService.getUserProfile().subscribe((data) => {
+      // this.user = data as User;
+      console.log(data)
+    })
+
   }
 
   initForm() {
