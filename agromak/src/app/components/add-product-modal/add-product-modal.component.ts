@@ -85,8 +85,8 @@ export class AddProductModalComponent implements OnInit {
   }
 
   submit() {
-    this._adService.createAd(this.form.value);
-    // return this.modalCtrl.dismiss(this.form.value, 'confirm');
+    // this._adService.createAd(this.form.value);
+    return this.modalCtrl.dismiss(this.form.value, 'confirm');
   }
 
   protected readonly screen = screen;

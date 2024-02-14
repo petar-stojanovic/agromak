@@ -344,6 +344,18 @@
         "hash": "5877270560730635238"
       },
       {
+        "file": "src/app/components/add-product-modal/add-product-modal.component.html",
+        "hash": "6589194090401450682"
+      },
+      {
+        "file": "src/app/components/add-product-modal/add-product-modal.component.scss",
+        "hash": "3377541511377743583"
+      },
+      {
+        "file": "src/app/components/add-product-modal/add-product-modal.component.ts",
+        "hash": "6999810834445902277"
+      },
+      {
         "file": "src/app/interfaces/user.ts",
         "hash": "12462902469396906475"
       },
@@ -365,7 +377,7 @@
       },
       {
         "file": "src/app/pages/auth/login/login.page.scss",
-        "hash": "5952642920656064751"
+        "hash": "17927139075713840615"
       },
       {
         "file": "src/app/pages/auth/login/login.page.ts",
@@ -377,7 +389,7 @@
       },
       {
         "file": "src/app/pages/auth/register/register.page.scss",
-        "hash": "9060804564948333489"
+        "hash": "12039338005390119148"
       },
       {
         "file": "src/app/pages/auth/register/register.page.ts",
@@ -385,7 +397,7 @@
       },
       {
         "file": "src/app/pages/home/home.page.html",
-        "hash": "4483644232779242843"
+        "hash": "6850735758992447071"
       },
       {
         "file": "src/app/pages/home/home.page.scss",
@@ -393,7 +405,7 @@
       },
       {
         "file": "src/app/pages/home/home.page.ts",
-        "hash": "2696977213770160079"
+        "hash": "877340879199840304"
       },
       {
         "file": "src/app/pages/profile/profile.page.html",
@@ -420,8 +432,12 @@
         "hash": "10797965002712849963"
       },
       {
+        "file": "src/app/services/ad.service.ts",
+        "hash": "6425008178185545905"
+      },
+      {
         "file": "src/app/services/auth.service.ts",
-        "hash": "15356812649108541554"
+        "hash": "17702333968882633582"
       },
       {
         "file": "src/app/services/image.service.ts",

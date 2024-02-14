@@ -32,6 +32,8 @@
         formControlName="title"
         placeholder="Enter Title"
         autoGrow
+        required
+        errorText="Required"
         type="text"></ion-textarea>
     </ion-item>
 
@@ -39,7 +41,9 @@
       <ion-input
         label="City:"
         placeholder="Enter City"
-        formControlName="city">
+        formControlName="city"
+        required
+        errorText="Required">
       </ion-input>
     </ion-item>
 
@@ -50,6 +54,8 @@
           label="Price:"
           placeholder="1234"
           type="number"
+          required
+          errorText="Required"
         ></ion-input>
 
         <ion-select
@@ -66,6 +72,8 @@
       <ion-input
         formControlName="phone"
         label="Phone"
+        required
+        errorText="Required"
         placeholder="070 123 456"></ion-input>
     </ion-item>
 
@@ -76,6 +84,8 @@
           label="Quantity:"
           formControlName="quantity"
           placeholder="10"
+          required
+          errorText="Required"
           type="number"></ion-input>
 
         <ion-select
@@ -96,6 +106,8 @@
         label="Description"
         autoGrow
         placeholder="Enter Description"
+        required
+        errorText="Required"
         formControlName="description"></ion-textarea>
     </ion-item>
 
