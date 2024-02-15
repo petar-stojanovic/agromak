@@ -7,28 +7,35 @@
 <ion-content class="ion-padding">
   @defer (when user !== null) {
     @if (user) {
-      <div class="preview">
-        <ion-avatar (click)="changeImage()">
-          <img *ngIf="user.photoURL; else placeholder_avatar;" [src]="user.photoURL" alt="Profile Picture"/>
 
-          <ng-template #placeholder_avatar>
-            <div class="fallback">
-              <p>Select avatar</p>
-            </div>
-          </ng-template>
-        </ion-avatar>
-      </div>
+      <ion-list class="background-white ion-margin-vertical">
 
-      <div class="text-center">
-        <h2>{{ user.displayName }}</h2>
-        <p>{{ user.email }}</p>
-      </div>
+        <ion-item lines="none">
+          <ion-thumbnail slot="start" class="profile-thumbnail" (click)="changeImage()">
+            <img *ngIf="user.photoURL; else placeholder_avatar;" [src]="user.photoURL" alt="Profile Picture"/>
 
-      <ion-list class="background-white">
+            <ng-template #placeholder_avatar>
+              <div class="preview">
+                <p class="font-size-12">Select avatar</p>
+              </div>
+            </ng-template>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-text>
+              <h1 class="font-weight-bold">{{ user.displayName }}</h1>
+            </ion-text>
+            <ion-text color="medium">
+              <h3>{{ user.email }}</h3>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="background-white ion-margin-vertical">
         <ion-list-header>General</ion-list-header>
 
         <ion-item>
-          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
             <ion-icon class="icon-color-dark-blue" name="person-outline"></ion-icon>
           </ion-thumbnail>
           <ion-label>
@@ -45,7 +52,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
             <ion-icon class="icon-color-dark-blue" name="lock-closed"></ion-icon>
           </ion-thumbnail>
           <ion-label>
@@ -67,7 +74,7 @@
         <ion-list-header>Preferences</ion-list-header>
 
         <ion-item>
-          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center" slot="start">
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
             <ion-icon class="icon-color-dark-blue" name="notifications-outline"></ion-icon>
           </ion-thumbnail>
           <ion-label>
@@ -83,7 +90,7 @@
         </ion-item>
 
         <ion-item lines="none" (click)="logOut()">
-          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center background-danger" slot="start">
+          <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center background-danger circle" slot="start">
             <ion-icon color="danger" name="log-out-outline"></ion-icon>
           </ion-thumbnail>
           <ion-label>
@@ -114,7 +121,7 @@
       <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
     </ion-item>
 
-  } @loading (after 100ms; minimum 1000ms) {
+  } @loading (after 2000ms; minimum 1000ms) {
     <div class="text-center">
       <ion-spinner name="crescent"></ion-spinner>
     </div>

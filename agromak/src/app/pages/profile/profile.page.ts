@@ -72,6 +72,8 @@ export class ProfilePage {
   fetchData() {
     this._authService.user$.subscribe((data) => {
       this.user = data;
+      // @ts-ignore
+      // this.user.photoURL = null;
       console.log(data)
     });
   }
