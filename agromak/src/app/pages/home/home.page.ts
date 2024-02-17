@@ -11,7 +11,7 @@ import {AddProductModalComponent} from "../../components/add-product-modal/add-p
 })
 export class HomePage {
   constructor(private modalCtrl: ModalController) {
-    // this.openModal();
+    this.openModal();
   }
 
   async openModal() {
