@@ -170,7 +170,7 @@
             </ion-col>
 
             <ion-col size="6">
-              <ion-button class="ion-margin-top" [disabled]="form.invalid" expand="full" shape="round" type="submit">
+              <ion-button class="ion-margin-top" [disabled]="form.invalid && form.pristine && !form.dirty" expand="full" shape="round" type="submit">
                 Submit
               </ion-button>
             </ion-col>

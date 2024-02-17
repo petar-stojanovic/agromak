@@ -21,7 +21,7 @@ export class ImageService {
               private storage: Storage) {
   }
 
-  async uploadImage(cameraFile: Photo) {
+  async uploadProfileImage(cameraFile: Photo) {
     const user = this.auth.currentUser as User;
     const path = `uploads/${user.uid}/profile.png`;
     const storageRef = ref(this.storage, path);

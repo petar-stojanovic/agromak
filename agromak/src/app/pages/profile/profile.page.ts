@@ -112,7 +112,7 @@ export class ProfilePage {
       const loading = await this.loadingController.create();
       await loading.present();
 
-      const result = await this.imageService.uploadImage(image);
+      const result = await this.imageService.uploadProfileImage(image);
 
       if (!result) {
         const alert = await this.alertController.create({

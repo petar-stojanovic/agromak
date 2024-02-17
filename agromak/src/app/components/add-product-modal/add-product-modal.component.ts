@@ -20,7 +20,7 @@ import {
   IonText,
   IonTextarea,
   IonTitle,
-  IonToolbar,
+  IonToolbar, LoadingController,
   ModalController
 } from "@ionic/angular/standalone";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -29,6 +29,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 import {ImageService} from "../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
+import {CreateAd} from "../../interfaces/create-ad";
 
 @Component({
   selector: 'app-add-product-modal',
@@ -74,7 +75,8 @@ export class AddProductModalComponent implements OnInit {
 
   constructor(private modalCtrl: ModalController,
               private imageService: ImageService,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private loadingController: LoadingController) {
     this.form = new FormGroup({
 
       buyOrSell: new FormControl('buy', Validators.required),
@@ -116,38 +118,25 @@ export class AddProductModalComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  submit() {
-    // this._adService.createAd(this.form.value);
-    return this.modalCtrl.dismiss(this.form.value, 'confirm');
-  }
 
   async uploadImages() {
     const images = await Camera.pickImages({
       quality: 90,
-    });
+    })
 
-    this.images = [];
-    images.photos.forEach((image) => {
-      this.images.push(image);
-      console.log(image, this.images)
-    });
+    if (images) {
+
+      this.images = [];
+      images.photos.forEach((image) => {
+        this.images.push(image);
+        console.log(image, this.images)
+      });
+    }
+  }
 
 
-    // if (images) {
-    //   const loading = await this.loadingController.create();
-    //   await loading.present();
-    //
-    //   const result = await this.imageService.uploadImage(image);
-    //
-    //   if (!result) {
-    //     const alert = await this.alertController.create({
-    //       header: 'Upload Failed',
-    //       message: 'There was an error uploading your image',
-    //       buttons: ['OK']
-    //     });
-    //   }
-    //   await loading.dismiss();
-    // }
-
+  submit() {
+    this._adService.createAd(this.form.value as CreateAd, this.images);
+    // return this.modalCtrl.dismiss(this.form.value, 'confirm');
   }
 }
