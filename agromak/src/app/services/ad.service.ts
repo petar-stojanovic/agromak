@@ -7,12 +7,13 @@ import {Router} from "@angular/router";
 import {AuthService} from "./auth.service";
 import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../interfaces/create-ad";
+import {ImageService} from "./image.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdService {
-  private _authService = inject(AuthService);
+  private imageService = inject(ImageService);
 
   constructor(private afAuth: AngularFireAuth,
               private angularFirestore: AngularFirestore,
@@ -21,7 +22,7 @@ export class AdService {
               private router: Router) {
   }
 
- async createAd(value: CreateAd, images?: GalleryPhoto[]) {
+  async createAd(value: CreateAd, images?: GalleryPhoto[]) {
 
     const data = {
       buyOrSell: value.buyOrSell,
@@ -37,11 +38,22 @@ export class AdService {
     };
 
 
-    const documentReference = await this.angularFirestore.collection('ads').add(data);
+    const adRef = await this.angularFirestore.collection('ads').add(data);
+    console.log(adRef.id);
+
+    if (images) {
+      await this.imageService.uploadAdImages(adRef.id, images);
+    }
+
 
     // const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(`ads/${user.uid}`);
     //
     //
     // return this.angularFirestore.collection('ads').add(value);
+  }
+
+
+  getAllAds(){
+    return this.angularFirestore.collection('ads').get();
   }
 }

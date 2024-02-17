@@ -1,17 +1,34 @@
 import {Component} from '@angular/core';
-import {IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController} from '@ionic/angular/standalone';
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonIcon, IonItem, IonLabel, IonList,
+  IonTitle,
+  IonToolbar,
+  ModalController
+} from '@ionic/angular/standalone';
 import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
+import {AdService} from "../../services/ad.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel],
 })
 export class HomePage {
-  constructor(private modalCtrl: ModalController) {
-    this.openModal();
+
+  ads: any;
+  constructor(private modalCtrl: ModalController,
+              private _adService: AdService) {
+    // this.openModal();
+    this._adService.getAllAds().subscribe((ads) => {
+      this.ads = ads.docs.map((ad) => ad.data());
+      console.log(this.ads);
+    });
   }
 
   async openModal() {
@@ -20,7 +37,7 @@ export class HomePage {
     });
     await modal.present();
 
-    const { data, role } = await modal.onWillDismiss();
+    const {data, role} = await modal.onWillDismiss();
 
     if (role === 'confirm') {
       console.log('Data:', data);
