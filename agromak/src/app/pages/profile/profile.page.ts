@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal, Signal, WritableSignal} from '@angular/core';
 import {
   AlertController,
   IonAvatar,
@@ -27,6 +27,7 @@ import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {User} from "../../interfaces/user";
 import {CommonModule} from "@angular/common";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-profile',
@@ -63,19 +64,22 @@ export class ProfilePage {
               private imageService: ImageService,
               private alertController: AlertController) {
     addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline})
-
     this.fetchData();
-
-
   }
 
   fetchData() {
-    this._authService.user$.subscribe((data) => {
-      this.user = data;
-      // @ts-ignore
-      // this.user.photoURL = null;
-      console.log(data)
-    });
+    this._authService.user$
+      .subscribe({
+        next: (data) => {
+          this.user = data;
+          console.log(data)
+        },
+        error: (error) => {
+          console.error('Error fetching user:', error);
+          this.user = null;
+        }
+      }
+    );
   }
 
   async logOut() {

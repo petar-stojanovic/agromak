@@ -11,9 +11,11 @@
   text-align: center;
   height: 100%;
 }
+
 .text-center {
   text-align: center;
 }
+
 
 .skeleton {
   --vertical-margin: 1.4rem;
@@ -45,12 +47,11 @@
 }
 
 .circle {
-    --border-radius: 50%;
-    --size: 2.5rem;
-    background-color: rgba(70, 123, 244, 0.125);
+  --border-radius: 50%;
+  --size: 2.5rem;
+  background-color: rgba(70, 123, 244, 0.125);
 
 }
-
 
 .background-white {
   --ion-background-color: white;
