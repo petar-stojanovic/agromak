@@ -145,6 +145,24 @@
       <!-- 3 -->
       <swiper-slide>
 
+        <ion-text (click)="uploadImages()">
+          <div class="image-box">
+            <p>
+              Upload Images
+            </p>
+          </div>
+        </ion-text>
+
+
+        <ion-grid *ngIf="images">
+          <ion-row>
+            <ion-col size="4" *ngFor="let img of images">
+              <img [src]="img.webPath" alt="image" class="img-fluid">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="6">
