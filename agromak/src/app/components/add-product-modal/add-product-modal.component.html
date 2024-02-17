@@ -41,7 +41,7 @@
         </ion-item>
 
 
-        <ion-item class="ion-margin-vertical">
+        <ion-item class="ion-margin-vertical" lines="none">
           <ion-textarea
             labelPlacement="stacked"
             label="Description"
@@ -52,7 +52,10 @@
             formControlName="description"></ion-textarea>
         </ion-item>
 
-        <ion-button class="ion-margin-top" (click)="goNext()" expand="full" shape="round">Next</ion-button>
+        <ion-button class="ion-margin-top"
+                    [disabled]="form.controls['title'].invalid || form.controls['description'].invalid"
+                    (click)="goNext()" expand="full" shape="round">Next
+        </ion-button>
 
       </swiper-slide>
 
@@ -88,6 +91,7 @@
               type="number"
               required
               errorText="Required"
+
             ></ion-input>
 
             <ion-select
@@ -124,7 +128,10 @@
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="6">
-              <ion-button class="ion-margin-top" (click)="goPrev()" expand="full" shape="round">Back</ion-button>
+              <ion-button (click)="goPrev()"
+                          [disabled]="form.controls['city'].invalid || form.controls['phone'].invalid ||form.controls['price'].invalid || form.controls['quantity'].invalid  "
+                          class="ion-margin-top" expand="full" shape="round">Back
+              </ion-button>
             </ion-col>
 
             <ion-col size="6">
