@@ -49,27 +49,30 @@ export class ImageService {
   }
 
   async uploadAdImages(documentId: string, galleryPhotos: GalleryPhoto[]) {
-    const path = `ads/${documentId}`;
-    const storageRef = ref(this.storage, path);
+    const basePath = `ads/${documentId}/`;
+    const userDocRef = doc(this.firestore, basePath);
 
     try {
       // Get the current document data
-      const userDocRef = doc(this.firestore, path);
       const docSnapshot = await getDoc(userDocRef);
       const currentImages = docSnapshot.exists() ? docSnapshot.data()['images'] || [] : [];
 
       // Upload new images and update the document
       for (const photo of galleryPhotos) {
         try {
+          const photoPath = photo.path!;
+          const splitPath = photoPath.split('/');
+          const imageName = splitPath[splitPath.length - 1];
+
+          const imageRef = ref(this.storage, basePath + imageName); // Create a unique path for each image
+
           const base64Data = await this.readAsBase64(photo.path!);
 
           if (typeof base64Data === "string") {
-            await uploadString(storageRef, base64Data, 'base64', {contentType: 'image/png'});
+            await uploadString(imageRef, base64Data, 'base64');
+            const imageUrl = await getDownloadURL(imageRef);
+            currentImages.push(imageUrl);
           }
-
-
-          const imageUrl = await getDownloadURL(storageRef);
-          currentImages.push(imageUrl);
         } catch (e) {
           console.log("ERROR - ", e);
           return null;

@@ -35,6 +35,7 @@ export class AdService {
       measure: value.measure,
       description: value.description,
       ownerId: this.auth.currentUser?.uid,
+      images: []
     };
 
 

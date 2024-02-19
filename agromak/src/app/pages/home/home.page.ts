@@ -50,6 +50,7 @@ export class HomePage {
     this._adService.getAllAds().subscribe({
       next: (ads) => {
         this.ads = ads.docs.map((ad) => ad.data());
+        console.log(this.ads)
       },
       complete: async () => {
         if (event) {

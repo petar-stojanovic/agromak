@@ -135,8 +135,14 @@ export class AddProductModalComponent implements OnInit {
   }
 
 
-  submit() {
-    this._adService.createAd(this.form.value as CreateAd, this.images);
-    // return this.modalCtrl.dismiss(this.form.value, 'confirm');
+ async submit() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this._adService.createAd(this.form.value as CreateAd, this.images).then(async () => {
+      await this.modalCtrl.dismiss(this.form.value, 'confirm');
+    }).finally(async () => {
+        await loading.dismiss();
+    });
   }
 }
