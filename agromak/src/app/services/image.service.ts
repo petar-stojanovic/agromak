@@ -61,7 +61,7 @@ export class ImageService {
         const base64Data = await this.readAsBase64(photo.path!);
 
         if (typeof base64Data === "string") {
-          await uploadString(storageReference, base64Data, 'base64');
+          await uploadString(storageReference, base64Data, 'base64', {contentType: 'image/jpeg'});
           const imageUrl = await getDownloadURL(storageReference);
           imagesToUpload.push(imageUrl);
         }
