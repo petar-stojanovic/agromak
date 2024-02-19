@@ -64,14 +64,14 @@ export class RegisterPage {
 
   initForm() {
     this.form = this.fb.group({
-        // name: ['Test Testing', [Validators.required]],
-        // email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-        // password: ['Test123!', [Validators.required, Validators.minLength(8)]],
-        // confirmPassword: ['Test123!', [Validators.required]],
-        name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPassword: ['', [Validators.required]]
+        name: ['Test Testing', [Validators.required]],
+        email: ['test@test.com', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+        password: ['Test123!', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['Test123!', [Validators.required]],
+        // name: ['', [Validators.required]],
+        // email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
+        // password: ['', [Validators.required, Validators.minLength(8)]],
+        // confirmPassword: ['', [Validators.required]]
       },
       {
         validators: this.passwordMatchValidator
