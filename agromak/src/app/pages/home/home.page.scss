@@ -1,0 +1,11 @@
+.ad {
+  & ion-thumbnail {
+    --size: 5rem;
+    height: 100%;
+
+    & img {
+      object-fit: contain;
+    }
+  }
+}
+
