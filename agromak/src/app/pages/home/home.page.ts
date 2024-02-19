@@ -34,6 +34,7 @@ export class HomePage {
   ads: any;
 
   placeholderArray = new Array(5);
+  isLoading = true;
 
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
@@ -42,18 +43,24 @@ export class HomePage {
     this.getAllAds();
   }
 
-  async getAllAds(event?: RefresherCustomEvent) {
-    if (event) {
-      await Haptics.impact({style: ImpactStyle.Medium});
-      this.ads = [];
-    }
-    this._adService.getAllAds().subscribe((ads) => {
-      this.ads = ads.docs.map((ad) => ad.data());
-      console.log(ads)
-      if (event) {
-        event.target.complete();
+  getAllAds(event?: RefresherCustomEvent) {
+    this.isLoading = true;
+    this.ads = [];
+
+    this._adService.getAllAds().subscribe({
+      next: (ads) => {
+        this.ads = ads.docs.map((ad) => ad.data());
+      },
+      complete: async () => {
+        if (event) {
+          await Haptics.impact({style: ImpactStyle.Medium});
+          await event.target.complete();
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1500);
       }
-    });
+    })
   }
 
   async openModal() {
@@ -69,16 +76,5 @@ export class HomePage {
     }
   }
 
-  async handleRefresh(event: RefresherCustomEvent) {
-    await Haptics.impact({style: ImpactStyle.Medium});
-    this.ads = [];
 
-    this.getAllAds();
-
-    setTimeout(() => {
-      // Any calls to load data go here
-      this.getAllAds();
-      event.target.complete();
-    }, 2000);
-  }
 }

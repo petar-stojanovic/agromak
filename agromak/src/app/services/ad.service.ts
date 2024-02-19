@@ -44,12 +44,6 @@ export class AdService {
     if (images) {
       await this.imageService.uploadAdImages(adRef.id, images);
     }
-
-
-    // const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(`ads/${user.uid}`);
-    //
-    //
-    // return this.angularFirestore.collection('ads').add(value);
   }
 
 
