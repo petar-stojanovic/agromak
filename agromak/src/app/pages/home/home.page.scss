@@ -13,3 +13,10 @@ ion-thumbnail {
   }
 }
 
+ion-label {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}

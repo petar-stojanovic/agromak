@@ -2,7 +2,7 @@ import {Haptics, ImpactStyle} from '@capacitor/haptics';
 import {Component} from '@angular/core';
 import {
   IonButton,
-  IonContent,
+  IonContent, IonFab, IonFabButton,
   IonHeader,
   IonIcon,
   IonItem,
@@ -21,24 +21,26 @@ import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
 import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
+import {Ad} from "../../interfaces/ad";
+import {add} from "ionicons/icons";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab],
 })
 export class HomePage {
 
-  ads: any;
+  ads: Ad[] = [];
 
   placeholderArray = new Array(5);
   isLoading = true;
 
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
-    addIcons({})
+    addIcons({add})
     // this.openModal();
     this.getAllAds();
   }
@@ -49,7 +51,7 @@ export class HomePage {
 
     this._adService.getAllAds().subscribe({
       next: (ads) => {
-        this.ads = ads.docs.map((ad) => ad.data());
+        this.ads = ads.docs.map((ad) => ad.data()) as Ad[];
         console.log(this.ads)
       },
       complete: async () => {

@@ -34,7 +34,7 @@
 
       <ion-item class="ad" *ngFor="let ad of ads">
         <ion-thumbnail slot="start">
-          @if (ad.images && ad.images.length > 0) {
+          @if (ad.images.length > 0) {
             <img [src]="ad.images[0]" alt=""/>
           }
         </ion-thumbnail>
@@ -43,7 +43,9 @@
             <h2 class="">{{ ad.title }}</h2>
           </ion-text>
           <ion-text color="medium">
-            <p class="font-size-12">{{ ad.description }}</p>
+            <div style="text-align: right">
+              <p class="font-size-12">{{ ad.city }}</p>
+            </div>
           </ion-text>
         </ion-label>
       </ion-item>
@@ -53,7 +55,9 @@
   </ion-list>
 
 
-  <ion-button (click)="openModal()" color="primary" expand="block" shape="round">
-    Create New Ad
-  </ion-button>
+  <ion-fab (click)="openModal()" horizontal="end" slot="fixed" vertical="bottom">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
