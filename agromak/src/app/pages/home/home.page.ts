@@ -71,7 +71,8 @@ export class HomePage {
         }
         setTimeout(() => {
           this.isLoading = false;
-        }, 1500);
+        // }, 1500);
+        }, 100);
       }
     })
   }

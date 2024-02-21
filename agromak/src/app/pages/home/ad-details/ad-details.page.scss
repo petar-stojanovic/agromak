@@ -1,0 +1,12 @@
+img {
+  max-height: 100%;
+}
+
+swiper-container {
+  height: 20rem;
+  text-align: center;
+
+  & swiper-slide {
+    max-height: 100%;
+  }
+}

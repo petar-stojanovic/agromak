@@ -52,4 +52,8 @@ export class AdService {
   getAllAds(){
     return this.angularFirestore.collection('ads').get();
   }
+
+  getAdById(id: string) {
+    return this.angularFirestore.doc(`ads/${id}`).get();
+  }
 }

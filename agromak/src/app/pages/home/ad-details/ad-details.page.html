@@ -1,16 +1,23 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>app-details</ion-title>
+    <ion-title>ad-details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">app-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  @if (ad) {
+    <swiper-container #swiper
+                      pagination
+    >
+      @for (image of ad.images; track image) {
+        <swiper-slide>
+          <img [src]="image" alt="image">
+        </swiper-slide>
+      }
+    </swiper-container>
+  }
+
 </ion-content>
