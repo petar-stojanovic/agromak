@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-app-details',
+  selector: 'app-ad-details',
   templateUrl: './ad-details.page.html',
   styleUrls: ['./ad-details.page.scss'],
   standalone: true,

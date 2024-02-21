@@ -32,10 +32,13 @@
 
     } @else {
 
-      <ion-item class="ad" *ngFor="let ad of ads">
+      <ion-item class="ad ion-margin-vertical" *ngFor="let ad of ads" [routerLink]="['ad',ad.id, 'details']">
         <ion-thumbnail slot="start">
           @if (ad.images.length > 0) {
             <img [src]="ad.images[0]" alt=""/>
+          } @else {
+            <img src="assets/images/no-image.png" alt=""/>
+
           }
         </ion-thumbnail>
         <ion-label>

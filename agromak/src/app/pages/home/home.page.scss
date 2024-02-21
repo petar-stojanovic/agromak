@@ -9,6 +9,7 @@ ion-thumbnail {
 
     & img {
       object-fit: contain;
+      border: 1px solid var(--ion-color-medium-tint);
     }
   }
 }

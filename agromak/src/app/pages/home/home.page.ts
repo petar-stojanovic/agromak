@@ -2,13 +2,18 @@ import {Haptics, ImpactStyle} from '@capacitor/haptics';
 import {Component} from '@angular/core';
 import {
   IonButton,
-  IonContent, IonFab, IonFabButton,
+  IonContent,
+  IonFab,
+  IonFabButton,
   IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader, IonRefresher, IonRefresherContent, IonSkeletonText,
+  IonListHeader,
+  IonRefresher,
+  IonRefresherContent,
+  IonSkeletonText,
   IonText,
   IonThumbnail,
   IonTitle,
@@ -20,16 +25,16 @@ import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
-import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 import {Ad} from "../../interfaces/ad";
 import {add} from "ionicons/icons";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab, RouterLink],
 })
 export class HomePage {
 
@@ -51,7 +56,12 @@ export class HomePage {
 
     this._adService.getAllAds().subscribe({
       next: (ads) => {
-        this.ads = ads.docs.map((ad) => ad.data()) as Ad[];
+        this.ads = ads.docs.map((ad) => {
+          const data: any = ad.data();
+          const id = ad.id;
+          return {id, ...data} as Ad;
+        });
+
         console.log(this.ads)
       },
       complete: async () => {

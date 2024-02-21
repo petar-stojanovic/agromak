@@ -1,4 +1,5 @@
 export interface Ad {
+  id: string;
   buyOrSell: string;
   title: string;
   city: string;
