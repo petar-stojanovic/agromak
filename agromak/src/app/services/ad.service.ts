@@ -1,10 +1,7 @@
 import {inject, Injectable} from '@angular/core';
-import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Auth} from "@angular/fire/auth";
-import {Firestore} from "@angular/fire/firestore";
 import {Router} from "@angular/router";
-import {AuthService} from "./auth.service";
 import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../interfaces/create-ad";
 import {ImageService} from "./image.service";
@@ -15,10 +12,8 @@ import {ImageService} from "./image.service";
 export class AdService {
   private imageService = inject(ImageService);
 
-  constructor(private afAuth: AngularFireAuth,
-              private angularFirestore: AngularFirestore,
+  constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
-              private firestore: Firestore,
               private router: Router) {
   }
 
@@ -49,11 +44,20 @@ export class AdService {
   }
 
 
-  getAllAds(){
+  getAllAds() {
     return this.angularFirestore.collection('ads').get();
   }
 
   getAdById(id: string) {
     return this.angularFirestore.doc(`ads/${id}`).get();
   }
+
+
+  // private increment() {
+  //   const statsRef = this.angularFirestore.collection('ads').doc('--stats--');
+  //   statsRef.update({
+  //     count: FieldValue.increment(1)
+  //   })
+  //   return statsRef.get()
+  // }
 }
