@@ -3,8 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 import {AdService} from "../../../services/ad.service";
 import {IonicModule} from "@ionic/angular";
 import {Ad} from "../../../interfaces/ad";
-import {NgForOf, NgIf} from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-ad-details',
@@ -15,7 +16,8 @@ import Swiper from "swiper";
   imports: [
     IonicModule,
     NgForOf,
-    NgIf
+    NgIf,
+    DatePipe
   ]
 })
 export class AdDetailsPage implements OnInit {
@@ -36,8 +38,6 @@ export class AdDetailsPage implements OnInit {
 
     this._adService.getAdById(this.id).subscribe(it => {
       this.ad = it.data() as Ad;
-        this.swiper?.nativeElement.swiper.updateAutoHeight();
-      console.log(this.ad);
     });
   }
 

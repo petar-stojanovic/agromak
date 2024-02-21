@@ -1,3 +1,6 @@
+import firebase from "firebase/compat";
+import Timestamp = firebase.firestore.Timestamp;
+
 export interface Ad {
   id: string;
   buyOrSell: string;
@@ -11,5 +14,6 @@ export interface Ad {
   description: string;
   images: string[];
   ownerId: string;
-  uploadedAt: Date;
+  ownerName: string;
+  uploadedAt: Timestamp;
 }

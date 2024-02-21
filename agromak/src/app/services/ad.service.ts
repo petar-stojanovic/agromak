@@ -19,6 +19,7 @@ export class AdService {
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
 
+    const owner = this.auth.currentUser!;
     const data = {
       buyOrSell: value.buyOrSell,
       title: value.title,
@@ -29,7 +30,8 @@ export class AdService {
       quantity: value.quantity,
       measure: value.measure,
       description: value.description,
-      ownerId: this.auth.currentUser?.uid,
+      ownerId: owner.uid,
+      ownerName: owner.displayName,
       uploadedAt: new Date(),
       images: []
     };

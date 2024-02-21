@@ -9,6 +9,12 @@
 
 <ion-content class="ion-padding">
   @if (ad) {
+    <ion-text>
+      <h1>
+        {{ ad.title }}
+      </h1>
+    </ion-text>
+
     <swiper-container #swiper pagination class="ion-margin-vertical">
       @for (image of ad.images; track image) {
         <swiper-slide>
@@ -20,19 +26,41 @@
         </swiper-slide>
       }
     </swiper-container>
-
-    <ion-text>
-      <h1>
-        {{ ad.title }}
-      </h1>
-    </ion-text>
-    <ion-text color="primary">
-      {{ ad.price }} {{ad.currency}}
-    </ion-text>
     <ion-item-divider></ion-item-divider>
+
+
+    <ion-text color="primary">
+      <h2>
+        Price: {{ ad.price }} {{ ad.currency }}
+      </h2>
+    </ion-text>
+    <ion-text>
+      <h3>
+        Quantity: {{ ad.quantity }} {{ ad.measure }}
+      </h3>
+    </ion-text>
+
     <ion-text>
       <p>{{ ad.description }}</p>
     </ion-text>
+
+    <div class="flex justify-space-between">
+      <ion-text>
+        <p>{{ ad.phone }}</p>
+      </ion-text>
+      <ion-text>
+        <p class="font-weight-500">{{ ad.city }}</p>
+      </ion-text>
+    </div>
+
+    <ion-text>
+      <p>{{ ad.description }}</p>
+    </ion-text>
+
+    <ion-text>
+      <p>Date Uploaded: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</p>
+    </ion-text>
+
   }
 
 </ion-content>
