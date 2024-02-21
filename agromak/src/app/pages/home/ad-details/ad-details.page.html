@@ -3,15 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ ad?.buyOrSell }}</ion-title>
+    <ion-title *ngIf="ad">{{ ad.buyOrSell === "buy" ? "I AM BUYING" : "I AM SELLING" }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   @if (ad) {
-    <swiper-container #swiper
-                      pagination
-    >
+    <swiper-container #swiper pagination class="ion-margin-vertical">
       @for (image of ad.images; track image) {
         <swiper-slide>
           <img [src]="image" alt="image">
@@ -22,6 +20,19 @@
         </swiper-slide>
       }
     </swiper-container>
+
+    <ion-text>
+      <h1>
+        {{ ad.title }}
+      </h1>
+    </ion-text>
+    <ion-text color="primary">
+      {{ ad.price }} {{ad.currency}}
+    </ion-text>
+    <ion-item-divider></ion-item-divider>
+    <ion-text>
+      <p>{{ ad.description }}</p>
+    </ion-text>
   }
 
 </ion-content>

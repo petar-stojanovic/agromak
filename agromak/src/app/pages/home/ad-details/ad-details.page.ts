@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AdService} from "../../../services/ad.service";
 import {IonicModule} from "@ionic/angular";
 import {Ad} from "../../../interfaces/ad";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 
 @Component({
@@ -14,7 +14,8 @@ import Swiper from "swiper";
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     IonicModule,
-    NgForOf
+    NgForOf,
+    NgIf
   ]
 })
 export class AdDetailsPage implements OnInit {
