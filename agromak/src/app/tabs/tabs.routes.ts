@@ -8,8 +8,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () =>
-          import('../pages/home/home.page').then((m) => m.HomePage),
+        loadComponent: () => import('../pages/home/home.page').then((m) => m.HomePage),
+        children: [
+          {
+            path: 'ad-details/:id',
+            loadComponent: () => import('../pages/home/app-details/ad-details.page').then(m => m.AdDetailsPage)
+          }
+        ]
       },
       {
         path: 'tab2',
