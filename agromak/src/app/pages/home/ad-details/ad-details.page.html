@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>ad-details</ion-title>
+    <ion-title>{{ ad?.buyOrSell }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +15,10 @@
       @for (image of ad.images; track image) {
         <swiper-slide>
           <img [src]="image" alt="image">
+        </swiper-slide>
+      } @empty {
+        <swiper-slide>
+          <img src="assets/images/no-image.png" alt="placeholder"/>
         </swiper-slide>
       }
     </swiper-container>

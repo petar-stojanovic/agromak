@@ -40,7 +40,7 @@ export class HomePage {
 
   ads: Ad[] = [];
 
-  placeholderArray = new Array(5);
+  placeholderArray = new Array(6);
   isLoading = true;
 
   constructor(private modalCtrl: ModalController,
@@ -71,8 +71,8 @@ export class HomePage {
         }
         setTimeout(() => {
           this.isLoading = false;
-        // }, 1500);
-        }, 100);
+        }, 1500);
+        // }, 100);
       }
     })
   }
