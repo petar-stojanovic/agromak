@@ -35,3 +35,26 @@ h2 {
 .font-weight-500 {
   font-weight: 500;
 }
+
+.subtitle {
+  font-size: 0.75rem;
+  margin: 5px 0 0 0;
+  font-weight: 500;
+}
+
+
+.background-light {
+  --ion-background-color: #F9EFE0;
+  border-radius: 1rem;
+  border: 1px solid var(--ion-color-medium-tint);
+}
+
+ion-list-header {
+  font-size: 1.1rem;
+  font-weight: 500;
+  --color: var(--ion-color-medium-tint);
+}
+
+.w-100 {
+  width: 100%;
+}

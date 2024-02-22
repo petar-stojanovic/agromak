@@ -4,6 +4,7 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="ad">{{ ad.buyOrSell === "buy" ? "I AM BUYING" : "I AM SELLING" }}</ion-title>
+    <ion-title *ngIf="ad" class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -44,22 +45,29 @@
       <p>{{ ad.description }}</p>
     </ion-text>
 
-    <div class="flex justify-space-between">
-      <ion-text>
-        <p>{{ ad.phone }}</p>
-      </ion-text>
-      <ion-text>
-        <p class="font-weight-500">{{ ad.city }}</p>
-      </ion-text>
-    </div>
 
-    <ion-text>
-      <p>{{ ad.description }}</p>
-    </ion-text>
+    <ion-list class="background-light ion-margin-vertical">
+      <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
 
-    <ion-text>
-      <p>Date Uploaded: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</p>
-    </ion-text>
+      <ion-item lines="none" class="flex">
+        <ion-text class="ion-margin-vertical">
+          <ion-icon name="person-outline"></ion-icon>
+          <span class="font-weight-500">{{ ad.ownerName }}</span>
+        </ion-text>
+
+        <div class="flex w-100 justify-space-between ion-no-padding">
+          <ion-text>
+            <ion-icon name="call-outline"></ion-icon>
+            <span>{{ ad.phone }}</span>
+          </ion-text>
+
+          <ion-text>
+            <span class="font-weight-500">{{ ad.city }}</span>
+          </ion-text>
+        </div>
+      </ion-item>
+    </ion-list>
+
 
   }
 

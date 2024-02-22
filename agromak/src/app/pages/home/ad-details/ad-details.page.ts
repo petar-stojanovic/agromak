@@ -6,6 +6,9 @@ import {Ad} from "../../../interfaces/ad";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 import firebase from "firebase/compat";
+import {IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonText, IonThumbnail} from "@ionic/angular/standalone";
+import {addIcons} from "ionicons";
+import {callOutline, personOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-ad-details',
@@ -17,7 +20,7 @@ import firebase from "firebase/compat";
     IonicModule,
     NgForOf,
     NgIf,
-    DatePipe
+    DatePipe,
   ]
 })
 export class AdDetailsPage implements OnInit {
@@ -31,6 +34,7 @@ export class AdDetailsPage implements OnInit {
   constructor(private _adService: AdService,
               private route: ActivatedRoute,
   ) {
+    addIcons({personOutline, callOutline})
   }
 
   ngOnInit() {

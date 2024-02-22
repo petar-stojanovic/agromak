@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../interfaces/create-ad";
 import {ImageService} from "./image.service";
+import {AuthService} from "./auth.service";
+import {User} from "../interfaces/user";
 
 @Injectable({
   providedIn: 'root'
@@ -14,35 +16,45 @@ export class AdService {
 
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
+              private _authService: AuthService,
               private router: Router) {
   }
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
+    this._authService.user$
+      .subscribe({
+          next: async (user) => {
+            if (user === null) {
+              return;
+            }
+            const owner = user;
 
-    const owner = this.auth.currentUser!;
-    const data = {
-      buyOrSell: value.buyOrSell,
-      title: value.title,
-      city: value.city,
-      price: value.price,
-      currency: value.currency,
-      phone: value.phone,
-      quantity: value.quantity,
-      measure: value.measure,
-      description: value.description,
-      ownerId: owner.uid,
-      ownerName: owner.displayName,
-      uploadedAt: new Date(),
-      images: []
-    };
+            const data = {
+              buyOrSell: value.buyOrSell,
+              title: value.title,
+              city: value.city,
+              price: value.price,
+              currency: value.currency,
+              phone: value.phone,
+              quantity: value.quantity,
+              measure: value.measure,
+              description: value.description,
+              ownerId: owner.uid,
+              ownerName: owner.displayName,
+              uploadedAt: new Date(),
+              images: []
+            };
 
 
-    const adRef = await this.angularFirestore.collection('ads').add(data);
-    console.log(adRef.id);
+            const adRef = await this.angularFirestore.collection('ads').add(data);
+            console.log(adRef.id);
 
-    if (images) {
-      await this.imageService.uploadAdImages(adRef.id, images);
-    }
+            if (images) {
+              await this.imageService.uploadAdImages(adRef.id, images);
+            }
+          }
+        }
+      );
   }
 
 
