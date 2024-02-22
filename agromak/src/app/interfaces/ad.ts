@@ -14,6 +14,6 @@ export interface Ad {
   description: string;
   images: string[];
   ownerId: string;
-  ownerName: string;
+  ownerName?: string;
   uploadedAt: Timestamp;
 }

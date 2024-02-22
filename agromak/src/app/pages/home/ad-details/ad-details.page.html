@@ -50,21 +50,19 @@
       <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
 
       <ion-item lines="none" class="flex">
-        <ion-text class="ion-margin-vertical">
+        <ion-text class="ion-margin-vertical flex ion-align-items-center">
           <ion-icon name="person-outline"></ion-icon>
-          <span class="font-weight-500">{{ ad.ownerName }}</span>
+          <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
         </ion-text>
 
-        <div class="flex w-100 justify-space-between ion-no-padding">
-          <ion-text>
+        <ion-text class="flex w-100 justify-space-between ion-no-padding">
+          <div class="flex ion-align-items-center">
             <ion-icon name="call-outline"></ion-icon>
             <span>{{ ad.phone }}</span>
-          </ion-text>
+          </div>
 
-          <ion-text>
-            <span class="font-weight-500">{{ ad.city }}</span>
-          </ion-text>
-        </div>
+          <span class="font-weight-500">{{ ad.city }}</span>
+        </ion-text>
       </ion-item>
     </ion-list>
 
