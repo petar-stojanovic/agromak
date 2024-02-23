@@ -42,9 +42,8 @@ h2 {
   font-weight: 500;
 }
 
-
 .background-light {
-  --ion-background-color: #F9EFE0;
+  --ion-background-color: #bbd4ff;
   border-radius: 1rem;
   border: 1px solid var(--ion-color-medium-tint);
 }
@@ -52,7 +51,6 @@ h2 {
 ion-list-header {
   font-size: 1.1rem;
   font-weight: 500;
-  --color: var(--ion-color-medium-tint);
 }
 
 .w-100 {

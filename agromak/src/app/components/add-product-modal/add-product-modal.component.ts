@@ -203,7 +203,6 @@ export class AddProductModalComponent implements OnInit {
   }
 
   getImagePath(item: string): string {
-    console.log(item);
     return `assets/images/crops/${item}.png`;
   }
 

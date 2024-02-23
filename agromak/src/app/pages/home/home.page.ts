@@ -46,7 +46,7 @@ export class HomePage {
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
     addIcons({add})
-    this.openModal();
+    // this.openModal();
     this.getAllAds();
   }
 
