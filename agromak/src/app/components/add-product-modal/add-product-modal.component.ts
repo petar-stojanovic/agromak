@@ -1,5 +1,4 @@
-import {register} from 'swiper/element/bundle';
-import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {
   AlertController,
   IonButton,
@@ -20,7 +19,8 @@ import {
   IonText,
   IonTextarea,
   IonTitle,
-  IonToolbar, LoadingController,
+  IonToolbar,
+  LoadingController,
   ModalController
 } from "@ionic/angular/standalone";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -30,6 +30,12 @@ import Swiper from "swiper";
 import {ImageService} from "../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../../interfaces/create-ad";
+import {agriculturalCategories} from "../../shared/agricultural-categories";
+
+interface AgriculturalCategories {
+  [key: string]: string[];
+}
+
 
 @Component({
   selector: 'app-add-product-modal',
@@ -71,6 +77,55 @@ export class AddProductModalComponent implements OnInit {
 
   @ViewChild('swiper')
   swiper?: ElementRef<{ swiper: Swiper }>;
+
+  agriculturalCategories: AgriculturalCategories = {
+    "Cereal Grains": [
+      "Wheat",
+      "Corn",
+      "Rye",
+      "Barley",
+      "Oats"
+    ],
+    "Fruits": [
+      "Grapes",
+      "Apples",
+      "Pears",
+      "Peaches",
+      "Plums",
+      "Cherries"
+    ],
+    "Vegetables": [
+      "Potato",
+      "Tomato",
+      "Cucumber",
+      "Carrot",
+      "Onion",
+      "Garlic",
+      "Cabbage",
+      "Lettuce",
+      "Pepper",
+      "Eggplant",
+      "Beans",
+      "Peas"
+    ],
+    "Tropical and Industrial Crops": [
+      "Rice",
+      "Tobacco",
+      "Sunflower",
+      "Cotton",
+      "Opium",
+      "Sesame"
+    ],
+    "Nuts": [
+      "Almond",
+      "Peanut",
+      "Walnut",
+      "Hazelnut",
+      "Pistachio",
+    ],
+  };
+
+  protected readonly Object = Object;
 
 
   constructor(private modalCtrl: ModalController,
@@ -145,4 +200,9 @@ export class AddProductModalComponent implements OnInit {
         await loading.dismiss();
     });
   }
+
+  getImagePath(item: string): string {
+    return `assets/images/crops/${item}.png`; // Assuming images are stored in the assets folder with lowercase names
+  }
+
 }

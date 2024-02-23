@@ -17,6 +17,21 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <swiper-container #swiper>
+
+      <swiper-slide>
+
+        <div *ngFor="let category of Object.keys(agriculturalCategories)">
+          <h2>{{ category }}</h2>
+          <ul>
+            <li *ngFor="let item of agriculturalCategories[category]">
+              <img [src]="getImagePath(item)" alt="{{ item }}" />
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+
+
+      </swiper-slide>
       <!-- 1 -->
       <swiper-slide>
         <ion-item class="ion-margin-vertical">
