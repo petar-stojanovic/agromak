@@ -207,8 +207,12 @@ export class AddProductModalComponent implements OnInit {
     return `assets/images/crops/${item}.png`;
   }
 
-  isSelected(category: string): boolean {
+  isCategorySelected(category: string): boolean {
     return this.form.get('category')?.value === category;
+  }
+
+  isSubcategorySelected(category: string): boolean {
+    return this.form.get('subcategory')?.value === category;
   }
 
 

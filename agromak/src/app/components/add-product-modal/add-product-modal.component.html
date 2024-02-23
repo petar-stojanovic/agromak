@@ -20,23 +20,12 @@
 
       <swiper-slide>
 
-        <ion-button class="ion-margin-top"
-                    [disabled]="form.controls['category'].invalid"
-                    (click)="goNext()" expand="full" shape="round">Next
-        </ion-button>
-        <!--        <div *ngFor="let category of Object.keys(agriculturalCategories)">-->
-        <!--          <img [src]="getImagePath(category)" alt="{{ category }}"/>-->
-        <!--          <h2>{{ category }}</h2>-->
-
-        <!--        </div>-->
-
-
         <ion-radio-group formControlName="category" [allowEmptySelection]="true">
           <ion-grid>
             <ion-row class="ion-padding">
               <ion-col size="6" *ngFor="let category of Object.keys(agriculturalCategories)">
                 <div class="text-center ion-padding font-weight-500 font-size-12 fruit"
-                     [class.selected]="isSelected(category)">
+                     [class.selected]="isCategorySelected(category)">
                   <ion-radio [value]="category"
                              [style.background-image]="'url(\'' + getImagePath(category) + '\')'"></ion-radio>
                   {{ category }}
@@ -46,10 +35,29 @@
           </ion-grid>
         </ion-radio-group>
 
+        <ion-button class="ion-margin-top"
+                    [disabled]="form.controls['category'].invalid"
+                    (click)="goNext()" expand="full" shape="round">Next
+        </ion-button>
 
       </swiper-slide>
 
       <swiper-slide>
+
+        <ion-radio-group formControlName="subcategory" [allowEmptySelection]="true">
+          <ion-grid>
+            <ion-row class="ion-padding">
+              <ion-col size="6" *ngFor="let subcategory of agriculturalCategories[form.get('category')?.value]">
+                <div class="text-center ion-padding font-weight-500 font-size-12 fruit"
+                     [class.selected]="isSubcategorySelected(subcategory)">
+                  <ion-radio [value]="subcategory"
+                             [style.background-image]="'url(\'' + getImagePath(subcategory) + '\')'"></ion-radio>
+                  {{ subcategory }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-radio-group>
 
 
         <ion-grid class="ion-no-padding">
@@ -60,6 +68,7 @@
 
             <ion-col size="6">
               <ion-button (click)="goNext()"
+                          [disabled]="form.controls['subcategory'].invalid"
                           class="ion-margin-top" expand="full" shape="round">Next
               </ion-button>
             </ion-col>
@@ -243,10 +252,6 @@
 
       </swiper-slide>
     </swiper-container>
-
-
-    <!-- Add image upload component based on your requirements -->
-
 
   </form>
 
