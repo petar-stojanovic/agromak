@@ -30,7 +30,6 @@ import Swiper from "swiper";
 import {ImageService} from "../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../../interfaces/create-ad";
-import {agriculturalCategories} from "../../shared/agricultural-categories";
 
 interface AgriculturalCategories {
   [key: string]: string[];
@@ -133,7 +132,8 @@ export class AddProductModalComponent implements OnInit {
               private alertController: AlertController,
               private loadingController: LoadingController) {
     this.form = new FormGroup({
-
+      category: new FormControl('', Validators.required),
+      subcategory: new FormControl('', Validators.required),
       buyOrSell: new FormControl('buy', Validators.required),
       title: new FormControl('Prodavam Pcenka vo zrno - Продавам Пченка во зрно', Validators.required),
       city: new FormControl('Kumanovo', Validators.required),
@@ -155,6 +155,7 @@ export class AddProductModalComponent implements OnInit {
       // description: new FormControl('', Validators.required),
       // images: new FormControl([]),
     });
+    console.log(Object.keys(this.agriculturalCategories))
   }
 
   ngOnInit() {
@@ -202,7 +203,13 @@ export class AddProductModalComponent implements OnInit {
   }
 
   getImagePath(item: string): string {
-    return `assets/images/crops/${item}.png`; // Assuming images are stored in the assets folder with lowercase names
+    console.log(item);
+    return `assets/images/crops/${item}.png`;
   }
+
+  isSelected(category: string): boolean {
+    return this.form.get('category')?.value === category;
+  }
+
 
 }

@@ -43,13 +43,21 @@ ion-toolbar {
 
 .fruit {
   border: 1px solid var(--ion-color-medium-tint);
-  min-height: 12rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
-  img{
-    width: 100%;
-    height: 100%;
+  & ion-radio {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 10rem;
+    --color: transparent;
+    --color-checked: transparent;
+  }
+
+  &.selected {
+    border-color: var(--ion-color-primary);
+    border-width: 2px;
   }
 }

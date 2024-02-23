@@ -21,6 +21,7 @@
       <swiper-slide>
 
         <ion-button class="ion-margin-top"
+                    [disabled]="form.controls['category'].invalid"
                     (click)="goNext()" expand="full" shape="round">Next
         </ion-button>
         <!--        <div *ngFor="let category of Object.keys(agriculturalCategories)">-->
@@ -30,25 +31,25 @@
         <!--        </div>-->
 
 
-        <ion-grid>
-          <ion-row class="ion-padding">
-            <ion-col size="6" *ngFor="let category of Object.keys(agriculturalCategories)">
-              <div class="text-center ion-padding font-weight-500 font-size-12 fruit">
-                <img [src]="getImagePath(category)" alt="{{ category }}"/>
-                {{ category }}
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <ion-radio-group formControlName="category" [allowEmptySelection]="true">
+          <ion-grid>
+            <ion-row class="ion-padding">
+              <ion-col size="6" *ngFor="let category of Object.keys(agriculturalCategories)">
+                <div class="text-center ion-padding font-weight-500 font-size-12 fruit"
+                     [class.selected]="isSelected(category)">
+                  <ion-radio [value]="category"
+                             [style.background-image]="'url(\'' + getImagePath(category) + '\')'"></ion-radio>
+                  {{ category }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-radio-group>
 
 
       </swiper-slide>
 
       <swiper-slide>
-
-        <ion-button class="ion-margin-top"
-                    (click)="goNext()" expand="full" shape="round">Next
-        </ion-button>
 
 
         <ion-grid class="ion-no-padding">
@@ -59,7 +60,6 @@
 
             <ion-col size="6">
               <ion-button (click)="goNext()"
-                          [disabled]="form.controls['title'].invalid || form.controls['description'].invalid"
                           class="ion-margin-top" expand="full" shape="round">Next
               </ion-button>
             </ion-col>
