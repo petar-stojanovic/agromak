@@ -30,6 +30,8 @@ export class AdService {
             const owner = user;
 
             const data = {
+              category: value.category,
+              subcategory: value.subcategory,
               buyOrSell: value.buyOrSell,
               title: value.title,
               city: value.city,

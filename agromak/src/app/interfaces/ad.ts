@@ -12,6 +12,8 @@ export interface Ad {
   quantity: number;
   measure: string;
   description: string;
+  category: string;
+  subcategory: string;
   images: string[];
   ownerId: string;
   ownerName?: string;

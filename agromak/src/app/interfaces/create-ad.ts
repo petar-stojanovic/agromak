@@ -8,4 +8,6 @@ export interface CreateAd {
   quantity: number;
   measure: string;
   description: string;
+  category: string;
+  subcategory: string;
 }
