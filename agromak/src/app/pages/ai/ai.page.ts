@@ -9,11 +9,11 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
-import {environment} from "../../../environments/environment";
 import {GoogleAiService} from "../../services/google-ai.service";
 import {Camera, CameraResultType, CameraSource, GalleryPhoto} from "@capacitor/camera";
 import {NgForOf, NgIf} from "@angular/common";
 import {ImageService} from "../../services/image.service";
+import {OpenAiService} from "../../services/open-ai.service";
 
 @Component({
   selector: 'app-ai',
@@ -24,9 +24,11 @@ import {ImageService} from "../../services/image.service";
 })
 export class AiPage {
   images: GalleryPhoto[] = [];
-  selectedImages: any[] = [];
+  googleSelectedImages: any[] = [];
+  openAISelectedImages: string[] = [];
 
   constructor(private _googleAIService: GoogleAiService,
+              private _openAIService: OpenAiService,
               private _imageService: ImageService) {
   }
 
@@ -43,20 +45,29 @@ export class AiPage {
 
       for (const photo of images.photos) {
         const base64Data = await this._imageService.readAsBase64(photo.path!);
-        this.selectedImages.push({
+        this.googleSelectedImages.push({
           inlineData: {data: base64Data, mimeType: 'image/jpeg'}
         });
+        if (typeof base64Data === 'string') {
+          this.openAISelectedImages.push(base64Data);
+        }
       }
 
-       console.log(this.selectedImages);
+      console.log(this.googleSelectedImages);
     }
   }
 
-  async generateContent() {
+  async generateContentWithGoogle() {
     const prompt = "What's different between these pictures?";
-    const text = await this._googleAIService.generateContent(prompt, this.selectedImages);
+    const text = await this._googleAIService.generateContent(prompt, this.googleSelectedImages);
     console.log(text);
   }
 
 
+  generateContentWithOpenAI() {
+    this._openAIService.generateContent('What\'s different between these pictures?', this.openAISelectedImages)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 }
