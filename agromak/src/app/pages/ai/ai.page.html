@@ -6,14 +6,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
   <div class="h-100 flex flex-direction-column justify-space-between">
+
+    <ion-text (click)="uploadImages()">
+      <div class="image-box">
+        <p>
+          Upload Images
+        </p>
+      </div>
+    </ion-text>
+
+
+    <ion-grid *ngIf="images">
+      <ion-row>
+        <ion-col size="4" *ngFor="let img of images">
+          <img [src]="img.webPath" alt="image" class="img-fluid">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     <div>
 
     </div>
-    <ion-button class="ion-margin-top" (click)="uploadPhoto()" expand="full" shape="round">
-      Upload
+    <ion-button class="ion-margin-top" (click)="generateContent()" expand="full" shape="round">
+      Submit
     </ion-button>
   </div>
 

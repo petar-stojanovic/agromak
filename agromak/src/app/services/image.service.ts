@@ -83,10 +83,11 @@ export class ImageService {
     return parts[parts.length - 1]; // Get the last part of the path which is the image name
   }
 
-  private async readAsBase64(path: string) {
+  async readAsBase64(path: string) {
     const file = await Filesystem.readFile({
       path: path
     });
+
 
     return file.data
   }
