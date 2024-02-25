@@ -8,17 +8,17 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./pages/auth/login/login.page').then(m => m.LoginPage),
+    loadComponent: () => import('./shared/auth/login/login.page').then(m => m.LoginPage),
     ...canActivate(redirectLoggedInToHome)
   },
   {
     path: 'register',
-    loadComponent: () => import('./pages/auth/register/register.page').then(m => m.RegisterPage),
+    loadComponent: () => import('./shared/auth/register/register.page').then(m => m.RegisterPage),
     ...canActivate(redirectLoggedInToHome)
   },
   {
     path: 'landing',
-    loadComponent: () => import('./pages/auth/landing/landing.page').then(m => m.LandingPage),
+    loadComponent: () => import('./shared/auth/landing/landing.page').then(m => m.LandingPage),
     ...canActivate(redirectLoggedInToHome)
   },
   {
