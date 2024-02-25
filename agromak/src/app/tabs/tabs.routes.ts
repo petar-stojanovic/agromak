@@ -22,7 +22,7 @@ export const routes: Routes = [
       {
         path: 'tab2',
         loadComponent: () =>
-          import('../pages/tab2/tab2.page').then((m) => m.Tab2Page),
+          import('../pages/ai/ai.page').then((m) => m.AiPage),
       },
       {
         path: 'profile',
