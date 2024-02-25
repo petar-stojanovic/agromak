@@ -24,3 +24,44 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+.flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-weight-bold {
+  font-weight: bold !important;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+img {
+  max-height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
