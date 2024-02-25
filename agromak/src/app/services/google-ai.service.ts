@@ -10,7 +10,7 @@ export class GoogleAiService {
   genAI: GoogleGenerativeAI;
 
   constructor() {
-    this.genAI = new GoogleGenerativeAI(environment.API_KEY);
+    this.genAI = new GoogleGenerativeAI(environment.GOOGLE_API_KEY);
   }
 
   async generateContent(prompt: string, imageParts: any[]): Promise<string> {

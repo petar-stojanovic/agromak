@@ -9,5 +9,6 @@ export const environment = {
     appId: "1:585229624701:web:be931deaeab5e8bbab9814",
     measurementId: "G-F9MMC2YPZD"
   },
-  // API_KEY: process.env["GOOGLE_AI_API_KEY"]
+  GOOGLE_API_KEY: "AIzaSyDSu35Imu8dpeG_Ryllp7QXmLc8U9JbYU0",
+  OPEN_AI_API_KEY: "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"
 };
