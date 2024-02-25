@@ -17,7 +17,7 @@ import {
 import {Router, RouterLink} from "@angular/router";
 import {addIcons} from "ionicons";
 import {eye, eyeOff, lockClosed, logoGoogle, mail, person} from "ionicons/icons";
-import {AuthService} from "../../../services/auth.service";
+import {AuthService} from "../../../../services/auth.service";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
 

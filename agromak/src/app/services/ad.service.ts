@@ -3,10 +3,10 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Auth} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {GalleryPhoto} from "@capacitor/camera";
-import {CreateAd} from "../interfaces/create-ad";
+import {CreateAd} from "../shared/interfaces/create-ad";
 import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
-import {User} from "../interfaces/user";
+import {User} from "../shared/interfaces/user";
 
 @Injectable({
   providedIn: 'root'

@@ -29,7 +29,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 import {ImageService} from "../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
-import {CreateAd} from "../../interfaces/create-ad";
+import {CreateAd} from "../../shared/interfaces/create-ad";
 
 interface AgriculturalCategories {
   [key: string]: string[];

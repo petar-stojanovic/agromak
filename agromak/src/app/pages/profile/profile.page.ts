@@ -25,7 +25,7 @@ import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
-import {User} from "../../interfaces/user";
+import {User} from "../../shared/interfaces/user";
 import {CommonModule} from "@angular/common";
 import {finalize} from "rxjs";
 

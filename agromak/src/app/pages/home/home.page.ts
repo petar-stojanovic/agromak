@@ -25,7 +25,7 @@ import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
-import {Ad} from "../../interfaces/ad";
+import {Ad} from "../../shared/interfaces/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
 

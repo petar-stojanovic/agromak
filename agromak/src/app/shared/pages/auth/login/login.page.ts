@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {addIcons} from "ionicons";
 import {eye, eyeOff, lockClosed, logoGoogle, mail, personOutline} from "ionicons/icons";
-import {AuthService} from "../../../services/auth.service";
+import {AuthService} from "../../../../services/auth.service";
 import {
   AlertController,
   IonButton,
