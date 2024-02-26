@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -49,5 +49,27 @@ export class OpenAiService {
       }
     });
 
+  }
+
+  generateContentWithImaga(image: string) {
+    const url = `https://api.imagga.com/v2/tags`;
+
+    const credentials = btoa('acc_11d962b34693928:35810b474956ab3d43b59e798e58a99f');
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + credentials
+    });
+
+    const params = new HttpParams({
+      fromObject: {
+        'image_base64': image
+      }
+    });
+
+    console.log(credentials);
+
+    return this.http.get<any>(url,{
+      headers: headers,
+      params: params
+    });
   }
 }
