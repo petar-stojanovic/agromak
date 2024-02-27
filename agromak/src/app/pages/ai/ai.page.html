@@ -34,7 +34,8 @@
 
     </div>
 
-    <ion-button class="ion-margin-top" (click)="generateContentWithOpenAI()" expand="full" shape="round">
+    <ion-button class="ion-margin-top" (click)="generateContentWithOpenAI()" [disabled]="!compressedImage" expand="full"
+                shape="round">
       OpenAI
     </ion-button>
 

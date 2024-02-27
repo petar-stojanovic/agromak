@@ -93,7 +93,7 @@ export class ImageService {
 
   createFileFromBase64(base64: string): File {
     const imageBlob = this.dataURItoBlob(base64);
-    const imageName = 'name.png';
+    const imageName = 'image';
     return new File([imageBlob], imageName, {type: 'image/jpeg'});
   }
 

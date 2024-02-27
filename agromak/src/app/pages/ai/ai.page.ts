@@ -67,7 +67,7 @@ export class AiPage {
 
 
   generateContentWithOpenAI() {
-    this._openAIService.generateContent('What\'s in this picture?', this.compressedImage!)
+    this._openAIService.generateContent('What\'s in this image?', this.compressedImage!)
       .subscribe((response) => {
         console.log(response);
       });

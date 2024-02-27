@@ -11,8 +11,8 @@ export class OpenAiService {
   }
 
 
-  generateContent(prompt: string, imageParts: string) {
-    // "model": "gpt-4-0125-preview",
+
+  generateContent(prompt: string, base64image: string) {
     const payload = {
       "model": "gpt-4-vision-preview",
       "messages": [
@@ -26,29 +26,24 @@ export class OpenAiService {
             {
               "type": "image_url",
               "image_url": {
-                "url": `data:image/jpeg;base64,${imageParts[0]}`
+                "url": `${base64image}`
               }
             },
-            {
-              "type": "image_url",
-              "image_url": {
-                "url": `data:image/jpeg;base64,${imageParts[1]}`
-              }
-            }
           ]
         }
       ],
       "max_tokens": 300
     }
 
-
-    return this.http.post<any>('https://api.openai.com/v1/completions', payload, {
+    console.log(payload)
+    console.log(prompt)
+    console.log(base64image)
+    return this.http.post<any>('https://api.openai.com/v1/chat/completions', payload, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${environment.OPEN_AI_API_KEY}`,
       }
     });
-
   }
 
   generateContentWithImaga(image: string) {
