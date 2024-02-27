@@ -18,6 +18,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {ImageService} from "../../services/image.service";
 import {OpenAiService} from "../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
+import {AiImageResponse} from "../../shared/interfaces/ai-image-response";
 
 @Component({
   selector: 'app-ai',
@@ -67,8 +68,8 @@ export class AiPage {
 
 
   generateContentWithOpenAI() {
-    this._openAIService.generateContent('What\'s in this image?', this.compressedImage!)
-      .subscribe((response) => {
+    this._openAIService.generateContent("What's in this image? Write a description in English and then translate it into Macedonian.", this.compressedImage!)
+      .subscribe((response: AiImageResponse)  => {
         console.log(response);
       });
   }
