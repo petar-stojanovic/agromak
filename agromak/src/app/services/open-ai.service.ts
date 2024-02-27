@@ -41,7 +41,7 @@ export class OpenAiService {
     return this.http.post<any>('https://api.openai.com/v1/chat/completions', payload, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${environment.OPEN_AI_API_KEY}
+        'Authorization': `Bearer ${environment.OPEN_AI_API_KEY}`
       }
     });
   }
