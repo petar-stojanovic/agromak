@@ -5,10 +5,17 @@ import {IonicModule} from "@ionic/angular";
 import {Ad} from "../../../shared/interfaces/ad";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
-import firebase from "firebase/compat";
-import {IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonText, IonThumbnail} from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
 import {callOutline, personOutline} from "ionicons/icons";
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader, IonIcon, IonItem, IonItemDivider, IonList, IonListHeader,
+  IonText,
+  IonTitle,
+  IonToolbar
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-ad-details',
@@ -17,10 +24,21 @@ import {callOutline, personOutline} from "ionicons/icons";
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    IonicModule,
     NgForOf,
     NgIf,
     DatePipe,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
+    IonContent,
+    IonTitle,
+    IonText,
+    IonItemDivider,
+    IonList,
+    IonListHeader,
+    IonItem,
+    IonIcon,
   ]
 })
 export class AdDetailsPage implements OnInit {
