@@ -9,7 +9,7 @@
 <ion-content class="ion-padding">
   <div class="h-100 flex flex-direction-column justify-space-between">
 
-    <ion-text (click)="uploadImages()">
+    <ion-text (click)="uploadImage()">
       <div class="image-box">
         <p>
           Upload Images
@@ -18,14 +18,18 @@
     </ion-text>
 
 
-    <ion-grid *ngIf="images">
+    <ion-grid class="ion-no-padding">
       <ion-row>
-        <ion-col size="4" *ngFor="let img of images">
-          <img [src]="img.webPath" alt="image" class="img-fluid">
+        <ion-col size="6">
+          <img *ngIf="image" [src]="'data:image/jpeg;base64,'+image.base64String" alt="image" class="img-fluid">
+        </ion-col>
+
+        <ion-col size="6">
+          <img *ngIf="compressedImage" [src]="compressedImage" alt="image" class="img-fluid">
+
         </ion-col>
       </ion-row>
     </ion-grid>
-
     <div>
 
     </div>
