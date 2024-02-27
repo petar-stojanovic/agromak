@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
   <div class="h-100 flex flex-direction-column justify-space-between">
 
     <ion-text (click)="uploadImage()">
@@ -42,3 +42,19 @@
   </div>
 
 </ion-content>
+<ion-footer class="ion-padding flex ion-align-items-center">
+  <!--  <ion-input type="text" placeholder="Start typing here to chat..."></ion-input>-->
+
+  <ion-icon name="add-circle-outline"></ion-icon>
+  <ion-item class="roundedInput">
+    <ion-input
+    placeholder="Start typing here to chat..."
+    >
+
+      <ion-button fill="clear" slot="end" aria-label="Send">
+        <ion-icon name="send-outline" slot="icon-only" aria-hidden="true"></ion-icon>
+      </ion-button>
+
+    </ion-input>
+  </ion-item>
+</ion-footer>

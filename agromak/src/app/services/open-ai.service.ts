@@ -45,7 +45,6 @@ export class OpenAiService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${environment.OPEN_AI_API_KEY}`,
-
       }
     });
   }
