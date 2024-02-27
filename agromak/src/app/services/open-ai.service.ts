@@ -11,7 +11,7 @@ export class OpenAiService {
   }
 
 
-  generateContent(prompt: string, imageParts: string[]) {
+  generateContent(prompt: string, imageParts: string) {
     // "model": "gpt-4-0125-preview",
     const payload = {
       "model": "gpt-4-vision-preview",

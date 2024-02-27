@@ -28,7 +28,7 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 })
 export class AiPage {
   image: Photo | null = null;
-  compressedImage: any;
+  compressedImage: string | null = null;
 
   constructor(private _googleAIService: GoogleAiService,
               private _openAIService: OpenAiService,
@@ -47,43 +47,27 @@ export class AiPage {
     if (image) {
       this.image = image;
 
+      const file = this._imageService.createFileFromBase64(image.base64String!);
 
-
-      const imageBlob = this.dataURItoBlob(image.base64String!);
-      const imageName = 'name.png';
-      const imageFile = new File([imageBlob], imageName, {type: 'image/jpeg'});
-
-      this.ng2ImgMaxService.resizeImage(imageFile, 500,500).subscribe((file) => {
+      this.ng2ImgMaxService.resizeImage(file, 500, 500).subscribe((file) => {
         console.log(file);
 
         const reader = new FileReader();
         reader.onloadend = () => {
-          const base64String = reader.result as string;
-          console.log(base64String);
-          this.compressedImage = base64String;
+          this.compressedImage = reader.result as string;
         };
         if (file) {
           reader.readAsDataURL(file);
         }
       });
 
-      console.log(imageFile);
+      console.log(file);
     }
-  }
-
-  dataURItoBlob(dataURI: string) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([int8Array], {type: 'image/jpeg'});
   }
 
 
   generateContentWithOpenAI() {
-    this._openAIService.generateContent('What\'s in this picture?', this.compressedImage)
+    this._openAIService.generateContent('What\'s in this picture?', this.compressedImage!)
       .subscribe((response) => {
         console.log(response);
       });
