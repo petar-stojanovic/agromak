@@ -68,7 +68,7 @@ export class AiPage {
 
 
   generateContentWithOpenAI() {
-    this._openAIService.generateContent("What's in this image? Write a description in English and then translate it into Macedonian.", this.compressedImage!)
+    this._openAIService.generateContent("What's in this image?", this.compressedImage!)
       .subscribe((response: AiImageResponse)  => {
         console.log(response);
       });
