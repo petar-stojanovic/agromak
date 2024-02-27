@@ -48,6 +48,7 @@ export class AiPage {
       this.image = image;
 
 
+
       const imageBlob = this.dataURItoBlob(image.base64String!);
       const imageName = 'name.png';
       const imageFile = new File([imageBlob], imageName, {type: 'image/jpeg'});
@@ -81,15 +82,8 @@ export class AiPage {
   }
 
 
-  async generateContentWithGoogle() {
-    const prompt = "What's different between these pictures?";
-    const text = await this._googleAIService.generateContent(prompt, this.googleSelectedImages);
-    console.log(text);
-  }
-
-
   generateContentWithOpenAI() {
-    this._openAIService.generateContent('What\'s different between these pictures?', this.openAISelectedImages)
+    this._openAIService.generateContent('What\'s in this picture?', this.compressedImage)
       .subscribe((response) => {
         console.log(response);
       });
