@@ -6,7 +6,11 @@ import {
   IonFooter,
   IonGrid,
   IonHeader,
-  IonIcon, IonInput, IonItem, IonLabel,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
   IonRow,
   IonText,
   IonTitle,
@@ -20,24 +24,26 @@ import {OpenAiService} from "../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {AiImageResponse} from "../../shared/interfaces/ai-image-response";
 import {addIcons} from "ionicons";
-import {addCircleOutline, sendOutline} from "ionicons/icons";
+import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon, IonText, NgForOf, NgIf, IonGrid, IonRow, IonCol, IonInput, IonItem, IonLabel]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon, IonText, NgForOf, NgIf, IonGrid, IonRow, IonCol, IonInput, IonItem, IonLabel, IonList]
 })
 export class AiPage {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
+  response: any;
+
   constructor(private _googleAIService: GoogleAiService,
               private _openAIService: OpenAiService,
               private _imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService) {
-    addIcons({addCircleOutline, sendOutline})
+    addIcons({addCircleOutline, sendOutline, closeOutline})
   }
 
   async uploadImage() {
@@ -73,6 +79,7 @@ export class AiPage {
   generateContentWithOpenAI() {
     this._openAIService.generateContent("What's in this image?", this.compressedImage!)
       .subscribe((response: AiImageResponse) => {
+        this.response = response.choices[0].message.content;
         console.log(response);
       });
   }

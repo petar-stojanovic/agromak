@@ -11,7 +11,7 @@ export class OpenAiService {
   }
 
 
-  generateContent(prompt: string, base64image: string) {
+  generateContent(prompt: string, base64image?: string) {
     const payload = {
       "model": "gpt-4-vision-preview",
       "messages": [
@@ -35,12 +35,9 @@ export class OpenAiService {
           ]
         }
       ],
-      "max_tokens": 200
+      "max_tokens": 100
     }
 
-    console.log(payload)
-    console.log(prompt)
-    console.log(base64image)
     return this.http.post<any>('https://api.openai.com/v1/chat/completions', payload, {
       headers: {
         'Content-Type': 'application/json',
