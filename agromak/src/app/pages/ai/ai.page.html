@@ -8,6 +8,24 @@
 
 <ion-content>
 
+  @for (i of messages; track i) {
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="i.image"/>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">{{ i.from }}</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">{{ i.message }}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+
+
+  }
+
   <div>
     {{ response }}
   </div>
@@ -30,11 +48,13 @@
       </div>
     }
   </div>
+  <form [formGroup]="form" (ngSubmit)="generateContentWithOpenAI()">
 
-  <ion-input class="ion-padding-horizontal" placeholder="Start typing here to chat...">
-    <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
-    <ion-button fill="clear" slot="end">
-      <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
-    </ion-button>
-  </ion-input>
+    <ion-input formControlName="question" class="ion-padding-horizontal" placeholder="Start typing here to chat...">
+      <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
+      <ion-button fill="clear" slot="end" type="submit">
+        <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-input>
+  </form>
 </ion-footer>

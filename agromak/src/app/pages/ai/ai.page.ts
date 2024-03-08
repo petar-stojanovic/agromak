@@ -12,7 +12,7 @@ import {
   IonLabel,
   IonList,
   IonRow,
-  IonText,
+  IonText, IonThumbnail,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
@@ -22,28 +22,37 @@ import {NgForOf, NgIf} from "@angular/common";
 import {ImageService} from "../../services/image.service";
 import {OpenAiService} from "../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
-import {AiImageResponse} from "../../shared/interfaces/ai-image-response";
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Message} from "../../shared/interfaces/message";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon, IonText, NgForOf, NgIf, IonGrid, IonRow, IonCol, IonInput, IonItem, IonLabel, IonList]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon, IonText, NgForOf, NgIf, IonGrid, IonRow, IonCol, IonInput, IonItem, IonLabel, IonList, FormsModule, ReactiveFormsModule, IonThumbnail]
 })
 export class AiPage {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
-  response: any;
+  form: FormGroup;
+
+  response = "";
+
+  messages: Message[] = [];
 
   constructor(private _googleAIService: GoogleAiService,
               private _openAIService: OpenAiService,
               private _imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
+    this.form = new FormGroup({
+      question: new FormControl("What's in the image?", [Validators.required])
+    });
+
   }
 
   async uploadImage() {
@@ -76,11 +85,29 @@ export class AiPage {
   }
 
 
-  generateContentWithOpenAI() {
-    this._openAIService.generateContent("What's in this image?", this.compressedImage!)
-      .subscribe((response: AiImageResponse) => {
-        this.response = response.choices[0].message.content;
-        console.log(response);
-      });
+  async generateContentWithOpenAI() {
+
+    const {question} = this.form.value;
+    this.form.reset();
+    console.log(question);
+    this.messages.push({from: "YOU", message: question, image: this.compressedImage!});
+
+    const stream = await this._openAIService.generateContentWithOpenAI(question, this.compressedImage!);
+
+    this.messages.push({from: "AI", message: ""});
+
+
+    let latestMessageIndex = this.messages.length - 1;
+
+    for await (const chunk of stream) {
+      const aiResponse = chunk.choices[0].delta.content || '';
+      this.messages[latestMessageIndex].message += aiResponse;
+
+      console.log(aiResponse);
+      this.response += aiResponse;
+    }
+
+
   }
+
 }
