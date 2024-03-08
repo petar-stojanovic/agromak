@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import OpenAI from "openai";
 import {CompletionCreateParamsStreaming} from "openai/src/resources/chat/completions";
+import {Message} from "../shared/interfaces/message";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class OpenAiService {
     });
   }
 
-  async generateContentWithOpenAI(prompt: string, base64image?: string) {
+  async generateContentWithOpenAI(messages: Message[]) {
 
     const stream = await this.openai.chat.completions.create({
       "model": "gpt-4-vision-preview",
@@ -31,21 +32,43 @@ export class OpenAiService {
             "such as requests for writing Python scripts or any other non-sales-related topics." +
             "Keep responses short, simple, and easy to understand"
         },
-        {
-          "role": "user",
-          "content": [
+        ...messages.map(message => {
+          const content: any[] = [
             {
-              "type": "text",
-              "text": `${prompt}`
-            },
-            {
-              "type": "image_url",
-              "image_url": {
-                "url": `${base64image}`
+              type: 'text',
+              text: message.message
+            }
+          ];
+
+          if (message.image) {
+            content.push({
+              type: 'image_url',
+              image_url: {
+                url: message.image
               }
-            },
-          ]
-        }
+            });
+          }
+
+          return {
+            role: message.from === 'YOU' ? 'user' : 'assistant',
+            content: content
+          };
+        }),
+        // {
+        //   "role": "user",
+        //   "content": [
+        //     {
+        //       "type": "text",
+        //       "text": `${prompt}`
+        //     },
+        //     {
+        //       "type": "image_url",
+        //       "image_url": {
+        //         "url": `${base64image}`
+        //       }
+        //     },
+        //   ]
+        // }
       ],
       "max_tokens": 200
     } as CompletionCreateParamsStreaming);

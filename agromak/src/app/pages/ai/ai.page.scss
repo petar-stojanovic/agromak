@@ -38,18 +38,34 @@ ion-input {
   background: #8ab4f6;
 }
 
-.max-width-75{
+.max-width-75 {
   max-width: 75px;
 }
 
-.position-relative{
+.position-relative {
   position: relative;
 }
 
-.delete-image-icon{
+.delete-image-icon {
   position: absolute;
   right: 0;
   border-radius: 10rem;
   font-size: 1rem !important;
   background: #b80205;
+}
+
+.user-response {
+  --background: linear-gradient(to right, #d6e4f8, #ffffff, #d6e4f8);
+
+  ion-thumbnail {
+    --border-radius: 50%;
+  }
+}
+
+.ai-response {
+  --background: linear-gradient(to right, #b59ece, #6588eb)
+}
+
+ion-thumbnail {
+  --size: 2rem;
 }

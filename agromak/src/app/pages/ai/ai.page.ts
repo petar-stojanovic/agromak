@@ -61,7 +61,7 @@ export class AiPage {
         }
       );
     this.form = new FormGroup({
-      question: new FormControl("What's in the image?", [Validators.required])
+      question: new FormControl("What's in the image? use 10 words", [Validators.required])
     });
 
   }
@@ -93,6 +93,8 @@ export class AiPage {
 
       console.log(file);
     }
+    console.log(this.messages)
+
   }
 
 
@@ -100,10 +102,9 @@ export class AiPage {
 
     const {question} = this.form.value;
     this.form.reset();
-    console.log(question);
     this.messages.push({from: "YOU", message: question, image: this.compressedImage!});
 
-    const stream = await this._openAIService.generateContentWithOpenAI(question, this.compressedImage!);
+    const stream = await this._openAIService.generateContentWithOpenAI(this.messages);
 
     this.messages.push({from: "AI", message: ""});
 
@@ -114,11 +115,8 @@ export class AiPage {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
 
-      console.log(aiResponse);
       this.response += aiResponse;
     }
-
-
   }
 
 }

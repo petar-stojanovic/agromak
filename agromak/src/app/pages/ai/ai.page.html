@@ -6,10 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   @for (i of messages; track i) {
-    <ion-item class="ion-align-items-start">
+    <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even" [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
         <img [src]="i.from === 'YOU'? user?.photoURL : 'assets/images/openai.png'"/>
       </ion-thumbnail>
@@ -17,13 +17,11 @@
         <ion-text>
           <h2 class="font-weight-500">{{ i.from }}</h2>
         </ion-text>
-        <ion-text color="medium">
+        <ion-text>
           <p class="font-size-12">{{ i.message }}</p>
         </ion-text>
       </ion-label>
     </ion-item>
-
-
   }
 
   <ion-button class="ion-margin-top" (click)="generateContentWithOpenAI()" [disabled]="!compressedImage" expand="full"
@@ -48,7 +46,7 @@
 
     <ion-input formControlName="question" class="ion-padding-horizontal" placeholder="Start typing here to chat...">
       <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
-      <ion-button fill="clear" slot="end" type="submit">
+      <ion-button fill="clear" slot="end" type="submit" [disabled]="form.invalid">
         <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
       </ion-button>
     </ion-input>
