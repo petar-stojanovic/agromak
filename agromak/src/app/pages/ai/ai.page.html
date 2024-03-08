@@ -9,7 +9,8 @@
 <ion-content class="ion-padding">
 
   @for (i of messages; track i) {
-    <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even" [class.ai-response]="$odd">
+    <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
+              [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
         <img [src]="i.from === 'YOU'? user?.photoURL : 'assets/images/openai.png'"/>
       </ion-thumbnail>
@@ -20,6 +21,11 @@
         <ion-text>
           <p class="font-size-12">{{ i.message }}</p>
         </ion-text>
+        @if (i.image) {
+          <ion-text>
+            <img [src]="i.image" alt="image" class="img-fluid">
+          </ion-text>
+        }
       </ion-label>
     </ion-item>
   }
@@ -28,7 +34,6 @@
               shape="round">
     OpenAI
   </ion-button>
-
 
 </ion-content>
 <ion-footer>

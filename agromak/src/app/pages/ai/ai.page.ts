@@ -12,7 +12,8 @@ import {
   IonLabel,
   IonList,
   IonRow,
-  IonText, IonThumbnail,
+  IonText,
+  IonThumbnail,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
@@ -42,7 +43,6 @@ export class AiPage {
 
   form: FormGroup;
 
-  response = "";
   messages: Message[] = [];
 
   user: User | null = null;
@@ -104,19 +104,21 @@ export class AiPage {
     this.form.reset();
     this.messages.push({from: "YOU", message: question, image: this.compressedImage!});
 
+    this.image = null;
+    this.compressedImage = null;
+
     const stream = await this._openAIService.generateContentWithOpenAI(this.messages);
 
     this.messages.push({from: "AI", message: ""});
 
-
-    let latestMessageIndex = this.messages.length - 1;
+    const latestMessageIndex = this.messages.length - 1;
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
-
-      this.response += aiResponse;
+      console.log(this.messages)
     }
+
   }
 
 }
