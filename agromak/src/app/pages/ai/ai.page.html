@@ -9,9 +9,9 @@
 <ion-content>
 
   @for (i of messages; track i) {
-    <ion-item>
+    <ion-item class="ion-align-items-start">
       <ion-thumbnail slot="start">
-        <img [src]="i.image"/>
+        <img [src]="i.from === 'YOU'? user?.photoURL : 'assets/images/openai.png'"/>
       </ion-thumbnail>
       <ion-label>
         <ion-text>
@@ -25,10 +25,6 @@
 
 
   }
-
-  <div>
-    {{ response }}
-  </div>
 
   <ion-button class="ion-margin-top" (click)="generateContentWithOpenAI()" [disabled]="!compressedImage" expand="full"
               shape="round">

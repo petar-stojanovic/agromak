@@ -26,6 +26,8 @@ import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Message} from "../../shared/interfaces/message";
+import {AuthService} from "../../services/auth.service";
+import {User} from "../../shared/interfaces/user";
 
 @Component({
   selector: 'app-ai',
@@ -41,14 +43,23 @@ export class AiPage {
   form: FormGroup;
 
   response = "";
-
   messages: Message[] = [];
+
+  user: User | null = null;
 
   constructor(private _googleAIService: GoogleAiService,
               private _openAIService: OpenAiService,
               private _imageService: ImageService,
-              private ng2ImgMaxService: Ng2ImgMaxService) {
+              private ng2ImgMaxService: Ng2ImgMaxService,
+              private _authService: AuthService) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
+    this._authService.user$
+      .subscribe({
+          next: (data) => {
+            this.user = data;
+          }
+        }
+      );
     this.form = new FormGroup({
       question: new FormControl("What's in the image?", [Validators.required])
     });
