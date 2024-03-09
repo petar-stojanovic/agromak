@@ -17,7 +17,6 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
-import {GoogleAiService} from "../../services/google-ai.service";
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
 import {NgForOf, NgIf} from "@angular/common";
 import {ImageService} from "../../services/image.service";
@@ -47,8 +46,7 @@ export class AiPage {
 
   user: User | null = null;
 
-  constructor(private _googleAIService: GoogleAiService,
-              private _openAIService: OpenAiService,
+  constructor(private _openAIService: OpenAiService,
               private _imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private _authService: AuthService) {
