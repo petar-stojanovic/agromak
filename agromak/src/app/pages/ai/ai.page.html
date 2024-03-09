@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content #content class="ion-padding">
 
   @for (i of messages; track i) {
     <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"

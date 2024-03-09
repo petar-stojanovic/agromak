@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {
   IonButton,
   IonCol,
@@ -45,6 +45,9 @@ export class AiPage {
   messages: Message[] = [];
 
   user: User | null = null;
+
+  @ViewChild('content') content: any;
+
 
   constructor(private _openAIService: OpenAiService,
               private _imageService: ImageService,
@@ -102,6 +105,7 @@ export class AiPage {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
       console.log(this.messages)
+      await this.content.scrollToBottom(100);
     }
 
   }
