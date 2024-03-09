@@ -111,6 +111,11 @@
             required
             errorText="Required"
             formControlName="description"></ion-textarea>
+          <ion-button (click)="generateDescription()" class='complete-with-ai' size="normal" shape="round" [disabled]="!form.controls['title'].value">
+            <ion-icon slot="start" name="sparkles-outline"></ion-icon>
+            Complete with AI
+          </ion-button>
+
         </ion-item>
 
 

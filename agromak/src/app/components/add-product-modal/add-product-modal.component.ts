@@ -6,7 +6,7 @@ import {
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
+  IonHeader, IonIcon,
   IonInput,
   IonItem,
   IonLabel,
@@ -30,6 +30,9 @@ import Swiper from "swiper";
 import {ImageService} from "../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../../shared/interfaces/create-ad";
+import {OpenAiService} from "../../services/open-ai.service";
+import {addIcons} from "ionicons";
+import {sparklesOutline} from "ionicons/icons";
 
 interface AgriculturalCategories {
   [key: string]: string[];
@@ -65,7 +68,8 @@ interface AgriculturalCategories {
     IonGrid,
     FormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    IonIcon
   ],
 })
 export class AddProductModalComponent implements OnInit {
@@ -130,19 +134,23 @@ export class AddProductModalComponent implements OnInit {
   constructor(private modalCtrl: ModalController,
               private imageService: ImageService,
               private alertController: AlertController,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController,
+              private _openAIService: OpenAiService) {
+
+    addIcons({sparklesOutline})
+
     this.form = new FormGroup({
       category: new FormControl('', Validators.required),
       subcategory: new FormControl('', Validators.required),
       buyOrSell: new FormControl('buy', Validators.required),
-      title: new FormControl('Prodavam Pcenka vo zrno - Продавам Пченка во зрно', Validators.required),
-      city: new FormControl('Kumanovo', Validators.required),
-      price: new FormControl('12', Validators.required),
+      title: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
       currency: new FormControl('mkd', Validators.required),
-      phone: new FormControl('070123123', Validators.required),
-      quantity: new FormControl('5', Validators.required),
+      phone: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
       measure: new FormControl('ton', Validators.required),
-      description: new FormControl('Se prodava pcenka orginal', Validators.required),
+      description: new FormControl('', Validators.required),
       images: new FormControl([]),
       // buyOrSell: new FormControl('buy', Validators.required),
       // title: new FormControl('', Validators.required),
@@ -155,7 +163,6 @@ export class AddProductModalComponent implements OnInit {
       // description: new FormControl('', Validators.required),
       // images: new FormControl([]),
     });
-    console.log(Object.keys(this.agriculturalCategories))
   }
 
   ngOnInit() {
@@ -191,14 +198,14 @@ export class AddProductModalComponent implements OnInit {
   }
 
 
- async submit() {
+  async submit() {
     const loading = await this.loadingController.create();
     await loading.present();
 
     this._adService.createAd(this.form.value as CreateAd, this.images).then(async () => {
       await this.modalCtrl.dismiss(this.form.value, 'confirm');
     }).finally(async () => {
-        await loading.dismiss();
+      await loading.dismiss();
     });
   }
 
@@ -215,4 +222,22 @@ export class AddProductModalComponent implements OnInit {
   }
 
 
+  async generateDescription() {
+    const {title, category, subcategory, buyOrSell} = this.form.value;
+
+    const stream = await this._openAIService.generateDescriptionForAd(title, category, subcategory, buyOrSell);
+
+    for await (const chunk of stream) {
+      const aiResponse = chunk.choices[0].delta.content || '';
+      const value = this.form.get('description')?.value;
+      this.form.get('description')?.setValue(value + aiResponse);
+      this.swiper?.nativeElement.swiper.updateAutoHeight();
+      console.log(aiResponse)
+    }
+
+    this.swiper?.nativeElement.swiper.updateAutoHeight();
+    setTimeout(() =>{
+      this.swiper?.nativeElement.swiper.updateAutoHeight();
+    },250)
+  }
 }
