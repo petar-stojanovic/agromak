@@ -55,17 +55,29 @@ ion-input {
 }
 
 .user-response {
-  --background: linear-gradient(to right, #ceddf6, #fbfbff, #cedef6);
+  //--background: linear-gradient(to right, #b6cdf3, #f4d9f499, #cee5f6);
 
   ion-thumbnail {
     --border-radius: 50%;
   }
+
+  ion-label {
+    margin-top: 0;
+  }
 }
 
 .ai-response {
-  --background: linear-gradient(to right, #b59ece, #6588eb)
+  //--background: linear-gradient(to right, #b59ece, #6588eb);
+
+  ion-label {
+    margin-top: 0;
+  }
 }
 
 ion-thumbnail {
   --size: 2rem;
+}
+
+.openai-logo{
+  width: 4rem;
 }

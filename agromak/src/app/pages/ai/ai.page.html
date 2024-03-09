@@ -28,13 +28,14 @@
         }
       </ion-label>
     </ion-item>
+  } @empty {
+    <div class="ion-text-center h-100 flex ion-align-items-center ion-justify-content-center">
+      <ion-text color="medium">
+        <img class="openai-logo" src="assets/images/openai.png" alt="openAiLogo"/>
+        <h2 class="font-weight-500">How can I help you today?</h2>
+      </ion-text>
+    </div>
   }
-
-  <ion-button class="ion-margin-top" (click)="generateContentWithOpenAI()" [disabled]="!compressedImage" expand="full"
-              shape="round">
-    OpenAI
-  </ion-button>
-
 </ion-content>
 <ion-footer>
 

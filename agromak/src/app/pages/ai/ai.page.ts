@@ -59,7 +59,7 @@ export class AiPage {
         }
       );
     this.form = new FormGroup({
-      question: new FormControl("What's in the image? use 10 words", [Validators.required])
+      question: new FormControl("", [Validators.required])
     });
 
   }
@@ -74,24 +74,7 @@ export class AiPage {
 
     if (image) {
       this.image = image;
-
-      const file = this._imageService.createFileFromBase64(image.base64String!);
-
-      this.ng2ImgMaxService.resizeImage(file, 500, 500).subscribe((file) => {
-        console.log(file);
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          this.compressedImage = reader.result as string;
-        };
-        if (file) {
-          reader.readAsDataURL(file);
-        }
-      });
-
-      console.log(file);
     }
-    console.log(this.messages)
 
   }
 
@@ -100,7 +83,11 @@ export class AiPage {
 
     const {question} = this.form.value;
     this.form.reset();
-    this.messages.push({from: "YOU", message: question, image: this.compressedImage!});
+    this.messages.push({
+      from: "YOU",
+      message: question,
+      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : undefined
+    });
 
     this.image = null;
     this.compressedImage = null;
