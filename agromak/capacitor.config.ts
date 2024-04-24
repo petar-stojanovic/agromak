@@ -9,6 +9,9 @@ const config: CapacitorConfig = {
       "scopes": ["profile", "email"],
       "serverClientId": "585229624701-b1pf89nfltssh95m1bhtpbc2n3pi85vk.apps.googleusercontent.com",
       "forceCodeForRefreshToken": true
+    },
+    SplashScreen: {
+
     }
   }
 };
