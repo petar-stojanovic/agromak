@@ -28,6 +28,9 @@ import {RefresherCustomEvent} from "@ionic/angular";
 import {Ad} from "../../shared/interfaces/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
+import {
+  AddProductFromJsonModalComponent
+} from "../../components/add-product-from-json-modal/add-product-from-json-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -80,6 +83,19 @@ export class HomePage {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: AddProductModalComponent,
+    });
+    await modal.present();
+
+    const {data, role} = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      console.log('Data:', data);
+    }
+  }
+
+  async openDynamicModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddProductFromJsonModalComponent,
     });
     await modal.present();
 
