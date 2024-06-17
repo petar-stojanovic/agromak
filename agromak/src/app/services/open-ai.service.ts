@@ -20,7 +20,7 @@ export class OpenAiService {
   async generateContentWithOpenAI(messages: Message[]) {
 
     const stream = await this.openai.chat.completions.create({
-      "model": "gpt-4-vision-preview",
+      "model": "gpt-4o",
       "stream": true,
       "messages": [
         {
@@ -63,7 +63,7 @@ export class OpenAiService {
 
   async generateDescriptionForAd(prompt: string, category: string, subcategory: string, intention: string) {
     const stream = await this.openai.chat.completions.create({
-      "model": "gpt-4",
+      "model": "gpt-4o",
       "stream": true,
       "messages": [
         {
