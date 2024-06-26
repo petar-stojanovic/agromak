@@ -25,14 +25,13 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideRouter(routes),
 
-    importProvidersFrom([
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideAuth(() => getAuth()),
-      provideFirestore(() => getFirestore()),
-      provideStorage(() => getStorage()),
-      provideDatabase(() => getDatabase()),
-    ]),
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideDatabase(() => getDatabase()),
+
+    {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}
 
   ],
 });
