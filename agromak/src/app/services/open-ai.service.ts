@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import OpenAI from "openai";
 import {CompletionCreateParamsStreaming} from "openai/src/resources/chat/completions";
 import {Message} from "../shared/interfaces/message";
+import {OPEN_AI_SETTINGS} from "../../../api-keys";
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,7 @@ export class OpenAiService {
   openai: OpenAI;
 
   constructor(private http: HttpClient) {
-    this.openai = new OpenAI({
-      apiKey: "",
-      project: "",
-      dangerouslyAllowBrowser: true
-    });
+    this.openai = new OpenAI(OPEN_AI_SETTINGS);
   }
 
   async generateContentWithOpenAI(messages: Message[]) {

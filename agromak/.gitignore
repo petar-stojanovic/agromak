@@ -65,7 +65,7 @@ testem.log
 
 
 /.env
-
+/api-keys.ts
 
 # System files
 .DS_Store
