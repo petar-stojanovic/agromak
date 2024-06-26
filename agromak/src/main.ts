@@ -11,7 +11,7 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 import {getDatabase, provideDatabase} from "@angular/fire/database";
-import {provideHttpClient} from "@angular/common/http";
+import { provideHttpClient } from "@angular/common/http";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 
 if (environment.production) {

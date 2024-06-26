@@ -25,7 +25,7 @@ import {
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {JsonFormData} from "../../shared/interfaces/json-form-data";
 import {JsonFormComponent} from "../../shared/components/json-form/json-form.component";
 
