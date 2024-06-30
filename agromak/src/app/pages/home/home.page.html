@@ -11,7 +11,7 @@
 
   <ion-list class="ion-margin-vertical">
     @if (isLoading) {
-      @for (i of placeholderArray; track i) {
+      @for (i of placeholderArray; track $index) {
         <ion-item>
           <ion-thumbnail slot="start">
             <ion-skeleton-text [animated]="true"></ion-skeleton-text>
@@ -62,11 +62,11 @@
   </ion-list>
 
 
-  <ion-fab (click)="openModal()" horizontal="end" slot="fixed" vertical="bottom">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+<!--  <ion-fab (click)="openModal()" horizontal="end" slot="fixed" vertical="bottom">-->
+<!--    <ion-fab-button>-->
+<!--      <ion-icon name="add"></ion-icon>-->
+<!--    </ion-fab-button>-->
+<!--  </ion-fab>-->
   <ion-fab (click)="openDynamicModal()" horizontal="end" slot="fixed" vertical="bottom">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>

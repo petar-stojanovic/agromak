@@ -51,6 +51,7 @@ export class HomePage {
     addIcons({add})
     // this.openModal();
     this.getAllAds();
+    // this.openDynamicModal();
   }
 
   getAllAds(event?: RefresherCustomEvent) {
@@ -65,7 +66,7 @@ export class HomePage {
           return {id, ...data} as Ad;
         });
 
-        console.log(this.ads)
+        // console.log(this.ads)
       },
       complete: async () => {
         if (event) {

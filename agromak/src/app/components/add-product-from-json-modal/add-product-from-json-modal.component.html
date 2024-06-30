@@ -8,6 +8,8 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <app-json-form [jsonFormData]="formData"></app-json-form>
+  @if (!isLoading) {
+    <app-json-form [jsonFormData]="formData"></app-json-form>
+  }
 
 </ion-content>

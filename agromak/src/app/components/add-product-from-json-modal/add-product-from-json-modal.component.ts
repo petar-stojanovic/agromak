@@ -1,4 +1,4 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {
   IonButton,
   IonButtons,
@@ -20,12 +20,12 @@ import {
   IonTextarea,
   IonTitle,
   IonToolbar,
+  LoadingController,
   ModalController
 } from "@ionic/angular/standalone";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
-import { HttpClient } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../shared/interfaces/json-form-data";
 import {JsonFormComponent} from "../../shared/components/json-form/json-form.component";
 
@@ -66,20 +66,30 @@ import {JsonFormComponent} from "../../shared/components/json-form/json-form.com
 export class AddProductFromJsonModalComponent implements OnInit {
 
   formData!: JsonFormData;
+  isLoading = true;
 
   constructor(private http: HttpClient,
-              private modalCtrl: ModalController) {
+              private modalCtrl: ModalController,
+              private loadingController: LoadingController) {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
     this.http
       .get('/assets/form-data.json')
-      .subscribe((formData: any) => {
-        this.formData = formData;
-        console.log(this.formData);
-      });
-
+      .subscribe({
+        next: async (formData: any) => {
+          this.formData = formData as JsonFormData;
+          console.log(this.formData);
+        },
+        complete: async () => {
+          this.isLoading = false
+          await loading.dismiss();
+        }
+      })
   }
 
   cancel() {

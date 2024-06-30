@@ -16,7 +16,7 @@ import {IonicModule} from "@ionic/angular";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JsonFormComponent implements OnChanges {
-  @Input({required: true})
+  @Input()
   jsonFormData!: JsonFormData;
 
   form: FormGroup = this.fb.group({});
@@ -25,8 +25,10 @@ export class JsonFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.createForm(this.jsonFormData.controls);
+    console.log(this.jsonFormData);
     if (!changes['jsonFormData'].firstChange) {
-      console.log(this.jsonFormData);
+      console.log("This is not the first change!");
     }
   }
 
@@ -75,10 +77,13 @@ export class JsonFormComponent implements OnChanges {
         }
       }
 
+      console.log(validatorsToAdd);
+
       this.form.addControl(
         control.name,
         this.fb.control(control.value, validatorsToAdd)
       );
+      this.form.updateValueAndValidity();
     }
   }
 
