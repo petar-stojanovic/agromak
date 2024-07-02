@@ -34,12 +34,11 @@
     {
       "type": "range",
       "name": "size",
-      "label": "",
-      "value": "",
+      "label": "Range",
+      "value": "0",
       "options": {
         "min": "0",
         "max": "100",
-        "step": "1",
         "icon": "sunny"
       },
       "validators": {}

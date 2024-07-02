@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} fro
 import {JsonFormControls, JsonFormData} from "../../interfaces/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
+import {addIcons} from "ionicons";
+import * as icons from "ionicons/icons";
 
 
 @Component({
@@ -22,6 +24,10 @@ export class JsonFormComponent implements OnChanges {
   form: FormGroup = this.fb.group({});
 
   constructor(private fb: FormBuilder) {
+    //add all icons
+    for (const iconName in icons) {
+      addIcons({[iconName]: (icons as any)[iconName]});
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

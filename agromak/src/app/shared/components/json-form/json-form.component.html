@@ -4,35 +4,42 @@
     @for (control of jsonFormData.controls; track $index) {
       <ion-item>
         @if (control.label !== '') {
-          <ion-label>{{ control.label }}</ion-label>
+<!--                    <ion-label>{{ control.label }}</ion-label>-->
         }
 
         @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
           <ion-input
-            [type]="control.type"
             [formControlName]="control.name"
+            [label]="control.label"
+            [type]="control.type"
             [value]="control.value"
           ></ion-input>
         } @else if (control.type === 'textarea') {
           <ion-textarea
             [formControlName]="control.name"
+            [label]="control.label"
             [value]="control.value"
           ></ion-textarea>
         } @else if (control.type === 'checkbox') {
           <ion-checkbox
             [formControlName]="control.name"
             [checked]="control.value"
-          ></ion-checkbox>
+          >{{ control.label }}
+          </ion-checkbox>
         } @else if (control.type === 'toggle') {
           <ion-toggle
             [formControlName]="control.name"
             [checked]="control.value"
-          ></ion-toggle>
+          >
+            {{ control.label }}
+          </ion-toggle>
         } @else if (control.type === 'range') {
           <ion-range
+            [formControlName]="control.name"
+            [label]="control.label"
+            [pin]="true"
             [min]="control.options?.min"
             [max]="control.options?.max"
-            [formControlName]="control.name"
           >
             @if (control.options?.icon) {
               <ion-icon
