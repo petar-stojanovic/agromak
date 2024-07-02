@@ -3,12 +3,14 @@ ion-thumbnail {
 }
 
 .ad {
+  //display: flex;
+
   & ion-thumbnail {
     --size: 5rem;
-    height: 100%;
+    //height: 100%;
 
     & img {
-      object-fit: contain;
+      //object-fit: contain;
       border: 1px solid var(--ion-color-medium-tint);
     }
   }

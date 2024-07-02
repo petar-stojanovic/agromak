@@ -16,7 +16,7 @@ import {IonicModule} from "@ionic/angular";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JsonFormComponent implements OnChanges {
-  @Input()
+  @Input({required: true})
   jsonFormData!: JsonFormData;
 
   form: FormGroup = this.fb.group({});
