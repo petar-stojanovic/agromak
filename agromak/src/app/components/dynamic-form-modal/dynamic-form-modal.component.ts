@@ -30,9 +30,9 @@ import {JsonFormData} from "../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../../shared/components/dynamic-form/dynamic-form.component";
 
 @Component({
-  selector: 'app-add-product-dynamic-modal',
-  templateUrl: './add-product-dynamic-modal.component.html',
-  styleUrls: ['./add-product-dynamic-modal.component.scss'],
+  selector: 'app-dynamic-form-modal',
+  templateUrl: './dynamic-form-modal.component.html',
+  styleUrls: ['./dynamic-form-modal.component.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -63,7 +63,7 @@ import {DynamicFormComponent} from "../../shared/components/dynamic-form/dynamic
     DynamicFormComponent
   ],
 })
-export class AddProductDynamicModalComponent implements OnInit {
+export class DynamicFormModalComponent implements OnInit {
 
   formData!: JsonFormData;
   isLoading = true;
@@ -79,10 +79,10 @@ export class AddProductDynamicModalComponent implements OnInit {
     await loading.present();
 
     this.http
-      .get('/assets/form-data.json')
+      .get<JsonFormData>('/assets/form-data.json')
       .subscribe({
-        next: async (formData: any) => {
-          this.formData = formData as JsonFormData;
+        next: async (formData) => {
+          this.formData = formData;
           console.log(this.formData);
         },
         complete: async () => {
@@ -95,6 +95,5 @@ export class AddProductDynamicModalComponent implements OnInit {
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
-
 
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {JsonFormControls, JsonFormData} from "../../models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
@@ -17,7 +17,7 @@ import * as icons from "ionicons/icons";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DynamicFormComponent implements OnChanges {
+export class DynamicFormComponent implements OnInit, OnChanges {
   @Input({required: true})
   jsonFormData!: JsonFormData;
 
@@ -30,11 +30,17 @@ export class DynamicFormComponent implements OnChanges {
     }
   }
 
+  ngOnInit() {
+    // Initial form creation
+    if (this.jsonFormData) {
+      this.createForm(this.jsonFormData.controls);
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    this.createForm(this.jsonFormData.controls);
-    console.log(this.jsonFormData);
-    if (!changes['jsonFormData'].firstChange) {
-      console.log("This is not the first change!");
+    // Update form on subsequent changes
+    if (changes['jsonFormData'] && !changes['jsonFormData'].firstChange) {
+      this.createForm(this.jsonFormData.controls);
     }
   }
 
@@ -82,8 +88,6 @@ export class DynamicFormComponent implements OnChanges {
             break;
         }
       }
-
-      console.log(validatorsToAdd);
 
       this.form.addControl(
         control.name,

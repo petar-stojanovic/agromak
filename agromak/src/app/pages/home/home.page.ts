@@ -29,8 +29,8 @@ import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
 import {
-  AddProductDynamicModalComponent
-} from "../../components/add-product-from-json-modal/add-product-dynamic-modal.component";
+  DynamicFormModalComponent
+} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -96,7 +96,7 @@ export class HomePage {
 
   async openDynamicModal() {
     const modal = await this.modalCtrl.create({
-      component: AddProductDynamicModalComponent,
+      component: DynamicFormModalComponent,
     });
     await modal.present();
 
