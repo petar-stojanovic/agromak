@@ -9,7 +9,7 @@
 
 <ion-content class="ion-padding">
   @if (!isLoading) {
-    <app-dynamic-form [jsonFormData]="formData"></app-dynamic-form>
+    <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onFormSubmitted($event)"></app-dynamic-form>
   }
 
 </ion-content>

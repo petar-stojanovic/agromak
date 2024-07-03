@@ -53,5 +53,5 @@
 
     </ion-item>
   }
-  <ion-button expand="full" type="submit">Submit</ion-button>
+  <ion-button [disabled]="!form.valid" expand="full" type="submit">Submit</ion-button>
 </form>

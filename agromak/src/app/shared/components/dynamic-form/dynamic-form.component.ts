@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {JsonFormControls, JsonFormData} from "../../models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
@@ -20,6 +29,9 @@ import * as icons from "ionicons/icons";
 export class DynamicFormComponent implements OnInit, OnChanges {
   @Input({required: true})
   jsonFormData!: JsonFormData;
+
+  @Output()
+  formSubmitted = new EventEmitter<any>();
 
   form: FormGroup = this.fb.group({});
 
@@ -100,6 +112,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   onSubmit() {
     console.log('Form valid: ', this.form.valid);
     console.log('Form values: ', this.form.value);
+
+    if (this.form.valid) {
+      this.formSubmitted.emit(this.form.value);
+    }
   }
 
 }

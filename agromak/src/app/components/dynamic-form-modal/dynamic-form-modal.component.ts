@@ -92,6 +92,11 @@ export class DynamicFormModalComponent implements OnInit {
       })
   }
 
+  onFormSubmitted(formValues: any) {
+    console.log(formValues);
+    //return this.modalCtrl.dismiss(formValues, 'submit');
+  }
+
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
