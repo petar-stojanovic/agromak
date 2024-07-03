@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {addIcons} from "ionicons";
 import {eye, eyeOff, lockClosed, logoGoogle, mail, personOutline} from "ionicons/icons";
-import {AuthService} from "../../../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
 import {
   AlertController,
   IonButton,
@@ -20,7 +20,7 @@ import {
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
-import {User} from "../../../models/user";
+import {User} from "../../../shared/models/user";
 
 @Component({
   selector: 'app-login',
