@@ -26,13 +26,13 @@ import {
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {JsonFormData} from "../../shared/interfaces/json-form-data";
-import {JsonFormComponent} from "../../shared/components/json-form/json-form.component";
+import {JsonFormData} from "../../shared/models/json-form-data";
+import {DynamicFormComponent} from "../../shared/components/dynamic-form/dynamic-form.component";
 
 @Component({
-  selector: 'app-add-product-from-json-modal',
-  templateUrl: './add-product-from-json-modal.component.html',
-  styleUrls: ['./add-product-from-json-modal.component.scss'],
+  selector: 'app-add-product-dynamic-modal',
+  templateUrl: './add-product-dynamic-modal.component.html',
+  styleUrls: ['./add-product-dynamic-modal.component.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -60,10 +60,10 @@ import {JsonFormComponent} from "../../shared/components/json-form/json-form.com
     NgIf,
     NgForOf,
     IonIcon,
-    JsonFormComponent
+    DynamicFormComponent
   ],
 })
-export class AddProductFromJsonModalComponent implements OnInit {
+export class AddProductDynamicModalComponent implements OnInit {
 
   formData!: JsonFormData;
   isLoading = true;

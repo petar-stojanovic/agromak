@@ -2,7 +2,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, ViewChild} from '
 import {ActivatedRoute} from "@angular/router";
 import {AdService} from "../../../services/ad.service";
 import {IonicModule} from "@ionic/angular";
-import {Ad} from "../../../shared/interfaces/ad";
+import {Ad} from "../../../shared/models/ad";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 import {addIcons} from "ionicons";

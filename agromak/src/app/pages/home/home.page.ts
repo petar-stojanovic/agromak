@@ -25,12 +25,12 @@ import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
-import {Ad} from "../../shared/interfaces/ad";
+import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
 import {
-  AddProductFromJsonModalComponent
-} from "../../components/add-product-from-json-modal/add-product-from-json-modal.component";
+  AddProductDynamicModalComponent
+} from "../../components/add-product-from-json-modal/add-product-dynamic-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -96,7 +96,7 @@ export class HomePage {
 
   async openDynamicModal() {
     const modal = await this.modalCtrl.create({
-      component: AddProductFromJsonModalComponent,
+      component: AddProductDynamicModalComponent,
     });
     await modal.present();
 

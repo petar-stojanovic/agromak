@@ -20,7 +20,7 @@ import {
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
-import {User} from "../../../interfaces/user";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-login',

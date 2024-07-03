@@ -7,7 +7,7 @@ import {AuthService} from "./auth.service";
 import {doc, Firestore, setDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {User} from "../shared/interfaces/user";
+import {User} from "../shared/models/user";
 import {GalleryPhoto, Photo} from "@capacitor/camera";
 
 @Injectable({

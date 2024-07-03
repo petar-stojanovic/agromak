@@ -25,9 +25,9 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Message} from "../../shared/interfaces/message";
+import {Message} from "../../shared/models/message";
 import {AuthService} from "../../services/auth.service";
-import {User} from "../../shared/interfaces/user";
+import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-ai',

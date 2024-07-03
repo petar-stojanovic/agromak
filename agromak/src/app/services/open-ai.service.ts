@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import OpenAI from "openai";
 import {CompletionCreateParamsStreaming} from "openai/src/resources/chat/completions";
-import {Message} from "../shared/interfaces/message";
+import {Message} from "../shared/models/message";
 import {OPEN_AI_SETTINGS} from "../../../api-keys";
 
 @Injectable({

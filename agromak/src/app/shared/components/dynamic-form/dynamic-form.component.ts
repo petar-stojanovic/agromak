@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {JsonFormControls, JsonFormData} from "../../interfaces/json-form-data";
+import {JsonFormControls, JsonFormData} from "../../models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
 import {addIcons} from "ionicons";
@@ -7,9 +7,9 @@ import * as icons from "ionicons/icons";
 
 
 @Component({
-  selector: 'app-json-form',
-  templateUrl: './json-form.component.html',
-  styleUrls: ['./json-form.component.scss'],
+  selector: 'app-dynamic-form',
+  templateUrl: './dynamic-form.component.html',
+  styleUrls: ['./dynamic-form.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -17,7 +17,7 @@ import * as icons from "ionicons/icons";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class JsonFormComponent implements OnChanges {
+export class DynamicFormComponent implements OnChanges {
   @Input({required: true})
   jsonFormData!: JsonFormData;
 

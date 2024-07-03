@@ -3,7 +3,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {map, Observable, of, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
-import {User} from "../shared/interfaces/user";
+import {User} from "../shared/models/user";
 import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
 import {Firestore} from "@angular/fire/firestore";
