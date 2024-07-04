@@ -12,7 +12,7 @@ import {
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
-import {callOutline, personOutline} from "ionicons/icons";
+import {callOutline, locationOutline, personOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-ad-details-modal',
@@ -43,7 +43,7 @@ export class AdDetailsModalComponent implements OnInit {
   @Input() ad!: Ad;
 
   constructor(private modalCtrl: ModalController) {
-    addIcons({personOutline, callOutline})
+    addIcons({personOutline, callOutline, locationOutline})
   }
 
   ngOnInit() {
