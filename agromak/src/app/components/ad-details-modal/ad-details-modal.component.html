@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/" (click)="dismiss()"></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="ad">{{ ad.buyOrSell === "buy" ? "I AM BUYING" : "I AM SELLING" }}</ion-title>
     <ion-title *ngIf="ad" class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
