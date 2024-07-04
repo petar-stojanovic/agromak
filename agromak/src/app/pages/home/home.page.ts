@@ -1,5 +1,5 @@
 import {Haptics, ImpactStyle} from '@capacitor/haptics';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   IonButton,
   IonContent,
@@ -31,15 +31,16 @@ import {RouterLink} from "@angular/router";
 import {
   DynamicFormModalComponent
 } from "../../components/dynamic-form-modal/dynamic-form-modal.component";
+import {AdListComponent} from "../../components/ad-list/ad-list.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab, RouterLink],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab, RouterLink, AdListComponent],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   ads: Ad[] = [];
 
@@ -49,6 +50,9 @@ export class HomePage {
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
     addIcons({add})
+  }
+
+  ngOnInit(): void {
     // this.openModal();
     this.getAllAds();
     // this.openDynamicModal();
@@ -66,7 +70,7 @@ export class HomePage {
           return {id, ...data} as Ad;
         });
 
-        // console.log(this.ads)
+        console.log(this.ads)
       },
       complete: async () => {
         if (event) {

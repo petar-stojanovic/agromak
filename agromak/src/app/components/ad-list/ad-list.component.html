@@ -1,3 +1,55 @@
-<p>
-  ad-list works!
-</p>
+<ion-list class="ion-margin-vertical">
+  @if (isLoading) {
+    @for (i of placeholderArray; track $index) {
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    }
+
+  } @else {
+
+    @for (ad of ads; track ad.id) {
+
+      <ion-item class="ad ion-margin-vertical" [routerLink]="['ad',ad.id, 'details']">
+        <ion-thumbnail slot="start">
+          @if (ad.images && ad.images.length > 0) {
+            <img [src]="ad.images[0]" alt="image"/>
+          } @else if (ad.subcategory) {
+            <img src="assets/images/crops/{{ad.subcategory}}.png" class="placeholder-image" alt="placeholder"/>
+          } @else {
+            <img src="assets/images/no-image.png" alt="placeholder"/>
+          }
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text>
+            <h2 class="">{{ ad.title }}</h2>
+          </ion-text>
+          <div class="flex justify-space-between">
+            <div class="font-weight-500">
+              <p>{{ ad.price }} {{ ad.currency }}</p>
+            </div>
+            <ion-text color="medium">
+              <p class="font-size-12">{{ ad.city }}</p>
+            </ion-text>
+          </div>
+        </ion-label>
+      </ion-item>
+    }
+
+
+  }
+
+</ion-list>

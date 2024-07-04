@@ -1,14 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Ad} from "../../shared/models/ad";
+import {IonicModule} from "@ionic/angular";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-ad-list',
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.scss'],
+  imports: [
+    IonicModule,
+    RouterLink
+  ],
+  standalone: true
 })
-export class AdListComponent  implements OnInit {
+export class AdListComponent implements OnInit {
+  @Input()
+  ads: Ad[] = [];
 
-  constructor() { }
+  @Input()
+  isLoading = true;
 
-  ngOnInit() {}
+  placeholderArray = new Array(6);
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 
 }

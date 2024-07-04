@@ -20,7 +20,7 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'ai',
         loadComponent: () =>
           import('../pages/ai/ai.page').then((m) => m.AiPage),
       },
