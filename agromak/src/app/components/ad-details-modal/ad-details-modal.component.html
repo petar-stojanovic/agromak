@@ -9,71 +9,67 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  @if (ad) {
-    <ion-text>
-      <h1 class="font-weight-bold">
-        {{ ad.title }}
-      </h1>
-    </ion-text>
+  <ion-text>
+    <h1 class="font-weight-bold">
+      {{ ad.title }}
+    </h1>
+  </ion-text>
 
-    <swiper-container #swiper pagination class="ion-margin-vertical">
-      @for (image of ad.images; track image) {
-        <swiper-slide>
-          <img [src]="image" alt="image">
-        </swiper-slide>
-      } @empty {
-        <swiper-slide>
-          <img src="assets/images/no-image.png" alt="placeholder"/>
-        </swiper-slide>
-      }
-    </swiper-container>
-    <ion-item-divider></ion-item-divider>
-
-
-    <ion-text color="primary">
-      <h2 class="font-weight-bold">
-        Price: {{ ad.price }} {{ ad.currency }}
-      </h2>
-    </ion-text>
-    <ion-text>
-      <h3>
-        Quantity: {{ ad.quantity }} {{ ad.measure }}
-      </h3>
-    </ion-text>
-
-    <ion-text>
-      <p>{{ ad.description }}</p>
-    </ion-text>
+  <swiper-container #swiper pagination class="ion-margin-vertical">
+    @for (image of ad.images; track image) {
+      <swiper-slide>
+        <img [src]="image" alt="image">
+      </swiper-slide>
+    } @empty {
+      <swiper-slide>
+        <img src="assets/images/no-image.png" alt="placeholder"/>
+      </swiper-slide>
+    }
+  </swiper-container>
+  <ion-item-divider></ion-item-divider>
 
 
-    <ion-list class="background-blue ion-margin-vertical">
-      <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
+  <ion-text color="primary">
+    <h2 class="font-weight-bold">
+      Price: {{ ad.price }} {{ ad.currency }}
+    </h2>
+  </ion-text>
+  <ion-text>
+    <h3>
+      Quantity: {{ ad.quantity }} {{ ad.measure }}
+    </h3>
+  </ion-text>
 
-      <ion-item lines="none" class="flex">
-        <ion-text class="flex ion-align-items-center">
-          <ion-icon name="person-outline"></ion-icon>
-          <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
-        </ion-text>
-      </ion-item>
-
-      <ion-item lines="none" class="flex">
-        <ion-text class="flex ion-align-items-center">
-          <ion-icon name="call-outline"></ion-icon>
-          <span>{{ ad.phone }}</span>
-        </ion-text>
-
-      </ion-item>
-
-      <ion-item lines="none" class="flex">
-        <ion-text class="flex ion-align-items-center">
-          <ion-icon name="location-outline"></ion-icon>
-          <span>{{ ad.city }}</span>
-        </ion-text>
-
-      </ion-item>
-    </ion-list>
+  <ion-text>
+    <p>{{ ad.description }}</p>
+  </ion-text>
 
 
-  }
+  <ion-list class="background-blue ion-margin-vertical">
+    <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
+
+    <ion-item lines="none" class="flex">
+      <ion-text class="flex ion-align-items-center">
+        <ion-icon name="person-outline"></ion-icon>
+        <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none" class="flex">
+      <ion-text class="flex ion-align-items-center">
+        <ion-icon name="call-outline"></ion-icon>
+        <span>{{ ad.phone }}</span>
+      </ion-text>
+
+    </ion-item>
+
+    <ion-item lines="none" class="flex">
+      <ion-text class="flex ion-align-items-center">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>{{ ad.city }}</span>
+      </ion-text>
+
+    </ion-item>
+  </ion-list>
 
 </ion-content>
