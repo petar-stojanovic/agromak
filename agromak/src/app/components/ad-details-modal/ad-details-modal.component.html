@@ -1,3 +1,72 @@
-<p>
-  ad-details-modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="ad">{{ ad.buyOrSell === "buy" ? "I AM BUYING" : "I AM SELLING" }}</ion-title>
+    <ion-title *ngIf="ad" class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (ad) {
+    <ion-text>
+      <h1>
+        {{ ad.title }}
+      </h1>
+    </ion-text>
+
+    <swiper-container #swiper pagination class="ion-margin-vertical">
+      @for (image of ad.images; track image) {
+        <swiper-slide>
+          <img [src]="image" alt="image">
+        </swiper-slide>
+      } @empty {
+        <swiper-slide>
+          <img src="assets/images/no-image.png" alt="placeholder"/>
+        </swiper-slide>
+      }
+    </swiper-container>
+    <ion-item-divider></ion-item-divider>
+
+
+    <ion-text color="primary">
+      <h2>
+        Price: {{ ad.price }} {{ ad.currency }}
+      </h2>
+    </ion-text>
+    <ion-text>
+      <h3>
+        Quantity: {{ ad.quantity }} {{ ad.measure }}
+      </h3>
+    </ion-text>
+
+    <ion-text>
+      <p>{{ ad.description }}</p>
+    </ion-text>
+
+
+    <ion-list class="background-light ion-margin-vertical">
+      <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
+
+      <ion-item lines="none" class="flex">
+        <ion-text class="ion-margin-vertical flex ion-align-items-center">
+          <ion-icon name="person-outline"></ion-icon>
+          <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
+        </ion-text>
+
+        <ion-text class="flex w-100 justify-space-between ion-no-padding">
+          <div class="flex ion-align-items-center">
+            <ion-icon name="call-outline"></ion-icon>
+            <span>{{ ad.phone }}</span>
+          </div>
+
+          <span class="font-weight-500">{{ ad.city }}</span>
+        </ion-text>
+      </ion-item>
+    </ion-list>
+
+
+  }
+
+</ion-content>

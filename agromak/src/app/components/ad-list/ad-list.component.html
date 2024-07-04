@@ -23,7 +23,7 @@
 
     @for (ad of ads; track ad.id) {
 
-      <ion-item class="ad ion-margin-vertical" [routerLink]="['ad',ad.id, 'details']">
+      <ion-item class="ad ion-margin-vertical" (click)="openAdDetailsModal(ad)">
         <ion-thumbnail slot="start">
           @if (ad.images && ad.images.length > 0) {
             <img [src]="ad.images[0]" alt="image"/>
