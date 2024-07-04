@@ -1,0 +1,34 @@
+swiper-container {
+  max-height: 20rem;
+  text-align: center;
+
+  & swiper-slide {
+    img {
+      max-height: 20rem;
+      border: 1px solid var(--ion-color-medium-tint);
+    }
+  }
+}
+
+
+.subtitle {
+  font-size: 0.75rem;
+  margin: 5px 0 0 0;
+  font-weight: 500;
+}
+
+.background-light {
+  --ion-background-color: #bbd4ff;
+  border-radius: 1rem;
+  border: 1px solid var(--ion-color-medium-tint);
+}
+
+ion-list-header {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+ion-icon {
+  font-size: 1.75rem;
+  margin-right: 0.5rem;
+}
