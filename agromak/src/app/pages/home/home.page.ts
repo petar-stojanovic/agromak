@@ -32,6 +32,7 @@ import {
   DynamicFormModalComponent
 } from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -43,8 +44,6 @@ import {AdListComponent} from "../../components/ad-list/ad-list.component";
 export class HomePage implements OnInit {
 
   ads: Ad[] = [];
-
-  placeholderArray = new Array(6);
   isLoading = true;
 
   constructor(private modalCtrl: ModalController,
@@ -54,35 +53,28 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     // this.openModal();
-    this.getAllAds();
+    this._adService.getAds();
+    this.getAds();
     // this.openDynamicModal();
   }
 
-  getAllAds(event?: RefresherCustomEvent) {
+  getAds(event?: RefresherCustomEvent) {
     this.isLoading = true;
     this.ads = [];
 
-    this._adService.getAllAds().subscribe({
-      next: (ads) => {
-        this.ads = ads.docs.map((ad) => {
-          const data: any = ad.data();
-          const id = ad.id;
-          return {id, ...data} as Ad;
-        });
-
-        console.log(this.ads)
-      },
-      complete: async () => {
-        if (event) {
-          await Haptics.impact({style: ImpactStyle.Medium});
-          await event.target.complete();
-        }
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1500);
-        // }, 100);
+    this._adService.ads$
+      .subscribe(async (ads) => {
+      this.ads = ads;
+      // console.log(this.ads)
+      if (event) {
+        await Haptics.impact({style: ImpactStyle.Medium});
+        await event.target.complete();
       }
-    })
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1500);
+
+    });
   }
 
   async openModal() {

@@ -49,7 +49,9 @@
       </ion-item>
     }
 
-
   }
-
 </ion-list>
+
+<ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
