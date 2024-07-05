@@ -19,9 +19,11 @@ export class AdService {
   private _loading = new BehaviorSubject(false);
   private _ads = new BehaviorSubject<Ad[]>([]);
 
+  NUM_OF_STARTING_ADS = 10;
+  NUM_OF_ADS_TO_LOAD = 3;
+
   done$ = this._done.asObservable();
   loading$ = this._loading.asObservable();
-  // data$ = this._data.asObservable();
   ads$: Observable<Ad[]>;
 
 
@@ -32,7 +34,6 @@ export class AdService {
 
     // Create the observable array for consumption in components
     this.ads$ = this._ads.asObservable();
-
   }
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
@@ -79,14 +80,14 @@ export class AdService {
     let query = this.angularFirestore
       .collection('ads', ref => ref
         .orderBy('uploadedAt', 'desc')
-        .limit(10)
+        .limit(this.NUM_OF_STARTING_ADS)
       );
 
     if (lastVisible) {
       query = this.angularFirestore
         .collection('ads', ref => ref
           .orderBy('uploadedAt', 'desc')
-          .limit(3)
+          .limit(this.NUM_OF_ADS_TO_LOAD)
           .startAfter(lastVisible.uploadedAt)
         );
     }
@@ -98,6 +99,11 @@ export class AdService {
 
   getAdById(id: string) {
     return this.angularFirestore.doc(`ads/${id}`).get();
+  }
+
+  resetAds() {
+    this._ads.next([]);
+    this.getAds();
   }
 
   // Maps the snapshot to usable format
