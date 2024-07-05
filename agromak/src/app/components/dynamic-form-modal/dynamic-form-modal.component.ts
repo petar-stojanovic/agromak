@@ -27,7 +27,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../shared/models/json-form-data";
-import {DynamicFormComponent} from "../../shared/components/dynamic-form/dynamic-form.component";
+import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
 
 @Component({
   selector: 'app-dynamic-form-modal',

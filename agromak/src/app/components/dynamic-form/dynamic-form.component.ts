@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {JsonFormControls, JsonFormData} from "../../models/json-form-data";
+import {JsonFormControls, JsonFormData} from "../../shared/models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
 import {addIcons} from "ionicons";
