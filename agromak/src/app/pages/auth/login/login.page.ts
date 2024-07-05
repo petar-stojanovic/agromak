@@ -2,32 +2,21 @@ import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {addIcons} from "ionicons";
-import {eye, eyeOff, lockClosed, logoGoogle, mail, personOutline} from "ionicons/icons";
+import {eye, eyeOff, lockClosed, logoGoogle, mail} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {
-  AlertController,
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonText,
-  IonTitle,
-  LoadingController
-} from "@ionic/angular/standalone";
+import {AlertController, LoadingController} from "@ionic/angular/standalone";
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
-import FirebaseError = firebase.FirebaseError;
 import {User} from "../../../shared/models/user";
+import {IonicModule} from "@ionic/angular";
+import FirebaseError = firebase.FirebaseError;
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonItem, IonInput, IonIcon, IonButton, IonText, IonContent, IonTitle, IonLabel, RouterLink, IonList]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterLink]
 })
 export class LoginPage {
 
@@ -75,6 +64,7 @@ export class LoginPage {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
   get password() {
     return this.form.get('password')!;
   }
@@ -129,7 +119,6 @@ export class LoginPage {
       });
 
   }
-
 
 
   async showAlert(header: string, message: string) {

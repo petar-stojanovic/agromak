@@ -1,24 +1,5 @@
-import {Component, inject, signal, Signal, WritableSignal} from '@angular/core';
-import {
-  AlertController,
-  IonAvatar,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonSkeletonText,
-  IonSpinner,
-  IonText,
-  IonThumbnail,
-  IonTitle,
-  IonToolbar,
-  LoadingController
-} from '@ionic/angular/standalone';
+import {Component, inject} from '@angular/core';
+import {AlertController, LoadingController} from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
 import {chevronForwardOutline, lockClosed, logOutOutline, notificationsOutline, personOutline} from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
@@ -27,7 +8,7 @@ import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {User} from "../../shared/models/user";
 import {CommonModule} from "@angular/common";
-import {finalize} from "rxjs";
+import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-profile',
@@ -35,23 +16,8 @@ import {finalize} from "rxjs";
   styleUrls: ['profile.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonButtons,
-    IonButton,
-    IonIcon,
-    IonTitle,
-    IonContent,
-    IonAvatar,
-    IonItem,
-    IonText,
-    IonThumbnail,
-    IonSkeletonText,
-    IonSpinner,
-    CommonModule,
-    IonList,
-    IonListHeader,
-    IonLabel,
+    IonicModule,
+    CommonModule
   ],
 })
 export class ProfilePage {

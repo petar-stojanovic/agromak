@@ -22,7 +22,7 @@ import * as icons from "ionicons/icons";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    IonicModule,
+    IonicModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

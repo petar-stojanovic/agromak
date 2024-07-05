@@ -1,45 +1,23 @@
 import {Haptics, ImpactStyle} from '@capacitor/haptics';
 import {Component, OnInit} from '@angular/core';
-import {
-  IonButton,
-  IonContent,
-  IonFab,
-  IonFabButton,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonRefresher,
-  IonRefresherContent,
-  IonSkeletonText,
-  IonText,
-  IonThumbnail,
-  IonTitle,
-  IonToolbar,
-  ModalController
-} from '@ionic/angular/standalone';
+import {ModalController} from '@ionic/angular/standalone';
 import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
 import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
-import {RefresherCustomEvent} from "@ionic/angular";
+import {IonicModule, RefresherCustomEvent} from "@ionic/angular";
 import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
-import {
-  DynamicFormModalComponent
-} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
+import {DynamicFormModalComponent} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
-import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonList, IonItem, NgForOf, IonLabel, IonListHeader, IonText, IonThumbnail, NgIf, IonRefresher, IonRefresherContent, IonSkeletonText, IonFabButton, IonFab, RouterLink, AdListComponent],
+  imports: [IonicModule, NgForOf, NgIf, RouterLink, AdListComponent],
 })
 export class HomePage implements OnInit {
 

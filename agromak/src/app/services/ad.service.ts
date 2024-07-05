@@ -7,7 +7,7 @@ import {CreateAd} from "../shared/models/create-ad";
 import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, delay, map, mergeScan, Observable, of, scan, take} from "rxjs";
+import {BehaviorSubject, map, Observable, take} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

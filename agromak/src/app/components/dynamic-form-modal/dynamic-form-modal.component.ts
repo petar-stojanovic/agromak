@@ -1,33 +1,11 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
-import {
-  IonButton,
-  IonButtons,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonHeader,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonRadio,
-  IonRadioGroup,
-  IonRow,
-  IonSelect,
-  IonSelectOption,
-  IonText,
-  IonTextarea,
-  IonTitle,
-  IonToolbar,
-  LoadingController,
-  ModalController
-} from "@ionic/angular/standalone";
+import {LoadingController, ModalController} from "@ionic/angular/standalone";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
+import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -36,30 +14,11 @@ import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonButtons,
-    IonButton,
-    IonTitle,
-    IonContent,
-    IonItem,
-    IonInput,
+    IonicModule,
     ReactiveFormsModule,
-    IonRadioGroup,
-    IonRadio,
-    IonLabel,
-    IonRow,
-    IonCol,
-    IonText,
-    IonList,
-    IonSelect,
-    IonSelectOption,
-    IonTextarea,
-    IonGrid,
     FormsModule,
     NgIf,
     NgForOf,
-    IonIcon,
     DynamicFormComponent
   ],
 })

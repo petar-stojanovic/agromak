@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonApp, IonRouterOutlet, Platform} from '@ionic/angular/standalone';
-import {App} from "@capacitor/app";
-import { register } from 'swiper/element/bundle';
+import {IonRouterOutlet, Platform} from '@ionic/angular/standalone';
+import {register} from 'swiper/element/bundle';
+import {IonicModule} from "@ionic/angular";
 
 register();
 
@@ -9,7 +9,7 @@ register();
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonApp, IonRouterOutlet],
+  imports: [IonicModule],
 })
 export class AppComponent {
 

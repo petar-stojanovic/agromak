@@ -4,14 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 import {addIcons} from "ionicons";
 import {chevronForward} from "ionicons/icons";
-import {IonButton, IonContent, IonIcon, IonImg} from "@ionic/angular/standalone";
+import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.page.html',
   styleUrls: ['./landing.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, IonImg, IonContent, IonButton, IonIcon]
+  imports: [CommonModule, FormsModule, RouterLink, IonicModule]
 })
 export class LandingPage implements OnInit {
 
