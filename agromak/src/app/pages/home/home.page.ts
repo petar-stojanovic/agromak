@@ -52,29 +52,30 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.openModal();
-    this._adService.getAds();
     this.getAds();
     // this.openDynamicModal();
   }
 
-  getAds(event?: RefresherCustomEvent) {
-    this.isLoading = true;
+  getAds() {
     this.ads = [];
 
     this._adService.ads$
       .subscribe(async (ads) => {
-      this.ads = ads;
-      // console.log(this.ads)
-      if (event) {
-        await Haptics.impact({style: ImpactStyle.Medium});
-        await event.target.complete();
-      }
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1500);
+        this.ads = ads;
+        setTimeout(() => {
+          this.isLoading = ads.length === 0;
+        }, 1500);
+      });
 
-    });
+    this._adService.getAds();
+  }
+
+  async refreshAds(event: RefresherCustomEvent) {
+    this.isLoading = true;
+    this._adService.resetAds();
+
+    await Haptics.impact({style: ImpactStyle.Medium});
+    await event.target.complete();
   }
 
   async openModal() {

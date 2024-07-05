@@ -7,7 +7,7 @@ import {CreateAd} from "../shared/models/create-ad";
 import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, mergeScan, Observable, of, scan, take} from "rxjs";
+import {BehaviorSubject, delay, map, mergeScan, Observable, of, scan, take} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class AdService {
   private _loading = new BehaviorSubject(false);
   private _ads = new BehaviorSubject<Ad[]>([]);
 
-  NUM_OF_STARTING_ADS = 10;
-  NUM_OF_ADS_TO_LOAD = 3;
+  readonly NUM_OF_STARTING_ADS = 10;
+  readonly NUM_OF_ADS_TO_LOAD = 3;
 
   done$ = this._done.asObservable();
   loading$ = this._loading.asObservable();
@@ -120,7 +120,7 @@ export class AdService {
 
           const currentAds = this._ads.getValue();
 
-          // update source with values
+          // Update source with values
           this._ads.next([...currentAds, ...values]);
 
           return actions;
