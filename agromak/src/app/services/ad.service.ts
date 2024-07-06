@@ -20,7 +20,7 @@ export class AdService {
   private _ads = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
-  readonly NUM_OF_ADS_TO_LOAD = 3;
+  readonly NUM_OF_ADS_TO_LOAD = 5;
 
   done$ = this._done.asObservable();
   loading$ = this._loading.asObservable();
