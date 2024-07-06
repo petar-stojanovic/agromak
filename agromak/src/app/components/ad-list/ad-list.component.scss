@@ -1,0 +1,27 @@
+.ad {
+  //display: flex;
+
+  & ion-thumbnail {
+    --size: 5rem;
+    //height: 100%;
+
+    & img {
+      //object-fit: contain;
+      border: 1px solid var(--ion-color-medium-tint);
+    }
+  }
+
+  & ion-label {
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  & .placeholder-image {
+    background: #ededed;
+    padding: 0.75rem;
+  }
+}
+
