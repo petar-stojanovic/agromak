@@ -1,16 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <!--    <ion-title size="large">Home</ion-title>-->
-    <div class="flex ion-align-items-center p-16">
+    <ion-text class="flex ion-align-items-center px-16 pb-0">
       <ion-thumbnail class="logo">
         <img alt="Logo" src="assets/icon-only.png"/>
       </ion-thumbnail>
     <ion-searchbar showCancelButton="focus" class="custom"></ion-searchbar>
-    </div>
+    </ion-text>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
   <ion-refresher slot="fixed" (ionRefresh)="refreshAds($event)">
     <ion-refresher-content></ion-refresher-content>
