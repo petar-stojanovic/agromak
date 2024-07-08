@@ -18,10 +18,13 @@ ion-thumbnail {
   //--size: 5rem;
 }
 
-.px-16 {
-  padding-inline: 16px;
-}
+.searchbar {
+  --border-radius: 10rem;
 
-.pb-0 {
-  padding-bottom: 0;
+  &::ng-deep {
+
+    input.searchbar-input {
+      height: 2.5rem !important;
+    }
+  }
 }
