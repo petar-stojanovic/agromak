@@ -2,6 +2,15 @@ ion-header {
   & ion-toolbar {
     --background: var(--ion-color-primary);
     padding: 10px 16px !important;
+
+
+    & ion-icon {
+      width: 100%;
+      height: 100%;
+
+      fill: #01196F;
+      //stroke: blue;
+    }
   }
 }
 

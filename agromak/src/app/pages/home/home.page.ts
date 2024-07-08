@@ -39,7 +39,7 @@ export class HomePage implements OnInit {
 
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
-    addIcons({add})
+    addIcons({add, 'logo': 'assets/logo.svg'})
   }
 
   ngOnInit(): void {
