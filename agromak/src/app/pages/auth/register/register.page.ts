@@ -3,6 +3,14 @@ import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   AlertController,
+  IonButton,
+  IonContent,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonList,
+  IonText,
+  IonTitle,
   LoadingController
 } from "@ionic/angular/standalone";
 import {Router, RouterLink} from "@angular/router";
@@ -11,14 +19,13 @@ import {eye, eyeOff, lockClosed, logoGoogle, mail, person} from "ionicons/icons"
 import {AuthService} from "../../../services/auth.service";
 import firebase from "firebase/compat";
 import FirebaseError = firebase.FirebaseError;
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterLink]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, IonTitle, IonContent, IonList, IonItem, IonInput, IonIcon, IonButton, IonText]
 })
 export class RegisterPage {
 

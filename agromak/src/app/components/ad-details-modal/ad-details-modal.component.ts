@@ -1,10 +1,23 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit} from '@angular/core';
-import {ModalController} from "@ionic/angular/standalone";
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonItemDivider,
+  IonList,
+  IonListHeader,
+  IonText,
+  IonTitle,
+  IonToolbar,
+  ModalController
+} from "@ionic/angular/standalone";
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {callOutline, locationOutline, personOutline} from "ionicons/icons";
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-ad-details-modal',
@@ -13,9 +26,20 @@ import {IonicModule} from "@ionic/angular";
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    IonicModule,
     DatePipe,
-    NgIf
+    NgIf,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
+    IonTitle,
+    IonContent,
+    IonText,
+    IonItemDivider,
+    IonList,
+    IonListHeader,
+    IonItem,
+    IonIcon
   ]
 })
 export class AdDetailsModalComponent implements OnInit {

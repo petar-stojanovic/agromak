@@ -1,11 +1,24 @@
 import {Haptics, ImpactStyle} from '@capacitor/haptics';
 import {Component, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonFab,
+  IonFabButton,
+  IonHeader,
+  IonIcon,
+  IonRefresher,
+  IonRefresherContent,
+  IonSearchbar,
+  IonText,
+  IonThumbnail,
+  IonToolbar,
+  ModalController
+} from '@ionic/angular/standalone';
 import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
 import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
-import {IonicModule, RefresherCustomEvent} from "@ionic/angular";
+import {RefresherCustomEvent} from "@ionic/angular";
 import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
@@ -17,7 +30,7 @@ import {AdListComponent} from "../../components/ad-list/ad-list.component";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, NgForOf, NgIf, RouterLink, AdListComponent],
+  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon],
 })
 export class HomePage implements OnInit {
 

@@ -28,14 +28,13 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {Message} from "../../shared/models/message";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../shared/models/user";
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [IonicModule, NgIf, FormsModule, ReactiveFormsModule]
+  imports: [NgIf, FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton]
 })
 export class AiPage {
   image: Photo | null = null;

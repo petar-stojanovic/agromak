@@ -1,5 +1,29 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
-import {AlertController, LoadingController, ModalController} from "@ionic/angular/standalone";
+import {
+  AlertController,
+  IonButton,
+  IonButtons,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonRadio,
+  IonRadioGroup,
+  IonRow,
+  IonSelect,
+  IonSelectOption,
+  IonText,
+  IonTextarea,
+  IonTitle,
+  IonToolbar,
+  LoadingController,
+  ModalController
+} from "@ionic/angular/standalone";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AdService} from "../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
@@ -10,7 +34,6 @@ import {CreateAd} from "../../shared/models/create-ad";
 import {OpenAiService} from "../../services/open-ai.service";
 import {addIcons} from "ionicons";
 import {sparklesOutline} from "ionicons/icons";
-import {IonicModule} from "@ionic/angular";
 
 interface AgriculturalCategories {
   [key: string]: string[];
@@ -25,9 +48,28 @@ interface AgriculturalCategories {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     ReactiveFormsModule,
-    IonicModule,
     NgIf,
     NgForOf,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonButton,
+    IonTitle,
+    IonContent,
+    IonRadioGroup,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonRadio,
+    IonSelect,
+    IonSelectOption,
+    IonTextarea,
+    IonIcon,
+    IonInput,
+    IonText,
   ],
 })
 export class AddProductModalComponent implements OnInit {

@@ -4,11 +4,21 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {addIcons} from "ionicons";
 import {eye, eyeOff, lockClosed, logoGoogle, mail} from "ionicons/icons";
 import {AuthService} from "../../../services/auth.service";
-import {AlertController, LoadingController} from "@ionic/angular/standalone";
+import {
+  AlertController,
+  IonButton,
+  IonContent,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonList,
+  IonText,
+  IonTitle,
+  LoadingController
+} from "@ionic/angular/standalone";
 import {Router, RouterLink} from "@angular/router";
 import firebase from "firebase/compat";
 import {User} from "../../../shared/models/user";
-import {IonicModule} from "@ionic/angular";
 import FirebaseError = firebase.FirebaseError;
 
 @Component({
@@ -16,7 +26,7 @@ import FirebaseError = firebase.FirebaseError;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterLink]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, IonContent, IonTitle, IonList, IonInput, IonItem, IonIcon, IonButton, IonText]
 })
 export class LoginPage {
 

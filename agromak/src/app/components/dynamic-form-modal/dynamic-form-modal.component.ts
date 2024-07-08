@@ -1,11 +1,19 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
-import {LoadingController, ModalController} from "@ionic/angular/standalone";
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  LoadingController,
+  ModalController
+} from "@ionic/angular/standalone";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -14,12 +22,17 @@ import {IonicModule} from "@ionic/angular";
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    IonicModule,
     ReactiveFormsModule,
     FormsModule,
     NgIf,
     NgForOf,
-    DynamicFormComponent
+    DynamicFormComponent,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonButton,
+    IonTitle,
+    IonContent
   ],
 })
 export class DynamicFormModalComponent implements OnInit {

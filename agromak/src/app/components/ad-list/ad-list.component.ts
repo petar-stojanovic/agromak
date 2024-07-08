@@ -1,8 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
-import {InfiniteScrollCustomEvent, IonicModule} from "@ionic/angular";
-import {RouterLink} from "@angular/router";
-import {ModalController} from "@ionic/angular/standalone";
+import {InfiniteScrollCustomEvent} from "@ionic/angular";
+import {
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonSkeletonText,
+  IonThumbnail,
+  ModalController
+} from "@ionic/angular/standalone";
 import {AdDetailsModalComponent} from "../ad-details-modal/ad-details-modal.component";
 import {AdService} from "../../services/ad.service";
 
@@ -11,7 +19,14 @@ import {AdService} from "../../services/ad.service";
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.scss'],
   imports: [
-    IonicModule,
+    IonList,
+    IonItem,
+    IonSkeletonText,
+    IonThumbnail,
+    IonLabel,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent
+
   ],
   standalone: true
 })

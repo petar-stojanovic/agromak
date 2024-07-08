@@ -1,5 +1,12 @@
 import {Component, inject} from '@angular/core';
-import {AlertController, LoadingController} from '@ionic/angular/standalone';
+import {
+  AlertController,
+  IonContent,
+  IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonSkeletonText, IonText, IonThumbnail,
+  IonTitle,
+  IonToolbar,
+  LoadingController
+} from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
 import {chevronForwardOutline, lockClosed, logOutOutline, notificationsOutline, personOutline} from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
@@ -8,7 +15,6 @@ import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {User} from "../../shared/models/user";
 import {CommonModule} from "@angular/common";
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +22,19 @@ import {IonicModule} from "@ionic/angular";
   styleUrls: ['profile.page.scss'],
   standalone: true,
   imports: [
-    IonicModule,
-    CommonModule
+    CommonModule,
+    IonToolbar,
+    IonHeader,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonThumbnail,
+    IonLabel,
+    IonText,
+    IonListHeader,
+    IonIcon,
+    IonSkeletonText,
   ],
 })
 export class ProfilePage {

@@ -10,9 +10,18 @@ import {
 } from '@angular/core';
 import {JsonFormControls, JsonFormData} from "../../shared/models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {IonicModule} from "@ionic/angular";
 import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
+import {
+  IonButton,
+  IonCheckbox,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonRange,
+  IonTextarea,
+  IonToggle
+} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -22,7 +31,14 @@ import * as icons from "ionicons/icons";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    IonicModule
+    IonItem,
+    IonInput,
+    IonTextarea,
+    IonCheckbox,
+    IonToggle,
+    IonRange,
+    IonIcon,
+    IonButton,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
