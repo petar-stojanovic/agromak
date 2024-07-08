@@ -7,7 +7,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonSkeletonText,
+  IonSkeletonText, IonText,
   IonThumbnail,
   ModalController
 } from "@ionic/angular/standalone";
@@ -25,7 +25,8 @@ import {AdService} from "../../services/ad.service";
     IonThumbnail,
     IonLabel,
     IonInfiniteScroll,
-    IonInfiniteScrollContent
+    IonInfiniteScrollContent,
+    IonText
 
   ],
   standalone: true
