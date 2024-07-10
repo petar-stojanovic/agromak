@@ -3,14 +3,17 @@ ion-header {
     --background: var(--ion-color-primary);
     padding: 10px 16px !important;
 
-
     & ion-icon {
-      width: 100%;
-      height: 100%;
+      font-size: 2.5rem;
 
       fill: var(--ion-color-logo);
       //stroke: blue;
     }
+  }
+
+  // Logo icon
+  & ion-thumbnail {
+    --size: 2.5rem;
   }
 }
 
