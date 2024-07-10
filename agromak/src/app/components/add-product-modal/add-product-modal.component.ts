@@ -202,11 +202,14 @@ export class AddProductModalComponent implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this._adService.createAd(this.form.value as CreateAd, this.images).then(async () => {
-      await this.modalCtrl.dismiss(this.form.value, 'confirm');
-    }).finally(async () => {
-      await loading.dismiss();
-    });
+    const adId = await this._adService.createAd(this.form.value as CreateAd);
+    if (this.images.length > 0) {
+      await this.imageService.uploadAdImages(adId, this.images);
+    }
+
+    // Dismiss the modal and pass the form value as a result
+    await this.modalCtrl.dismiss(this.form.value, 'confirm');
+    await loading.dismiss();
   }
 
   getImagePath(item: string): string {
@@ -236,8 +239,8 @@ export class AddProductModalComponent implements OnInit {
     }
 
     this.swiper?.nativeElement.swiper.updateAutoHeight();
-    setTimeout(() =>{
+    setTimeout(() => {
       this.swiper?.nativeElement.swiper.updateAutoHeight();
-    },250)
+    }, 250)
   }
 }

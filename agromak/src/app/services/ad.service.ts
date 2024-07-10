@@ -8,6 +8,7 @@ import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, Observable, take} from "rxjs";
+import {User} from "../shared/models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,9 @@ export class AdService {
   searchedAds$: Observable<Ad[]>;
 
 
+  user: User | null = null;
+
+
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
               private _authService: AuthService,
@@ -37,46 +41,39 @@ export class AdService {
     // Create the observable array for consumption in components
     this.ads$ = this._ads.asObservable();
     this.searchedAds$ = this._searchedAds.asObservable();
+
+    this._authService.user$.subscribe(user => {
+      this.user = user;
+    })
   }
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
-    this._authService.user$
-      .subscribe({
-          next: async (user) => {
-            if (user === null) {
-              return;
-            }
-            const owner = user;
+    if (!this.user) {
+      await  this.router.navigate(['/login']);
+    }
 
-            const data = {
-              category: value.category,
-              subcategory: value.subcategory,
-              buyOrSell: value.buyOrSell,
-              title: value.title,
-              title_lowercase: value.title.toLowerCase(),
-              city: value.city,
-              price: value.price,
-              currency: value.currency,
-              phone: value.phone,
-              quantity: value.quantity,
-              measure: value.measure,
-              description: value.description,
-              ownerId: owner.uid,
-              ownerName: owner.displayName,
-              uploadedAt: new Date(),
-              images: []
-            };
+    const data = {
+      category: value.category,
+      subcategory: value.subcategory,
+      buyOrSell: value.buyOrSell,
+      title: value.title,
+      title_lowercase: value.title.toLowerCase(),
+      city: value.city,
+      price: value.price,
+      currency: value.currency,
+      phone: value.phone,
+      quantity: value.quantity,
+      measure: value.measure,
+      description: value.description,
+      ownerId: this.user!.uid,
+      ownerName: this.user!.displayName,
+      uploadedAt: new Date(),
+      images: []
+    };
 
+    const adRef = await this.angularFirestore.collection('ads').add(data);
 
-            const adRef = await this.angularFirestore.collection('ads').add(data);
-            console.log(adRef.id);
-
-            if (images) {
-              await this.imageService.uploadAdImages(adRef.id, images);
-            }
-          }
-        }
-      );
+    return adRef.id;
   }
 
 
