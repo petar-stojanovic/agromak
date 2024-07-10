@@ -1,5 +1,5 @@
 import {Haptics, ImpactStyle} from '@capacitor/haptics';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {
   IonContent,
   IonFab,
@@ -35,6 +35,8 @@ import {SearchAdsModalComponent} from "../../components/search-ads-modal/search-
 })
 export class HomePage implements OnInit {
 
+  @ViewChild('searchbar') searchbar!: IonSearchbar;
+
   ads: Ad[] = [];
   isLoading = true;
 
@@ -46,6 +48,11 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     this.getAds();
     // this.openDynamicModal();
+    setTimeout(() => {
+      this.searchbar.value = 'Sell';
+      this.openSearchModal(this.searchbar.value);
+    }, 1000);
+
   }
 
   getAds() {
@@ -97,24 +104,22 @@ export class HomePage implements OnInit {
   }
 
 
- async search($event: CustomEvent) {
-    if ($event.detail.value === '') {
+  search(event: CustomEvent) {
+    if (event.detail.value === '') {
       return;
     }
+    return this.openSearchModal(event.detail.value);
+  }
 
-   const modal = await this.modalCtrl.create({
-     component: SearchAdsModalComponent,
+  // TODO: return to default search function after complete implementation
+  private async openSearchModal(searchValue: string) {
+    const modal = await this.modalCtrl.create({
+      component: SearchAdsModalComponent,
       componentProps: {
-        searchValue: $event.detail.value
+        searchValue: searchValue
       }
-   });
-   await modal.present();
-
-   const {data, role} = await modal.onWillDismiss();
-
-   if (role === 'confirm') {
-     console.log('Data:', data);
-   }
-
+    });
+    await modal.present();
+    this.searchbar.value = null;
   }
 }
