@@ -7,7 +7,8 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonSkeletonText, IonText,
+  IonSkeletonText,
+  IonText,
   IonThumbnail,
   ModalController
 } from "@ionic/angular/standalone";

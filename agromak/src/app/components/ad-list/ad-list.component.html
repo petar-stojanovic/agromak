@@ -19,7 +19,7 @@
       </ion-item>
     }
 
-  } @else {
+  } @else if (ads.length > 0) {
 
     @for (ad of ads; track $index) {
 
@@ -49,6 +49,12 @@
       </ion-item>
     }
 
+  } @else {
+    <ion-item>
+      <ion-label>
+        <h3>No ads found</h3>
+      </ion-label>
+    </ion-item>
   }
 </ion-list>
 

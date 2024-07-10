@@ -7,7 +7,7 @@ import {CreateAd} from "../shared/models/create-ad";
 import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, Observable, take} from "rxjs";
+import {BehaviorSubject, delay, map, Observable, take, timer} from "rxjs";
 import {User} from "../shared/models/user";
 
 @Injectable({
@@ -111,7 +111,6 @@ export class AdService {
   }
 
   resetAds() {
-    console.log('resetting ads')
     this._ads.next([]);
     this._searchedAds.next([]);
     this.getAds();
