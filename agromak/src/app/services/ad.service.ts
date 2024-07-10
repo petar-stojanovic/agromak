@@ -16,16 +16,12 @@ import {User} from "../shared/models/user";
 export class AdService {
   private imageService = inject(ImageService);
 
-  private _done = new BehaviorSubject(false);
-  private _loading = new BehaviorSubject(false);
   private _ads = new BehaviorSubject<Ad[]>([]);
   private _searchedAds = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
   readonly NUM_OF_ADS_TO_LOAD = 5;
 
-  done$ = this._done.asObservable();
-  loading$ = this._loading.asObservable();
   ads$: Observable<Ad[]>;
   searchedAds$: Observable<Ad[]>;
 
@@ -49,7 +45,7 @@ export class AdService {
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
     if (!this.user) {
-      await  this.router.navigate(['/login']);
+      await this.router.navigate(['/login']);
     }
 
     const data = {
@@ -78,13 +74,14 @@ export class AdService {
 
 
   getAds(lastVisible?: Ad) {
-    let query = this.angularFirestore
-      .collection('ads', ref => ref
-        .orderBy('uploadedAt', 'desc')
-        .limit(this.NUM_OF_STARTING_ADS)
-      );
-
-    if (lastVisible) {
+    let query;
+    if (!lastVisible) {
+      query = this.angularFirestore
+        .collection('ads', ref => ref
+          .orderBy('uploadedAt', 'desc')
+          .limit(this.NUM_OF_STARTING_ADS)
+        );
+    } else {
       query = this.angularFirestore
         .collection('ads', ref => ref
           .orderBy('uploadedAt', 'desc')
@@ -94,7 +91,6 @@ export class AdService {
     }
 
     this.mapAndUpdate(query);
-    //return this.angularFirestore.collection('ads').get();
   }
 
   searchAds(searchValue: string) {
@@ -106,7 +102,6 @@ export class AdService {
         .limit(this.NUM_OF_STARTING_ADS)
       );
 
-    console.log('Query:', query)
     this.mapAndUpdate(query, true);
   }
 
@@ -116,7 +111,9 @@ export class AdService {
   }
 
   resetAds() {
+    console.log('resetting ads')
     this._ads.next([]);
+    this._searchedAds.next([]);
     this.getAds();
   }
 

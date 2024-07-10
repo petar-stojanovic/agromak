@@ -47,11 +47,12 @@ export class SearchAdsModalComponent  implements OnInit {
 
   getAds() {
     this.ads = [];
+    this.isLoading = true;
 
     this._adService.searchedAds$
       .subscribe(async (ads) => {
         this.ads = ads;
-        console.log('Ads:', ads)
+        console.log('Searched Ads:', ads)
         setTimeout(() => {
           this.isLoading = ads.length === 0;
         }, 1500);
@@ -62,6 +63,7 @@ export class SearchAdsModalComponent  implements OnInit {
 
 
   dismiss() {
+    this._adService.resetAds()
     return this.modalCtrl.dismiss();
   }
 
