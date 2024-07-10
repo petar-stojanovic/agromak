@@ -24,6 +24,7 @@ import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
 import {DynamicFormModalComponent} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
+import {SearchAdsModalComponent} from "../../components/search-ads-modal/search-ads-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -96,4 +97,24 @@ export class HomePage implements OnInit {
   }
 
 
+ async search($event: CustomEvent) {
+    if ($event.detail.value === '') {
+      return;
+    }
+
+   const modal = await this.modalCtrl.create({
+     component: SearchAdsModalComponent,
+      componentProps: {
+        searchValue: $event.detail.value
+      }
+   });
+   await modal.present();
+
+   const {data, role} = await modal.onWillDismiss();
+
+   if (role === 'confirm') {
+     console.log('Data:', data);
+   }
+
+  }
 }
