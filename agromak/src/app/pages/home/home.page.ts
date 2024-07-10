@@ -116,7 +116,7 @@ export class HomePage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: SearchAdsModalComponent,
       componentProps: {
-        searchValue: searchValue
+        searchValue: searchValue.trim()
       }
     });
     await modal.present();

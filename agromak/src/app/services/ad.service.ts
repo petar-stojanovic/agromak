@@ -18,6 +18,7 @@ export class AdService {
   private _done = new BehaviorSubject(false);
   private _loading = new BehaviorSubject(false);
   private _ads = new BehaviorSubject<Ad[]>([]);
+  private _searchedAds = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
   readonly NUM_OF_ADS_TO_LOAD = 5;
@@ -25,6 +26,7 @@ export class AdService {
   done$ = this._done.asObservable();
   loading$ = this._loading.asObservable();
   ads$: Observable<Ad[]>;
+  searchedAds$: Observable<Ad[]>;
 
 
   constructor(private angularFirestore: AngularFirestore,
@@ -34,6 +36,7 @@ export class AdService {
 
     // Create the observable array for consumption in components
     this.ads$ = this._ads.asObservable();
+    this.searchedAds$ = this._searchedAds.asObservable();
   }
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
@@ -50,6 +53,7 @@ export class AdService {
               subcategory: value.subcategory,
               buyOrSell: value.buyOrSell,
               title: value.title,
+              title_lowercase: value.title.toLowerCase(),
               city: value.city,
               price: value.price,
               currency: value.currency,
@@ -96,6 +100,19 @@ export class AdService {
     //return this.angularFirestore.collection('ads').get();
   }
 
+  searchAds(searchValue: string) {
+    const lowerCaseSearchValue = searchValue.toLowerCase();
+    const query = this.angularFirestore
+      .collection('ads', ref => ref
+        .where('title_lowercase', '>=', lowerCaseSearchValue)
+        .where('title_lowercase', '<=', lowerCaseSearchValue + '\uf8ff')
+        .limit(this.NUM_OF_STARTING_ADS)
+      );
+
+    console.log('Query:', query)
+    this.mapAndUpdate(query, true);
+  }
+
 
   getAdById(id: string) {
     return this.angularFirestore.doc(`ads/${id}`).get();
@@ -107,7 +124,7 @@ export class AdService {
   }
 
   // Maps the snapshot to usable format
-  private mapAndUpdate(col: AngularFirestoreCollection<any>) {
+  private mapAndUpdate(col: AngularFirestoreCollection<any>, searched = false) {
 
     return col.snapshotChanges()
       .pipe(
@@ -121,7 +138,11 @@ export class AdService {
           const currentAds = this._ads.getValue();
 
           // Update source with values
-          this._ads.next([...currentAds, ...values]);
+          if (searched) {
+            this._searchedAds.next([...values]);
+          } else {
+            this._ads.next([...currentAds, ...values]);
+          }
 
           return actions;
         }),

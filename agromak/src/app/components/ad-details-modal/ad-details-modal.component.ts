@@ -50,6 +50,7 @@ export class AdDetailsModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.ad)
   }
 
   dismiss() {

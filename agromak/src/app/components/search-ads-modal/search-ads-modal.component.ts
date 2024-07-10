@@ -10,6 +10,8 @@ import {
   IonToolbar,
   ModalController
 } from "@ionic/angular/standalone";
+import {AdService} from "../../services/ad.service";
+import {AdListComponent} from "../ad-list/ad-list.component";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -23,7 +25,8 @@ import {
     IonTitle,
     IonToolbar,
     NgIf,
-    IonContent
+    IonContent,
+    AdListComponent
   ],
   standalone: true
 })
@@ -31,11 +34,32 @@ export class SearchAdsModalComponent  implements OnInit {
 
   @Input() searchValue!: string;
 
-  constructor(private modalCtrl: ModalController) { }
+  ads: Ad[] = [];
+  isLoading = true;
+
+
+  constructor(private modalCtrl: ModalController,
+              private _adService: AdService) { }
 
   ngOnInit() {
-    console.log(this.searchValue);
+    this.getAds();
   }
+
+  getAds() {
+    this.ads = [];
+
+    this._adService.searchedAds$
+      .subscribe(async (ads) => {
+        this.ads = ads;
+        console.log('Ads:', ads)
+        setTimeout(() => {
+          this.isLoading = ads.length === 0;
+        }, 1500);
+      });
+
+    this._adService.searchAds(this.searchValue);
+  }
+
 
   dismiss() {
     return this.modalCtrl.dismiss();

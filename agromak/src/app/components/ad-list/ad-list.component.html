@@ -21,7 +21,7 @@
 
   } @else {
 
-    @for (ad of ads; track ad.id) {
+    @for (ad of ads; track $index) {
 
       <ion-item class="ad ion-margin-vertical" (click)="openAdDetailsModal(ad)">
         <ion-thumbnail slot="start">
