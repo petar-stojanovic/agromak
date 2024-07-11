@@ -9,6 +9,7 @@ import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, delay, map, Observable, take, timer} from "rxjs";
 import {User} from "../shared/models/user";
+import {documentId} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -78,15 +79,15 @@ export class AdService {
     if (!lastVisible) {
       query = this.angularFirestore
         .collection('ads', ref => ref
-          .orderBy('uploadedAt', 'desc')
+          .orderBy(documentId(), 'asc') // Order by document id, default for 'Standard'
           .limit(this.NUM_OF_STARTING_ADS)
         );
     } else {
       query = this.angularFirestore
         .collection('ads', ref => ref
-          .orderBy('uploadedAt', 'desc')
+          .orderBy(documentId(), 'asc')
           .limit(this.NUM_OF_ADS_TO_LOAD)
-          .startAfter(lastVisible.uploadedAt)
+          .startAfter(lastVisible.id)
         );
     }
 

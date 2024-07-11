@@ -49,8 +49,7 @@ export class HomePage implements OnInit {
     this.getAds();
     // this.openDynamicModal();
     setTimeout(() => {
-      // this.searchbar.value = 'Sell';
-      // this.openSearchModal(this.searchbar.value);
+      this.openSearchModal('Sell');
     }, 1000);
 
   }
@@ -63,7 +62,7 @@ export class HomePage implements OnInit {
         this.ads = ads;
         setTimeout(() => {
           this.isLoading = ads.length === 0;
-        }, 1500);
+        }, 500);
       });
 
     this._adService.getAds();

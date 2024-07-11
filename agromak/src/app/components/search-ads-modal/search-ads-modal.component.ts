@@ -2,10 +2,11 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {
-  IonBackButton,
+  IonAvatar,
+  IonBackButton, IonButton,
   IonButtons,
   IonContent,
-  IonHeader,
+  IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonModal,
   IonTitle,
   IonToolbar,
   ModalController
@@ -13,6 +14,8 @@ import {
 import {AdService} from "../../services/ad.service";
 import {AdListComponent} from "../ad-list/ad-list.component";
 import {Subscription, switchMap, timer} from "rxjs";
+import {addIcons} from "ionicons";
+import {filterCircleOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -27,7 +30,15 @@ import {Subscription, switchMap, timer} from "rxjs";
     IonToolbar,
     NgIf,
     IonContent,
-    AdListComponent
+    AdListComponent,
+    IonIcon,
+    IonButton,
+    IonModal,
+    IonList,
+    IonItem,
+    IonAvatar,
+    IonImg,
+    IonLabel
   ],
   standalone: true
 })
@@ -43,6 +54,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   constructor(private modalCtrl: ModalController,
               private _adService: AdService) {
+    addIcons({filterCircleOutline})
   }
 
 
