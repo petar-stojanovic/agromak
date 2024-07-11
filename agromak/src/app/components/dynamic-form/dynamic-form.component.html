@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   @for (control of jsonFormData.controls; track $index) {
-    <ion-item>
+    <ion-item >
       @if (control.label !== '') {
         <!--                    <ion-label>{{ control.label }}</ion-label>-->
       }
@@ -13,7 +13,18 @@
           [value]="control.value"
           [placeholder]="control.placeholder ? control.placeholder : control.label"
           labelPlacement="stacked"
-        ></ion-input>
+        >
+
+        </ion-input>
+        <ng-container *ngIf="form.controls[control.name] as ctrl">
+          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('required')">
+            The {{ control.label }} is required
+          </ion-note>
+          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('minlength')">
+            The {{ control.label }} must be at least <strong>{{ ctrl.getError('minlength').requiredLength }}</strong>
+            characters
+          </ion-note>
+        </ng-container>
       } @else if (control.type === 'textarea') {
         <ion-textarea
           [formControlName]="control.name"

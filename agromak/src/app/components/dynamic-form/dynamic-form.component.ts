@@ -17,11 +17,12 @@ import {
   IonCheckbox,
   IonIcon,
   IonInput,
-  IonItem,
+  IonItem, IonNote,
   IonRange,
   IonTextarea,
   IonToggle
 } from "@ionic/angular/standalone";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -39,6 +40,8 @@ import {
     IonRange,
     IonIcon,
     IonButton,
+    NgIf,
+    IonNote,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

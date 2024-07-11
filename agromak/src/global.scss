@@ -40,13 +40,13 @@
 @mixin input-message() {
   font-size: 12px;
   box-sizing: border-box;
-  padding: 2px 13px;
   animation-name: input-message-animation;
   animation-duration: 300ms;
 }
 
 .input-error{
   @include input-message();
+  display: block;
   color: var(--ion-color-danger);
 }
 
