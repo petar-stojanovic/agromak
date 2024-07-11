@@ -25,6 +25,31 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+// Animation for form input error messages
+@keyframes input-message-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@mixin input-message() {
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 2px 13px;
+  animation-name: input-message-animation;
+  animation-duration: 300ms;
+}
+
+.input-error{
+  @include input-message();
+  color: var(--ion-color-danger);
+}
+
 
 .flex {
   display: flex;

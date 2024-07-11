@@ -11,12 +11,16 @@
           [label]="control.label"
           [type]="control.type"
           [value]="control.value"
+          [placeholder]="control.placeholder ? control.placeholder : control.label"
+          labelPlacement="stacked"
         ></ion-input>
       } @else if (control.type === 'textarea') {
         <ion-textarea
           [formControlName]="control.name"
           [label]="control.label"
           [value]="control.value"
+          [placeholder]="control.placeholder ? control.placeholder : control.label"
+          labelPlacement="stacked"
         ></ion-textarea>
       } @else if (control.type === 'checkbox') {
         <ion-checkbox
