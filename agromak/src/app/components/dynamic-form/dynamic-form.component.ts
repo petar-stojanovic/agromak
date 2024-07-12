@@ -23,6 +23,7 @@ import {
   IonToggle
 } from "@ionic/angular/standalone";
 import {NgIf} from "@angular/common";
+import {InputErrorComponent} from "../input-error/input-error.component";
 
 
 @Component({
@@ -42,6 +43,7 @@ import {NgIf} from "@angular/common";
     IonButton,
     NgIf,
     IonNote,
+    InputErrorComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

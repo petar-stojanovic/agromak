@@ -17,13 +17,14 @@
 
         </ion-input>
         <ng-container *ngIf="form.controls[control.name] as ctrl">
-          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('required')">
-            The {{ control.label }} is required
-          </ion-note>
-          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('minlength')">
-            The {{ control.label }} must be at least <strong>{{ ctrl.getError('minlength').requiredLength }}</strong>
-            characters
-          </ion-note>
+          <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
+<!--          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('required')">-->
+<!--            The {{ control.label }} is required-->
+<!--          </ion-note>-->
+<!--          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('minlength')">-->
+<!--            The {{ control.label }} must be at least <strong>{{ ctrl.getError('minlength').requiredLength }}</strong>-->
+<!--            characters-->
+<!--          </ion-note>-->
         </ng-container>
       } @else if (control.type === 'textarea') {
         <ion-textarea
