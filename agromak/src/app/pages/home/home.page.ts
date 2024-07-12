@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.getAds();
-    this.openDynamicModal();
+    // this.openDynamicModal();
     setTimeout(() => {
       // this.openSearchModal('Sell');
     }, 1000);

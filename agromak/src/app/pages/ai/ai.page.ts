@@ -1,24 +1,19 @@
 import {Component, ViewChild} from '@angular/core';
 import {
   IonButton,
-  IonCol,
   IonContent,
   IonFooter,
-  IonGrid,
   IonHeader,
   IonIcon,
   IonInput,
   IonItem,
   IonLabel,
-  IonList,
-  IonRow,
   IonText,
   IonThumbnail,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
-import {NgForOf, NgIf} from "@angular/common";
 import {ImageService} from "../../services/image.service";
 import {OpenAiService} from "../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
@@ -34,7 +29,7 @@ import {User} from "../../shared/models/user";
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [NgIf, FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton]
 })
 export class AiPage {
   image: Photo | null = null;

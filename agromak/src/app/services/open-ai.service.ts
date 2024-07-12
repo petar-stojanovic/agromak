@@ -23,12 +23,7 @@ export class OpenAiService {
       "messages": [
         {
           "role": "system",
-          "content": "You are a helpful assistant. Assume the role of a helpful assistant specialized in facilitating product sales." +
-            "You are designed to provide assistance related to selling items and answering questions about products." +
-            "Only respond to queries directly related to selling, product information, or relevant inquiries." +
-            "Do not generate responses for requests involving tasks unrelated to the selling process, " +
-            "such as requests for writing Python scripts or any other non-sales-related topics." +
-            "Keep responses short, simple, and easy to understand"
+          "content": "You are a helpful assistant. Assume the role of a helpful assistant specialized in software development. I will send you JSON and you will translate the serbian/bosnian values to english, and return the same json file. Take your time nad make as good of translation as you can."
         },
         ...messages.map(message => {
           const content: any[] = [
@@ -53,7 +48,7 @@ export class OpenAiService {
           };
         })
       ],
-      "max_tokens": 200
+      // "max_tokens": 200
     } as CompletionCreateParamsStreaming);
 
     return stream;

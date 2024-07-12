@@ -1,13 +1,12 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Auth} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../shared/models/create-ad";
-import {ImageService} from "./image.service";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, delay, map, Observable, take, timer} from "rxjs";
+import {BehaviorSubject, map, Observable, take} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 
@@ -15,8 +14,6 @@ import {documentId} from "@angular/fire/firestore";
   providedIn: 'root'
 })
 export class AdService {
-  private imageService = inject(ImageService);
-
   private _ads = new BehaviorSubject<Ad[]>([]);
   private _searchedAds = new BehaviorSubject<Ad[]>([]);
 

@@ -1,0 +1,2132 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Vozila",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 18,
+          "name": "Automobili",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 20,
+          "name": "Teretna vozila",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 21,
+          "name": "Motocikli",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 22,
+          "name": "Bicikli",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 2457,
+          "name": "ATV / UTV / Quad",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 1040,
+          "name": "Autobusi i minibusi",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 426,
+          "name": "Nautika",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 883,
+          "name": "Kamperi",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 2127,
+          "name": "Motorne sanke",
+          "parent_id": 1,
+          "icon": null
+        },
+        {
+          "id": 884,
+          "name": "Prikolice",
+          "parent_id": 1,
+          "icon": null
+        }
+      ],
+      "icon": "cars"
+    },
+    {
+      "id": 2,
+      "name": "Nekretnine",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 23,
+          "name": "Stanovi i apartmani",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 2668,
+          "name": "Stan na dan",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 24,
+          "name": "Kuće",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 29,
+          "name": "Zemljišta",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 25,
+          "name": "Poslovni prostori",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 26,
+          "name": "Vikendice",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 30,
+          "name": "Garaže",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 1193,
+          "name": "Montažni objekti",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 2672,
+          "name": "Skladišta i hale",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 28,
+          "name": "Sobe",
+          "parent_id": 2,
+          "icon": null
+        },
+        {
+          "id": 270,
+          "name": "Ostalo",
+          "parent_id": 2,
+          "icon": null
+        }
+      ],
+      "icon": "real-estate"
+    },
+    {
+      "id": 2159,
+      "name": "Servisi i usluge",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 2160,
+          "name": "Auto moto i nautika",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2341,
+          "name": "Dizajn, print i štampa",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2175,
+          "name": "Dom i kancelarija",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2197,
+          "name": "Edukacija i obrazovanje",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2277,
+          "name": "Gastro, zabava i organizacija",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2218,
+          "name": "Građevinarstvo",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2268,
+          "name": "Informatika i Telekomunikacije",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2239,
+          "name": "Ljepota, njega i medicinske usluge",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2338,
+          "name": "Marketing i posredovanje",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2260,
+          "name": "Ostale usluge i servisi",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2209,
+          "name": "Pravo i finansije",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 2250,
+          "name": "Transport i promet",
+          "parent_id": 2159,
+          "icon": null
+        },
+        {
+          "id": 1773,
+          "name": "Turističke usluge",
+          "parent_id": 2159,
+          "icon": null
+        }
+      ],
+      "icon": "services"
+    },
+    {
+      "id": 465,
+      "name": "Odjeća i obuća",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 466,
+          "name": "Žene",
+          "parent_id": 465,
+          "icon": null
+        },
+        {
+          "id": 467,
+          "name": "Muškarci",
+          "parent_id": 465,
+          "icon": null
+        },
+        {
+          "id": 468,
+          "name": "Djevojčice",
+          "parent_id": 465,
+          "icon": null
+        },
+        {
+          "id": 469,
+          "name": "Dječaci",
+          "parent_id": 465,
+          "icon": null
+        },
+        {
+          "id": 470,
+          "name": "Unisex",
+          "parent_id": 465,
+          "icon": null
+        },
+        {
+          "id": 472,
+          "name": "Ostalo",
+          "parent_id": 465,
+          "icon": null
+        }
+      ],
+      "icon": "clothes"
+    },
+    {
+      "id": 928,
+      "name": "Dijelovi za vozila",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 929,
+          "name": "Za automobile",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 931,
+          "name": "Za teretna vozila",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 930,
+          "name": "Za motocikle",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 932,
+          "name": "Za bicikle",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 934,
+          "name": "Za autobuse i minibuse",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 933,
+          "name": "Za građevinske mašine",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 935,
+          "name": "Za plovila nautiku",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 949,
+          "name": "Za prikolice",
+          "parent_id": 928,
+          "icon": null
+        },
+        {
+          "id": 936,
+          "name": "Za sve ostalo",
+          "parent_id": 928,
+          "icon": null
+        }
+      ],
+      "icon": "car-parts"
+    },
+    {
+      "id": 208,
+      "name": "Životinje",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 210,
+          "name": "Domaće životinje",
+          "parent_id": 208,
+          "icon": null
+        },
+        {
+          "id": 209,
+          "name": "Kućni ljubimci",
+          "parent_id": 208,
+          "icon": null
+        },
+        {
+          "id": 212,
+          "name": "Oprema za životinje",
+          "parent_id": 208,
+          "icon": null
+        },
+        {
+          "id": 388,
+          "name": "Ostalo",
+          "parent_id": 208,
+          "icon": null
+        }
+      ],
+      "icon": "pets"
+    },
+    {
+      "id": 2286,
+      "name": "Poslovi",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 2298,
+          "name": "Administracija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2344,
+          "name": "Arhitektura i projektovanje",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2300,
+          "name": "Autoindustrija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2301,
+          "name": "Briga o djeci, starima i domaćinstvu",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2303,
+          "name": "Ekonomija i finansije",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2302,
+          "name": "Elektrotehnika i mašinstvo",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2299,
+          "name": "Građevinarstvo i geodezija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2304,
+          "name": "IT i telekomunikacije",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2305,
+          "name": "Instalacije, održavanje i popravak",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2306,
+          "name": "Ljepota i zdravlje",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2307,
+          "name": "Ljudski resursi, pravo",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2423,
+          "name": "Marketing/PR",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2317,
+          "name": "Menadžment,upravljanje i savjetovanje",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2346,
+          "name": "Moleraj i tapetarija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2309,
+          "name": "Obrazovanje i nauka",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2308,
+          "name": "Osiguranje, sigurnost i zaštita",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2311,
+          "name": "Poljoprivreda i šumarstvo",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2312,
+          "name": "Prodaja/Komercijala",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2345,
+          "name": "Stolarija i keramika",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2313,
+          "name": "Tekstilna industrija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2314,
+          "name": "Transport, logistika i špedicija",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2315,
+          "name": "Turizam i ugostiteljstvo",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2316,
+          "name": "Umjetnost, kultura, mediji",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2347,
+          "name": "Veterina, stočarstvo i ribarstvo",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2296,
+          "name": "Web development i dizajn",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2297,
+          "name": "Zdravstvo, farmacija i socijalna zaštita",
+          "parent_id": 2286,
+          "icon": null
+        },
+        {
+          "id": 2310,
+          "name": "Ostali poslovi",
+          "parent_id": 2286,
+          "icon": null
+        }
+      ],
+      "icon": "jobs"
+    },
+    {
+      "id": 3,
+      "name": "Mobilni uređaji",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 31,
+          "name": "Mobiteli",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 1495,
+          "name": "Tablet PCs",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 2076,
+          "name": "Smartwatch (pametni satovi)",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 252,
+          "name": "Dijelovi i oprema",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 34,
+          "name": "Bluetooth uređaji",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 32,
+          "name": "PDA i Pocket PCs",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 2429,
+          "name": "eBook readeri",
+          "parent_id": 3,
+          "icon": null
+        },
+        {
+          "id": 37,
+          "name": "Ostalo",
+          "parent_id": 3,
+          "icon": null
+        }
+      ],
+      "icon": "mobile-phones"
+    },
+    {
+      "id": 701,
+      "name": "Moj dom",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 704,
+          "name": "Namještaj",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 708,
+          "name": "Grijanje i hlađenje",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 703,
+          "name": "Kuhinja",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 702,
+          "name": "Kupatilo",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 867,
+          "name": "Stolarija",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 711,
+          "name": "Vrt biljke i vrtlarstvo",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 707,
+          "name": "Lampe i rasvjeta",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 712,
+          "name": "Bazeni i oprema",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 709,
+          "name": "Ćilimi, tepisi, etisoni i ostalo",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 705,
+          "name": "Dekoracije",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 2655,
+          "name": "Filteri za vodu",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 1805,
+          "name": "Keramičke pločice",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 2594,
+          "name": "Poštanska sandučad",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 713,
+          "name": "Sigurnosni uređaji",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 710,
+          "name": "Sredstva i uređaji za čišćenje",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 706,
+          "name": "Tekstilni proizvodi",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 1717,
+          "name": "Vodoinstalacije i oprema",
+          "parent_id": 701,
+          "icon": null
+        },
+        {
+          "id": 868,
+          "name": "Ostalo",
+          "parent_id": 701,
+          "icon": null
+        }
+      ],
+      "icon": "my-home"
+    },
+    {
+      "id": 5,
+      "name": "Kompjuteri",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 38,
+          "name": "Desktop Računari",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 39,
+          "name": "Laptopi",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 42,
+          "name": "Kompjuterska oprema",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 2595,
+          "name": "Docking stations",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 2602,
+          "name": "Grafički tableti",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 2407,
+          "name": "Kriptovalute",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 2411,
+          "name": "Mining rigovi",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 74,
+          "name": "Mreže i Komunikacije",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 2600,
+          "name": "Oprema za mining rigove",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 75,
+          "name": "Serveri",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 43,
+          "name": "Softver",
+          "parent_id": 5,
+          "icon": null
+        },
+        {
+          "id": 366,
+          "name": "Ostalo",
+          "parent_id": 5,
+          "icon": null
+        }
+      ],
+      "icon": "convos"
+    },
+    {
+      "id": 224,
+      "name": "Biznis i Industrija",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 225,
+          "name": "Mašine i alati",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 226,
+          "name": "Poljoprivreda",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 228,
+          "name": "Građevinarstvo",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 227,
+          "name": "Biznis",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2633,
+          "name": "Aparati / Varilice za pakovanja",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2675,
+          "name": "Ulja, maziva i boje",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2630,
+          "name": "Folije",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 1157,
+          "name": "Rashladne i toplotne vitrine",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2592,
+          "name": "Industrijske grijalice/Topovi",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 368,
+          "name": "Kancelarijski materijal/namještaj",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2631,
+          "name": "Kese i vreće",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 1947,
+          "name": "Materijali, dijelovi i oprema",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2560,
+          "name": "Oprema za pakovanje",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 1913,
+          "name": "Oprema za zaštitu na radu",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 2632,
+          "name": "Selotejp i trake",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 1194,
+          "name": "Trgovačka oprema",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 1143,
+          "name": "Ugostiteljska oprema",
+          "parent_id": 224,
+          "icon": null
+        },
+        {
+          "id": 370,
+          "name": "Ostalo",
+          "parent_id": 224,
+          "icon": null
+        }
+      ],
+      "icon": "business"
+    },
+    {
+      "id": 171,
+      "name": "Sportska oprema",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 1761,
+          "name": "Borilački sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 1055,
+          "name": "Ekstremni sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 172,
+          "name": "Fitness i trening",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 1815,
+          "name": "Planinarenje i alpinizam",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 217,
+          "name": "Tenis",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 340,
+          "name": "Timski sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 174,
+          "name": "Vanjski sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 177,
+          "name": "Vodeni sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 178,
+          "name": "Zimski sportovi",
+          "parent_id": 171,
+          "icon": null
+        },
+        {
+          "id": 341,
+          "name": "Oprema za ostale sportove",
+          "parent_id": 171,
+          "icon": null
+        }
+      ],
+      "icon": "sports-equipment"
+    },
+    {
+      "id": 896,
+      "name": "Hrana i piće",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 900,
+          "name": "Biljni proizvodi",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 901,
+          "name": "Dezerti i slastice",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 908,
+          "name": "Mliječni proizvodi",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 2497,
+          "name": "Paketi proizvoda",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 897,
+          "name": "Pića",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 1714,
+          "name": "Prerada hrane",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 902,
+          "name": "Ulja i začini",
+          "parent_id": 896,
+          "icon": null
+        },
+        {
+          "id": 899,
+          "name": "Životinjski proizvodi",
+          "parent_id": 896,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 68,
+      "name": "Nakit i Satovi",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 244,
+          "name": "Ručni Satovi",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 745,
+          "name": "Zidni i Stoni Satovi",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 200,
+          "name": "Lančići i Ogrlice",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 203,
+          "name": "Narukvice",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 882,
+          "name": "Naušnice",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 202,
+          "name": "Prstenje",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 204,
+          "name": "Privjesci za nakit",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 2467,
+          "name": "Broševi i bedževi",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 2146,
+          "name": "Dijelovi za satove",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 2035,
+          "name": "Džepni satovi",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 2524,
+          "name": "Kristali, drago i poludrago kamenje",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 2466,
+          "name": "Kutije za satove i nakit",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 1062,
+          "name": "Piercing nakit",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 1633,
+          "name": "Repromaterijal za nakit",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 1636,
+          "name": "Poluge i dukati",
+          "parent_id": 68,
+          "icon": null
+        },
+        {
+          "id": 205,
+          "name": "Pribor/alat za nakit i satove",
+          "parent_id": 68,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 276,
+      "name": "Ljepota i Zdravlje",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 277,
+          "name": "Koža i tijelo",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 431,
+          "name": "Naočale",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 278,
+          "name": "Njega kose i brade",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 1054,
+          "name": "Njega noktiju",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 281,
+          "name": "Oralna higijena",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 430,
+          "name": "Parfemi",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 2548,
+          "name": "Umjetne trepavice",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 2551,
+          "name": "Zaštitne maske i rukavice",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 279,
+          "name": "Zdravlje",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 280,
+          "name": "Šminka",
+          "parent_id": 276,
+          "icon": null
+        },
+        {
+          "id": 282,
+          "name": "Ostalo",
+          "parent_id": 276,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 371,
+      "name": "Bebe",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 1043,
+          "name": "Autosjedalice",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2687,
+          "name": "Flašice/cucle",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 372,
+          "name": "Garderoba",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2678,
+          "name": "Gnijezda za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 1571,
+          "name": "Hodalice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2679,
+          "name": "Hranilice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 377,
+          "name": "Igračke za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2691,
+          "name": "Igraonice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2682,
+          "name": "Izdajalice za mlijeko",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2690,
+          "name": "Dekice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2686,
+          "name": "Kadice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 375,
+          "name": "Kolica za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 376,
+          "name": "Krevetići za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 1572,
+          "name": "Ležaljke/Sjedalice za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2680,
+          "name": "Ljulje za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2685,
+          "name": "Monitori za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 1569,
+          "name": "Nosiljke za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2684,
+          "name": "Noše za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2688,
+          "name": "Njega za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 374,
+          "name": "Pelene za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2681,
+          "name": "Podloge za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2147,
+          "name": "Posteljina/ogradica za krevet",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2692,
+          "name": "Siperak za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 2683,
+          "name": "Torbe za mame",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 373,
+          "name": "Uređaji i pribor za bebe",
+          "parent_id": 371,
+          "icon": null
+        },
+        {
+          "id": 378,
+          "name": "Ostalo",
+          "parent_id": 371,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 283,
+      "name": "Igre i igračke",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 284,
+          "name": "Akcione figure",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 288,
+          "name": "Društvene igre",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 286,
+          "name": "Kockice za djecu",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 287,
+          "name": "Igračke na baterije",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 2562,
+          "name": "Montesori za djecu",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 285,
+          "name": "Plišane igračke",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 1991,
+          "name": "Tobogani i igraonice",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 1520,
+          "name": "Igračke za djevojčice",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 1519,
+          "name": "Igračke za dječake",
+          "parent_id": 283,
+          "icon": null
+        },
+        {
+          "id": 295,
+          "name": "Ostale igračke",
+          "parent_id": 283,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 289,
+      "name": "Video igre",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 293,
+          "name": "Dijelovi i oprema",
+          "parent_id": 289,
+          "icon": null
+        },
+        {
+          "id": 290,
+          "name": "Igre za PC i konzole",
+          "parent_id": 289,
+          "icon": null
+        },
+        {
+          "id": 291,
+          "name": "Internet/browser igre",
+          "parent_id": 289,
+          "icon": null
+        },
+        {
+          "id": 292,
+          "name": "Konzole",
+          "parent_id": 289,
+          "icon": null
+        },
+        {
+          "id": 294,
+          "name": "Ostalo",
+          "parent_id": 289,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 67,
+      "name": "Muzička oprema",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 1990,
+          "name": "Muzički instrumenti",
+          "parent_id": 67,
+          "icon": null
+        },
+        {
+          "id": 229,
+          "name": "Hi-Fi komponente",
+          "parent_id": 67,
+          "icon": null
+        },
+        {
+          "id": 51,
+          "name": "Muzička oprema i dijelovi",
+          "parent_id": 67,
+          "icon": null
+        },
+        {
+          "id": 1881,
+          "name": "Muzičke linije",
+          "parent_id": 67,
+          "icon": null
+        },
+        {
+          "id": 389,
+          "name": "Ostalo",
+          "parent_id": 67,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 16,
+      "name": "Literatura",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 307,
+          "name": "Knjige",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 1432,
+          "name": "Školski pribor",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 305,
+          "name": "Audioknjige",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 925,
+          "name": "E-knjige",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 306,
+          "name": "Katalozi",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 312,
+          "name": "Magazini",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 434,
+          "name": "Stripovi",
+          "parent_id": 16,
+          "icon": null
+        },
+        {
+          "id": 313,
+          "name": "Ostalo",
+          "parent_id": 16,
+          "icon": null
+        }
+      ],
+      "icon": "books"
+    },
+    {
+      "id": 69,
+      "name": "Umjetnost",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 331,
+          "name": "Umjetničke slike",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 243,
+          "name": "Fotografije",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 2531,
+          "name": "Ikone i levhe",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 332,
+          "name": "Posteri i plakati",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 333,
+          "name": "Skulpture",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 631,
+          "name": "Tattoo",
+          "parent_id": 69,
+          "icon": null
+        },
+        {
+          "id": 334,
+          "name": "Ostalo",
+          "parent_id": 69,
+          "icon": null
+        }
+      ],
+      "icon": "camera"
+    },
+    {
+      "id": 435,
+      "name": "Kolekcionarstvo",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 1712,
+          "name": "Figurice",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 449,
+          "name": "Filatelija",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 1792,
+          "name": "Maketarstvo/Modelarstvo",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 437,
+          "name": "Militarija",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 444,
+          "name": "Numizmatika",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 2554,
+          "name": "Plakete",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 443,
+          "name": "Razglednice",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 438,
+          "name": "Religija",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 1742,
+          "name": "Salvete",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 1052,
+          "name": "Sličice i albumi",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 2121,
+          "name": "Sportski pehari i oznake",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 442,
+          "name": "Stare ulaznice",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 440,
+          "name": "Suveniri",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 2478,
+          "name": "Tablice za vozila",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 441,
+          "name": "Telefonske kartice",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 453,
+          "name": "Zastave",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 439,
+          "name": "Značke",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 2113,
+          "name": "Čestitke",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 2500,
+          "name": "Žetoni",
+          "parent_id": 435,
+          "icon": null
+        },
+        {
+          "id": 454,
+          "name": "Ostalo",
+          "parent_id": 435,
+          "icon": null
+        }
+      ],
+      "icon": "Kolekcionarstvo"
+    },
+    {
+      "id": 455,
+      "name": "Antikviteti",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 464,
+          "name": "Gramofoni i ploče",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 458,
+          "name": "Antik keramika i staklo",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 1552,
+          "name": "Knjige i dokumenti",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 459,
+          "name": "Kućanski predmeti",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 461,
+          "name": "Antik nakit i satovi",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 456,
+          "name": "Antik namještaj",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 460,
+          "name": "Narodna nošnja",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 1573,
+          "name": "Antik predmeti od metala",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 462,
+          "name": "Pribor i oprema",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 1553,
+          "name": "Antik slike i gobleni",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 457,
+          "name": "Antik uređaji i aparati",
+          "parent_id": 455,
+          "icon": null
+        },
+        {
+          "id": 463,
+          "name": "Ostalo",
+          "parent_id": 455,
+          "icon": null
+        }
+      ],
+      "icon": "Antikviteti"
+    },
+    {
+      "id": 179,
+      "name": "Karte - Tickets",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 181,
+          "name": "Kina",
+          "parent_id": 179,
+          "icon": null
+        },
+        {
+          "id": 180,
+          "name": "Koncerti",
+          "parent_id": 179,
+          "icon": null
+        },
+        {
+          "id": 182,
+          "name": "Pozorišta",
+          "parent_id": 179,
+          "icon": null
+        },
+        {
+          "id": 183,
+          "name": "Sportski događaji",
+          "parent_id": 179,
+          "icon": null
+        },
+        {
+          "id": 184,
+          "name": "Ostalo",
+          "parent_id": 179,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 328,
+      "name": "Sve ostalo",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 1418,
+          "name": "Oprema za pušače",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 1425,
+          "name": "Seksualna pomagala",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 1420,
+          "name": "Špijunska oprema",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 1736,
+          "name": "Maske i maskiranje",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 1428,
+          "name": "Pirotehnika",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 1427,
+          "name": "Razni pokloni",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 2656,
+          "name": "Potražnja",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 2657,
+          "name": "Poklanjam (darujem)",
+          "parent_id": 328,
+          "icon": null
+        },
+        {
+          "id": 369,
+          "name": "Ostalo",
+          "parent_id": 328,
+          "icon": null
+        }
+      ],
+      "icon": null
+    },
+    {
+      "id": 14,
+      "name": "Tehnika",
+      "parent_id": null,
+      "sub_categories": [
+        {
+          "id": 46,
+          "name": "Bijela tehnika",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 45,
+          "name": "TV (Televizori)",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2575,
+          "name": "Baterije i punjači",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2392,
+          "name": "Bluetooth zvučnici",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2093,
+          "name": "DVD/Blu-ray player",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 1715,
+          "name": "Digitroni/Kalkulatori",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 1922,
+          "name": "Diktafoni/Snimači",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2115,
+          "name": "Dronovi (RC letjelice)",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2662,
+          "name": "Dijelovi i oprema za dronove",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2541,
+          "name": "Električne cigarete",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 1838,
+          "name": "Elektromaterijal",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2149,
+          "name": "Hoverboard",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2332,
+          "name": "IoT",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 57,
+          "name": "Kamere i foto aparati",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 249,
+          "name": "Kućna kina",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2556,
+          "name": "Lupe/povećala",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 433,
+          "name": "Medicinska oprema",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 890,
+          "name": "Mjerno-regulacioni instrumenti",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 15,
+          "name": "Multimedija",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2050,
+          "name": "Radio amaterski uređaji i oprema",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 891,
+          "name": "Radio i walkman uređaji",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 1780,
+          "name": "Satelitska oprema",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2543,
+          "name": "Smart sistemi",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2348,
+          "name": "Solarna oprema",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2096,
+          "name": "TV boxovi",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 1046,
+          "name": "Telekomunikacije",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2593,
+          "name": "Teleskopi i oprema",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2011,
+          "name": "Termometri",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2502,
+          "name": "Uređaji za zagrijavanje duhana",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 47,
+          "name": "Video iPod i mp3 playeri",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 2129,
+          "name": "Virtuelna realnost (VR uređaji)",
+          "parent_id": 14,
+          "icon": null
+        },
+        {
+          "id": 250,
+          "name": "Ostalo",
+          "parent_id": 14,
+          "icon": null
+        }
+      ],
+      "icon": "clock"
+    }
+  ]
+}
