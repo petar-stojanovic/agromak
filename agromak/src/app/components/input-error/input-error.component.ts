@@ -11,7 +11,11 @@ import {IonNote} from "@ionic/angular/standalone";
       {{ errorsMap[error.key](error.value) }}
     </ion-note>
   `,
-  styleUrls: ['./input-error.component.scss'],
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
