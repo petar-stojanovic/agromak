@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
       "forceCodeForRefreshToken": true
     },
     SplashScreen: {
-      launchShowDuration: 2500,
+      launchShowDuration: 1500,
       launchAutoHide: true,
     }
   }
