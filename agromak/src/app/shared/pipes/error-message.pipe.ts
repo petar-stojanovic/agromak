@@ -1,13 +1,20 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
+import {VALIDATION_ERROR_MESSAGES} from "../../components/input-error/validation-error-messages.token";
 
 @Pipe({
-  standalone: true,
-  name: 'errorMessage'
+  name: 'errorMessage',
+  standalone: true
 })
 export class ErrorMessagePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  private errorMessages = inject(VALIDATION_ERROR_MESSAGES)
+
+  transform(key: string, errValue: any): string {
+    if (!this.errorMessages[key]) {
+      console.warn(`Missing error message for ${key} validator...`)
+      return '';
+    }
+    return this.errorMessages[key](errValue);
   }
 
 }
