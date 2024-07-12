@@ -8,7 +8,7 @@ import {IonNote} from "@ionic/angular/standalone";
   selector: 'app-input-error',
   template: `
     <ion-note *ngFor="let error of errors | keyvalue " class="input-error">
-      {{ errorsMap[error.key] }}
+      {{ errorsMap[error.key](error.value) }}
     </ion-note>
   `,
   styleUrls: ['./input-error.component.scss'],
