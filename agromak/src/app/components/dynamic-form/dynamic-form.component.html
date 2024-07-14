@@ -1,73 +1,87 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  @for (control of jsonFormData.controls; track $index) {
-    <ion-item >
-      @if (control.label !== '') {
-        <!--                    <ion-label>{{ control.label }}</ion-label>-->
-      }
+<ion-list lines="inset">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @for (control of jsonFormData.controls; track $index) {
+      <ion-item class="ion-margin-bottom">
+        @if (control.label !== '') {
+          <!--                    <ion-label>{{ control.label }}</ion-label>-->
+        }
 
-      @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
-        <ion-input
-          [formControlName]="control.name"
-          [label]="control.label"
-          [type]="control.type"
-          [value]="control.value"
-          [placeholder]="control.placeholder ? control.placeholder : control.label"
-          labelPlacement="stacked"
-        >
+        @if (control.type === "paragraph") {
+          <ion-text>
+            <p>{{ control.value }}</p>
+          </ion-text>
+        } @else if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
+          <ion-input
+            [formControlName]="control.name"
+            [label]="control.label"
+            [type]="control.type"
+            [value]="control.value"
+            [placeholder]="control.placeholder ? control.placeholder : control.label"
+            labelPlacement="stacked"
+          >
 
-        </ion-input>
-        <ng-container *ngIf="form.controls[control.name] as ctrl">
-          <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
-<!--          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('required')">-->
-<!--            The {{ control.label }} is required-->
-<!--          </ion-note>-->
-<!--          <ion-note slot="error" class="input-error" *ngIf="ctrl.dirty && ctrl.hasError('minlength')">-->
-<!--            The {{ control.label }} must be at least <strong>{{ ctrl.getError('minlength').requiredLength }}</strong>-->
-<!--            characters-->
-<!--          </ion-note>-->
-        </ng-container>
-      } @else if (control.type === 'textarea') {
-        <ion-textarea
-          [formControlName]="control.name"
-          [label]="control.label"
-          [value]="control.value"
-          [placeholder]="control.placeholder ? control.placeholder : control.label"
-          labelPlacement="stacked"
-        ></ion-textarea>
-      } @else if (control.type === 'checkbox') {
-        <ion-checkbox
-          [formControlName]="control.name"
-          [checked]="control.value"
-        >{{ control.label }}
-        </ion-checkbox>
-      } @else if (control.type === 'toggle') {
-        <ion-toggle
-          [formControlName]="control.name"
-          [checked]="control.value"
-        >
-          {{ control.label }}
-        </ion-toggle>
-      } @else if (control.type === 'range') {
-        <ion-range
-          [formControlName]="control.name"
-          [label]="control.label"
-          [pin]="true"
-          [min]="control.options?.min"
-          [max]="control.options?.max"
-        >
-          @if (control.options?.icon) {
-            <ion-icon
-              size="small"
-              slot="start"
-              [name]="control.options!.icon"
-            ></ion-icon>
-          }
-          <ion-icon slot="end" [name]="control.options?.icon"></ion-icon>
-        </ion-range>
-      }
+          </ion-input>
+          <ng-container *ngIf="form.controls[control.name] as ctrl">
+            <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
+          </ng-container>
+        } @else if (control.type === 'radio') {
+          <ion-radio-group
+            [formControlName]="control.name"
+            class="w-100">
+            <ion-text class="font-weight-500">
+              <p>{{ control.label }}</p>
+            </ion-text>
+            @for (option of control.options?.items; track $index) {
+              <ion-radio
+                [value]="option.value"
+                labelPlacement="">
+                {{ option.label }}
+              </ion-radio>
+            }
+          </ion-radio-group>
+        } @else if (control.type === 'textarea') {
+          <ion-textarea
+            [formControlName]="control.name"
+            [label]="control.label"
+            [value]="control.value"
+            [placeholder]="control.placeholder ? control.placeholder : control.label"
+            labelPlacement="stacked"
+          ></ion-textarea>
+        } @else if (control.type === 'checkbox') {
+          <ion-checkbox
+            [formControlName]="control.name"
+            [checked]="control.value"
+          >{{ control.label }}
+          </ion-checkbox>
+        } @else if (control.type === 'toggle') {
+          <ion-toggle
+            [formControlName]="control.name"
+            [checked]="control.value"
+          >
+            {{ control.label }}
+          </ion-toggle>
+        } @else if (control.type === 'range') {
+          <ion-range
+            [formControlName]="control.name"
+            [label]="control.label"
+            [pin]="true"
+            [min]="control.options?.min"
+            [max]="control.options?.max"
+          >
+            @if (control.options?.icon) {
+              <ion-icon
+                size="small"
+                slot="start"
+                [name]="control.options!.icon"
+              ></ion-icon>
+            }
+            <ion-icon slot="end" [name]="control.options?.icon"></ion-icon>
+          </ion-range>
+        }
 
 
-    </ion-item>
-  }
-  <ion-button [disabled]="!form.valid" expand="full" type="submit">Submit</ion-button>
-</form>
+      </ion-item>
+    }
+    <ion-button [disabled]="!form.valid" expand="full" type="submit">Submit</ion-button>
+  </form>
+</ion-list>

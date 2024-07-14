@@ -18,6 +18,7 @@ interface JsonFormControlOptions {
   max?: string;
   step?: string;
   icon?: string;
+  items?: { label: string, value: any }[]
 }
 
 interface JsonFormValidators {

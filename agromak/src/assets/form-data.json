@@ -11,6 +11,38 @@
       }
     },
     {
+      "type": "radio",
+      "name": "gender",
+      "label": "Gender",
+      "value": "",
+      "options": {
+        "items": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          },
+          {
+            "label": "Other",
+            "value": "other"
+          }
+        ]
+      },
+      "validators": {
+        "required": true
+      }
+    },
+    {
+      "type": "paragraph",
+      "name": "info",
+      "label": "",
+      "value": "Please fill out all the details correctly.",
+      "validators": {}
+    },
+    {
       "type": "text",
       "name": "lastName",
       "label": "Last name",

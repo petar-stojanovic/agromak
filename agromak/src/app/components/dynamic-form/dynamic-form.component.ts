@@ -17,8 +17,8 @@ import {
   IonCheckbox,
   IonIcon,
   IonInput,
-  IonItem, IonNote,
-  IonRange,
+  IonItem, IonLabel, IonList, IonNote, IonRadio, IonRadioGroup,
+  IonRange, IonText,
   IonTextarea,
   IonToggle
 } from "@ionic/angular/standalone";
@@ -44,6 +44,11 @@ import {InputErrorComponent} from "../input-error/input-error.component";
     NgIf,
     IonNote,
     InputErrorComponent,
+    IonRadioGroup,
+    IonList,
+    IonLabel,
+    IonRadio,
+    IonText,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -79,8 +84,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   createForm(controls: JsonFormControls[]) {
     for (const control of controls) {
+      console.log(control)
       const validatorsToAdd = [];
       for (const [key, value] of Object.entries(control.validators)) {
+        console.log(key, value)
         switch (key) {
           case 'min':
             validatorsToAdd.push(Validators.min(value));
