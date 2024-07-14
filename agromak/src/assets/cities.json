@@ -1,0 +1,839 @@
+{
+  "values": [
+    {
+      "id": 1,
+      "name": "Скопје",
+      "latitude": 41.987069586513137,
+      "longitude": 21.451929148437511,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 2,
+      "name": "Битола",
+      "latitude": 41.031728,
+      "longitude": 21.329358,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 3,
+      "name": "Куманово",
+      "latitude": 42.132926,
+      "longitude": 21.715878,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 4,
+      "name": "Прилеп",
+      "latitude": 41.346182,
+      "longitude": 21.553379,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 5,
+      "name": "Тетово",
+      "latitude": 42.009423,
+      "longitude": 20.971549,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 6,
+      "name": "Велес",
+      "latitude": 41.715954,
+      "longitude": 21.770997,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 7,
+      "name": "Штип",
+      "latitude": 41.745515,
+      "longitude": 22.19396,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 8,
+      "name": "Охрид",
+      "latitude": 41.111733,
+      "longitude": 20.798579,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 9,
+      "name": "Гостивар",
+      "latitude": 41.801881,
+      "longitude": 20.913259,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 10,
+      "name": "Струмица",
+      "latitude": 41.440569,
+      "longitude": 22.639528,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 11,
+      "name": "Кавадарци",
+      "latitude": 41.438304,
+      "longitude": 22.004864,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 12,
+      "name": "Кочани",
+      "latitude": 41.924335,
+      "longitude": 22.404964,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 13,
+      "name": "Кичево",
+      "latitude": 41.51282,
+      "longitude": 20.96083,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 14,
+      "name": "Струга",
+      "latitude": 41.173346,
+      "longitude": 20.677493,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 15,
+      "name": "Радовиш",
+      "latitude": 41.635743,
+      "longitude": 22.470056,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 16,
+      "name": "Гевгелија",
+      "latitude": 41.14712,
+      "longitude": 22.507161,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 17,
+      "name": "Дебар",
+      "latitude": 41.516028,
+      "longitude": 20.533415,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 18,
+      "name": "Крива Паланка",
+      "latitude": 42.205478,
+      "longitude": 22.333429,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 19,
+      "name": "Свети Николе",
+      "latitude": 41.865485,
+      "longitude": 21.940845,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 20,
+      "name": "Неготино",
+      "latitude": 41.484224,
+      "longitude": 22.089622,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 21,
+      "name": "Делчево",
+      "latitude": 41.966811,
+      "longitude": 22.781396,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 22,
+      "name": "Виница",
+      "latitude": 41.884235,
+      "longitude": 22.515181,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 23,
+      "name": "Ресен",
+      "latitude": 41.090247,
+      "longitude": 21.016781,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 24,
+      "name": "Пробиштип",
+      "latitude": 41.994543,
+      "longitude": 22.181289,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 25,
+      "name": "Берово",
+      "latitude": 41.711096,
+      "longitude": 22.848172,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 26,
+      "name": "Кратово",
+      "latitude": 42.076833215836537,
+      "longitude": 22.177026804687511,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 28,
+      "name": "Крушево",
+      "latitude": 41.373181,
+      "longitude": 21.252891,
+      "parentId": null,
+      "hasChilds": true
+    },
+    {
+      "id": 29,
+      "name": "Македонски Брод",
+      "latitude": 41.514916,
+      "longitude": 21.218902,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 30,
+      "name": "Валандово",
+      "latitude": 41.315781,
+      "longitude": 22.566826,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 34,
+      "name": "Демир Хисар",
+      "latitude": 41.221826,
+      "longitude": 21.207874,
+      "parentId": null,
+      "hasChilds": false
+    },
+    {
+      "id": 267,
+      "name": "Скопје Центар",
+      "latitude": 41.978187,
+      "longitude": 21.427388,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 268,
+      "name": "Карпош",
+      "latitude": 41.991502,
+      "longitude": 21.39781,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 269,
+      "name": "Кисела Вода",
+      "latitude": 41.931839,
+      "longitude": 21.502835,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 270,
+      "name": "Аеродром",
+      "latitude": 41.949632,
+      "longitude": 21.502494,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 271,
+      "name": "Гази Баба",
+      "latitude": 42.00877,
+      "longitude": 21.45126,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 272,
+      "name": "Бутел",
+      "latitude": 42.052075,
+      "longitude": 21.450415,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 273,
+      "name": "Чаир",
+      "latitude": 41.993825,
+      "longitude": 21.436139,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 274,
+      "name": "Ѓорче Петров",
+      "latitude": 42.013646,
+      "longitude": 21.32586,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 275,
+      "name": "Сарај",
+      "latitude": 41.999359,
+      "longitude": 21.327548,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 276,
+      "name": "Шуто Оризари",
+      "latitude": 42.036516,
+      "longitude": 21.42584,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 277,
+      "name": "Сопиште",
+      "latitude": 41.944583,
+      "longitude": 21.395116,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 278,
+      "name": "Студеничани",
+      "latitude": 41.922679,
+      "longitude": 21.536229,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 279,
+      "name": "Зелениково",
+      "latitude": 41.873242,
+      "longitude": 21.601714,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 280,
+      "name": "Петровец",
+      "latitude": 41.93375,
+      "longitude": 21.621843,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 281,
+      "name": "Илинден",
+      "latitude": 41.989867,
+      "longitude": 21.581912,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 282,
+      "name": "Арачиново",
+      "latitude": 42.026658,
+      "longitude": 21.562729,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 283,
+      "name": "Чучер Сандево",
+      "latitude": 42.096995,
+      "longitude": 21.388571,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 284,
+      "name": "Автокоманда",
+      "latitude": 42.003425,
+      "longitude": 21.463615,
+      "parentId": 1,
+      "hasChilds": false
+    },
+    {
+      "id": 285,
+      "name": "Битола",
+      "latitude": 41.031728,
+      "longitude": 21.329358,
+      "parentId": 2,
+      "hasChilds": false
+    },
+    {
+      "id": 286,
+      "name": "Могила",
+      "latitude": 41.17531,
+      "longitude": 21.394995,
+      "parentId": 2,
+      "hasChilds": false
+    },
+    {
+      "id": 287,
+      "name": "Новаци",
+      "latitude": 41.045021,
+      "longitude": 21.462461,
+      "parentId": 2,
+      "hasChilds": false
+    },
+    {
+      "id": 288,
+      "name": "Куманово",
+      "latitude": 42.132926,
+      "longitude": 21.715878,
+      "parentId": 3,
+      "hasChilds": false
+    },
+    {
+      "id": 289,
+      "name": "Старо Нагоричане",
+      "latitude": 42.198776,
+      "longitude": 21.835265,
+      "parentId": 3,
+      "hasChilds": false
+    },
+    {
+      "id": 290,
+      "name": "Ранковце",
+      "latitude": 42.183229,
+      "longitude": 22.093498,
+      "parentId": 3,
+      "hasChilds": false
+    },
+    {
+      "id": 291,
+      "name": "Прилеп",
+      "latitude": 41.346182,
+      "longitude": 21.553379,
+      "parentId": 4,
+      "hasChilds": false
+    },
+    {
+      "id": 292,
+      "name": "Кривогаштани",
+      "latitude": 41.337355,
+      "longitude": 21.33078,
+      "parentId": 4,
+      "hasChilds": false
+    },
+    {
+      "id": 293,
+      "name": "Долнени",
+      "latitude": 41.425943,
+      "longitude": 21.453794,
+      "parentId": 4,
+      "hasChilds": false
+    },
+    {
+      "id": 294,
+      "name": "Тетово",
+      "latitude": 42.009423,
+      "longitude": 20.971549,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 295,
+      "name": "Боговиње",
+      "latitude": 41.923402,
+      "longitude": 20.916068,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 296,
+      "name": "Теарце",
+      "latitude": 42.077699,
+      "longitude": 21.053594,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 297,
+      "name": "Јегуновце",
+      "latitude": 42.073867,
+      "longitude": 21.118206,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 298,
+      "name": "Брвеница",
+      "latitude": 41.967228,
+      "longitude": 20.980786,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 299,
+      "name": "Желино",
+      "latitude": 41.982516,
+      "longitude": 21.062434,
+      "parentId": 5,
+      "hasChilds": false
+    },
+    {
+      "id": 300,
+      "name": "Велес",
+      "latitude": 41.715954,
+      "longitude": 21.770997,
+      "parentId": 6,
+      "hasChilds": false
+    },
+    {
+      "id": 301,
+      "name": "Чашка",
+      "latitude": 41.64664,
+      "longitude": 21.691839,
+      "parentId": 6,
+      "hasChilds": false
+    },
+    {
+      "id": 302,
+      "name": "Градско",
+      "latitude": 41.576175,
+      "longitude": 21.948139,
+      "parentId": 6,
+      "hasChilds": false
+    },
+    {
+      "id": 303,
+      "name": "Штип",
+      "latitude": 41.745515,
+      "longitude": 22.19396,
+      "parentId": 7,
+      "hasChilds": false
+    },
+    {
+      "id": 304,
+      "name": "Карбинци",
+      "latitude": 41.815793,
+      "longitude": 22.236264,
+      "parentId": 7,
+      "hasChilds": false
+    },
+    {
+      "id": 305,
+      "name": "Охрид",
+      "latitude": 41.111733,
+      "longitude": 20.798579,
+      "parentId": 8,
+      "hasChilds": false
+    },
+    {
+      "id": 306,
+      "name": "Дебарца",
+      "latitude": 41.218558,
+      "longitude": 20.763343,
+      "parentId": 8,
+      "hasChilds": false
+    },
+    {
+      "id": 307,
+      "name": "Гостивар",
+      "latitude": 41.801881,
+      "longitude": 20.913259,
+      "parentId": 9,
+      "hasChilds": false
+    },
+    {
+      "id": 308,
+      "name": "Врапчиште",
+      "latitude": 41.834089,
+      "longitude": 20.883743,
+      "parentId": 9,
+      "hasChilds": false
+    },
+    {
+      "id": 309,
+      "name": "Маврово и Ростуша",
+      "latitude": 41.651396,
+      "longitude": 20.735753,
+      "parentId": 9,
+      "hasChilds": false
+    },
+    {
+      "id": 310,
+      "name": "Струмица",
+      "latitude": 41.440569,
+      "longitude": 22.639528,
+      "parentId": 10,
+      "hasChilds": false
+    },
+    {
+      "id": 311,
+      "name": "Василево",
+      "latitude": 41.475581,
+      "longitude": 22.643096,
+      "parentId": 10,
+      "hasChilds": false
+    },
+    {
+      "id": 312,
+      "name": "Босилово",
+      "latitude": 41.438738,
+      "longitude": 22.729228,
+      "parentId": 10,
+      "hasChilds": false
+    },
+    {
+      "id": 313,
+      "name": "Ново Село",
+      "latitude": 41.411372,
+      "longitude": 22.879678,
+      "parentId": 10,
+      "hasChilds": false
+    },
+    {
+      "id": 314,
+      "name": "Кавадарци",
+      "latitude": 41.438304,
+      "longitude": 22.004864,
+      "parentId": 11,
+      "hasChilds": false
+    },
+    {
+      "id": 315,
+      "name": "Росоман",
+      "latitude": 41.515718,
+      "longitude": 21.949554,
+      "parentId": 11,
+      "hasChilds": false
+    },
+    {
+      "id": 316,
+      "name": "Кочани",
+      "latitude": 41.924335,
+      "longitude": 22.404964,
+      "parentId": 12,
+      "hasChilds": false
+    },
+    {
+      "id": 317,
+      "name": "Чешиново",
+      "latitude": 41.873525,
+      "longitude": 22.29332,
+      "parentId": 12,
+      "hasChilds": false
+    },
+    {
+      "id": 318,
+      "name": "Струга",
+      "latitude": 41.173346,
+      "longitude": 20.677493,
+      "parentId": 14,
+      "hasChilds": false
+    },
+    {
+      "id": 319,
+      "name": "Вевчани",
+      "latitude": 41.240371,
+      "longitude": 20.592708,
+      "parentId": 14,
+      "hasChilds": false
+    },
+    {
+      "id": 320,
+      "name": "Радовиш",
+      "latitude": 41.635743,
+      "longitude": 22.470056,
+      "parentId": 15,
+      "hasChilds": false
+    },
+    {
+      "id": 321,
+      "name": "Конче",
+      "latitude": 41.495774,
+      "longitude": 22.385457,
+      "parentId": 15,
+      "hasChilds": false
+    },
+    {
+      "id": 322,
+      "name": "Гевгелија",
+      "latitude": 41.14712,
+      "longitude": 22.507161,
+      "parentId": 16,
+      "hasChilds": false
+    },
+    {
+      "id": 323,
+      "name": "Богданци",
+      "latitude": 41.202685,
+      "longitude": 22.574287,
+      "parentId": 16,
+      "hasChilds": false
+    },
+    {
+      "id": 324,
+      "name": "Дојран",
+      "latitude": 41.233523,
+      "longitude": 22.693527,
+      "parentId": 16,
+      "hasChilds": false
+    },
+    {
+      "id": 325,
+      "name": "Дебар",
+      "latitude": 41.516028,
+      "longitude": 20.533415,
+      "parentId": 17,
+      "hasChilds": false
+    },
+    {
+      "id": 326,
+      "name": "Центар Жупа",
+      "latitude": 41.477926,
+      "longitude": 20.559269,
+      "parentId": 17,
+      "hasChilds": false
+    },
+    {
+      "id": 327,
+      "name": "Крива Паланка",
+      "latitude": 42.205478,
+      "longitude": 22.333429,
+      "parentId": 18,
+      "hasChilds": false
+    },
+    {
+      "id": 328,
+      "name": "Ранковце",
+      "latitude": 42.167713,
+      "longitude": 22.117538,
+      "parentId": 18,
+      "hasChilds": false
+    },
+    {
+      "id": 329,
+      "name": "Свети Николе",
+      "latitude": 41.865485,
+      "longitude": 21.940845,
+      "parentId": 19,
+      "hasChilds": false
+    },
+    {
+      "id": 330,
+      "name": "Лозово",
+      "latitude": 41.781495,
+      "longitude": 21.907623,
+      "parentId": 19,
+      "hasChilds": false
+    },
+    {
+      "id": 331,
+      "name": "Неготино",
+      "latitude": 41.484224,
+      "longitude": 22.089622,
+      "parentId": 20,
+      "hasChilds": false
+    },
+    {
+      "id": 332,
+      "name": "Демир Капија",
+      "latitude": 41.4085,
+      "longitude": 22.239783,
+      "parentId": 20,
+      "hasChilds": false
+    },
+    {
+      "id": 333,
+      "name": "Делчево",
+      "latitude": 41.966811,
+      "longitude": 22.781396,
+      "parentId": 21,
+      "hasChilds": false
+    },
+    {
+      "id": 334,
+      "name": "Македонска Каменица",
+      "latitude": 42.015547,
+      "longitude": 22.589189,
+      "parentId": 21,
+      "hasChilds": false
+    },
+    {
+      "id": 335,
+      "name": "Виница",
+      "latitude": 41.884235,
+      "longitude": 22.515181,
+      "parentId": 22,
+      "hasChilds": false
+    },
+    {
+      "id": 336,
+      "name": "Зрновци",
+      "latitude": 41.855809,
+      "longitude": 22.450171,
+      "parentId": 22,
+      "hasChilds": false
+    },
+    {
+      "id": 337,
+      "name": "Берово",
+      "latitude": 41.711096,
+      "longitude": 22.848172,
+      "parentId": 25,
+      "hasChilds": false
+    },
+    {
+      "id": 338,
+      "name": "Пехчево",
+      "latitude": 41.760482,
+      "longitude": 22.885484,
+      "parentId": 25,
+      "hasChilds": false
+    },
+    {
+      "id": 339,
+      "name": "Крушево",
+      "latitude": 41.373181,
+      "longitude": 21.252891,
+      "parentId": 28,
+      "hasChilds": false
+    },
+    {
+      "id": 340,
+      "name": "Пласница",
+      "latitude": 41.470992,
+      "longitude": 21.125035,
+      "parentId": 28,
+      "hasChilds": false
+    }
+  ],
+  "status": true,
+  "message": "",
+  "errorCode": 200
+}
