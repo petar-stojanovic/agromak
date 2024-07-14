@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
   @if (!isLoading && formData) {
     <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onFormSubmitted($event)"></app-dynamic-form>
   }
