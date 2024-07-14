@@ -16,7 +16,7 @@ import {
 } from '@ionic/angular/standalone';
 import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
 import {AdService} from "../../services/ad.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
 import {Ad} from "../../shared/models/ad";
@@ -25,13 +25,16 @@ import {RouterLink} from "@angular/router";
 import {DynamicFormModalComponent} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "../../components/search-ads-modal/search-ads-modal.component";
+import {Category} from "../../shared/models/category";
+import {CategoryService} from "../../services/category.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon],
+  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe],
 })
 export class HomePage implements OnInit {
 
@@ -40,9 +43,15 @@ export class HomePage implements OnInit {
   ads: Ad[] = [];
   isLoading = true;
 
+  categories$: Observable<Category[]>;
+
+
   constructor(private modalCtrl: ModalController,
-              private _adService: AdService) {
+              private _adService: AdService,
+              private _categoryService: CategoryService) {
     addIcons({add, 'logo': 'assets/logo.svg'})
+
+    this.categories$ = this._categoryService.categories$;
   }
 
   ngOnInit(): void {
