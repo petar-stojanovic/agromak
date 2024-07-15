@@ -35,7 +35,14 @@ h1 {
   text-align: center;
 }
 
-form > * {
-  margin-bottom: 1rem;
+form > *:not(app-input-error) {
+  margin: 1.75rem 0 0.25rem 0;
   display: block;
+}
+
+ion-input.md {
+  height: 4rem !important;
+}
+ion-textarea.md {
+  height: 8rem !important;
 }

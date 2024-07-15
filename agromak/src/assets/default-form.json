@@ -1,11 +1,6 @@
 {
   "controls": [
     {
-      "type": "paragraph",
-      "value": "<b>Remember:</b> It is not allowed to publish the same ad multiple times in different categories and regions. <br> It is not allowed to delete and re-publish the same items/services. Ads that do not comply with the <a target=\"_blank\" href=\"/Help/HelpTerms\">rules</a> will not be published. <br> Thank you for your attention and we wish you much success with your ads.",
-      "validators": {}
-    },
-    {
       "type": "radio",
       "name": "itemCondition",
       "label": "Item condition",
@@ -30,7 +25,9 @@
       "label": "Title",
       "value": "",
       "validators": {
-        "maxLength": 60
+        "required": true,
+        "maxLength": 60,
+        "minLength": 5
       }
     },
     {
@@ -39,6 +36,7 @@
       "label": "Description",
       "value": "",
       "validators": {
+        "required": true,
         "maxLength": 3000
       }
     },
@@ -47,7 +45,9 @@
       "name": "price",
       "label": "Price",
       "value": "",
-      "validators": {}
+      "validators": {
+        "required": true
+      }
     },
     {
       "type": "radio",

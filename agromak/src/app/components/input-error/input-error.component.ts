@@ -15,7 +15,7 @@ import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
   `,
   styles: `
     :host {
-      display: block;
+      position: absolute;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
