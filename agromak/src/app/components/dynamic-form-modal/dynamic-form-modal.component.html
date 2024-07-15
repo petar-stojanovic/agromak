@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="end">
+    <ion-buttons slot="start">
       <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
-    <ion-title>Create</ion-title>
+    <ion-title class="text-center">Create</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button id="open-popover" expand="block">
+        <ion-icon class="popover-icon" name="alert-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-popover trigger="open-popover">
+      <ng-template>
+        <ion-content class="ion-padding">
+          It is prohibited to publish the same ad multiple times in different categories or regions, or to delete and
+          re-publish the same items/services. Non-compliant ads will not be published. Thank you, and we wish you much
+          success with your ads.
+        </ion-content>
+      </ng-template>
+    </ion-popover>
   </ion-toolbar>
 </ion-header>
 

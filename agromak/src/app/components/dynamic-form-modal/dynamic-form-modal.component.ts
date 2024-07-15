@@ -3,7 +3,7 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonHeader,
+  IonHeader, IonIcon, IonPopover,
   IonTitle,
   IonToolbar,
   LoadingController,
@@ -14,6 +14,8 @@ import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
+import {addIcons} from "ionicons";
+import {alertCircleOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -32,7 +34,9 @@ import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
     IonButtons,
     IonButton,
     IonTitle,
-    IonContent
+    IonContent,
+    IonPopover,
+    IonIcon
   ],
 })
 export class DynamicFormModalComponent implements OnInit {
@@ -43,7 +47,7 @@ export class DynamicFormModalComponent implements OnInit {
   constructor(private http: HttpClient,
               private modalCtrl: ModalController,
               private loadingController: LoadingController) {
-
+    addIcons({alertCircleOutline})
   }
 
   async ngOnInit() {

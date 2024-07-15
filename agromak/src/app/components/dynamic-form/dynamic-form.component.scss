@@ -17,14 +17,25 @@ ion-range::part(pin) {
 }
 
 ion-input {
-  --highlight-color-valid: black;
-  //--highlight-color-focused: black;
+  //--highlight-color-valid: black;
+  ////--highlight-color-focused: black;
 
   &.ion-touched.ion-invalid {
-    --highlight-color-invalid: black;
+    //--highlight-color-invalid: black;
   }
 
   &.ion-touched.ion-dirty {
-    --highlight-color-invalid: var(--ion-color-danger) !important;
+    //--highlight-color-invalid: var(--ion-color-danger) !important;
   }
+}
+
+
+h1 {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+form > * {
+  margin-bottom: 1rem;
+  display: block;
 }

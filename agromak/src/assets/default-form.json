@@ -9,17 +9,19 @@
       "type": "radio",
       "name": "itemCondition",
       "label": "Item condition",
-      "value": "0",
-      "options": [
-        {
-          "label": "Used",
-          "value": "0"
-        },
-        {
-          "label": "New",
-          "value": "1"
-        }
-      ],
+      "value": "used",
+      "options": {
+        "items": [
+          {
+            "label": "Used",
+            "value": "used"
+          },
+          {
+            "label": "New",
+            "value": "new"
+          }
+        ]
+      },
       "validators": {}
     },
     {
@@ -51,17 +53,19 @@
       "type": "radio",
       "name": "currency",
       "label": "Currency",
-      "value": "0",
-      "options": [
-        {
-          "label": "MKD",
-          "value": "0"
-        },
-        {
-          "label": "EUR",
-          "value": "1"
-        }
-      ],
+      "value": "mkd",
+      "options": {
+        "items": [
+          {
+            "label": "MKD",
+            "value": "mkd"
+          },
+          {
+            "label": "EUR",
+            "value": "eur"
+          }
+        ]
+      },
       "validators": {}
     },
     {
