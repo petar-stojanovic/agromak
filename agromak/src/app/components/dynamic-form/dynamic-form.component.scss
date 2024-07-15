@@ -16,16 +16,16 @@ ion-range::part(pin) {
   transition: transform 120ms ease, background 120ms ease;
 }
 
-ion-input {
-  //--highlight-color-valid: black;
+ion-input, ion-textarea {
+  --highlight-color-valid: black;
   ////--highlight-color-focused: black;
 
   &.ion-touched.ion-invalid {
-    //--highlight-color-invalid: black;
+    --highlight-color-invalid: black;
   }
 
   &.ion-touched.ion-dirty {
-    //--highlight-color-invalid: var(--ion-color-danger) !important;
+    --highlight-color-invalid: var(--ion-color-danger) !important;
   }
 }
 
@@ -35,14 +35,21 @@ h1 {
   text-align: center;
 }
 
-form > *:not(app-input-error) {
-  margin: 1.75rem 0 0.25rem 0;
-  display: block;
+form {
+
+  & ion-input, & ion-textarea {
+    margin: 2.25rem 0 0.25rem 0;
+  }
+
+  & ion-toggle {
+    display: block;
+  }
 }
 
 ion-input.md {
   height: 4rem !important;
 }
+
 ion-textarea.md {
   height: 8rem !important;
 }
