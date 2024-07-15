@@ -24,6 +24,7 @@ import {
 } from "@ionic/angular/standalone";
 import {NgIf} from "@angular/common";
 import {InputErrorComponent} from "../input-error/input-error.component";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -61,7 +62,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   form: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              protected domSanitizer: DomSanitizer) {
     //add all icons
     for (const iconName in icons) {
       addIcons({[iconName]: (icons as any)[iconName]});

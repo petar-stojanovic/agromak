@@ -51,7 +51,7 @@ export class DynamicFormModalComponent implements OnInit {
     await loading.present();
 
     this.http
-      .get<JsonFormData>('/assets/form-data.json')
+      .get<JsonFormData>('/assets/default-form.json')
       .subscribe({
         next: async (formData) => {
           this.formData = formData;

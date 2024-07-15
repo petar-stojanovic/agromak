@@ -8,7 +8,7 @@
 
         @if (control.type === "paragraph") {
           <ion-text>
-            <p>{{ control.value }}</p>
+            <p [innerHTML]="control.value"></p>
           </ion-text>
         } @else if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
           <ion-input

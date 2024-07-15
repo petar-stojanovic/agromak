@@ -2,12 +2,12 @@
   "controls": [
     {
       "type": "paragraph",
-      "label": "<b>Remember:</b> It is not allowed to publish the same ad multiple times in different categories and regions. <br> It is not allowed to delete and re-publish the same items/services. Ads that do not comply with the <a target=\"_blank\" href=\"/Help/HelpTerms\">rules</a> will not be published. <br> Thank you for your attention and we wish you much success with your ads.",
+      "value": "<b>Remember:</b> It is not allowed to publish the same ad multiple times in different categories and regions. <br> It is not allowed to delete and re-publish the same items/services. Ads that do not comply with the <a target=\"_blank\" href=\"/Help/HelpTerms\">rules</a> will not be published. <br> Thank you for your attention and we wish you much success with your ads.",
       "validators": {}
     },
     {
       "type": "radio",
-      "name": "rblNewOld",
+      "name": "itemCondition",
       "label": "Item condition",
       "value": "0",
       "options": [
@@ -25,7 +25,7 @@
     {
       "type": "text",
       "name": "title",
-      "label": "Ad title",
+      "label": "Title",
       "value": "",
       "validators": {
         "maxLength": 60
@@ -34,21 +34,18 @@
     {
       "type": "textarea",
       "name": "description",
-      "label": "Ad description",
+      "label": "Description",
       "value": "",
       "validators": {
         "maxLength": 3000
       }
     },
     {
-      "type": "text",
+      "type": "number",
       "name": "price",
       "label": "Price",
       "value": "",
-      "validators": {
-        "maxLength": 9,
-        "pattern": "\\d*"
-      }
+      "validators": {}
     },
     {
       "type": "radio",
