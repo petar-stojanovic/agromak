@@ -1,5 +1,6 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -36,7 +37,8 @@ import {alertCircleOutline} from "ionicons/icons";
     IonTitle,
     IonContent,
     IonPopover,
-    IonIcon
+    IonIcon,
+    IonBackButton
   ],
 })
 export class DynamicFormModalComponent implements OnInit {
