@@ -4,9 +4,6 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     @for (control of jsonFormData.controls; track $index) {
-      @if (control.label !== '') {
-        <!--                    <ion-label>{{ control.label }}</ion-label>-->
-      }
 
       @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
         <ion-input
@@ -26,19 +23,20 @@
       } @else if (control.type === 'radio') {
         <ion-radio-group
           [formControlName]="control.name"
-          [value]="control.value"
-          class="w-100">
+          [value]="control.value">
           <ion-text class="font-weight-500">
             <p>{{ control.label }}</p>
           </ion-text>
-          @for (option of control.options!.items; track $index) {
-            <ion-radio
-              [value]="option.value"
-              [name]="control.name"
-              labelPlacement="end">
-              {{ option.label }}
-            </ion-radio>
-          }
+          <div class="flex gap-1">
+            @for (option of control.options!.items; track $index) {
+              <ion-radio
+                [value]="option.value"
+                [name]="control.name"
+                labelPlacement="end">
+                {{ option.label }}
+              </ion-radio>
+            }
+          </div>
         </ion-radio-group>
       } @else if (control.type === 'textarea') {
         <ion-textarea
@@ -88,6 +86,6 @@
         <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
       </ng-container>
     }
-    <ion-button [disabled]="!form.valid" expand="full" type="submit">Submit</ion-button>
+    <ion-button [disabled]="!form.valid" expand="full" type="submit" class="ion-margin-top">Submit</ion-button>
   </form>
 </div>

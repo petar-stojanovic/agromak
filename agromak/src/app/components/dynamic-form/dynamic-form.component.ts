@@ -17,8 +17,14 @@ import {
   IonCheckbox,
   IonIcon,
   IonInput,
-  IonItem, IonLabel, IonList, IonNote, IonRadio, IonRadioGroup,
-  IonRange, IonText,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonNote,
+  IonRadio,
+  IonRadioGroup,
+  IonRange,
+  IonText,
   IonTextarea,
   IonToggle
 } from "@ionic/angular/standalone";
