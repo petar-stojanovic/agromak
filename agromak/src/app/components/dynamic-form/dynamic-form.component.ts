@@ -13,6 +13,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
 import {
+  IonAccordion,
+  IonAccordionGroup,
   IonButton,
   IonCheckbox,
   IonIcon,
@@ -24,13 +26,16 @@ import {
   IonRadio,
   IonRadioGroup,
   IonRange,
+  IonSelect,
+  IonSelectOption,
   IonText,
   IonTextarea,
   IonToggle
 } from "@ionic/angular/standalone";
-import {NgIf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {InputErrorComponent} from "../input-error/input-error.component";
-import {DomSanitizer} from "@angular/platform-browser";
+import {CategoryService} from "../../services/category.service";
+import {SelectCategoryComponent} from "../select-category/select-category.component";
 
 
 @Component({
@@ -56,6 +61,13 @@ import {DomSanitizer} from "@angular/platform-browser";
     IonLabel,
     IonRadio,
     IonText,
+    AsyncPipe,
+    IonSelect,
+    IonSelectOption,
+    IonAccordionGroup,
+    IonAccordion,
+    NgForOf,
+    SelectCategoryComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -66,25 +78,24 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Output()
   formSubmitted = new EventEmitter<any>();
 
-  form: FormGroup = this.fb.group({});
+  form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              protected domSanitizer: DomSanitizer) {
-    //add all icons
+              private _categoryService: CategoryService) {
+    this.form = this.fb.group({});
+
     for (const iconName in icons) {
       addIcons({[iconName]: (icons as any)[iconName]});
     }
   }
 
   ngOnInit() {
-    // Initial form creation
     if (this.jsonFormData) {
       this.createForm(this.jsonFormData.controls);
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // Update form on subsequent changes
     if (changes['jsonFormData'] && !changes['jsonFormData'].firstChange) {
       this.createForm(this.jsonFormData.controls);
     }
@@ -92,7 +103,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   createForm(controls: JsonFormControls[]) {
     for (const control of controls) {
-      console.log(control)
       const validatorsToAdd = [];
       for (const [key, value] of Object.entries(control.validators)) {
         console.log(key, value)

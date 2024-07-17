@@ -3,6 +3,9 @@
   <h1> New Ad </h1>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <app-select-category>
+    </app-select-category>
     @for (control of jsonFormData.controls; track $index) {
 
       @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {

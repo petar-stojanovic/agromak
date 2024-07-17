@@ -1,0 +1,13 @@
+<ion-item [button]="true" [detail]="false" id="select-fruits" lines="none">
+  <ion-label>Choose Category</ion-label>
+  <ion-icon name="caret-down-outline"></ion-icon>
+</ion-item>
+
+<ion-modal trigger="select-fruits" #modal>
+  <ng-template>
+    <div
+      class="ion-page"
+      title="Favorite Fruits"
+    ></div>
+  </ng-template>
+</ion-modal>
