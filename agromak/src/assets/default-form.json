@@ -23,7 +23,7 @@
       "type": "text",
       "name": "title",
       "label": "Title",
-      "value": "",
+      "value": "Test Input Title",
       "validators": {
         "required": true,
         "maxLength": 60,
@@ -34,7 +34,7 @@
       "type": "textarea",
       "name": "description",
       "label": "Description",
-      "value": "",
+      "value": "Textarea 12 3",
       "validators": {
         "required": true,
         "maxLength": 3000
@@ -44,7 +44,7 @@
       "type": "number",
       "name": "price",
       "label": "Price",
-      "value": "",
+      "value": "999",
       "validators": {
         "required": true
       }

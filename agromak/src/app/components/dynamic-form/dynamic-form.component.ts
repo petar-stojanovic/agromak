@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -35,6 +36,7 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {InputErrorComponent} from "../input-error/input-error.component";
 import {CategoryService} from "../../services/category.service";
 import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
+import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
 
 
 @Component({
@@ -64,6 +66,7 @@ import {SelectCategoryModalComponent} from "../select-category-modal/select-cate
     IonSelect,
     IonSelectOption,
     NgForOf,
+    ErrorMessagePipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -74,11 +77,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Output()
   formSubmitted = new EventEmitter<any>();
 
+  chosenCategory = 'Choose Category';
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private ref: ChangeDetectorRef) {
     this.form = this.fb.group({});
 
     for (const iconName in icons) {
@@ -153,11 +158,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    console.log('Form valid: ', this.form.valid);
-    console.log('Form values: ', this.form.value);
+    const formData = {category: this.chosenCategory, ...this.form.value}
 
     if (this.form.valid) {
-      this.formSubmitted.emit(this.form.value);
+      this.formSubmitted.emit(formData);
     }
   }
 
@@ -169,8 +173,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     const {data, role} = await modal.onWillDismiss();
 
-    if (role === 'confirm') {
-      console.log('Data:', data);
-    }
+    this.chosenCategory = data;
+    this.ref.markForCheck();
   }
 }

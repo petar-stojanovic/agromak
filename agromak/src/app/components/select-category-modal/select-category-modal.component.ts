@@ -15,7 +15,7 @@ import {
   IonTitle,
   IonToolbar, ModalController
 } from "@ionic/angular/standalone";
-import {Category} from "../../shared/models/category";
+import {Category, SubCategory} from "../../shared/models/category";
 import {CategoryService} from "../../services/category.service";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 
@@ -48,9 +48,6 @@ import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 })
 export class SelectCategoryModalComponent  {
 
-  @Output() selectionCancel = new EventEmitter<void>();
-  @Output() selectionChange = new EventEmitter<any>();
-
   categories!: Category[];
 
   constructor(private _categoryService: CategoryService,
@@ -62,8 +59,20 @@ export class SelectCategoryModalComponent  {
     });
   }
 
-  async cancelChanges() {
+  accordionGroupChange = (ev: any) => {
+    const selectedValue = ev.detail.value;
+
+    console.log(selectedValue)
+    console.log(
+      `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value}`
+    );
+  };
+
+  async dismiss() {
     await this.modalCtrl.dismiss();
-    this.selectionCancel.emit();
+  }
+
+  async selectCategory(subcategory: SubCategory) {
+    await this.modalCtrl.dismiss(subcategory.name);
   }
 }
