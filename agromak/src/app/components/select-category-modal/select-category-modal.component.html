@@ -1,3 +1,31 @@
-<p>
-  select-category-modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" (click)="cancelChanges()"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="title">Choose Category</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-accordion-group multiple="true" *ngIf="categories">
+    <ion-accordion *ngFor="let category of categories"
+                   [value]="category.name">
+      <ion-item slot="header">
+        <ion-label>{{ category.name }}</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-list>
+          <ion-item *ngFor="let subcategories of category.sub_categories">
+            <ion-label>{{ subcategories.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-accordion>
+
+  </ion-accordion-group>
+
+</ion-content>

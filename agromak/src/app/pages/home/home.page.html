@@ -10,12 +10,6 @@
 
 <ion-content>
 
-  <div *ngIf="categories$ | async as categories">
-    @for (cat of categories; track cat.name) {
-<!--      {{ cat.name }}-->
-    }
-  </div>
-
   <ion-refresher slot="fixed" (ionRefresh)="refreshAds($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>

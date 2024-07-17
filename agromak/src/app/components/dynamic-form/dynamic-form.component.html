@@ -4,8 +4,12 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <app-select-category>
-    </app-select-category>
+    <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
+      <ion-label>Choose Category</ion-label>
+      <ion-icon name="caret-down-outline"></ion-icon>
+    </ion-item>
+
+
     @for (control of jsonFormData.controls; track $index) {
 
       @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {

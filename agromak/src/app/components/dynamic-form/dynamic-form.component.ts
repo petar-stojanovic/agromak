@@ -13,8 +13,6 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
 import {
-  IonAccordion,
-  IonAccordionGroup,
   IonButton,
   IonCheckbox,
   IonIcon,
@@ -30,12 +28,13 @@ import {
   IonSelectOption,
   IonText,
   IonTextarea,
-  IonToggle
+  IonToggle,
+  ModalController
 } from "@ionic/angular/standalone";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {InputErrorComponent} from "../input-error/input-error.component";
 import {CategoryService} from "../../services/category.service";
-import {SelectCategoryComponent} from "../select-category/select-category.component";
+import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
 
 
 @Component({
@@ -64,10 +63,7 @@ import {SelectCategoryComponent} from "../select-category/select-category.compon
     AsyncPipe,
     IonSelect,
     IonSelectOption,
-    IonAccordionGroup,
-    IonAccordion,
     NgForOf,
-    SelectCategoryComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -81,7 +77,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private _categoryService: CategoryService) {
+              private modalCtrl: ModalController,
+              private categoryService: CategoryService) {
     this.form = this.fb.group({});
 
     for (const iconName in icons) {
@@ -164,4 +161,16 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     }
   }
 
+  async openCategoriesModal() {
+    const modal = await this.modalCtrl.create({
+      component: SelectCategoryModalComponent,
+    });
+    await modal.present();
+
+    const {data, role} = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      console.log('Data:', data);
+    }
+  }
 }

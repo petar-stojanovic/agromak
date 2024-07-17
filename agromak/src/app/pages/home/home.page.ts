@@ -25,9 +25,6 @@ import {RouterLink} from "@angular/router";
 import {DynamicFormModalComponent} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "../../components/search-ads-modal/search-ads-modal.component";
-import {Category} from "../../shared/models/category";
-import {CategoryService} from "../../services/category.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -43,15 +40,10 @@ export class HomePage implements OnInit {
   ads: Ad[] = [];
   isLoading = true;
 
-  categories$: Observable<Category[]>;
-
 
   constructor(private modalCtrl: ModalController,
-              private _adService: AdService,
-              private _categoryService: CategoryService) {
+              private _adService: AdService) {
     addIcons({add, 'logo': 'assets/logo.svg'})
-
-    this.categories$ = this._categoryService.categories$;
   }
 
   ngOnInit(): void {

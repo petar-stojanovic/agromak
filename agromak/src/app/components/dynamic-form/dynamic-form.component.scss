@@ -48,3 +48,12 @@ ion-input.md {
 ion-textarea.md {
   height: 8rem !important;
 }
+
+.open-categories-modal {
+  border: 1px solid #bcc5d4;
+  border-radius: 4px;
+
+  & ion-icon {
+    font-size: 1rem;
+  }
+}
