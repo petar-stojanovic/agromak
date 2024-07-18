@@ -4,18 +4,17 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
-      <ion-label>{{ chosenCategory }}</ion-label>
-      <ion-icon name="caret-down-outline"></ion-icon>
-    </ion-item>
-    <ion-note>
-      <small>Please choose a category</small>
-    </ion-note>
-
-
     @for (control of jsonFormData.controls; track $index) {
 
-      @if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
+      @if (control.name === 'category') {
+        <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
+          <ion-label>{{ chosenCategory }}</ion-label>
+          <ion-icon name="caret-down-outline"></ion-icon>
+        </ion-item>
+        <ion-note>
+          <small>Please choose a category</small>
+        </ion-note>
+      } @else if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
         <ion-input
           [formControlName]="control.name"
           [label]="control.label"
@@ -91,7 +90,7 @@
           }
           <ion-icon slot="end" [name]="control.options?.icon"></ion-icon>
         </ion-range>
-      }@else if (control.type === 'select'){
+      } @else if (control.type === 'select') {
         <ion-select
           [formControlName]="control.name"
           [label]="control.label"

@@ -1,6 +1,12 @@
 {
   "controls": [
     {
+      "type": "",
+      "name": "category",
+      "label": "Category",
+      "validators": {}
+    },
+    {
       "type": "radio",
       "name": "itemCondition",
       "label": "Item condition",

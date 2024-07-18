@@ -11,7 +11,7 @@
 
 <ion-content>
 
-  <ion-accordion-group multiple="true" *ngIf="categories" (ionChange)="accordionGroupChange($event)">
+  <ion-accordion-group multiple="true" *ngIf="categories">
     <ion-accordion *ngFor="let category of categories"
                    [value]="category.name">
       <ion-item slot="header">
@@ -19,7 +19,8 @@
       </ion-item>
       <div slot="content">
         <ion-list>
-          <ion-item [button]="true" *ngFor="let subcategory of category.sub_categories" lines="none" (click)="selectCategory(subcategory)">
+          <ion-item [button]="true" *ngFor="let subcategory of category.sub_categories" lines="none"
+                    (click)="selectCategory(subcategory)">
             <ion-label class="ion-margin-start">{{ subcategory.name }}</ion-label>
           </ion-item>
 

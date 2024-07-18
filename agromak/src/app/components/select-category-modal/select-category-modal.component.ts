@@ -59,15 +59,6 @@ export class SelectCategoryModalComponent  {
     });
   }
 
-  accordionGroupChange = (ev: any) => {
-    const selectedValue = ev.detail.value;
-
-    console.log(selectedValue)
-    console.log(
-      `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value}`
-    );
-  };
-
   async dismiss() {
     await this.modalCtrl.dismiss();
   }

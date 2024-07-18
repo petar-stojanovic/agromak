@@ -173,7 +173,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     const {data, role} = await modal.onWillDismiss();
 
-    this.chosenCategory = data;
+    console.log(data)
+    if (data !== undefined) {
+      this.chosenCategory = data;
+    }
     this.ref.markForCheck();
   }
 }
