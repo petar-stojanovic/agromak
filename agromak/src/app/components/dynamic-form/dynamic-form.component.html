@@ -115,6 +115,29 @@
         <ng-container *ngIf="form.controls[control.name] as selectControl">
           <app-input-error *ngIf="selectControl.touched" [errors]="selectControl.errors"></app-input-error>
         </ng-container>
+      } @else if (control.type === 'image') {
+        <div>
+          @if (control.helpText) {
+            <ion-note>
+              <small>{{ control.helpText }}</small>
+            </ion-note>
+          }
+          <ion-item [button]="true" (click)="uploadImages()" class="open-categories-modal" lines="none">
+            <ion-label>{{ control.label }}</ion-label>
+            <ion-icon name="caret-down-outline"></ion-icon>
+          </ion-item>
+          <ion-grid *ngIf="images">
+            <ion-row>
+              @for (img of images; track $index) {
+                <ion-col size="4">
+                  <img [src]="img.webPath" alt="image" class="img-fluid">
+                  <ion-icon class="delete-image-icon" name="close-outline" (click)="images.splice($index,1)"></ion-icon>
+                </ion-col>
+              }
+            </ion-row>
+          </ion-grid>
+        </div>
+
       }
       <ng-container *ngIf="form.controls[control.name] as ctrl">
         <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>

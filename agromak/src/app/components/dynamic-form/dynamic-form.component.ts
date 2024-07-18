@@ -15,7 +15,7 @@ import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
 import {
   IonButton,
-  IonCheckbox,
+  IonCheckbox, IonCol, IonGrid,
   IonIcon,
   IonInput,
   IonItem,
@@ -24,12 +24,12 @@ import {
   IonNote,
   IonRadio,
   IonRadioGroup,
-  IonRange,
+  IonRange, IonRow,
   IonSelect,
   IonSelectOption,
   IonText,
   IonTextarea,
-  IonToggle,
+  IonToggle, LoadingController,
   ModalController
 } from "@ionic/angular/standalone";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
@@ -37,8 +37,7 @@ import {InputErrorComponent} from "../input-error/input-error.component";
 import {CategoryService} from "../../services/category.service";
 import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
 import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
-import {AuthService} from "../../services/auth.service";
-import {tap} from "rxjs";
+import {Camera, GalleryPhoto} from "@capacitor/camera";
 
 
 @Component({
@@ -69,6 +68,9 @@ import {tap} from "rxjs";
     IonSelectOption,
     NgForOf,
     ErrorMessagePipe,
+    IonCol,
+    IonGrid,
+    IonRow,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -82,10 +84,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   chosenCategory = 'Choose Category';
   form: FormGroup;
 
+  images: GalleryPhoto[] = [];
+
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
               private categoryService: CategoryService,
-              private ref: ChangeDetectorRef) {
+              private ref: ChangeDetectorRef,
+              private loadingController: LoadingController) {
     this.form = this.fb.group({});
 
     for (const iconName in icons) {
@@ -107,9 +112,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   createForm(controls: JsonFormControls[]) {
     for (const control of controls) {
+      console.log(control)
       const validatorsToAdd = [];
       for (const [key, value] of Object.entries(control.validators)) {
-        console.log(key, value)
         switch (key) {
           case 'min':
             validatorsToAdd.push(Validators.min(value));
@@ -175,11 +180,33 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     const {data, role} = await modal.onWillDismiss();
 
-    console.log(data)
     if (data !== undefined) {
       this.chosenCategory = data;
       this.form.get('category')!.setValue(data);
     }
     this.ref.markForCheck();
+  }
+
+  async uploadImages() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    try {
+      const images = await Camera.pickImages({
+        quality: 90,
+      })
+
+      if (images) {
+        images.photos.forEach((image) => {
+          this.images.push(image);
+          console.log(image, this.images)
+        });
+        this.ref.markForCheck();
+      } else {
+        console.log('No images selected')
+      }
+    } finally {
+      await loading.dismiss();
+    }
   }
 }

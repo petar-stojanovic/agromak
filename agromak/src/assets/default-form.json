@@ -294,6 +294,14 @@
         "required": true,
         "pattern": "^\\d{3}/\\d{3}-\\d{3}$"
       }
+    },
+    {
+      "type": "image",
+      "name": "images",
+      "helpText": "Please upload images",
+      "label": "Upload Images",
+      "value": "",
+      "validators": {}
     }
   ]
 }
