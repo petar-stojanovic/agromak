@@ -5,7 +5,9 @@
       "name": "category",
       "label": "Category",
       "helpText": "Please choose a category",
-      "validators": {}
+      "validators": {
+        "required": true
+      }
     },
     {
       "type": "radio",
@@ -286,7 +288,7 @@
       "type": "text",
       "name": "phone",
       "label": "Phone",
-      "value": "",
+      "value": "070/123-456",
       "helpText": "Format: 070/123-456",
       "validators": {
         "required": true,

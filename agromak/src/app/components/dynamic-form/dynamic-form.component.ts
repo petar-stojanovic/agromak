@@ -178,6 +178,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     console.log(data)
     if (data !== undefined) {
       this.chosenCategory = data;
+      this.form.get('category')!.setValue(data);
     }
     this.ref.markForCheck();
   }

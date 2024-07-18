@@ -120,7 +120,7 @@
         <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
       </ng-container>
     }
-    <ion-button [disabled]="!form.valid || chosenCategory === 'Choose Category'" expand="full" type="submit"
+    <ion-button [disabled]="!form.valid" expand="full" type="submit"
                 class="ion-margin-top">
       Submit
     </ion-button>
