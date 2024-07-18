@@ -101,6 +101,9 @@
             <ion-select-option value="{{ option.value }}">{{ option.label }}</ion-select-option>
           }
         </ion-select>
+        <ng-container *ngIf="form.controls[control.name] as selectControl">
+          <app-input-error *ngIf="selectControl.touched" [errors]="selectControl.errors"></app-input-error>
+        </ng-container>
       }
       <ng-container *ngIf="form.controls[control.name] as ctrl">
         <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>

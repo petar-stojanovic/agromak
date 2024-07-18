@@ -41,7 +41,8 @@ form > *:not(app-input-error):not(ion-note) {
 
 }
 
-ion-input.md {
+ion-input.md,
+ion-select.md {
   height: 4rem !important;
 }
 
