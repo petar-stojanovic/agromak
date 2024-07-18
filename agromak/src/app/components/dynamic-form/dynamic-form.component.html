@@ -91,6 +91,16 @@
           }
           <ion-icon slot="end" [name]="control.options?.icon"></ion-icon>
         </ion-range>
+      }@else if (control.type === 'select'){
+        <ion-select
+          [formControlName]="control.name"
+          [label]="control.label"
+          fill="outline"
+          labelPlacement="floating">
+          @for (option of control.options!.items; track $index) {
+            <ion-select-option value="{{ option.value }}">{{ option.label }}</ion-select-option>
+          }
+        </ion-select>
       }
       <ng-container *ngIf="form.controls[control.name] as ctrl">
         <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>

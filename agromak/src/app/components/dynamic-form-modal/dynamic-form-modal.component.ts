@@ -77,5 +77,4 @@ export class DynamicFormModalComponent implements OnInit {
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
-
 }
