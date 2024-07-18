@@ -1,5 +1,4 @@
 <div class="ion-padding">
-
   <h1> New Ad </h1>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -7,27 +6,38 @@
     @for (control of jsonFormData.controls; track $index) {
 
       @if (control.name === 'category') {
-        <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
-          <ion-label>{{ chosenCategory }}</ion-label>
-          <ion-icon name="caret-down-outline"></ion-icon>
-        </ion-item>
-        <ion-note>
-          <small>Please choose a category</small>
-        </ion-note>
+        <div>
+          <ion-note>
+            <small>Please choose a category</small>
+          </ion-note>
+          <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
+            <ion-label>{{ chosenCategory }}</ion-label>
+            <ion-icon name="caret-down-outline"></ion-icon>
+          </ion-item>
+        </div>
       } @else if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
-        <ion-input
-          [formControlName]="control.name"
-          [label]="control.label"
-          [type]="control.type"
-          [value]="control.value"
-          [placeholder]="control.placeholder"
-          [counter]="control.validators.maxLength !== undefined"
-          [maxlength]="control.validators.maxLength !== undefined ? control.validators.maxLength : null"
-          fill="outline"
-          labelPlacement="floating"
-        >
+        <div>
 
-        </ion-input>
+          @if (control.helpText) {
+            <ion-note>
+              <small>{{ control.helpText }}</small>
+            </ion-note>
+          }
+          <ion-input
+            [formControlName]="control.name"
+            [label]="control.label"
+            [type]="control.type"
+            [value]="control.value"
+            [placeholder]="control.placeholder"
+            [counter]="control.validators.maxLength !== undefined"
+            [maxlength]="control.validators.maxLength !== undefined ? control.validators.maxLength : null"
+            fill="outline"
+            labelPlacement="floating"
+          >
+
+          </ion-input>
+        </div>
+
 
       } @else if (control.type === 'radio') {
         <ion-radio-group

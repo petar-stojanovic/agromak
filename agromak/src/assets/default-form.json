@@ -280,6 +280,17 @@
       "validators": {
         "required": true
       }
+    },
+    {
+      "type": "text",
+      "name": "phone",
+      "label": "Phone",
+      "value": "",
+      "helpText": "Format: 070/123-456",
+      "validators": {
+        "required": true,
+        "pattern": "^\\d{3}/\\d{3}-\\d{3}$"
+      }
     }
   ]
 }

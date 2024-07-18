@@ -11,6 +11,7 @@ export interface JsonFormControls {
   validators: JsonFormValidators;
   disabled?: boolean;
   placeholder?: string;
+  helpText?: string;
 }
 
 interface JsonFormControlOptions {
