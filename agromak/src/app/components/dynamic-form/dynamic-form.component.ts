@@ -37,6 +37,8 @@ import {InputErrorComponent} from "../input-error/input-error.component";
 import {CategoryService} from "../../services/category.service";
 import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
 import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
+import {AuthService} from "../../services/auth.service";
+import {tap} from "rxjs";
 
 
 @Component({

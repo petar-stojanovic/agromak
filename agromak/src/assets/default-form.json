@@ -4,6 +4,7 @@
       "type": "",
       "name": "category",
       "label": "Category",
+      "helpText": "Please choose a category",
       "validators": {}
     },
     {

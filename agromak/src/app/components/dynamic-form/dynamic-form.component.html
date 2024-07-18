@@ -7,9 +7,11 @@
 
       @if (control.name === 'category') {
         <div>
-          <ion-note>
-            <small>Please choose a category</small>
-          </ion-note>
+          @if (control.helpText) {
+            <ion-note>
+              <small>{{ control.helpText }}</small>
+            </ion-note>
+          }
           <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
             <ion-label>{{ chosenCategory }}</ion-label>
             <ion-icon name="caret-down-outline"></ion-icon>
