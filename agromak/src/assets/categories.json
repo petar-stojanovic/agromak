@@ -1,1738 +1,64 @@
 [
   {
-    "icon": "pets",
-    "name": "Animals",
-    "order": 15,
-    "sub_categories": [
-      {
-        "name": "Animal Equipment",
-        "parent": "Animals",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Animals",
-        "name": "Farm Animals"
-      },
-      {
-        "name": "Other",
-        "parent": "Animals",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Animals",
-        "name": "Pets"
-      }
-    ]
-  },
-  {
-    "name": "Antiques",
-    "order": 24,
-    "icon": "Antiques",
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Antiques",
-        "name": "Accessories and Equipment"
-      },
-      {
-        "parent": "Antiques",
-        "icon": null,
-        "name": "Antique Ceramics and Glass"
-      },
-      {
-        "name": "Antique Devices and Appliances",
-        "parent": "Antiques",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Antiques",
-        "name": "Antique Furniture"
-      },
-      {
-        "icon": null,
-        "name": "Antique Jewelry and Watches",
-        "parent": "Antiques"
-      },
-      {
-        "name": "Antique Metal Items",
-        "parent": "Antiques",
-        "icon": null
-      },
-      {
-        "name": "Antique Paintings and Tapestries",
-        "parent": "Antiques",
-        "icon": null
-      },
-      {
-        "parent": "Antiques",
-        "name": "Books and Documents",
-        "icon": null
-      },
-      {
-        "parent": "Antiques",
-        "icon": null,
-        "name": "Folk Costumes"
-      },
-      {
-        "name": "Gramophones and Records",
-        "parent": "Antiques",
-        "icon": null
-      },
-      {
-        "parent": "Antiques",
-        "icon": null,
-        "name": "Household Items"
-      },
-      {
-        "name": "Other",
-        "parent": "Antiques",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "icon": "clock",
-    "name": "Appliances",
-    "order": 8,
-    "sub_categories": [
-      {
-        "name": "Batteries and Chargers",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Bluetooth Speakers",
-        "parent": "Appliances"
-      },
-      {
-        "name": "Calculators",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "name": "Cameras and Photo Equipment",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "DVD & Blu-ray Players",
-        "parent": "Appliances"
-      },
-      {
-        "name": "Drone Parts and Accessories",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "name": "Drones (RC Vehicles)",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Electrical Material"
-      },
-      {
-        "parent": "Appliances",
-        "name": "Electronic Cigarettes",
-        "icon": null
-      },
-      {
-        "name": "Home Theaters",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "icon": null,
-        "name": "Hoverboard",
-        "parent": "Appliances"
-      },
-      {
-        "name": "IoT",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Magnifiers"
-      },
-      {
-        "name": "Measuring Instruments",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Medical Equipment"
-      },
-      {
-        "icon": null,
-        "name": "Multimedia",
-        "parent": "Appliances"
-      },
-      {
-        "icon": null,
-        "parent": "Appliances",
-        "name": "Other"
-      },
-      {
-        "parent": "Appliances",
-        "name": "Radio Amateur Equipment",
-        "icon": null
-      },
-      {
-        "name": "Radio and Walkman Devices",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "name": "Satellite Equipment",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "name": "Smart Systems",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Solar Equipment"
-      },
-      {
-        "name": "TV Boxes",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "parent": "Appliances",
-        "name": "TVs",
-        "icon": null
-      },
-      {
-        "name": "Telecommunications",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "name": "Telescopes and Equipment",
-        "parent": "Appliances",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Appliances",
-        "name": "Thermometers"
-      },
-      {
-        "parent": "Appliances",
-        "name": "Tobacco Heating Devices",
-        "icon": null
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Video iPods and MP3 Players"
-      },
-      {
-        "parent": "Appliances",
-        "icon": null,
-        "name": "Virtual Reality (VR Devices)"
-      },
-      {
-        "name": "Voice Recorders",
-        "icon": null,
-        "parent": "Appliances"
-      },
-      {
-        "parent": "Appliances",
-        "name": "White Goods",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "icon": "camera",
-    "name": "Art",
-    "order": 22,
-    "sub_categories": [
-      {
-        "parent": "Art",
-        "name": "Art Paintings",
-        "icon": null
-      },
-      {
-        "parent": "Art",
-        "icon": null,
-        "name": "Icons and Calligraphy"
-      },
-      {
-        "icon": null,
-        "name": "Other",
-        "parent": "Art"
-      },
-      {
-        "name": "Photographs",
-        "parent": "Art",
-        "icon": null
-      },
-      {
-        "name": "Posters and Placards",
-        "icon": null,
-        "parent": "Art"
-      },
-      {
-        "icon": null,
-        "parent": "Art",
-        "name": "Sculptures"
-      },
-      {
-        "icon": null,
-        "name": "Tattoo",
-        "parent": "Art"
-      }
-    ]
-  },
-  {
-    "name": "Babies",
-    "order": 17,
-    "icon": null,
-    "sub_categories": [
-      {
-        "name": "Baby Bathtubs",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "parent": "Babies",
-        "name": "Baby Bibs",
-        "icon": null
-      },
-      {
-        "name": "Baby Blankets",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "icon": null,
-        "name": "Baby Care",
-        "parent": "Babies"
-      },
-      {
-        "icon": null,
-        "name": "Baby Carriers",
-        "parent": "Babies"
-      },
-      {
-        "icon": null,
-        "name": "Baby Cribs",
-        "parent": "Babies"
-      },
-      {
-        "parent": "Babies",
-        "icon": null,
-        "name": "Baby Devices and Accessories"
-      },
-      {
-        "parent": "Babies",
-        "name": "Baby Diapers",
-        "icon": null
-      },
-      {
-        "parent": "Babies",
-        "icon": null,
-        "name": "Baby High Chairs"
-      },
-      {
-        "parent": "Babies",
-        "name": "Baby Highchairs",
-        "icon": null
-      },
-      {
-        "name": "Baby Mats",
-        "parent": "Babies",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Babies",
-        "name": "Baby Monitors"
-      },
-      {
-        "parent": "Babies",
-        "icon": null,
-        "name": "Baby Nests"
-      },
-      {
-        "icon": null,
-        "name": "Baby Play Areas",
-        "parent": "Babies"
-      },
-      {
-        "name": "Baby Potties",
-        "parent": "Babies",
-        "icon": null
-      },
-      {
-        "name": "Baby Rockers",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "parent": "Babies",
-        "icon": null,
-        "name": "Baby Strollers"
-      },
-      {
-        "name": "Baby Swings",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "name": "Baby Toys",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "icon": null,
-        "name": "Baby Walkers",
-        "parent": "Babies"
-      },
-      {
-        "icon": null,
-        "parent": "Babies",
-        "name": "Beddings and Crib Bumpers"
-      },
-      {
-        "name": "Bottles and Pacifiers",
-        "parent": "Babies",
-        "icon": null
-      },
-      {
-        "name": "Breast Pumps",
-        "icon": null,
-        "parent": "Babies"
-      },
-      {
-        "parent": "Babies",
-        "name": "Car Seats",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Clothing",
-        "parent": "Babies"
-      },
-      {
-        "parent": "Babies",
-        "name": "Mom Bags",
-        "icon": null
-      },
-      {
-        "name": "Other",
-        "parent": "Babies",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "name": "Beauty and Health",
-    "order": 16,
-    "icon": null,
-    "sub_categories": [
-      {
-        "icon": null,
-        "name": "False Eyelashes",
-        "parent": "Beauty and Health"
-      },
-      {
-        "parent": "Beauty and Health",
-        "name": "Glasses",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Beauty and Health",
-        "name": "Hair and Beard Care"
-      },
-      {
-        "icon": null,
-        "parent": "Beauty and Health",
-        "name": "Health"
-      },
-      {
-        "icon": null,
-        "parent": "Beauty and Health",
-        "name": "Makeup"
-      },
-      {
-        "name": "Nail Care",
-        "icon": null,
-        "parent": "Beauty and Health"
-      },
-      {
-        "name": "Oral Hygiene",
-        "parent": "Beauty and Health",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Beauty and Health",
-        "name": "Other"
-      },
-      {
-        "parent": "Beauty and Health",
-        "icon": null,
-        "name": "Perfumes"
-      },
-      {
-        "icon": null,
-        "name": "Protective Masks and Gloves",
-        "parent": "Beauty and Health"
-      },
-      {
-        "name": "Skin and Body Care",
-        "parent": "Beauty and Health",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "icon": "business",
-    "name": "Business and Industry",
-    "order": 10,
-    "sub_categories": [
-      {
-        "icon": null,
-        "name": "Agriculture",
-        "parent": "Business and Industry"
-      },
-      {
-        "name": "Bags and Sacks",
-        "parent": "Business and Industry",
-        "icon": null
-      },
-      {
-        "name": "Business",
-        "icon": null,
-        "parent": "Business and Industry"
-      },
-      {
-        "parent": "Business and Industry",
-        "icon": null,
-        "name": "Construction"
-      },
-      {
-        "parent": "Business and Industry",
-        "icon": null,
-        "name": "Foils"
-      },
-      {
-        "parent": "Business and Industry",
-        "icon": null,
-        "name": "Gastronomic Equipment"
-      },
-      {
-        "parent": "Business and Industry",
-        "name": "Industrial Heaters",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Business and Industry",
-        "name": "Machines and Tools"
-      },
-      {
-        "icon": null,
-        "parent": "Business and Industry",
-        "name": "Materials, Parts, and Equipment"
-      },
-      {
-        "parent": "Business and Industry",
-        "name": "Office Supplies and Furniture",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Business and Industry",
-        "name": "Oils, Lubricants, and Paints"
-      },
-      {
-        "icon": null,
-        "name": "Other",
-        "parent": "Business and Industry"
-      },
-      {
-        "name": "Packaging Equipment",
-        "icon": null,
-        "parent": "Business and Industry"
-      },
-      {
-        "name": "Packaging Machines",
-        "parent": "Business and Industry",
-        "icon": null
-      },
-      {
-        "name": "Refrigerators and Heat Vitrine",
-        "parent": "Business and Industry",
-        "icon": null
-      },
-      {
-        "parent": "Business and Industry",
-        "icon": null,
-        "name": "Tapes and Adhesives"
-      },
-      {
-        "name": "Trade Equipment",
-        "parent": "Business and Industry",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Business and Industry",
-        "name": "Work Safety Equipment"
-      }
-    ]
-  },
-  {
-    "icon": "clothes",
-    "name": "Clothing and Shoes",
-    "order": 11,
-    "sub_categories": [
-      {
-        "parent": "Clothing and Shoes",
-        "icon": null,
-        "name": "Boys"
-      },
-      {
-        "icon": null,
-        "parent": "Clothing and Shoes",
-        "name": "Girls"
-      },
-      {
-        "name": "Men",
-        "parent": "Clothing and Shoes",
-        "icon": null
-      },
-      {
-        "parent": "Clothing and Shoes",
-        "name": "Other",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Clothing and Shoes",
-        "name": "Unisex"
-      },
-      {
-        "parent": "Clothing and Shoes",
-        "name": "Women",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "name": "Collectibles",
-    "order": 23,
-    "icon": null,
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Collectibles",
-        "name": "Figurines"
-      },
-      {
-        "icon": null,
-        "name": "Flags",
-        "parent": "Collectibles"
-      },
-      {
-        "icon": null,
-        "parent": "Collectibles",
-        "name": "Militaria"
-      },
-      {
-        "icon": null,
-        "parent": "Collectibles",
-        "name": "Model Making"
-      },
-      {
-        "name": "Napkins",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "name": "Numismatics",
-        "icon": null,
-        "parent": "Collectibles"
-      },
-      {
-        "icon": null,
-        "name": "Old Tickets",
-        "parent": "Collectibles"
-      },
-      {
-        "name": "Other",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "name": "Philately",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "name": "Plaques",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "name": "Postcards",
-        "icon": null,
-        "parent": "Collectibles"
-      },
-      {
-        "icon": null,
-        "parent": "Collectibles",
-        "name": "Religion"
-      },
-      {
-        "name": "Souvenirs",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Collectibles",
-        "name": "Sports Trophies and Badges"
-      },
-      {
-        "parent": "Collectibles",
-        "name": "Stickers and Albums",
-        "icon": null
-      },
-      {
-        "name": "Telephone Cards",
-        "parent": "Collectibles",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Vehicle Plates",
-        "parent": "Collectibles"
-      }
-    ]
-  },
-  {
-    "icon": "computers",
-    "order": 7,
-    "name": "Computers",
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Computers",
-        "name": "Computer Equipment"
-      },
-      {
-        "parent": "Computers",
-        "icon": null,
-        "name": "Cryptocurrencies"
-      },
-      {
-        "name": "Desktop Computers",
-        "parent": "Computers",
-        "icon": null
-      },
-      {
-        "name": "Docking Stations",
-        "parent": "Computers",
-        "icon": null
-      },
-      {
-        "parent": "Computers",
-        "name": "Graphic Tablets",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Computers",
-        "name": "Laptops"
-      },
-      {
-        "name": "Mining Rig Equipment",
-        "parent": "Computers",
-        "icon": null
-      },
-      {
-        "name": "Mining Rigs",
-        "parent": "Computers",
-        "icon": null
-      },
-      {
-        "name": "Networks and Communications",
-        "icon": null,
-        "parent": "Computers"
-      },
-      {
-        "parent": "Computers",
-        "icon": null,
-        "name": "Other"
-      },
-      {
-        "icon": null,
-        "name": "Servers",
-        "parent": "Computers"
-      },
-      {
-        "name": "Software",
-        "icon": null,
-        "parent": "Computers"
-      }
-    ]
-  },
-  {
-    "icon": null,
-    "name": "Everything Else",
-    "order": 26,
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Everything Else",
-        "name": "Demand"
-      },
-      {
-        "icon": null,
-        "name": "Gift (Giveaway)",
-        "parent": "Everything Else"
-      },
-      {
-        "parent": "Everything Else",
-        "icon": null,
-        "name": "Masks and Disguises"
-      },
-      {
-        "parent": "Everything Else",
-        "name": "Other",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Pyrotechnics",
-        "parent": "Everything Else"
-      },
-      {
-        "name": "Sexual Aids",
-        "parent": "Everything Else",
-        "icon": null
-      },
-      {
-        "parent": "Everything Else",
-        "icon": null,
-        "name": "Smoking Equipment"
-      },
-      {
-        "name": "Spy Equipment",
-        "icon": null,
-        "parent": "Everything Else"
-      },
-      {
-        "icon": null,
-        "parent": "Everything Else",
-        "name": "Various Gifts"
-      }
-    ]
-  },
-  {
-    "name": "Food and Drinks",
-    "order": 13,
-    "icon": null,
-    "sub_categories": [
-      {
-        "name": "Animal Products",
-        "icon": null,
-        "parent": "Food and Drinks"
-      },
-      {
-        "icon": null,
-        "parent": "Food and Drinks",
-        "name": "Dairy Products"
-      },
-      {
-        "icon": null,
-        "parent": "Food and Drinks",
-        "name": "Desserts"
-      },
-      {
-        "name": "Drinks",
-        "icon": null,
-        "parent": "Food and Drinks"
-      },
-      {
-        "icon": null,
-        "name": "Food Processing",
-        "parent": "Food and Drinks"
-      },
-      {
-        "icon": null,
-        "parent": "Food and Drinks",
-        "name": "Oils and Spices"
-      },
-      {
-        "name": "Plant Products",
-        "parent": "Food and Drinks",
-        "icon": null
-      },
-      {
-        "name": "Product Packages",
-        "icon": null,
-        "parent": "Food and Drinks"
-      }
-    ]
-  },
-  {
-    "icon": null,
-    "name": "Games and Toys",
-    "order": 18,
-    "sub_categories": [
-      {
-        "parent": "Games and Toys",
-        "icon": null,
-        "name": "Action Figures"
-      },
-      {
-        "name": "Battery Operated Toys",
-        "parent": "Games and Toys",
-        "icon": null
-      },
-      {
-        "parent": "Games and Toys",
-        "icon": null,
-        "name": "Board Games"
-      },
-      {
-        "parent": "Games and Toys",
-        "icon": null,
-        "name": "Building Blocks"
-      },
-      {
-        "name": "Montessori Toys",
-        "parent": "Games and Toys",
-        "icon": null
-      },
-      {
-        "parent": "Games and Toys",
-        "name": "Other Toys",
-        "icon": null
-      },
-      {
-        "parent": "Games and Toys",
-        "name": "Plush Toys",
-        "icon": null
-      },
-      {
-        "name": "Slides and Playgrounds",
-        "parent": "Games and Toys",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Toys for Boys",
-        "parent": "Games and Toys"
-      },
-      {
-        "parent": "Games and Toys",
-        "icon": null,
-        "name": "Toys for Girls"
-      }
-    ]
-  },
-  {
-    "name": "Jewelry and Watches",
-    "order": 14,
-    "icon": null,
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Jewelry and Watches",
-        "name": "Bracelets"
-      },
-      {
-        "name": "Brooches and Badges",
-        "parent": "Jewelry and Watches",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Jewelry and Watches",
-        "name": "Bullions and Ducats"
-      },
-      {
-        "name": "Crystals and Gemstones",
-        "icon": null,
-        "parent": "Jewelry and Watches"
-      },
-      {
-        "icon": null,
-        "parent": "Jewelry and Watches",
-        "name": "Earrings"
-      },
-      {
-        "parent": "Jewelry and Watches",
-        "name": "Jewelry Making Supplies",
-        "icon": null
-      },
-      {
-        "parent": "Jewelry and Watches",
-        "icon": null,
-        "name": "Jewelry Pendants"
-      },
-      {
-        "name": "Jewelry and Watch Tools",
-        "icon": null,
-        "parent": "Jewelry and Watches"
-      },
-      {
-        "icon": null,
-        "parent": "Jewelry and Watches",
-        "name": "Necklaces"
-      },
-      {
-        "icon": null,
-        "name": "Piercing Jewelry",
-        "parent": "Jewelry and Watches"
-      },
-      {
-        "parent": "Jewelry and Watches",
-        "icon": null,
-        "name": "Pocket Watches"
-      },
-      {
-        "icon": null,
-        "parent": "Jewelry and Watches",
-        "name": "Rings"
-      },
-      {
-        "name": "Wall and Table Clocks",
-        "parent": "Jewelry and Watches",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Watch Parts",
-        "parent": "Jewelry and Watches"
-      },
-      {
-        "parent": "Jewelry and Watches",
-        "name": "Watch and Jewelry Boxes",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Wristwatches",
-        "parent": "Jewelry and Watches"
-      }
-    ]
-  },
-  {
-    "icon": "jobs",
-    "name": "Jobs",
-    "order": 5,
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Administration"
-      },
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Agriculture and Forestry"
-      },
-      {
-        "parent": "Jobs",
-        "icon": null,
-        "name": "Architecture and Design"
-      },
-      {
-        "icon": null,
-        "name": "Art, Culture, Media",
-        "parent": "Jobs"
-      },
-      {
-        "name": "Automotive Industry",
-        "parent": "Jobs",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Beauty and Health",
-        "parent": "Jobs"
-      },
-      {
-        "name": "Carpentry and Ceramics",
-        "parent": "Jobs",
-        "icon": null
-      },
-      {
-        "parent": "Jobs",
-        "icon": null,
-        "name": "Childcare, Elderly, and Household"
-      },
-      {
-        "parent": "Jobs",
-        "name": "Construction and Geodesy",
-        "icon": null
-      },
-      {
-        "name": "Economy and Finance",
-        "icon": null,
-        "parent": "Jobs"
-      },
-      {
-        "icon": null,
-        "name": "Education and Science",
-        "parent": "Jobs"
-      },
-      {
-        "name": "Electrical and Mechanical Engineering",
-        "icon": null,
-        "parent": "Jobs"
-      },
-      {
-        "name": "Healthcare, Pharmacy, and Social Protection",
-        "icon": null,
-        "parent": "Jobs"
-      },
-      {
-        "parent": "Jobs",
-        "icon": null,
-        "name": "Human Resources, Law"
-      },
-      {
-        "parent": "Jobs",
-        "name": "IT and Telecommunications",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Installations, Maintenance, and Repair",
-        "parent": "Jobs"
-      },
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Insurance, Security, and Protection"
-      },
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Management, Consulting, and Advisory"
-      },
-      {
-        "parent": "Jobs",
-        "name": "Marketing and PR",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Other Jobs",
-        "parent": "Jobs"
-      },
-      {
-        "parent": "Jobs",
-        "icon": null,
-        "name": "Painting and Upholstery"
-      },
-      {
-        "icon": null,
-        "name": "Sales and Commerce",
-        "parent": "Jobs"
-      },
-      {
-        "parent": "Jobs",
-        "icon": null,
-        "name": "Textile Industry"
-      },
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Tourism and Hospitality"
-      },
-      {
-        "parent": "Jobs",
-        "name": "Transport, Logistics, and Shipping",
-        "icon": null
-      },
-      {
-        "name": "Veterinary, Livestock, and Fisheries",
-        "parent": "Jobs",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Jobs",
-        "name": "Web Development and Design"
-      }
-    ]
-  },
-  {
-    "name": "Literature",
-    "order": 21,
-    "icon": "books",
-    "sub_categories": [
-      {
-        "name": "Audiobooks",
-        "icon": null,
-        "parent": "Literature"
-      },
-      {
-        "icon": null,
-        "name": "Books",
-        "parent": "Literature"
-      },
-      {
-        "name": "Catalogs",
-        "icon": null,
-        "parent": "Literature"
-      },
-      {
-        "icon": null,
-        "parent": "Literature",
-        "name": "Comics"
-      },
-      {
-        "parent": "Literature",
-        "name": "E-books",
-        "icon": null
-      },
-      {
-        "parent": "Literature",
-        "icon": null,
-        "name": "Magazines"
-      },
-      {
-        "parent": "Literature",
-        "icon": null,
-        "name": "Other"
-      },
-      {
-        "name": "School Supplies",
-        "parent": "Literature",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "name": "Mobile Devices",
-    "order": 3,
-    "icon": "mobile-phones",
-    "sub_categories": [
-      {
-        "parent": "Mobile Devices",
-        "icon": null,
-        "name": "Bluetooth Devices"
-      },
-      {
-        "name": "Mobile Phones",
-        "icon": null,
-        "parent": "Mobile Devices"
-      },
-      {
-        "parent": "Mobile Devices",
-        "icon": null,
-        "name": "Other"
-      },
-      {
-        "icon": null,
-        "parent": "Mobile Devices",
-        "name": "PDA and Pocket PCs"
-      },
-      {
-        "icon": null,
-        "parent": "Mobile Devices",
-        "name": "Parts and Accessories"
-      },
-      {
-        "icon": null,
-        "parent": "Mobile Devices",
-        "name": "Smartwatches"
-      },
-      {
-        "parent": "Mobile Devices",
-        "icon": null,
-        "name": "Tablet PCs"
-      },
-      {
-        "parent": "Mobile Devices",
-        "name": "eBook Readers",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "name": "Music Equipment",
-    "order": 20,
-    "icon": null,
-    "sub_categories": [
-      {
-        "parent": "Music Equipment",
-        "name": "Hi-Fi Components",
-        "icon": null
-      },
-      {
-        "name": "Music Equipment and Parts",
-        "parent": "Music Equipment",
-        "icon": null
-      },
-      {
-        "name": "Music Systems",
-        "parent": "Music Equipment",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Musical Instruments",
-        "parent": "Music Equipment"
-      },
-      {
-        "parent": "Music Equipment",
-        "name": "Other",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "name": "My Home",
-    "order": 9,
-    "icon": "my-home",
-    "sub_categories": [
-      {
-        "name": "Bathroom",
-        "parent": "My Home",
-        "icon": null
-      },
-      {
-        "parent": "My Home",
-        "icon": null,
-        "name": "Carpentry"
-      },
-      {
-        "icon": null,
-        "name": "Carpets and Rugs",
-        "parent": "My Home"
-      },
-      {
-        "name": "Ceramic Tiles",
-        "parent": "My Home",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Cleaning Tools and Devices"
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Decorations"
-      },
-      {
-        "name": "Furniture",
-        "parent": "My Home",
-        "icon": null
-      },
-      {
-        "name": "Garden Plants and Gardening",
-        "parent": "My Home",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Heating and Cooling"
-      },
-      {
-        "icon": null,
-        "name": "Kitchen",
-        "parent": "My Home"
-      },
-      {
-        "parent": "My Home",
-        "icon": null,
-        "name": "Lamps and Lighting"
-      },
-      {
-        "parent": "My Home",
-        "icon": null,
-        "name": "Mailboxes"
-      },
-      {
-        "parent": "My Home",
-        "icon": null,
-        "name": "Other"
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Plumbing and Equipment"
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Pools and Equipment"
-      },
-      {
-        "parent": "My Home",
-        "icon": null,
-        "name": "Security Devices"
-      },
-      {
-        "icon": null,
-        "parent": "My Home",
-        "name": "Textile Products"
-      },
-      {
-        "parent": "My Home",
-        "name": "Water Filters",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "icon": "real-estate",
-    "name": "Real Estate",
-    "order": 2,
-    "sub_categories": [
-      {
-        "parent": "Real Estate",
-        "name": "Commercial Spaces",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Daily Rent Flats",
-        "parent": "Real Estate"
-      },
-      {
-        "parent": "Real Estate",
-        "name": "Flats and Apartments",
-        "icon": null
-      },
-      {
-        "name": "Garages",
-        "icon": null,
-        "parent": "Real Estate"
-      },
-      {
-        "parent": "Real Estate",
-        "name": "Houses",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Land",
-        "parent": "Real Estate"
-      },
-      {
-        "icon": null,
-        "parent": "Real Estate",
-        "name": "Other"
-      },
-      {
-        "parent": "Real Estate",
-        "name": "Prefabricated Objects",
-        "icon": null
-      },
-      {
-        "name": "Rooms",
-        "parent": "Real Estate",
-        "icon": null
-      },
-      {
-        "parent": "Real Estate",
-        "name": "Warehouses and Halls",
-        "icon": null
-      },
-      {
-        "parent": "Real Estate",
-        "icon": null,
-        "name": "Weekend Houses"
-      }
-    ]
-  },
-  {
-    "name": "Services",
-    "icon": "services",
-    "order": 4,
-    "sub_categories": [
-      {
-        "parent": "Services",
-        "name": "Auto, Moto, and Nautical",
-        "icon": null
-      },
-      {
-        "parent": "Services",
-        "name": "Beauty, Care, and Medical Services",
-        "icon": null
-      },
-      {
-        "parent": "Services",
-        "icon": null,
-        "name": "Construction"
-      },
-      {
-        "parent": "Services",
-        "name": "Design, Print, and Publishing",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Education and Training",
-        "parent": "Services"
-      },
-      {
-        "name": "Gastronomy, Entertainment, and Organization",
-        "icon": null,
-        "parent": "Services"
-      },
-      {
-        "name": "Home and Office",
-        "icon": null,
-        "parent": "Services"
-      },
-      {
-        "icon": null,
-        "parent": "Services",
-        "name": "Informatics and Telecommunications"
-      },
-      {
-        "icon": null,
-        "name": "Law and Finance",
-        "parent": "Services"
-      },
-      {
-        "parent": "Services",
-        "name": "Marketing and Brokerage",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "parent": "Services",
-        "name": "Other Services"
-      },
-      {
-        "name": "Tourist Services",
-        "parent": "Services",
-        "icon": null
-      },
-      {
-        "name": "Transport and Logistics",
-        "icon": null,
-        "parent": "Services"
-      }
-    ]
-  },
-  {
-    "icon": "sports-equipment",
-    "name": "Sports Equipment",
-    "order": 12,
-    "sub_categories": [
-      {
-        "icon": null,
-        "parent": "Sports Equipment",
-        "name": "Equipment for Other Sports"
-      },
-      {
-        "parent": "Sports Equipment",
-        "name": "Extreme Sports",
-        "icon": null
-      },
-      {
-        "icon": null,
-        "name": "Fitness and Training",
-        "parent": "Sports Equipment"
-      },
-      {
-        "icon": null,
-        "parent": "Sports Equipment",
-        "name": "Martial Arts"
-      },
-      {
-        "icon": null,
-        "name": "Mountaineering and Climbing",
-        "parent": "Sports Equipment"
-      },
-      {
-        "icon": null,
-        "parent": "Sports Equipment",
-        "name": "Outdoor Sports"
-      },
-      {
-        "icon": null,
-        "parent": "Sports Equipment",
-        "name": "Team Sports"
-      },
-      {
-        "name": "Tennis",
-        "icon": null,
-        "parent": "Sports Equipment"
-      },
-      {
-        "name": "Water Sports",
-        "parent": "Sports Equipment",
-        "icon": null
-      },
-      {
-        "parent": "Sports Equipment",
-        "icon": null,
-        "name": "Winter Sports"
-      }
-    ]
-  },
-  {
-    "icon": null,
-    "name": "Tickets",
-    "order": 25,
-    "sub_categories": [
-      {
-        "icon": null,
-        "name": "Cinemas",
-        "parent": "Tickets"
-      },
-      {
-        "parent": "Tickets",
-        "name": "Concerts",
-        "icon": null
-      },
-      {
-        "parent": "Tickets",
-        "icon": null,
-        "name": "Other"
-      },
-      {
-        "parent": "Tickets",
-        "name": "Sporting Events",
-        "icon": null
-      },
-      {
-        "name": "Theaters",
-        "icon": null,
-        "parent": "Tickets"
-      }
-    ]
-  },
-  {
-    "name": "Vehicle Parts",
-    "order": 6,
-    "icon": "car-parts",
-    "sub_categories": [
-      {
-        "parent": "Vehicle Parts",
-        "name": "For Bicycles",
-        "icon": null
-      },
-      {
-        "parent": "Vehicle Parts",
-        "name": "For Buses and Minibuses",
-        "icon": null
-      },
-      {
-        "name": "For Cars",
-        "icon": null,
-        "parent": "Vehicle Parts"
-      },
-      {
-        "icon": null,
-        "name": "For Construction Machines",
-        "parent": "Vehicle Parts"
-      },
-      {
-        "name": "For Everything Else",
-        "icon": null,
-        "parent": "Vehicle Parts"
-      },
-      {
-        "parent": "Vehicle Parts",
-        "name": "For Motorcycles",
-        "icon": null
-      },
-      {
-        "name": "For Nautical Vessels",
-        "parent": "Vehicle Parts",
-        "icon": null
-      },
-      {
-        "name": "For Trailers",
-        "icon": null,
-        "parent": "Vehicle Parts"
-      },
-      {
-        "name": "For Trucks",
-        "parent": "Vehicle Parts",
-        "icon": null
-      }
-    ]
-  },
-  {
-    "icon": "cars",
     "name": "Vehicles",
     "order": 1,
     "sub_categories": [
       {
+        "order": 1,
         "parent": "Vehicles",
         "icon": null,
         "name": "ATV - UTV - Quad"
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "name": "Bicycles",
         "icon": null
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "icon": null,
         "name": "Buses and Minibuses"
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "name": "Campers",
         "icon": null
       },
       {
+        "order": 1,
         "name": "Cars",
         "icon": null,
         "parent": "Vehicles"
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "icon": null,
         "name": "Motorcycles"
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "name": "Nautical",
         "icon": null
       },
       {
+        "order": 1,
         "parent": "Vehicles",
         "icon": null,
         "name": "Snowmobiles"
       },
       {
+        "order": 1,
         "name": "Trailers",
         "parent": "Vehicles",
         "icon": null
       },
       {
+        "order": 1,
         "name": "Trucks",
         "icon": null,
         "parent": "Vehicles"
@@ -1740,29 +66,1994 @@
     ]
   },
   {
-    "icon": null,
+    "name": "Real Estate",
+    "order": 2,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "name": "Commercial Spaces",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Daily Rent Flats",
+        "parent": "Real Estate"
+      },
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "name": "Flats and Apartments",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Garages",
+        "icon": null,
+        "parent": "Real Estate"
+      },
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "name": "Houses",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Land",
+        "parent": "Real Estate"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Real Estate",
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "name": "Prefabricated Objects",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Rooms",
+        "parent": "Real Estate",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "name": "Warehouses and Halls",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Real Estate",
+        "icon": null,
+        "name": "Weekend Houses"
+      }
+    ]
+  },
+  {
+    "name": "Mobile Devices",
+    "order": 3,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Mobile Devices",
+        "icon": null,
+        "name": "Bluetooth Devices"
+      },
+      {
+        "order": 1,
+        "name": "Mobile Phones",
+        "icon": null,
+        "parent": "Mobile Devices"
+      },
+      {
+        "order": 1,
+        "parent": "Mobile Devices",
+        "icon": null,
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Mobile Devices",
+        "name": "PDA and Pocket PCs"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Mobile Devices",
+        "name": "Parts and Accessories"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Mobile Devices",
+        "name": "Smartwatches"
+      },
+      {
+        "order": 1,
+        "parent": "Mobile Devices",
+        "icon": null,
+        "name": "Tablet PCs"
+      },
+      {
+        "order": 1,
+        "parent": "Mobile Devices",
+        "name": "eBook Readers",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Services",
+    "order": 4,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Services",
+        "name": "Auto, Moto, and Nautical",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Services",
+        "name": "Beauty, Care, and Medical Services",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Services",
+        "icon": null,
+        "name": "Construction"
+      },
+      {
+        "order": 1,
+        "parent": "Services",
+        "name": "Design, Print, and Publishing",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Education and Training",
+        "parent": "Services"
+      },
+      {
+        "order": 1,
+        "name": "Gastronomy, Entertainment, and Organization",
+        "icon": null,
+        "parent": "Services"
+      },
+      {
+        "order": 1,
+        "name": "Home and Office",
+        "icon": null,
+        "parent": "Services"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Services",
+        "name": "Informatics and Telecommunications"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Law and Finance",
+        "parent": "Services"
+      },
+      {
+        "order": 1,
+        "parent": "Services",
+        "name": "Marketing and Brokerage",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Services",
+        "name": "Other Services"
+      },
+      {
+        "order": 1,
+        "name": "Tourist Services",
+        "parent": "Services",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Transport and Logistics",
+        "icon": null,
+        "parent": "Services"
+      }
+    ]
+  },
+  {
+    "name": "Jobs",
+    "order": 5,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Administration"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Agriculture and Forestry"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "icon": null,
+        "name": "Architecture and Design"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Art, Culture, Media",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "name": "Automotive Industry",
+        "parent": "Jobs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Beauty and Health",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "name": "Carpentry and Ceramics",
+        "parent": "Jobs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "icon": null,
+        "name": "Childcare, Elderly, and Household"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "name": "Construction and Geodesy",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Economy and Finance",
+        "icon": null,
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Education and Science",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "name": "Electrical and Mechanical Engineering",
+        "icon": null,
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "name": "Healthcare, Pharmacy, and Social Protection",
+        "icon": null,
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "icon": null,
+        "name": "Human Resources, Law"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "name": "IT and Telecommunications",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Installations, Maintenance, and Repair",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Insurance, Security, and Protection"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Management, Consulting, and Advisory"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "name": "Marketing and PR",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Other Jobs",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "icon": null,
+        "name": "Painting and Upholstery"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Sales and Commerce",
+        "parent": "Jobs"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "icon": null,
+        "name": "Textile Industry"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Tourism and Hospitality"
+      },
+      {
+        "order": 1,
+        "parent": "Jobs",
+        "name": "Transport, Logistics, and Shipping",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Veterinary, Livestock, and Fisheries",
+        "parent": "Jobs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jobs",
+        "name": "Web Development and Design"
+      }
+    ]
+  },
+  {
+    "name": "Vehicle Parts",
+    "order": 6,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Vehicle Parts",
+        "name": "For Bicycles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Vehicle Parts",
+        "name": "For Buses and Minibuses",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "For Cars",
+        "icon": null,
+        "parent": "Vehicle Parts"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "For Construction Machines",
+        "parent": "Vehicle Parts"
+      },
+      {
+        "order": 1,
+        "name": "For Everything Else",
+        "icon": null,
+        "parent": "Vehicle Parts"
+      },
+      {
+        "order": 1,
+        "parent": "Vehicle Parts",
+        "name": "For Motorcycles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "For Nautical Vessels",
+        "parent": "Vehicle Parts",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "For Trailers",
+        "icon": null,
+        "parent": "Vehicle Parts"
+      },
+      {
+        "order": 1,
+        "name": "For Trucks",
+        "parent": "Vehicle Parts",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Computers",
+    "order": 7,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Computers",
+        "name": "Computer Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "Computers",
+        "icon": null,
+        "name": "Cryptocurrencies"
+      },
+      {
+        "order": 1,
+        "name": "Desktop Computers",
+        "parent": "Computers",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Docking Stations",
+        "parent": "Computers",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Computers",
+        "name": "Graphic Tablets",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Computers",
+        "name": "Laptops"
+      },
+      {
+        "order": 1,
+        "name": "Mining Rig Equipment",
+        "parent": "Computers",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Mining Rigs",
+        "parent": "Computers",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Networks and Communications",
+        "icon": null,
+        "parent": "Computers"
+      },
+      {
+        "order": 1,
+        "parent": "Computers",
+        "icon": null,
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Servers",
+        "parent": "Computers"
+      },
+      {
+        "order": 1,
+        "name": "Software",
+        "icon": null,
+        "parent": "Computers"
+      }
+    ]
+  },
+  {
+    "name": "Appliances",
+    "order": 8,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Batteries and Chargers",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Bluetooth Speakers",
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "Calculators",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "Cameras and Photo Equipment",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "DVD & Blu-ray Players",
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "Drone Parts and Accessories",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Drones (RC Vehicles)",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Electrical Material"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "name": "Electronic Cigarettes",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Home Theaters",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Hoverboard",
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "IoT",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Magnifiers"
+      },
+      {
+        "order": 1,
+        "name": "Measuring Instruments",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Medical Equipment"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Multimedia",
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Appliances",
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "name": "Radio Amateur Equipment",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Radio and Walkman Devices",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Satellite Equipment",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "Smart Systems",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Solar Equipment"
+      },
+      {
+        "order": 1,
+        "name": "TV Boxes",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "name": "TVs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Telecommunications",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "name": "Telescopes and Equipment",
+        "parent": "Appliances",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Appliances",
+        "name": "Thermometers"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "name": "Tobacco Heating Devices",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Video iPods and MP3 Players"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "icon": null,
+        "name": "Virtual Reality (VR Devices)"
+      },
+      {
+        "order": 1,
+        "name": "Voice Recorders",
+        "icon": null,
+        "parent": "Appliances"
+      },
+      {
+        "order": 1,
+        "parent": "Appliances",
+        "name": "White Goods",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "My Home",
+    "order": 9,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Bathroom",
+        "parent": "My Home",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "icon": null,
+        "name": "Carpentry"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Carpets and Rugs",
+        "parent": "My Home"
+      },
+      {
+        "order": 1,
+        "name": "Ceramic Tiles",
+        "parent": "My Home",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Cleaning Tools and Devices"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Decorations"
+      },
+      {
+        "order": 1,
+        "name": "Furniture",
+        "parent": "My Home",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Garden Plants and Gardening",
+        "parent": "My Home",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Heating and Cooling"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Kitchen",
+        "parent": "My Home"
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "icon": null,
+        "name": "Lamps and Lighting"
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "icon": null,
+        "name": "Mailboxes"
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "icon": null,
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Plumbing and Equipment"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Pools and Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "icon": null,
+        "name": "Security Devices"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "My Home",
+        "name": "Textile Products"
+      },
+      {
+        "order": 1,
+        "parent": "My Home",
+        "name": "Water Filters",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Business and Industry",
+    "order": 10,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Agriculture",
+        "parent": "Business and Industry"
+      },
+      {
+        "order": 1,
+        "name": "Bags and Sacks",
+        "parent": "Business and Industry",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Business",
+        "icon": null,
+        "parent": "Business and Industry"
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "icon": null,
+        "name": "Construction"
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "icon": null,
+        "name": "Foils"
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "icon": null,
+        "name": "Gastronomic Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "name": "Industrial Heaters",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Business and Industry",
+        "name": "Machines and Tools"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Business and Industry",
+        "name": "Materials, Parts, and Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "name": "Office Supplies and Furniture",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Business and Industry",
+        "name": "Oils, Lubricants, and Paints"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Other",
+        "parent": "Business and Industry"
+      },
+      {
+        "order": 1,
+        "name": "Packaging Equipment",
+        "icon": null,
+        "parent": "Business and Industry"
+      },
+      {
+        "order": 1,
+        "name": "Packaging Machines",
+        "parent": "Business and Industry",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Refrigerators and Heat Vitrine",
+        "parent": "Business and Industry",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Business and Industry",
+        "icon": null,
+        "name": "Tapes and Adhesives"
+      },
+      {
+        "order": 1,
+        "name": "Trade Equipment",
+        "parent": "Business and Industry",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Business and Industry",
+        "name": "Work Safety Equipment"
+      }
+    ]
+  },
+  {
+    "name": "Clothing and Shoes",
+    "order": 11,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Clothing and Shoes",
+        "icon": null,
+        "name": "Boys"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Clothing and Shoes",
+        "name": "Girls"
+      },
+      {
+        "order": 1,
+        "name": "Men",
+        "parent": "Clothing and Shoes",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Clothing and Shoes",
+        "name": "Other",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Clothing and Shoes",
+        "name": "Unisex"
+      },
+      {
+        "order": 1,
+        "parent": "Clothing and Shoes",
+        "name": "Women",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Sports Equipment",
+    "order": 12,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Sports Equipment",
+        "name": "Equipment for Other Sports"
+      },
+      {
+        "order": 1,
+        "parent": "Sports Equipment",
+        "name": "Extreme Sports",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Fitness and Training",
+        "parent": "Sports Equipment"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Sports Equipment",
+        "name": "Martial Arts"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Mountaineering and Climbing",
+        "parent": "Sports Equipment"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Sports Equipment",
+        "name": "Outdoor Sports"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Sports Equipment",
+        "name": "Team Sports"
+      },
+      {
+        "order": 1,
+        "name": "Tennis",
+        "icon": null,
+        "parent": "Sports Equipment"
+      },
+      {
+        "order": 1,
+        "name": "Water Sports",
+        "parent": "Sports Equipment",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Sports Equipment",
+        "icon": null,
+        "name": "Winter Sports"
+      }
+    ]
+  },
+  {
+    "name": "Food and Drinks",
+    "order": 13,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Animal Products",
+        "icon": null,
+        "parent": "Food and Drinks"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Food and Drinks",
+        "name": "Dairy Products"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Food and Drinks",
+        "name": "Desserts"
+      },
+      {
+        "order": 1,
+        "name": "Drinks",
+        "icon": null,
+        "parent": "Food and Drinks"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Food Processing",
+        "parent": "Food and Drinks"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Food and Drinks",
+        "name": "Oils and Spices"
+      },
+      {
+        "order": 1,
+        "name": "Plant Products",
+        "parent": "Food and Drinks",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Product Packages",
+        "icon": null,
+        "parent": "Food and Drinks"
+      }
+    ]
+  },
+  {
+    "name": "Jewelry and Watches",
+    "order": 14,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jewelry and Watches",
+        "name": "Bracelets"
+      },
+      {
+        "order": 1,
+        "name": "Brooches and Badges",
+        "parent": "Jewelry and Watches",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jewelry and Watches",
+        "name": "Bullions and Ducats"
+      },
+      {
+        "order": 1,
+        "name": "Crystals and Gemstones",
+        "icon": null,
+        "parent": "Jewelry and Watches"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jewelry and Watches",
+        "name": "Earrings"
+      },
+      {
+        "order": 1,
+        "parent": "Jewelry and Watches",
+        "name": "Jewelry Making Supplies",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Jewelry and Watches",
+        "icon": null,
+        "name": "Jewelry Pendants"
+      },
+      {
+        "order": 1,
+        "name": "Jewelry and Watch Tools",
+        "icon": null,
+        "parent": "Jewelry and Watches"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jewelry and Watches",
+        "name": "Necklaces"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Piercing Jewelry",
+        "parent": "Jewelry and Watches"
+      },
+      {
+        "order": 1,
+        "parent": "Jewelry and Watches",
+        "icon": null,
+        "name": "Pocket Watches"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Jewelry and Watches",
+        "name": "Rings"
+      },
+      {
+        "order": 1,
+        "name": "Wall and Table Clocks",
+        "parent": "Jewelry and Watches",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Watch Parts",
+        "parent": "Jewelry and Watches"
+      },
+      {
+        "order": 1,
+        "parent": "Jewelry and Watches",
+        "name": "Watch and Jewelry Boxes",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Wristwatches",
+        "parent": "Jewelry and Watches"
+      }
+    ]
+  },
+  {
+    "name": "Animals",
+    "order": 15,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Animal Equipment",
+        "parent": "Animals",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Animals",
+        "name": "Farm Animals"
+      },
+      {
+        "order": 1,
+        "name": "Other",
+        "parent": "Animals",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Animals",
+        "name": "Pets"
+      }
+    ]
+  },
+  {
+    "name": "Beauty and Health",
+    "order": 16,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "name": "False Eyelashes",
+        "parent": "Beauty and Health"
+      },
+      {
+        "order": 1,
+        "parent": "Beauty and Health",
+        "name": "Glasses",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Beauty and Health",
+        "name": "Hair and Beard Care"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Beauty and Health",
+        "name": "Health"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Beauty and Health",
+        "name": "Makeup"
+      },
+      {
+        "order": 1,
+        "name": "Nail Care",
+        "icon": null,
+        "parent": "Beauty and Health"
+      },
+      {
+        "order": 1,
+        "name": "Oral Hygiene",
+        "parent": "Beauty and Health",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Beauty and Health",
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "parent": "Beauty and Health",
+        "icon": null,
+        "name": "Perfumes"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Protective Masks and Gloves",
+        "parent": "Beauty and Health"
+      },
+      {
+        "order": 1,
+        "name": "Skin and Body Care",
+        "parent": "Beauty and Health",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Babies",
+    "order": 17,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Baby Bathtubs",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "name": "Baby Bibs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Baby Blankets",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Baby Care",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Baby Carriers",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Baby Cribs",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "icon": null,
+        "name": "Baby Devices and Accessories"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "name": "Baby Diapers",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "icon": null,
+        "name": "Baby High Chairs"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "name": "Baby Highchairs",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Baby Mats",
+        "parent": "Babies",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Babies",
+        "name": "Baby Monitors"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "icon": null,
+        "name": "Baby Nests"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Baby Play Areas",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "name": "Baby Potties",
+        "parent": "Babies",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Baby Rockers",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "icon": null,
+        "name": "Baby Strollers"
+      },
+      {
+        "order": 1,
+        "name": "Baby Swings",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "name": "Baby Toys",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Baby Walkers",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Babies",
+        "name": "Beddings and Crib Bumpers"
+      },
+      {
+        "order": 1,
+        "name": "Bottles and Pacifiers",
+        "parent": "Babies",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Breast Pumps",
+        "icon": null,
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "name": "Car Seats",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Clothing",
+        "parent": "Babies"
+      },
+      {
+        "order": 1,
+        "parent": "Babies",
+        "name": "Mom Bags",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Other",
+        "parent": "Babies",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Games and Toys",
+    "order": 18,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "icon": null,
+        "name": "Action Figures"
+      },
+      {
+        "order": 1,
+        "name": "Battery Operated Toys",
+        "parent": "Games and Toys",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "icon": null,
+        "name": "Board Games"
+      },
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "icon": null,
+        "name": "Building Blocks"
+      },
+      {
+        "order": 1,
+        "name": "Montessori Toys",
+        "parent": "Games and Toys",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "name": "Other Toys",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "name": "Plush Toys",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Slides and Playgrounds",
+        "parent": "Games and Toys",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Toys for Boys",
+        "parent": "Games and Toys"
+      },
+      {
+        "order": 1,
+        "parent": "Games and Toys",
+        "icon": null,
+        "name": "Toys for Girls"
+      }
+    ]
+  },
+  {
     "name": "Video Games",
     "order": 19,
     "sub_categories": [
       {
+        "order": 1,
         "name": "Consoles",
         "icon": null,
         "parent": "Video Games"
       },
       {
+        "order": 1,
         "parent": "Video Games",
         "name": "Other",
         "icon": null
       },
       {
+        "order": 1,
         "icon": null,
         "name": "PC and Console Games",
         "parent": "Video Games"
       },
       {
+        "order": 1,
         "parent": "Video Games",
         "icon": null,
         "name": "Parts and Accessories"
+      }
+    ]
+  },
+  {
+    "name": "Music Equipment",
+    "order": 20,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Music Equipment",
+        "name": "Hi-Fi Components",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Music Equipment and Parts",
+        "parent": "Music Equipment",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Music Systems",
+        "parent": "Music Equipment",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Musical Instruments",
+        "parent": "Music Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "Music Equipment",
+        "name": "Other",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Literature",
+    "order": 21,
+    "sub_categories": [
+      {
+        "order": 1,
+        "name": "Audiobooks",
+        "icon": null,
+        "parent": "Literature"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Books",
+        "parent": "Literature"
+      },
+      {
+        "order": 1,
+        "name": "Catalogs",
+        "icon": null,
+        "parent": "Literature"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Literature",
+        "name": "Comics"
+      },
+      {
+        "order": 1,
+        "parent": "Literature",
+        "name": "E-books",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Literature",
+        "icon": null,
+        "name": "Magazines"
+      },
+      {
+        "order": 1,
+        "parent": "Literature",
+        "icon": null,
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "name": "School Supplies",
+        "parent": "Literature",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Art",
+    "order": 22,
+    "sub_categories": [
+      {
+        "order": 1,
+        "parent": "Art",
+        "name": "Art Paintings",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Art",
+        "icon": null,
+        "name": "Icons and Calligraphy"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Other",
+        "parent": "Art"
+      },
+      {
+        "order": 1,
+        "name": "Photographs",
+        "parent": "Art",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Posters and Placards",
+        "icon": null,
+        "parent": "Art"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Art",
+        "name": "Sculptures"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Tattoo",
+        "parent": "Art"
+      }
+    ]
+  },
+  {
+    "name": "Collectibles",
+    "order": 23,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Collectibles",
+        "name": "Figurines"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Flags",
+        "parent": "Collectibles"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Collectibles",
+        "name": "Militaria"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Collectibles",
+        "name": "Model Making"
+      },
+      {
+        "order": 1,
+        "name": "Napkins",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Numismatics",
+        "icon": null,
+        "parent": "Collectibles"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Old Tickets",
+        "parent": "Collectibles"
+      },
+      {
+        "order": 1,
+        "name": "Other",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Philately",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Plaques",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Postcards",
+        "icon": null,
+        "parent": "Collectibles"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Collectibles",
+        "name": "Religion"
+      },
+      {
+        "order": 1,
+        "name": "Souvenirs",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Collectibles",
+        "name": "Sports Trophies and Badges"
+      },
+      {
+        "order": 1,
+        "parent": "Collectibles",
+        "name": "Stickers and Albums",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Telephone Cards",
+        "parent": "Collectibles",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Vehicle Plates",
+        "parent": "Collectibles"
+      }
+    ]
+  },
+  {
+    "name": "Antiques",
+    "order": 24,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Antiques",
+        "name": "Accessories and Equipment"
+      },
+      {
+        "order": 1,
+        "parent": "Antiques",
+        "icon": null,
+        "name": "Antique Ceramics and Glass"
+      },
+      {
+        "order": 1,
+        "name": "Antique Devices and Appliances",
+        "parent": "Antiques",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Antiques",
+        "name": "Antique Furniture"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Antique Jewelry and Watches",
+        "parent": "Antiques"
+      },
+      {
+        "order": 1,
+        "name": "Antique Metal Items",
+        "parent": "Antiques",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Antique Paintings and Tapestries",
+        "parent": "Antiques",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Antiques",
+        "name": "Books and Documents",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Antiques",
+        "icon": null,
+        "name": "Folk Costumes"
+      },
+      {
+        "order": 1,
+        "name": "Gramophones and Records",
+        "parent": "Antiques",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Antiques",
+        "icon": null,
+        "name": "Household Items"
+      },
+      {
+        "order": 1,
+        "name": "Other",
+        "parent": "Antiques",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "name": "Tickets",
+    "order": 25,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Cinemas",
+        "parent": "Tickets"
+      },
+      {
+        "order": 1,
+        "parent": "Tickets",
+        "name": "Concerts",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Tickets",
+        "icon": null,
+        "name": "Other"
+      },
+      {
+        "order": 1,
+        "parent": "Tickets",
+        "name": "Sporting Events",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "name": "Theaters",
+        "icon": null,
+        "parent": "Tickets"
+      }
+    ]
+  },
+  {
+    "name": "Everything Else",
+    "order": 26,
+    "sub_categories": [
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Everything Else",
+        "name": "Demand"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Gift (Giveaway)",
+        "parent": "Everything Else"
+      },
+      {
+        "order": 1,
+        "parent": "Everything Else",
+        "icon": null,
+        "name": "Masks and Disguises"
+      },
+      {
+        "order": 1,
+        "parent": "Everything Else",
+        "name": "Other",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "name": "Pyrotechnics",
+        "parent": "Everything Else"
+      },
+      {
+        "order": 1,
+        "name": "Sexual Aids",
+        "parent": "Everything Else",
+        "icon": null
+      },
+      {
+        "order": 1,
+        "parent": "Everything Else",
+        "icon": null,
+        "name": "Smoking Equipment"
+      },
+      {
+        "order": 1,
+        "name": "Spy Equipment",
+        "icon": null,
+        "parent": "Everything Else"
+      },
+      {
+        "order": 1,
+        "icon": null,
+        "parent": "Everything Else",
+        "name": "Various Gifts"
       }
     ]
   }
