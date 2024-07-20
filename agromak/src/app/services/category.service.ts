@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, combineLatest, map, Observable, switchMap} from "rxjs";
-import {Category, CategoryList, SubCategory} from "../shared/models/category";
-import {Ad} from "../shared/models/ad";
+import {Category, SubCategory} from "../shared/models/category";
 
 @Injectable({
   providedIn: 'root'
@@ -55,20 +54,21 @@ export class CategoryService {
 
 
   saveAllCategories() {
-    this.http.get<CategoryList>('/assets/categories.json')
+    this.http.get<Category[]>('/assets/categories.json')
       .subscribe(async it => {
         console.log(it)
-        await this.addCategories(it.categories);
+        await this.addCategories(it);
       })
   }
 
 
   private async addCategories(categories: Category[]): Promise<void> {
     for (const category of categories) {
+      console.log(category)
       const categoryRef = this.angularFirestore.collection('categories').doc(category.name);
       const categoryData = {
         name: category.name,
-        icon: category.icon,
+        order: category.order,
       };
       await categoryRef.set(categoryData);
 
@@ -82,8 +82,7 @@ export class CategoryService {
     for (const subcategory of subcategories) {
       const subcategoryData: SubCategory = {
         name: subcategory.name,
-        parent: parentCategory,
-        icon: subcategory.icon,
+        order: subcategory.order,
       };
 
       const subcategoryRef = subcategoriesRef.doc(subcategory.name);
