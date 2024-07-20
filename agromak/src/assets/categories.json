@@ -2,6 +2,7 @@
   {
     "icon": "pets",
     "name": "Animals",
+    "order": 15,
     "sub_categories": [
       {
         "name": "Animal Equipment",
@@ -27,6 +28,7 @@
   },
   {
     "name": "Antiques",
+    "order": 24,
     "icon": "Antiques",
     "sub_categories": [
       {
@@ -94,6 +96,7 @@
   {
     "icon": "clock",
     "name": "Appliances",
+    "order": 8,
     "sub_categories": [
       {
         "name": "Batteries and Chargers",
@@ -260,6 +263,7 @@
   {
     "icon": "camera",
     "name": "Art",
+    "order": 22,
     "sub_categories": [
       {
         "parent": "Art",
@@ -300,6 +304,7 @@
   },
   {
     "name": "Babies",
+    "order": 17,
     "icon": null,
     "sub_categories": [
       {
@@ -441,6 +446,7 @@
   },
   {
     "name": "Beauty and Health",
+    "order": 16,
     "icon": null,
     "sub_categories": [
       {
@@ -503,6 +509,7 @@
   {
     "icon": "business",
     "name": "Business and Industry",
+    "order": 10,
     "sub_categories": [
       {
         "icon": null,
@@ -599,6 +606,7 @@
   {
     "icon": "clothes",
     "name": "Clothing and Shoes",
+    "order": 11,
     "sub_categories": [
       {
         "parent": "Clothing and Shoes",
@@ -634,6 +642,7 @@
   },
   {
     "name": "Collectibles",
+    "order": 23,
     "icon": null,
     "sub_categories": [
       {
@@ -725,6 +734,7 @@
   },
   {
     "icon": "computers",
+    "order": 7,
     "name": "Computers",
     "sub_categories": [
       {
@@ -792,6 +802,7 @@
   {
     "icon": null,
     "name": "Everything Else",
+    "order": 26,
     "sub_categories": [
       {
         "icon": null,
@@ -842,6 +853,7 @@
   },
   {
     "name": "Food and Drinks",
+    "order": 13,
     "icon": null,
     "sub_categories": [
       {
@@ -889,6 +901,7 @@
   {
     "icon": null,
     "name": "Games and Toys",
+    "order": 18,
     "sub_categories": [
       {
         "parent": "Games and Toys",
@@ -944,6 +957,7 @@
   },
   {
     "name": "Jewelry and Watches",
+    "order": 14,
     "icon": null,
     "sub_categories": [
       {
@@ -1031,6 +1045,7 @@
   {
     "icon": "jobs",
     "name": "Jobs",
+    "order": 5,
     "sub_categories": [
       {
         "icon": null,
@@ -1171,6 +1186,7 @@
   },
   {
     "name": "Literature",
+    "order": 21,
     "icon": "books",
     "sub_categories": [
       {
@@ -1217,6 +1233,7 @@
   },
   {
     "name": "Mobile Devices",
+    "order": 3,
     "icon": "mobile-phones",
     "sub_categories": [
       {
@@ -1263,6 +1280,7 @@
   },
   {
     "name": "Music Equipment",
+    "order": 20,
     "icon": null,
     "sub_categories": [
       {
@@ -1294,6 +1312,7 @@
   },
   {
     "name": "My Home",
+    "order": 9,
     "icon": "my-home",
     "sub_categories": [
       {
@@ -1391,6 +1410,7 @@
   {
     "icon": "real-estate",
     "name": "Real Estate",
+    "order": 2,
     "sub_categories": [
       {
         "parent": "Real Estate",
@@ -1452,6 +1472,7 @@
   {
     "name": "Services",
     "icon": "services",
+    "order": 4,
     "sub_categories": [
       {
         "parent": "Services",
@@ -1523,6 +1544,7 @@
   {
     "icon": "sports-equipment",
     "name": "Sports Equipment",
+    "order": 12,
     "sub_categories": [
       {
         "icon": null,
@@ -1579,6 +1601,7 @@
   {
     "icon": null,
     "name": "Tickets",
+    "order": 25,
     "sub_categories": [
       {
         "icon": null,
@@ -1609,6 +1632,7 @@
   },
   {
     "name": "Vehicle Parts",
+    "order": 6,
     "icon": "car-parts",
     "sub_categories": [
       {
@@ -1661,6 +1685,7 @@
   {
     "icon": "cars",
     "name": "Vehicles",
+    "order": 1,
     "sub_categories": [
       {
         "parent": "Vehicles",
@@ -1717,6 +1742,7 @@
   {
     "icon": null,
     "name": "Video Games",
+    "order": 19,
     "sub_categories": [
       {
         "name": "Consoles",
