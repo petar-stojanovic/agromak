@@ -18,11 +18,11 @@
         "items": [
           {
             "label": "Used",
-            "value": "used"
+            "value": "Used"
           },
           {
             "label": "New",
-            "value": "new"
+            "value": "New"
           }
         ]
       },
@@ -67,11 +67,11 @@
         "items": [
           {
             "label": "MKD",
-            "value": "mkd"
+            "value": "MKD"
           },
           {
             "label": "EUR",
-            "value": "eur"
+            "value": "EUR"
           }
         ]
       },

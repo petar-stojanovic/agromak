@@ -48,7 +48,7 @@ export class ImageService {
     }
   }
 
-  async uploadAdImages(documentId: string, galleryPhotos: GalleryPhoto[]) {
+  async uploadAdImages(documentId: string, galleryPhotos: GalleryPhoto[] | string[]) {
     const basePath = `ads/${documentId}/`;
     const userDocRef = doc(this.firestore, basePath);
 
@@ -56,6 +56,10 @@ export class ImageService {
       const imagesToUpload = [];
 
       for (const photo of galleryPhotos) {
+        if (typeof photo === "string") {
+          imagesToUpload.push(photo);
+          continue;
+        }
         const imageName = this.getImageName(photo.path!);
         const storageReference = ref(this.storage, basePath + imageName);
         const base64Data = await this.readAsBase64(photo.path!);

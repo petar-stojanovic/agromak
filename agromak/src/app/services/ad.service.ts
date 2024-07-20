@@ -49,11 +49,11 @@ export class AdService {
     }
 
     const data = {
+      title: value.title,
+      title_lowercase: value.title.toLowerCase(),
       category: value.category,
       subcategory: value.subcategory,
       buyOrSell: value.buyOrSell,
-      title: value.title,
-      title_lowercase: value.title.toLowerCase(),
       city: value.city,
       price: value.price,
       currency: value.currency,
@@ -96,7 +96,7 @@ export class AdService {
     const adRef = await this.angularFirestore.collection('ads').add(data);
 
     if (value.images) {
-      return await this.imageService.uploadAdImages(adRef.id, value.images);
+      return await this.imageService.uploadAdImages(adRef.id, value.images );
     }
 
     return;
