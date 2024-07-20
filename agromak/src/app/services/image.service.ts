@@ -57,7 +57,7 @@ export class ImageService {
 
       for (const photo of galleryPhotos) {
         const imageName = this.getImageName(photo.path!);
-        const storageReference = ref(this.storage, basePath + imageName); // Create a unique path for each image
+        const storageReference = ref(this.storage, basePath + imageName);
         const base64Data = await this.readAsBase64(photo.path!);
 
         if (typeof base64Data === "string") {

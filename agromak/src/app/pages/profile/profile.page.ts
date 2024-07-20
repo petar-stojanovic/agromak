@@ -2,7 +2,15 @@ import {Component, inject} from '@angular/core';
 import {
   AlertController,
   IonContent,
-  IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonSkeletonText, IonText, IonThumbnail,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonSkeletonText,
+  IonText,
+  IonThumbnail,
   IonTitle,
   IonToolbar,
   LoadingController
@@ -38,7 +46,7 @@ import {CommonModule} from "@angular/common";
   ],
 })
 export class ProfilePage {
-  private _authService = inject(AuthService);
+  private authService = inject(AuthService);
 
   user: User | null = null;
 
@@ -51,18 +59,17 @@ export class ProfilePage {
   }
 
   fetchData() {
-    this._authService.user$
+    this.authService.user$
       .subscribe({
-        next: (data) => {
-          this.user = data;
-          // console.log(data)
-        },
-        error: (error) => {
-          console.error('Error fetching user:', error);
-          this.user = null;
+          next: (data) => {
+            this.user = data;
+          },
+          error: (error) => {
+            console.error('Error fetching user:', error);
+            this.user = null;
+          }
         }
-      }
-    );
+      );
   }
 
   async logOut() {
@@ -74,7 +81,7 @@ export class ProfilePage {
       }, {
         text: 'Log Out',
         handler: () => {
-          this._authService.signOut()
+          this.authService.signOut()
         }
       }]
     });

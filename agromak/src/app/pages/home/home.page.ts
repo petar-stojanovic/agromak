@@ -42,13 +42,13 @@ export class HomePage implements OnInit {
 
 
   constructor(private modalCtrl: ModalController,
-              private _adService: AdService) {
+              private adService: AdService) {
     addIcons({add, 'logo': 'assets/logo.svg'})
   }
 
   ngOnInit(): void {
     this.getAds();
-    this.openDynamicModal();
+    // this.openDynamicModal();
     setTimeout(() => {
       // this.openSearchModal('Sell');
     }, 1000);
@@ -58,7 +58,7 @@ export class HomePage implements OnInit {
   getAds() {
     this.ads = [];
 
-    this._adService.ads$
+    this.adService.ads$
       .subscribe(async (ads) => {
         this.ads = ads;
         setTimeout(() => {
@@ -66,12 +66,12 @@ export class HomePage implements OnInit {
         }, 500);
       });
 
-    this._adService.getAds();
+    this.adService.getAds();
   }
 
   async refreshAds(event: RefresherCustomEvent) {
     this.isLoading = true;
-    this._adService.resetAds();
+    this.adService.resetAds();
 
     await Haptics.impact({style: ImpactStyle.Medium});
     await event.target.complete();

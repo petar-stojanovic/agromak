@@ -10,8 +10,8 @@ import {Ad} from "../shared/models/ad";
 })
 export class CategoryService {
 
-  private _categories = new BehaviorSubject<Category[]>([]);
-  categories$: Observable<Category[]> = this._categories.asObservable();
+  private categories = new BehaviorSubject<Category[]>([]);
+  categories$: Observable<Category[]> = this.categories.asObservable();
 
   constructor(private angularFirestore: AngularFirestore,
               private http: HttpClient) {
@@ -40,7 +40,7 @@ export class CategoryService {
         })
       ).subscribe(categories => {
       console.log(categories)
-      this._categories.next(categories);
+      this.categories.next(categories);
     });
   }
 

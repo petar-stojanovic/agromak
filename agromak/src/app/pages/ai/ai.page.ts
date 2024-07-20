@@ -44,12 +44,12 @@ export class AiPage {
   @ViewChild('content') content: any;
 
 
-  constructor(private _openAIService: OpenAiService,
-              private _imageService: ImageService,
+  constructor(private openAiService: OpenAiService,
+              private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
-              private _authService: AuthService) {
+              private authService: AuthService) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
-    this._authService.user$
+    this.authService.user$
       .subscribe({
           next: (data) => {
             this.user = data;
@@ -90,7 +90,7 @@ export class AiPage {
     this.image = null;
     this.compressedImage = null;
 
-    const stream = await this._openAIService.generateContentWithOpenAI(this.messages);
+    const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
     this.messages.push({from: "AI", message: ""});
 

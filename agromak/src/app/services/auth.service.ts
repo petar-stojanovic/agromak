@@ -56,7 +56,7 @@ export class AuthService {
     if (user) {
       const userCredential = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));
       if (userCredential) {
-        // Check if the user already exists in Firestore
+
         const userRef = this.angularFirestore.doc(`users/${userCredential.user.uid}`);
         userRef.get().subscribe((data) => {
           if (data.exists) {

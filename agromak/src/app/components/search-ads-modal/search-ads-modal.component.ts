@@ -3,10 +3,17 @@ import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {
   IonAvatar,
-  IonBackButton, IonButton,
+  IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
-  IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonModal,
+  IonHeader,
+  IonIcon,
+  IonImg,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonModal,
   IonTitle,
   IonToolbar,
   ModalController
@@ -49,11 +56,10 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   ads: Ad[] = [];
   isLoading = true;
 
-  // Subscription to the searchedAds$ observable
   private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
-              private _adService: AdService) {
+              private adService: AdService) {
     addIcons({filterCircleOutline})
   }
 
@@ -63,7 +69,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adsSubscription = this._adService.searchedAds$
+    this.adsSubscription = this.adService.searchedAds$
       .pipe(
         switchMap((ads) => {
           this.ads = ads;
@@ -74,7 +80,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       });
 
-    this._adService.searchAds(this.searchValue);
+    this.adService.searchAds(this.searchValue);
   }
 
   dismiss() {

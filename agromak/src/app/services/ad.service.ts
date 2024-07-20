@@ -16,8 +16,8 @@ import {ImageService} from "./image.service";
   providedIn: 'root'
 })
 export class AdService {
-  private _ads = new BehaviorSubject<Ad[]>([]);
-  private _searchedAds = new BehaviorSubject<Ad[]>([]);
+  private ads = new BehaviorSubject<Ad[]>([]);
+  private searchedAds = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
   readonly NUM_OF_ADS_TO_LOAD = 5;
@@ -31,15 +31,14 @@ export class AdService {
 
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
-              private _authService: AuthService,
+              private authService: AuthService,
               private imageService: ImageService,
               private router: Router) {
 
-    // Create the observable array for consumption in components
-    this.ads$ = this._ads.asObservable();
-    this.searchedAds$ = this._searchedAds.asObservable();
+    this.ads$ = this.ads.asObservable();
+    this.searchedAds$ = this.searchedAds.asObservable();
 
-    this._authService.user$.subscribe(user => {
+    this.authService.user$.subscribe(user => {
       this.user = user;
     })
   }
@@ -109,7 +108,7 @@ export class AdService {
     if (!lastVisible) {
       query = this.angularFirestore
         .collection('ads', ref => ref
-          .orderBy(documentId(), 'asc') // Order by document id, default for 'Standard'
+          .orderBy(documentId(), 'asc')
           .limit(this.NUM_OF_STARTING_ADS)
         );
     } else {
@@ -142,12 +141,11 @@ export class AdService {
   }
 
   resetAds() {
-    this._ads.next([]);
-    this._searchedAds.next([]);
+    this.ads.next([]);
+    this.searchedAds.next([]);
     this.getAds();
   }
 
-  // Maps the snapshot to usable format
   private mapAndUpdate(col: AngularFirestoreCollection<any>, searched = false) {
 
     return col.snapshotChanges()
@@ -159,13 +157,12 @@ export class AdService {
             return {id, ...data} as Ad;
           })
 
-          const currentAds = this._ads.getValue();
+          const currentAds = this.ads.getValue();
 
-          // Update source with values
           if (searched) {
-            this._searchedAds.next([...values]);
+            this.searchedAds.next([...values]);
           } else {
-            this._ads.next([...currentAds, ...values]);
+            this.ads.next([...currentAds, ...values]);
           }
 
           return actions;

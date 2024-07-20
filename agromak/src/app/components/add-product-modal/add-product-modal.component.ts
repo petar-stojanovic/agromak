@@ -73,7 +73,7 @@ interface AgriculturalCategories {
   ],
 })
 export class AddProductModalComponent implements OnInit {
-  private _adService = inject(AdService);
+  private adService = inject(AdService);
 
   form: FormGroup;
   images: GalleryPhoto[] = [];
@@ -135,7 +135,7 @@ export class AddProductModalComponent implements OnInit {
               private imageService: ImageService,
               private alertController: AlertController,
               private loadingController: LoadingController,
-              private _openAIService: OpenAiService) {
+              private openAiService: OpenAiService) {
 
     addIcons({sparklesOutline})
 
@@ -202,12 +202,11 @@ export class AddProductModalComponent implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const adId = await this._adService.createAd(this.form.value as CreateAd);
+    const adId = await this.adService.createAd(this.form.value as CreateAd);
     if (this.images.length > 0) {
       await this.imageService.uploadAdImages(adId, this.images);
     }
 
-    // Dismiss the modal and pass the form value as a result
     await this.modalCtrl.dismiss(this.form.value, 'confirm');
     await loading.dismiss();
   }
@@ -228,7 +227,7 @@ export class AddProductModalComponent implements OnInit {
   async generateDescription() {
     const {title, category, subcategory, buyOrSell} = this.form.value;
 
-    const stream = await this._openAIService.generateDescriptionForAd(title, category, subcategory, buyOrSell);
+    const stream = await this.openAiService.generateDescriptionForAd(title, category, subcategory, buyOrSell);
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';

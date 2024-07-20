@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {
   IonAccordion,
   IonAccordionGroup,
@@ -13,7 +13,8 @@ import {
   IonList,
   IonSpinner,
   IonTitle,
-  IonToolbar, ModalController
+  IonToolbar,
+  ModalController
 } from "@ionic/angular/standalone";
 import {Category, SubCategory} from "../../shared/models/category";
 import {CategoryService} from "../../services/category.service";
@@ -46,14 +47,14 @@ import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SelectCategoryModalComponent  {
+export class SelectCategoryModalComponent {
 
   categories!: Category[];
 
-  constructor(private _categoryService: CategoryService,
+  constructor(private categoryService: CategoryService,
               private ref: ChangeDetectorRef,
               private modalCtrl: ModalController) {
-    this._categoryService.categories$.subscribe(async categories => {
+    this.categoryService.categories$.subscribe(async categories => {
       this.categories = categories;
       this.ref.markForCheck();
     });

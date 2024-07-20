@@ -44,7 +44,7 @@ export class RegisterPage {
     ]
   }
 
-  _authService = inject(AuthService);
+  authService = inject(AuthService);
 
   form!: FormGroup;
   screen: string = 'login';
@@ -111,8 +111,8 @@ export class RegisterPage {
 
       const formValue = this.form.value;
 
-      this._authService
-        .register(formValue.email, formValue.password,formValue.name)
+      this.authService
+        .register(formValue.email, formValue.password, formValue.name)
         .then(user => {
             this.router.navigateByUrl('/app/home', {replaceUrl: true});
           }

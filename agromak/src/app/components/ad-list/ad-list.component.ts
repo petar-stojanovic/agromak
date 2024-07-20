@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -32,7 +32,7 @@ import {AdService} from "../../services/ad.service";
   ],
   standalone: true
 })
-export class AdListComponent implements OnInit {
+export class AdListComponent {
   @Input()
   ads: Ad[] = [];
 
@@ -42,10 +42,7 @@ export class AdListComponent implements OnInit {
   placeholderArray = new Array(10);
 
   constructor(private modalCtrl: ModalController,
-              private _adService: AdService) {
-  }
-
-  ngOnInit() {
+              private adService: AdService) {
   }
 
   async openAdDetailsModal(ad: Ad) {
@@ -70,6 +67,6 @@ export class AdListComponent implements OnInit {
   }
 
   private generateMoreItems() {
-    this._adService.getAds(this.ads[this.ads.length - 1]);
+    this.adService.getAds(this.ads[this.ads.length - 1]);
   }
 }

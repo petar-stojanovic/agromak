@@ -41,7 +41,7 @@ export class LoginPage {
     ]
   }
 
-  _authService = inject(AuthService);
+  authService = inject(AuthService);
 
   form!: FormGroup;
   screen: string = 'login';
@@ -86,7 +86,7 @@ export class LoginPage {
 
     const formValue = this.form.value;
 
-    this._authService
+    this.authService
       .login(formValue.email, formValue.password)
       .then(user => {
           this.router.navigateByUrl('/app/home',);
@@ -110,7 +110,7 @@ export class LoginPage {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    await this._authService
+    await this.authService
       .signInWithGoogle()
       .then(async user => {
         await loading.present();
