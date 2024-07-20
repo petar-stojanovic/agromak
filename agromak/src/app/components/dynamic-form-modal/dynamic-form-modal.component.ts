@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
   LoadingController,
-  ModalController
+  ModalController, ToastController
 } from "@ionic/angular/standalone";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
@@ -54,7 +54,8 @@ export class DynamicFormModalComponent implements OnInit {
   constructor(private http: HttpClient,
               private modalCtrl: ModalController,
               private loadingController: LoadingController,
-              private _adService: AdService) {
+              private _adService: AdService,
+              private toastController: ToastController) {
     addIcons({alertCircleOutline})
   }
 
@@ -77,15 +78,22 @@ export class DynamicFormModalComponent implements OnInit {
   }
 
   async onFormSubmitted(formValues: CreateDynamicAd) {
-    console.log(formValues)
-
-    const loading = await this.loadingController.create();
+    const loading = await this.loadingController.create({
+      message: 'Saving Ad, please wait...',
+    });
     await loading.present();
 
     await this._adService.createDynamicAd(formValues);
 
     await loading.dismiss();
     await this.modalCtrl.dismiss(null, 'success');
+
+    const toast = await this.toastController.create({
+      message: 'Ad created successfully',
+      duration: 1500,
+    });
+
+    await toast.present();
   };
 
   cancel() {
