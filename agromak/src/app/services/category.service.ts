@@ -30,7 +30,7 @@ export class CategoryService {
               map(subcategories => {
                 return {
                   ...category,
-                  sub_categories: subcategories
+                  sub_categories: subcategories.sort((a, b) => a.order - b.order)
                 };
               })
             );
@@ -39,7 +39,7 @@ export class CategoryService {
         })
       ).subscribe(categories => {
       console.log(categories)
-      this.categories.next(categories);
+      this.categories.next(categories.sort((a, b) => a.order - b.order));
     });
   }
 
@@ -87,7 +87,6 @@ export class CategoryService {
 
       const subcategoryRef = subcategoriesRef.doc(subcategory.name);
       await subcategoryRef.set(subcategoryData);
-
 
       if (subcategory.sub_categories && subcategory.sub_categories.length > 0) {
         await this.addSubcategories(subcategoryRef.collection('sub_categories'), subcategory.sub_categories, subcategory.name);

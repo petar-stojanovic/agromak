@@ -6,12 +6,12 @@ export interface CreateDynamicAd {
   title: string;
   title_lowercase: string;
   description: string;
-  price: string;
+  price: number;
   currency: string;
   fixedPrice: boolean;
   location: string;
   phone: string;
-  images?: GalleryPhoto[];
+  images?: GalleryPhoto[] | string[];
   additionalFields?: [{name: string, value: string}];
 }
 
