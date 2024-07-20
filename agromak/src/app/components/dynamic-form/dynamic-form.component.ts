@@ -209,4 +209,24 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       await loading.dismiss();
     }
   }
+
+
+  formatPhoneNumber(event: any, controlName: string) {
+    if (controlName !== 'phone') {
+      return;
+    }
+
+    const input = event.target.value;
+    let formattedInput = input.replace(/\D/g, '');
+
+    if (formattedInput.length >= 3) {
+      formattedInput = formattedInput.slice(0, 3) + '/' + formattedInput.slice(3);
+    }
+    if (formattedInput.length >= 7) {
+      formattedInput = formattedInput.slice(0, 7) + '-' + formattedInput.slice(7, 10);
+    }
+
+    this.form.controls[controlName].setValue(formattedInput);
+    this.form.updateValueAndValidity();
+  }
 }

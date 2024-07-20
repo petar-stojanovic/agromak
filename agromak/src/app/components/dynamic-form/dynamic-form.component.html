@@ -19,7 +19,6 @@
         </div>
       } @else if (['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(control.type)) {
         <div>
-
           @if (control.helpText) {
             <ion-note>
               <small>{{ control.helpText }}</small>
@@ -33,6 +32,7 @@
             [placeholder]="control.placeholder"
             [counter]="control.validators.maxLength !== undefined"
             [maxlength]="control.validators.maxLength !== undefined ? control.validators.maxLength : null"
+            (ionInput)="formatPhoneNumber($event, control.name)"
             fill="outline"
             labelPlacement="floating"
           >
