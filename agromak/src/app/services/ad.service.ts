@@ -43,51 +43,6 @@ export class AdService {
     })
   }
 
-  async migrateAds() {
-    if (!this.user) {
-      await this.router.navigate(['/login']);
-    }
-
-    // Step 1: Fetch all old ads
-    const oldAdsSnapshot = await this.angularFirestore.collection<Ad>('ads')
-      .ref.where('measure', '!=', null) // Assuming 'measure' is a field present only in old ads
-      .get();
-
-    // Step 2: Process each old ad
-    let x = [];
-    for (const doc of oldAdsSnapshot.docs) {
-      const oldAdData = doc.data();
-      const newAdData = this.transformToDynamicAd(oldAdData);
-      console.log(oldAdData, newAdData);
-      x.push({oldAdData, newAdData});
-
-      // Step 3: Write new ad format to Firestore
-      await this.angularFirestore.collection('ads').doc(doc.id).delete();
-      await this.angularFirestore.collection('ads').doc(doc.id).set(newAdData);
-    }
-    console.log(x);
-  }
-
-  private transformToDynamicAd(oldAd: Ad) {
-    return {
-      category: oldAd.category ? oldAd.category : 'Everything Else',
-      itemCondition: Math.random() > 0.5 ? 'Used' : "New",
-      title: oldAd.title,
-      title_lowercase: oldAd.title.toLowerCase(),
-      description: oldAd.description,
-      price: oldAd.price,
-      currency: oldAd.currency.toUpperCase(),
-      fixedPrice: Math.random() > 0.5,
-      location: oldAd.city,
-      phone: oldAd.phone.slice(0, 3) + '/' + oldAd.phone.slice(3, 6) + '-' + oldAd.phone.slice(6),
-      images: oldAd.images,
-      uploadedAt: oldAd.uploadedAt,
-      ownerId: oldAd.ownerId,
-      ownerName: oldAd.ownerName ? oldAd.ownerName : '',
-    };
-  }
-
-
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
     if (!this.user) {
       await this.router.navigate(['/login']);

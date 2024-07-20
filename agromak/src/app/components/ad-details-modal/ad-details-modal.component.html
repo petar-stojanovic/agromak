@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" (click)="dismiss()"></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="ad">{{ ad.buyOrSell === "buy" ? "I AM BUYING" : "I AM SELLING" }}</ion-title>
+    <ion-title *ngIf="ad">SELLING</ion-title>
     <ion-title *ngIf="ad" class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -34,11 +34,6 @@
       Price: {{ ad.price }} {{ ad.currency }}
     </h2>
   </ion-text>
-  <ion-text>
-    <h3>
-      Quantity: {{ ad.quantity }} {{ ad.measure }}
-    </h3>
-  </ion-text>
 
   <ion-text>
     <p>{{ ad.description }}</p>
@@ -46,7 +41,7 @@
 
 
   <ion-list class="background-blue ion-margin-vertical">
-    <ion-list-header>{{ ad.buyOrSell === "buy" ? "Buyer" : "Seller" }} details</ion-list-header>
+    <ion-list-header>Seller details</ion-list-header>
 
     <ion-item lines="none" class="flex">
       <ion-text class="flex ion-align-items-center">
@@ -66,7 +61,7 @@
     <ion-item lines="none" class="flex">
       <ion-text class="flex ion-align-items-center">
         <ion-icon name="location-outline"></ion-icon>
-        <span>{{ ad.city }}</span>
+        <span>{{ ad.location }}</span>
       </ion-text>
 
     </ion-item>

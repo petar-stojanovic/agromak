@@ -3,19 +3,18 @@ import Timestamp = firebase.firestore.Timestamp;
 
 export interface Ad {
   id: string;
-  buyOrSell: string;
   title: string;
-  city: string;
+  location: string;
   price: number;
   currency: string;
   phone: string;
-  quantity: number;
-  measure: string;
   description: string;
   category: string;
   subcategory: string;
   images: string[];
   ownerId: string;
   ownerName?: string;
+  fixedPrice: boolean;
+  itemCondition: string;
   uploadedAt: Timestamp;
 }
