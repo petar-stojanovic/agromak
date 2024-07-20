@@ -9,6 +9,8 @@ import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, Observable, take} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
+import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
+import {ImageService} from "./image.service";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +32,7 @@ export class AdService {
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
               private _authService: AuthService,
+              private imageService: ImageService,
               private router: Router) {
 
     // Create the observable array for consumption in components
@@ -68,6 +71,36 @@ export class AdService {
     const adRef = await this.angularFirestore.collection('ads').add(data);
 
     return adRef.id;
+  }
+
+  async createDynamicAd(value: CreateDynamicAd) {
+    if (!this.user) {
+      await this.router.navigate(['/login']);
+    }
+
+    const data = {
+      category: value.category,
+      itemCondition: value.itemCondition,
+      title: value.title,
+      title_lowercase: value.title.toLowerCase(),
+      description: value.description,
+      price: value.price,
+      currency: value.currency,
+      fixedPrice: value.fixedPrice,
+      location: value.location,
+      phone: value.phone,
+      ownerId: this.user!.uid,
+      ownerName: this.user!.displayName,
+      uploadedAt: new Date(),
+    };
+
+    const adRef = await this.angularFirestore.collection('ads').add(data);
+
+    if (value.images) {
+      return await this.imageService.uploadAdImages(adRef.id, value.images);
+    }
+
+    return;
   }
 
 

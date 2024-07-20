@@ -199,8 +199,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       if (images) {
         images.photos.forEach((image) => {
           this.images.push(image);
+
           console.log(image, this.images)
         });
+        this.form.get('images')!.setValue(this.images);
         this.ref.markForCheck();
       } else {
         console.log('No images selected')

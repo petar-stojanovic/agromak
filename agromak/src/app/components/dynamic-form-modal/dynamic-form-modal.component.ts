@@ -19,6 +19,9 @@ import {JsonFormData} from "../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
 import {addIcons} from "ionicons";
 import {alertCircleOutline} from "ionicons/icons";
+import {CreateAd} from "../../shared/models/create-ad";
+import {AdService} from "../../services/ad.service";
+import {CreateDynamicAd} from "../../shared/models/create-dynamic-ad-";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -50,7 +53,8 @@ export class DynamicFormModalComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private modalCtrl: ModalController,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController,
+              private _adService: AdService) {
     addIcons({alertCircleOutline})
   }
 
@@ -72,9 +76,17 @@ export class DynamicFormModalComponent implements OnInit {
       })
   }
 
-  onFormSubmitted(formValues: any) {
-    console.log(formValues);
-  }
+  async onFormSubmitted(formValues: CreateDynamicAd) {
+    console.log(formValues)
+
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    await this._adService.createDynamicAd(formValues);
+
+    await loading.dismiss();
+    await this.modalCtrl.dismiss(null, 'success');
+  };
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
