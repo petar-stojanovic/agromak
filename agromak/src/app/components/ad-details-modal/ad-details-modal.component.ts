@@ -58,12 +58,10 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private toastController: ToastController,
               private authService: AuthService) {
     addIcons({personOutline, callOutline, locationOutline, heart, heartOutline});
-
-    console.log(this.ad)
-
   }
 
   ngOnInit() {
+    console.log(this.ad)
     this.favoriteSubscription = this.authService.user$.subscribe(user => {
       this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
     })

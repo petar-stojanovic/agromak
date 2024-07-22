@@ -170,7 +170,7 @@ export class AdService {
     }
 
     const data = {
-      ...favoriteAds,
+      favoriteAds: favoriteAds,
       ...this.user!
     }
     await userRef.set(data, {merge: true});
