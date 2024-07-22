@@ -1,4 +1,4 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
   IonBackButton,
   IonButtons,
@@ -12,12 +12,17 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
-  ModalController
+  ModalController,
+  ToastController
 } from "@ionic/angular/standalone";
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {callOutline, heart, heartOutline, locationOutline, personOutline} from "ionicons/icons";
+import {AdService} from "../../services/ad.service";
+import {AuthService} from "../../services/auth.service";
+import {Subscription} from "rxjs";
+import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-ad-details-modal',
@@ -42,20 +47,37 @@ import {callOutline, heart, heartOutline, locationOutline, personOutline} from "
     IonIcon
   ]
 })
-export class AdDetailsModalComponent implements OnInit {
+export class AdDetailsModalComponent implements OnInit, OnDestroy {
   @Input() ad!: Ad;
 
   isFavoriteAd = false;
+  favoriteSubscription: Subscription | null = null;
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController,
+              private adService: AdService,
+              private toastController: ToastController,
+              private authService: AuthService) {
     addIcons({personOutline, callOutline, locationOutline, heart, heartOutline});
+
+    console.log(this.ad)
+
   }
 
   ngOnInit() {
-    console.log(this.ad)
+    this.favoriteSubscription = this.authService.user$.subscribe(user => {
+      this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
+    })
+  }
+
+  ngOnDestroy() {
+    this.favoriteSubscription?.unsubscribe();
   }
 
   dismiss() {
     return this.modalCtrl.dismiss();
+  }
+
+  async toggleFavorite() {
+    await this.adService.toggleFavoriteAd(this.ad.id);
   }
 }

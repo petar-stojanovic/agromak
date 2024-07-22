@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Auth} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {GalleryPhoto} from "@capacitor/camera";
@@ -25,9 +25,7 @@ export class AdService {
   ads$: Observable<Ad[]>;
   searchedAds$: Observable<Ad[]>;
 
-
   user: User | null = null;
-
 
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
@@ -154,5 +152,27 @@ export class AdService {
         take(1)
       )
       .subscribe()
+  }
+
+  async toggleFavoriteAd(adId: string) {
+    if (!this.user) {
+      await this.router.navigate(['/login']);
+    }
+
+    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user!.uid}`);
+    let favoriteAds = !this.user!.favoriteAds ? [] : this.user!.favoriteAds;
+    const adIndex = favoriteAds.indexOf(adId);
+
+    if (adIndex > -1) {
+      favoriteAds.splice(adIndex, 1);
+    } else {
+      favoriteAds.push(adId);
+    }
+
+    const data = {
+      ...favoriteAds,
+      ...this.user!
+    }
+    await userRef.set(data, {merge: true});
   }
 }
