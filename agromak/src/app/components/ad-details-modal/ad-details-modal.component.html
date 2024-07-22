@@ -5,6 +5,13 @@
     </ion-buttons>
     <ion-title *ngIf="ad">SELLING</ion-title>
     <ion-title *ngIf="ad" class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
+    <ion-buttons slot="end">
+      @if (!isFavoriteAd) {
+        <ion-icon name="heart-outline"></ion-icon>
+      } @else {
+        <ion-icon class="favorite-ad" name="heart"></ion-icon>
+      }
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

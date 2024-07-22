@@ -10,6 +10,18 @@ swiper-container {
   }
 }
 
+ion-toolbar {
+
+  & ion-icon {
+    font-size: 2rem;
+
+    &.favorite-ad {
+      color: var(--ion-color-danger-shade);
+    }
+  }
+
+}
+
 .subtitle {
   font-size: 0.75rem;
   margin: 5px 0 0 0;
@@ -27,7 +39,7 @@ ion-list-header {
   font-weight: 500;
 }
 
-ion-icon {
+ion-list ion-icon {
   font-size: 1.75rem;
   margin-right: 0.5rem;
 }
