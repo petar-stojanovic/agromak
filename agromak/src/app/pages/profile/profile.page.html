@@ -32,7 +32,7 @@
     <ion-list class="background-white ion-margin-vertical">
       <ion-list-header>General</ion-list-header>
 
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="openModal('myAds')">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
           <ion-icon name="cube-outline"></ion-icon>
         </ion-thumbnail>
@@ -49,7 +49,7 @@
 
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="openModal('favoriteAds')">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
           <ion-icon name="heart"></ion-icon>
         </ion-thumbnail>

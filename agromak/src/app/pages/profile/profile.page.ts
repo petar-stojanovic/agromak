@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Type} from '@angular/core';
 import {
   AlertController,
   IonContent,
@@ -13,7 +13,7 @@ import {
   IonThumbnail,
   IonTitle,
   IonToolbar,
-  LoadingController
+  LoadingController, ModalController
 } from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
 import {
@@ -30,6 +30,9 @@ import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {User} from "../../shared/models/user";
 import {CommonModule} from "@angular/common";
+import {MyAdsComponent} from "./my-ads/my-ads.component";
+import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
+import {AdDetailsModalComponent} from "../../components/ad-details-modal/ad-details-modal.component";
 
 @Component({
   selector: 'app-profile',
@@ -60,8 +63,17 @@ export class ProfilePage {
   constructor(private router: Router,
               private loadingController: LoadingController,
               private imageService: ImageService,
-              private alertController: AlertController) {
-    addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline, heart, cubeOutline})
+              private alertController: AlertController,
+              private modalCtrl: ModalController) {
+    addIcons({
+      logOutOutline,
+      personOutline,
+      chevronForwardOutline,
+      lockClosed,
+      notificationsOutline,
+      heart,
+      cubeOutline
+    })
     this.fetchData();
   }
 
@@ -120,5 +132,20 @@ export class ProfilePage {
       }
       await loading.dismiss();
     }
+  }
+
+  async openModal(type: string) {
+
+    let modalType: any;
+    if (type === 'myAds') {
+      modalType = MyAdsComponent;
+    } else if (type === 'favoriteAds') {
+      modalType = FavoriteAdsComponent;
+    }
+
+    const modal = await this.modalCtrl.create({
+      component: modalType,
+    });
+    await modal.present();
   }
 }
