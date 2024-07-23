@@ -22,7 +22,6 @@ import {callOutline, heart, heartOutline, locationOutline, personOutline} from "
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
-import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-ad-details-modal',

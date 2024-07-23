@@ -6,7 +6,8 @@
     <ion-title> SELLING</ion-title>
     <ion-title class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
     <ion-buttons slot="end">
-      <ion-icon (click)="toggleFavorite()" [name]="isFavoriteAd ? 'heart' : 'heart-outline'"
+      <ion-icon (click)="toggleFavorite()"
+                [name]="isFavoriteAd ? 'heart' : 'heart-outline'"
                 [class.favorite-ad]="isFavoriteAd"></ion-icon>
     </ion-buttons>
   </ion-toolbar>

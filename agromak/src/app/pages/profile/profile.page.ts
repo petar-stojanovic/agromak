@@ -16,7 +16,14 @@ import {
   LoadingController
 } from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
-import {chevronForwardOutline, lockClosed, logOutOutline, notificationsOutline, personOutline} from "ionicons/icons";
+import {
+  chevronForwardOutline, cubeOutline,
+  heart,
+  lockClosed,
+  logOutOutline,
+  notificationsOutline,
+  personOutline
+} from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {ImageService} from "../../services/image.service";
@@ -54,7 +61,7 @@ export class ProfilePage {
               private loadingController: LoadingController,
               private imageService: ImageService,
               private alertController: AlertController) {
-    addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline})
+    addIcons({logOutOutline, personOutline, chevronForwardOutline, lockClosed, notificationsOutline, heart, cubeOutline})
     this.fetchData();
   }
 
