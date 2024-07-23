@@ -10,9 +10,9 @@
 
       <ion-item lines="none">
         <ion-thumbnail slot="start" class="profile-thumbnail" (click)="changeImage()">
-          <img *ngIf="user.photoURL; else placeholder_avatar;" [src]="user.photoURL" alt="Profile Picture"/>
+          <img *ngIf="user.photoURL; else placeholderAvatar;" [src]="user.photoURL" alt="Profile Picture"/>
 
-          <ng-template #placeholder_avatar>
+          <ng-template #placeholderAvatar>
             <div class="preview">
               <p class="font-size-12">Select avatar</p>
             </div>
@@ -34,7 +34,7 @@
 
       <ion-item lines="none">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon class="icon-color-dark-blue" name="cube-outline"></ion-icon>
+          <ion-icon name="cube-outline"></ion-icon>
         </ion-thumbnail>
         <ion-label>
           <ion-text>
@@ -51,7 +51,7 @@
 
       <ion-item lines="none">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon class="icon-color-dark-blue" name="heart"></ion-icon>
+          <ion-icon name="heart"></ion-icon>
         </ion-thumbnail>
         <ion-label>
           <ion-text>
@@ -72,7 +72,7 @@
 
       <ion-item lines="none">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon class="icon-color-dark-blue" name="person-outline"></ion-icon>
+          <ion-icon name="person-outline"></ion-icon>
         </ion-thumbnail>
         <ion-label>
           <ion-text>
@@ -89,7 +89,7 @@
 
       <ion-item lines="none">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon class="icon-color-dark-blue" name="lock-closed"></ion-icon>
+          <ion-icon name="lock-closed"></ion-icon>
         </ion-thumbnail>
         <ion-label>
           <ion-text>
@@ -111,7 +111,7 @@
 
       <ion-item lines="none">
         <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon class="icon-color-dark-blue" name="notifications-outline"></ion-icon>
+          <ion-icon name="notifications-outline"></ion-icon>
         </ion-thumbnail>
         <ion-label>
           <ion-text>
@@ -153,12 +153,15 @@
         </ion-thumbnail>
       </div>
 
-      <ion-item class="ion-margin-bottom" lines="none">
+      <ion-item lines="none">
         <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-skeleton-text [animated]="true" style="width: 60%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item lines="none">
         <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
       </ion-item>
     </div>
   }
-
-
 </ion-content>
