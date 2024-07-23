@@ -62,7 +62,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.ad)
-    this.favoriteSubscription = this.authService.user$.subscribe(user => {
+    this.favoriteSubscription = this.authService.user$.subscribe(async user => {
       this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
     })
   }
@@ -77,5 +77,11 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   async toggleFavorite() {
     await this.adService.toggleFavoriteAd(this.ad.id);
+    const toast = await this.toastController.create({
+      message: this.isFavoriteAd ? 'Added to favorites' : 'Removed from favorites',
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 }
