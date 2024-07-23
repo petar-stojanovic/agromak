@@ -33,6 +33,7 @@ import {CommonModule} from "@angular/common";
 import {MyAdsComponent} from "./my-ads/my-ads.component";
 import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
 import {AdDetailsModalComponent} from "../../components/ad-details-modal/ad-details-modal.component";
+import {AdService} from "../../services/ad.service";
 
 @Component({
   selector: 'app-profile',
@@ -64,7 +65,8 @@ export class ProfilePage {
               private loadingController: LoadingController,
               private imageService: ImageService,
               private alertController: AlertController,
-              private modalCtrl: ModalController) {
+              private modalCtrl: ModalController,
+              private adService: AdService) {
     addIcons({
       logOutOutline,
       personOutline,

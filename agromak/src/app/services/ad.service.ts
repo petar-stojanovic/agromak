@@ -6,7 +6,7 @@ import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../shared/models/create-ad";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, Observable, take} from "rxjs";
+import {BehaviorSubject, map, Observable, of, take} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
@@ -160,7 +160,7 @@ export class AdService {
     }
 
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user!.uid}`);
-    let favoriteAds = !this.user!.favoriteAds ? [] : this.user!.favoriteAds;
+    let favoriteAds = this.user!.favoriteAds;
     const adIndex = favoriteAds.indexOf(adId);
 
     if (adIndex > -1) {
@@ -170,9 +170,49 @@ export class AdService {
     }
 
     const data = {
+      ...this.user!,
       favoriteAds: favoriteAds,
-      ...this.user!
     }
     await userRef.set(data, {merge: true});
   }
+
+  getFavoriteAds() {
+    if (!this.user || this.user.favoriteAds.length === 0) {
+      return of([] as Ad[]);
+    }
+
+    return this.angularFirestore
+      .collection('ads', ref => ref.where(documentId(), 'in', this.user!.favoriteAds))
+      .snapshotChanges()
+      .pipe(
+        map((query) => {
+          console.log(query);
+          return query.map(doc => {
+            const data: any = doc.payload.doc.data();
+            const id = doc.payload.doc.id;
+            return {id, ...data} as Ad;
+          })
+        })
+      )
+  }
+
+  getMyAds() {
+    if (!this.user) {
+      return of([] as Ad[]);
+    }
+
+    return this.angularFirestore
+      .collection('ads', ref => ref.where('ownerId', '==', this.user!.uid))
+      .snapshotChanges()
+      .pipe(
+        map((query) => {
+          return query.map(doc => {
+            const data: any = doc.payload.doc.data();
+            const id = doc.payload.doc.id;
+            return {id, ...data} as Ad;
+          })
+        })
+      )
+  }
+
 }

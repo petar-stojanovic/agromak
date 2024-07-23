@@ -44,7 +44,7 @@ export class AuthService {
   async register(email: string, password: string, displayName: string) {
     const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
 
-    return this.updateUserData(userCredential.user as User, {displayName});
+    return this.updateUserData(userCredential.user, {displayName});
   }
 
   async login(email: string, password: string) {
@@ -63,14 +63,14 @@ export class AuthService {
             console.log("USER REF DATA -", data);
             return of(null)
           } else {
-            return this.updateUserData(userCredential.user as User);
+            return this.updateUserData(userCredential.user);
           }
         });
       }
     }
   }
 
-  private updateUserData(user: User | null, additionalData: any = {}) {
+  private updateUserData(user: any, additionalData: any = {}) {
     if (user) {
       const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${user.uid}`);
 
@@ -83,6 +83,7 @@ export class AuthService {
         emailVerified: user.emailVerified,
         phoneNumber: user.phoneNumber,
         refreshToken: user.refreshToken,
+        favoriteAds: [],
         ...additionalData
       };
       return userRef.set(data, {merge: true});

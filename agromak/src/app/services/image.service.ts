@@ -15,17 +15,24 @@ import {GalleryPhoto, Photo} from "@capacitor/camera";
 })
 export class ImageService {
 
+  user: User | null = null;
+
   constructor(private auth: Auth,
               private firestore: Firestore,
               private angularFirestore: AngularFirestore,
               private afAuth: AngularFireAuth,
               private authService: AuthService,
               private storage: Storage) {
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    })
   }
 
   async uploadProfileImage(cameraFile: Photo) {
-    const user = this.auth.currentUser as User;
-    const path = `profile/${user.uid}/profile.png`;
+    if (!this.user) {
+      return null;
+    }
+    const path = `profile/${this.user.uid}/profile.png`;
     const storageRef = ref(this.storage, path);
 
     try {
@@ -33,7 +40,7 @@ export class ImageService {
 
       const imageUrl = await getDownloadURL(storageRef);
 
-      const userDocRef = doc(this.firestore, `users/${user.uid}`)
+      const userDocRef = doc(this.firestore, `users/${this.user.uid}`)
       await setDoc(userDocRef, {
           photoURL: imageUrl
         }, {

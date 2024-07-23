@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-  IonBackButton, IonButton,
+  IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
-  IonHeader, IonIcon,
+  IonHeader,
+  IonIcon,
   IonTitle,
   IonToolbar,
   ModalController
@@ -13,6 +15,7 @@ import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
+import {Subscription, switchMap, timer} from "rxjs";
 
 @Component({
   selector: 'app-my-ads',
@@ -31,10 +34,12 @@ import {arrowBack} from "ionicons/icons";
   ],
   standalone: true
 })
-export class MyAdsComponent  implements OnInit {
+export class MyAdsComponent implements OnInit, OnDestroy {
 
   ads: Ad[] = [];
   isLoading = true;
+
+  private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
@@ -42,11 +47,22 @@ export class MyAdsComponent  implements OnInit {
   }
 
   ngOnInit() {
-
+    this.fetchAds();
   }
 
+  fetchAds() {
+    this.adService.getMyAds().subscribe(ads => {
+      this.ads = ads;
+      this.isLoading = false;
+      console.log(this.ads)
+    });
+  }
 
   dismiss() {
     return this.modalCtrl.dismiss();
+  }
+
+  ngOnDestroy(): void {
+    this.adsSubscription?.unsubscribe();
   }
 }

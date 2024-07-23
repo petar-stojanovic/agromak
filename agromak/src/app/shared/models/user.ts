@@ -7,5 +7,5 @@ export interface User {
   emailVerified?: boolean;
   phoneNumber?: string;
   refreshToken?: string;
-  favoriteAds?: string[];
+  favoriteAds: string[];
 }
