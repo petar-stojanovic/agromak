@@ -1,6 +1,6 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
-  IonBackButton,
+  IonBackButton, IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -18,7 +18,7 @@ import {
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
-import {callOutline, heart, heartOutline, locationOutline, personOutline} from "ionicons/icons";
+import {arrowBack, callOutline, heart, heartOutline, locationOutline, personOutline} from "ionicons/icons";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
@@ -43,7 +43,8 @@ import {Subscription} from "rxjs";
     IonList,
     IonListHeader,
     IonItem,
-    IonIcon
+    IonIcon,
+    IonButton
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -56,7 +57,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private adService: AdService,
               private toastController: ToastController,
               private authService: AuthService) {
-    addIcons({personOutline, callOutline, locationOutline, heart, heartOutline});
+    addIcons({personOutline, callOutline, locationOutline, heart, heartOutline, arrowBack});
   }
 
   ngOnInit() {

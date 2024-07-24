@@ -19,6 +19,8 @@ import {
 import {Category, SubCategory} from "../../shared/models/category";
 import {CategoryService} from "../../services/category.service";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {arrowBack} from "ionicons/icons";
+import {addIcons} from "ionicons";
 
 @Component({
   selector: 'app-select-category-modal',
@@ -54,6 +56,8 @@ export class SelectCategoryModalComponent {
   constructor(private categoryService: CategoryService,
               private ref: ChangeDetectorRef,
               private modalCtrl: ModalController) {
+    addIcons({arrowBack});
+
     this.categoryService.categories$.subscribe(async categories => {
       this.categories = categories;
       this.ref.markForCheck();

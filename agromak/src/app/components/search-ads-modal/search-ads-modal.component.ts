@@ -22,7 +22,7 @@ import {AdService} from "../../services/ad.service";
 import {AdListComponent} from "../ad-list/ad-list.component";
 import {Subscription, switchMap, timer} from "rxjs";
 import {addIcons} from "ionicons";
-import {filterCircleOutline} from "ionicons/icons";
+import {arrowBack, filterCircleOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -60,7 +60,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
-    addIcons({filterCircleOutline})
+    addIcons({filterCircleOutline, arrowBack})
   }
 
 
