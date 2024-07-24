@@ -18,12 +18,16 @@ import {ImageService} from "./image.service";
 export class AdService {
   private ads = new BehaviorSubject<Ad[]>([]);
   private searchedAds = new BehaviorSubject<Ad[]>([]);
+  private myAds = new BehaviorSubject<Ad[]>([]);
+  private privateAds = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
   readonly NUM_OF_ADS_TO_LOAD = 5;
 
   ads$: Observable<Ad[]>;
   searchedAds$: Observable<Ad[]>;
+  myAds$: Observable<Ad[]>;
+  privateAds$: Observable<Ad[]>;
 
   user: User | null = null;
 
@@ -35,6 +39,8 @@ export class AdService {
 
     this.ads$ = this.ads.asObservable();
     this.searchedAds$ = this.searchedAds.asObservable();
+    this.myAds$ = this.myAds.asObservable();
+    this.privateAds$ = this.privateAds.asObservable();
 
     this.authService.user$.subscribe(user => {
       this.user = user;
@@ -119,7 +125,11 @@ export class AdService {
 
 
   getAdById(id: string) {
-    return this.angularFirestore.doc(`ads/${id}`).get();
+    return this.angularFirestore.doc(`ads/${id}`).get().pipe(map(doc => {
+      const data: any = doc.data();
+      const id = doc.id;
+      return {id, ...data} as Ad;
+    }));
   }
 
   resetAds() {
