@@ -194,10 +194,10 @@ export class AdService {
 
   fetchFavoriteAds() {
     if (!this.user || this.user.favoriteAds.length === 0) {
-      return;
+      return of([] as Ad[]);
     }
 
-    this.angularFirestore
+    return this.angularFirestore
       .collection('ads', ref => ref.where(documentId(), 'in', this.user!.favoriteAds))
       .snapshotChanges()
       .pipe(
@@ -207,7 +207,7 @@ export class AdService {
         tap((ads) => {
           this.favoriteAds.next(ads);
         })
-      ).subscribe()
+      );
   }
 
   getMyAds() {

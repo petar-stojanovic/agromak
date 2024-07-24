@@ -15,7 +15,7 @@ import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
-import {Subscription, tap} from "rxjs";
+import {delay, Subscription, tap, timer} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
@@ -39,8 +39,12 @@ import {AsyncPipe, NgIf} from "@angular/common";
 })
 export class FavoriteAdsComponent implements OnInit, OnDestroy {
 
-  ads$ = this.adService.favoriteAds$;
   isLoading = true;
+  ads$ = this.adService.favoriteAds$.pipe(
+    tap(ads => {
+      this.isLoading = false;
+    })
+  );
 
   private adsSubscription: Subscription | undefined;
 
@@ -54,7 +58,7 @@ export class FavoriteAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adService.fetchFavoriteAds();
+    this.adsSubscription = this.adService.fetchFavoriteAds().subscribe();
   }
 
   dismiss() {
