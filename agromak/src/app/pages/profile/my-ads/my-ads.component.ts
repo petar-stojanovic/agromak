@@ -15,7 +15,8 @@ import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
-import {Subscription, switchMap, timer} from "rxjs";
+import {Subscription, switchMap, tap, timer} from "rxjs";
+import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-my-ads',
@@ -30,14 +31,20 @@ import {Subscription, switchMap, timer} from "rxjs";
     IonContent,
     AdListComponent,
     IonIcon,
-    IonButton
+    IonButton,
+    AsyncPipe,
+    NgIf
   ],
   standalone: true
 })
 export class MyAdsComponent implements OnInit, OnDestroy {
 
-  ads: Ad[] = [];
   isLoading = true;
+  ads$ = this.adService.myAds$.pipe(
+    tap(ads => {
+      this.isLoading = false;
+    })
+  );
 
   private adsSubscription: Subscription | undefined;
 
@@ -51,10 +58,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adService.getMyAds().subscribe(ads => {
-      this.ads = ads;
-      this.isLoading = false;
-    });
+    this.adsSubscription = this.adService.fetchMyAds().subscribe();
   }
 
   dismiss() {

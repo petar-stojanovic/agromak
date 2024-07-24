@@ -210,7 +210,7 @@ export class AdService {
       );
   }
 
-  getMyAds() {
+  fetchMyAds() {
     if (!this.user) {
       return of([] as Ad[]);
     }
@@ -221,6 +221,9 @@ export class AdService {
       .pipe(
         map((query) => {
           return query.map(doc => this.mapQuery(doc))
+        }),
+        tap((ads) => {
+          this.myAds.next(ads);
         })
       )
   }
@@ -230,4 +233,5 @@ export class AdService {
     const id = doc.payload.doc.id;
     return {id, ...data} as Ad;
   }
+
 }
