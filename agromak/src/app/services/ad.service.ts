@@ -148,26 +148,20 @@ export class AdService {
     this.getAds();
   }
 
-  private mapAndUpdate(col: AngularFirestoreCollection<any>, searched = false) {
+  private mapAndUpdate(col: AngularFirestoreCollection<any>, isSearch = false) {
 
-    return col.snapshotChanges()
-      .pipe(
-        map((actions) => {
-          const values = actions.map(doc => this.mapQuery(doc))
-
-          const currentAds = this.ads.getValue();
-
-          if (searched) {
-            this.searchedAds.next([...values]);
-          } else {
-            this.ads.next([...currentAds, ...values]);
-          }
-
-          return actions;
-        }),
-        take(1)
-      )
-      .subscribe()
+    col.snapshotChanges().pipe(
+      map(actions => actions.map(doc => this.mapQuery(doc))),
+      tap(ads => {
+        const currentAds = this.ads.getValue();
+        if (isSearch) {
+          this.searchedAds.next(ads);
+        } else {
+          this.ads.next([...currentAds, ...ads]);
+        }
+      }),
+      take(1)
+    ).subscribe();
   }
 
   async toggleFavoriteAd(adId: string) {
