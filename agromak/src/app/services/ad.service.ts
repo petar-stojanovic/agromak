@@ -1,5 +1,10 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+  DocumentChangeAction
+} from "@angular/fire/compat/firestore";
 import {Auth} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {GalleryPhoto} from "@capacitor/camera";
@@ -125,11 +130,16 @@ export class AdService {
 
 
   getAdById(id: string) {
-    return this.angularFirestore.doc(`ads/${id}`).get().pipe(map(doc => {
-      const data: any = doc.data();
-      const id = doc.id;
-      return {id, ...data} as Ad;
-    }));
+    return this.angularFirestore
+      .doc(`ads/${id}`)
+      .get()
+      .pipe(
+        map(doc => {
+          const data: any = doc.data();
+          const id = doc.id;
+          return {id, ...data} as Ad;
+        })
+      );
   }
 
   resetAds() {
@@ -143,11 +153,7 @@ export class AdService {
     return col.snapshotChanges()
       .pipe(
         map((actions) => {
-          const values = actions.map(it => {
-            const data = it.payload.doc.data();
-            const id = it.payload.doc.id;
-            return {id, ...data} as Ad;
-          })
+          const values = actions.map(doc => this.mapQuery(doc))
 
           const currentAds = this.ads.getValue();
 
@@ -196,12 +202,7 @@ export class AdService {
       .snapshotChanges()
       .pipe(
         map((query) => {
-          console.log(query);
-          return query.map(doc => {
-            const data: any = doc.payload.doc.data();
-            const id = doc.payload.doc.id;
-            return {id, ...data} as Ad;
-          })
+          return query.map(doc => this.mapQuery(doc))
         })
       )
   }
@@ -216,13 +217,15 @@ export class AdService {
       .snapshotChanges()
       .pipe(
         map((query) => {
-          return query.map(doc => {
-            const data: any = doc.payload.doc.data();
-            const id = doc.payload.doc.id;
-            return {id, ...data} as Ad;
-          })
+          return query.map(doc => this.mapQuery(doc))
         })
       )
+  }
+
+  private mapQuery(doc: DocumentChangeAction<any>) {
+    const data: any = doc.payload.doc.data();
+    const id = doc.payload.doc.id;
+    return {id, ...data} as Ad;
   }
 
 }

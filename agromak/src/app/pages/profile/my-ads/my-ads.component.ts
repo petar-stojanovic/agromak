@@ -54,7 +54,6 @@ export class MyAdsComponent implements OnInit, OnDestroy {
     this.adService.getMyAds().subscribe(ads => {
       this.ads = ads;
       this.isLoading = false;
-      console.log(this.ads)
     });
   }
 
