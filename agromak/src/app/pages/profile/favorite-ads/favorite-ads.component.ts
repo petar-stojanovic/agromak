@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -11,11 +11,10 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
-import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
-import {delay, Subscription, tap, timer} from "rxjs";
+import {tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
@@ -37,7 +36,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
   ],
   standalone: true
 })
-export class FavoriteAdsComponent implements OnInit, OnDestroy {
+export class FavoriteAdsComponent implements OnInit {
 
   isLoading = true;
   ads$ = this.adService.favoriteAds$.pipe(
@@ -45,8 +44,6 @@ export class FavoriteAdsComponent implements OnInit, OnDestroy {
       this.isLoading = false;
     })
   );
-
-  private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
@@ -65,7 +62,4 @@ export class FavoriteAdsComponent implements OnInit, OnDestroy {
     return this.modalCtrl.dismiss();
   }
 
-  ngOnDestroy(): void {
-    this.adsSubscription?.unsubscribe();
-  }
 }
