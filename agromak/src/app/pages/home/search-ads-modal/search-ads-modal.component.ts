@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Ad} from "../../shared/models/ad";
+import {Ad} from "../../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {
   IonAvatar,
@@ -18,8 +18,8 @@ import {
   IonToolbar,
   ModalController
 } from "@ionic/angular/standalone";
-import {AdService} from "../../services/ad.service";
-import {AdListComponent} from "../ad-list/ad-list.component";
+import {AdService} from "../../../services/ad.service";
+import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Subscription, switchMap, timer} from "rxjs";
 import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline} from "ionicons/icons";

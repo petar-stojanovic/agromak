@@ -14,7 +14,7 @@ import {
   IonToolbar,
   ModalController
 } from '@ionic/angular/standalone';
-import {AddProductModalComponent} from "../../components/add-product-modal/add-product-modal.component";
+import {AddProductModalComponent} from "./add-product-modal/add-product-modal.component";
 import {AdService} from "../../services/ad.service";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
@@ -22,9 +22,9 @@ import {RefresherCustomEvent} from "@ionic/angular";
 import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
-import {DynamicFormModalComponent} from "../../components/dynamic-form-modal/dynamic-form-modal.component";
+import {DynamicFormModalComponent} from "./dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
-import {SearchAdsModalComponent} from "../../components/search-ads-modal/search-ads-modal.component";
+import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
 
 @Component({
   selector: 'app-home',

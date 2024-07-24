@@ -16,12 +16,12 @@ import {
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {JsonFormData} from "../../shared/models/json-form-data";
+import {JsonFormData} from "../../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
 import {addIcons} from "ionicons";
 import {alertCircleOutline} from "ionicons/icons";
-import {AdService} from "../../services/ad.service";
-import {CreateDynamicAd} from "../../shared/models/create-dynamic-ad-";
+import {AdService} from "../../../services/ad.service";
+import {CreateDynamicAd} from "../../../shared/models/create-dynamic-ad-";
 
 @Component({
   selector: 'app-dynamic-form-modal',

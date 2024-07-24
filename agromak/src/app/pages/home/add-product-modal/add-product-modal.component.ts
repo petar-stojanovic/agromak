@@ -25,13 +25,13 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AdService} from "../../services/ad.service";
+import {AdService} from "../../../services/ad.service";
 import {NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
-import {ImageService} from "../../services/image.service";
+import {ImageService} from "../../../services/image.service";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
-import {CreateAd} from "../../shared/models/create-ad";
-import {OpenAiService} from "../../services/open-ai.service";
+import {CreateAd} from "../../../shared/models/create-ad";
+import {OpenAiService} from "../../../services/open-ai.service";
 import {addIcons} from "ionicons";
 import {sparklesOutline} from "ionicons/icons";
 

@@ -9,7 +9,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {JsonFormControls, JsonFormData} from "../../shared/models/json-form-data";
+import {JsonFormControls, JsonFormData} from "../../../shared/models/json-form-data";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
@@ -33,10 +33,10 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {InputErrorComponent} from "../input-error/input-error.component";
-import {CategoryService} from "../../services/category.service";
-import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
-import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
+import {InputErrorComponent} from "../../../components/input-error/input-error.component";
+import {CategoryService} from "../../../services/category.service";
+import {SelectCategoryModalComponent} from "../../../components/select-category-modal/select-category-modal.component";
+import {ErrorMessagePipe} from "../../../shared/pipes/error-message.pipe";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
 
 
