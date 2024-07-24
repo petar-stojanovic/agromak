@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -15,7 +15,8 @@ import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
-import {Subscription, switchMap, timer} from "rxjs";
+import {Subscription, tap} from "rxjs";
+import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-favorite-ads',
@@ -30,13 +31,15 @@ import {Subscription, switchMap, timer} from "rxjs";
     IonTitle,
     IonToolbar,
     IonIcon,
-    IonButton
+    IonButton,
+    AsyncPipe,
+    NgIf
   ],
   standalone: true
 })
 export class FavoriteAdsComponent implements OnInit, OnDestroy {
 
-  ads: Ad[] = [];
+  ads$ = this.adService.favoriteAds$;
   isLoading = true;
 
   private adsSubscription: Subscription | undefined;
@@ -51,11 +54,7 @@ export class FavoriteAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adService.getFavoriteAds().subscribe(ads => {
-      this.ads = ads;
-      this.isLoading = false;
-      console.log(this.ads)
-    });
+    this.adService.fetchFavoriteAds();
   }
 
   dismiss() {

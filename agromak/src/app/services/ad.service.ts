@@ -11,7 +11,7 @@ import {GalleryPhoto} from "@capacitor/camera";
 import {CreateAd} from "../shared/models/create-ad";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, Observable, of, take} from "rxjs";
+import {BehaviorSubject, map, Observable, of, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
@@ -24,7 +24,7 @@ export class AdService {
   private ads = new BehaviorSubject<Ad[]>([]);
   private searchedAds = new BehaviorSubject<Ad[]>([]);
   private myAds = new BehaviorSubject<Ad[]>([]);
-  private privateAds = new BehaviorSubject<Ad[]>([]);
+  private favoriteAds = new BehaviorSubject<Ad[]>([]);
 
   readonly NUM_OF_STARTING_ADS = 10;
   readonly NUM_OF_ADS_TO_LOAD = 5;
@@ -32,7 +32,7 @@ export class AdService {
   ads$: Observable<Ad[]>;
   searchedAds$: Observable<Ad[]>;
   myAds$: Observable<Ad[]>;
-  privateAds$: Observable<Ad[]>;
+  favoriteAds$: Observable<Ad[]>;
 
   user: User | null = null;
 
@@ -45,7 +45,7 @@ export class AdService {
     this.ads$ = this.ads.asObservable();
     this.searchedAds$ = this.searchedAds.asObservable();
     this.myAds$ = this.myAds.asObservable();
-    this.privateAds$ = this.privateAds.asObservable();
+    this.favoriteAds$ = this.favoriteAds.asObservable();
 
     this.authService.user$.subscribe(user => {
       this.user = user;
@@ -192,19 +192,22 @@ export class AdService {
     await userRef.set(data, {merge: true});
   }
 
-  getFavoriteAds() {
+  fetchFavoriteAds() {
     if (!this.user || this.user.favoriteAds.length === 0) {
-      return of([] as Ad[]);
+      return;
     }
 
-    return this.angularFirestore
+    this.angularFirestore
       .collection('ads', ref => ref.where(documentId(), 'in', this.user!.favoriteAds))
       .snapshotChanges()
       .pipe(
         map((query) => {
           return query.map(doc => this.mapQuery(doc))
+        }),
+        tap((ads) => {
+          this.favoriteAds.next(ads);
         })
-      )
+      ).subscribe()
   }
 
   getMyAds() {
@@ -227,5 +230,4 @@ export class AdService {
     const id = doc.payload.doc.id;
     return {id, ...data} as Ad;
   }
-
 }

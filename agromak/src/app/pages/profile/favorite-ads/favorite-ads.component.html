@@ -12,5 +12,10 @@
 </ion-header>
 
 <ion-content>
-  <app-ad-list [ads]="ads" [isLoading]="isLoading"></app-ad-list>
+  <ng-container *ngIf="ads$ | async as ads">
+    <app-ad-list [ads]="ads" [isLoading]="false"></app-ad-list>
+  </ng-container>
+<!--  <ng-template #loading>-->
+<!--    <app-ad-list [ads]="[]" [isLoading]="true"></app-ad-list>-->
+<!--  </ng-template>-->
 </ion-content>
