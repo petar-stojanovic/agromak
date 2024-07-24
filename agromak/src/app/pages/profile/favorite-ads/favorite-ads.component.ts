@@ -58,7 +58,7 @@ export class FavoriteAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adsSubscription = this.adService.fetchFavoriteAds().subscribe();
+    this.adService.updateFavoriteAds();
   }
 
   dismiss() {

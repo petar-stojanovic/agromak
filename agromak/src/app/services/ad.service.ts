@@ -184,24 +184,25 @@ export class AdService {
       favoriteAds: favoriteAds,
     }
     await userRef.set(data, {merge: true});
+
+    this.updateFavoriteAds();
   }
 
-  fetchFavoriteAds() {
+  updateFavoriteAds() {
     if (!this.user || this.user.favoriteAds.length === 0) {
-      return of([] as Ad[]);
+      return;
     }
 
-    return this.angularFirestore
+    this.angularFirestore
       .collection('ads', ref => ref.where(documentId(), 'in', this.user!.favoriteAds))
       .snapshotChanges()
       .pipe(
         map((query) => {
           return query.map(doc => this.mapQuery(doc))
-        }),
-        tap((ads) => {
-          this.favoriteAds.next(ads);
         })
-      );
+      ).subscribe(ads => {
+      this.favoriteAds.next(ads);
+    });
   }
 
   fetchMyAds() {
