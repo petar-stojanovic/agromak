@@ -63,17 +63,4 @@ export class FavoriteAdsComponent implements OnInit {
   dismiss() {
     return this.modalCtrl.dismiss();
   }
-
-  editAd(ad: Ad, $event: MouseEvent) {
-    console.log('Edit Ad:', ad);
-    console.log('Event:', $event);
-  }
-
-  promoteAd(ad: Ad, $event: MouseEvent) {
-    console.log('Promote Ad:', ad);
-  }
-
-  deleteAd(ad: Ad, $event: MouseEvent) {
-    console.log('Delete Ad:', ad);
-  }
 }

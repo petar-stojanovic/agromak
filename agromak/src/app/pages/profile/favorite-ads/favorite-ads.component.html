@@ -13,14 +13,7 @@
 
 <ion-content>
   <ng-container *ngIf="ads$ | async as ads">
-    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adContent]="adContent">
-      <ng-template #adContent let-ad>
-        <div class="ion-padding ad-buttons">
-          <ion-button (click)="editAd(ad, $event)">Edit</ion-button>
-          <ion-button (click)="promoteAd(ad, $event)">Promote</ion-button>
-          <ion-button (click)="deleteAd(ad, $event)">Delete</ion-button>
-        </div>
-      </ng-template>
+    <app-ad-list [ads]="ads" [isLoading]="isLoading">
     </app-ad-list>
   </ng-container>
 </ion-content>

@@ -5,7 +5,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
+  IonIcon, IonItemDivider,
   IonTitle,
   IonToolbar,
   ModalController
@@ -33,7 +33,8 @@ import {AsyncPipe, NgIf} from "@angular/common";
     IonIcon,
     IonButton,
     AsyncPipe,
-    NgIf
+    NgIf,
+    IonItemDivider
   ],
   standalone: true
 })
@@ -67,5 +68,18 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.adsSubscription?.unsubscribe();
+  }
+
+  editAd(ad: Ad, $event: MouseEvent) {
+    console.log('Edit Ad:', ad);
+    console.log('Event:', $event);
+  }
+
+  promoteAd(ad: Ad, $event: MouseEvent) {
+    console.log('Promote Ad:', ad);
+  }
+
+  deleteAd(ad: Ad, $event: MouseEvent) {
+    console.log('Delete Ad:', ad);
   }
 }
