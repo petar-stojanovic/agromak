@@ -22,8 +22,7 @@
   } @else if (ads.length > 0) {
 
     @for (ad of ads; track $index) {
-
-      <ion-item class="ad ion-margin-vertical" (click)="openAdDetailsModal(ad)" lines="none">
+      <ion-item class="ad ion-no-padding" (click)="openAdDetailsModal(ad)" lines="none">
         <ion-thumbnail slot="start">
           @if (ad.images && ad.images.length > 0) {
             <img [src]="ad.images[0]" alt="image"/>

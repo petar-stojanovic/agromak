@@ -1,10 +1,14 @@
 .ad {
-  //display: flex;
-   box-shadow: 0 0 0 blue;
+  margin: 1rem 0.5rem;
+  --background: var(--ion-color-light);
+  border-radius: 10px;
+  border: 1px solid var(--ion-color-medium-tint);
+  box-shadow: 0 0 10px #afc3f378;
 
   & ion-thumbnail {
-    --size: 5rem;
-    //height: 100%;
+    --size: 7rem;
+    margin: 0 1rem 0 0;
+    --border-radius: 10px 0 0 10px;;
 
     & img {
       //object-fit: contain;
@@ -25,4 +29,22 @@
     padding: 0.75rem;
   }
 }
+
+.thumbnail {
+  --size: 7rem;
+}
+
+//.ad {
+//  &.vertical-style {
+//    --background: #fff8f8;
+//
+//    & ion-thumbnail {
+//      --size: 7.5rem;
+//
+//      & img {
+//        border: 1px solid var(--ion-color-medium-tint);
+//      }
+//    }
+//  }
+//}
 
