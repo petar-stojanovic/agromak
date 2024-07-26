@@ -41,7 +41,7 @@ export class AdListComponent {
   isLoading = true;
 
   @Input()
-  adContent?: TemplateRef<any> ;
+  adContent?: TemplateRef<any>;
 
   placeholderArray = new Array(10);
 
