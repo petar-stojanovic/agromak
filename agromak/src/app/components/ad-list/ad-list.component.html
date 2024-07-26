@@ -47,6 +47,13 @@
           </div>
         </ion-label>
       </ion-item>
+      <!-- Dynamic content -->
+      @if (adContent) {
+        <ng-container
+          [ngTemplateOutlet]="adContent"
+          [ngTemplateOutletContext]="{ $implicit: ad }"
+        ></ng-container>
+      }
     }
 
   } @else {

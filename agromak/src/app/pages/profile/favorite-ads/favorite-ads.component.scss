@@ -1,0 +1,7 @@
+.ad-buttons {
+  display: flex;
+
+  & > * {
+    flex: 1;
+  }
+}

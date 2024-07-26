@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -14,6 +14,7 @@ import {
 } from "@ionic/angular/standalone";
 import {AdDetailsModalComponent} from "../ad-details-modal/ad-details-modal.component";
 import {AdService} from "../../services/ad.service";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'app-ad-list',
@@ -27,8 +28,8 @@ import {AdService} from "../../services/ad.service";
     IonLabel,
     IonInfiniteScroll,
     IonInfiniteScrollContent,
-    IonText
-
+    IonText,
+    NgTemplateOutlet,
   ],
   standalone: true
 })
@@ -38,6 +39,9 @@ export class AdListComponent {
 
   @Input()
   isLoading = true;
+
+  @Input()
+  adContent?: TemplateRef<any> ;
 
   placeholderArray = new Array(10);
 

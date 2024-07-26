@@ -13,9 +13,10 @@ import {
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
-import {arrowBack} from "ionicons/icons";
+import {arrowBack, logoGoogle} from "ionicons/icons";
 import {tap} from "rxjs";
-import {AsyncPipe, NgIf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {Ad} from "../../../shared/models/ad";
 
 @Component({
   selector: 'app-favorite-ads',
@@ -32,7 +33,8 @@ import {AsyncPipe, NgIf} from "@angular/common";
     IonIcon,
     IonButton,
     AsyncPipe,
-    NgIf
+    NgIf,
+    NgForOf
   ],
   standalone: true
 })
@@ -62,4 +64,16 @@ export class FavoriteAdsComponent implements OnInit {
     return this.modalCtrl.dismiss();
   }
 
+  editAd(ad: Ad, $event: MouseEvent) {
+    console.log('Edit Ad:', ad);
+    console.log('Event:', $event);
+  }
+
+  promoteAd(ad: Ad, $event: MouseEvent) {
+    console.log('Promote Ad:', ad);
+  }
+
+  deleteAd(ad: Ad, $event: MouseEvent) {
+    console.log('Delete Ad:', ad);
+  }
 }
