@@ -1,4 +1,4 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, input, OnInit} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -19,9 +19,10 @@ import {HttpClient} from "@angular/common/http";
 import {JsonFormData} from "../../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
 import {addIcons} from "ionicons";
-import {alertCircleOutline} from "ionicons/icons";
+import {alertCircleOutline, arrowBack} from "ionicons/icons";
 import {AdService} from "../../../services/ad.service";
 import {CreateDynamicAd} from "../../../shared/models/create-dynamic-ad-";
+import {Ad} from "../../../shared/models/ad";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -51,12 +52,19 @@ export class DynamicFormModalComponent implements OnInit {
   formData!: JsonFormData;
   isLoading = true;
 
+  @Input()
+  ad: Ad | undefined;
+
+  get isEdit() {
+    return this.ad !== undefined;
+  }
+
   constructor(private http: HttpClient,
               private modalCtrl: ModalController,
               private loadingController: LoadingController,
               private adService: AdService,
               private toastController: ToastController) {
-    addIcons({alertCircleOutline})
+    addIcons({alertCircleOutline, arrowBack})
   }
 
   async ngOnInit() {
@@ -77,7 +85,7 @@ export class DynamicFormModalComponent implements OnInit {
       })
   }
 
-  async onFormSubmitted(formValues: CreateDynamicAd) {
+  async onSubmit(formValues: CreateDynamicAd) {
     const loading = await this.loadingController.create({
       message: 'Saving Ad, please wait...',
     });

@@ -38,6 +38,7 @@ import {CategoryService} from "../../../services/category.service";
 import {SelectCategoryModalComponent} from "../../../components/select-category-modal/select-category-modal.component";
 import {ErrorMessagePipe} from "../../../shared/pipes/error-message.pipe";
 import {Camera, GalleryPhoto} from "@capacitor/camera";
+import {Ad} from "../../../shared/models/ad";
 
 
 @Component({
@@ -78,6 +79,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input({required: true})
   jsonFormData!: JsonFormData;
 
+  @Input()
+  ad: Ad | undefined;
+
+  get isEdit(): boolean {
+    return this.ad !== undefined;
+  }
+
   @Output()
   formSubmitted = new EventEmitter<any>();
 
@@ -112,7 +120,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   createForm(controls: JsonFormControls[]) {
     for (const control of controls) {
-      console.log(control)
+      // console.log(control)
       const validatorsToAdd = [];
       for (const [key, value] of Object.entries(control.validators)) {
         switch (key) {
@@ -160,8 +168,11 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         control.name,
         this.fb.control(control.value, validatorsToAdd)
       );
-      this.form.updateValueAndValidity();
     }
+    if (this.isEdit) {
+      this.updateForm();
+    }
+    this.form.updateValueAndValidity();
   }
 
   onSubmit() {
@@ -230,5 +241,21 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     this.form.controls[controlName].setValue(formattedInput);
     this.form.updateValueAndValidity();
+  }
+
+
+  private updateForm() {
+    for (const control of this.jsonFormData.controls) {
+      console.log(control)
+      this.updateControlValue(control.name);
+    }
+  }
+
+  private updateControlValue(name: string) {
+    const obj = Object.getOwnPropertyDescriptor(this.ad, name);
+    if (!obj) {
+      return;
+    }
+    this.form.controls[name].setValue(obj.value);
   }
 }

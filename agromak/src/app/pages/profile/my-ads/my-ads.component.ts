@@ -6,19 +6,21 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon, IonItemDivider,
+  IonIcon,
+  IonItemDivider,
   IonTitle,
-  IonToolbar, LoadingController,
-  ModalController, ToastController
+  IonToolbar,
+  LoadingController,
+  ModalController,
+  ToastController
 } from "@ionic/angular/standalone";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
-import {Subscription, switchMap, tap, timer} from "rxjs";
+import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
-import {AddProductModalComponent} from "../../home/add-product-modal/add-product-modal.component";
 import {EditAdModalComponent} from "../../../components/edit-ad-modal/edit-ad-modal.component";
 
 @Component({
@@ -77,6 +79,19 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   async editAd(ad: Ad, $event: MouseEvent) {
+    // const modal = await this.modalCtrl.create({
+    //   component: DynamicFormModalComponent,
+    //   componentProps: {
+    //     ad: ad
+    //   }
+    // });
+    // await modal.present();
+    //
+    // const {data, role} = await modal.onWillDismiss();
+    //
+    // if (role === 'confirm') {
+    //   console.log('Data:', data);
+    // }
     const modal = await this.modalCtrl.create({
       component: EditAdModalComponent,
       componentProps: {
@@ -123,5 +138,12 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }]
     });
     await alert.present();
+
+    const toast = await this.toastController.create({
+      message: 'Ad deleted successfully',
+      duration: 2000,
+    });
+    await toast.present();
+
   }
 }

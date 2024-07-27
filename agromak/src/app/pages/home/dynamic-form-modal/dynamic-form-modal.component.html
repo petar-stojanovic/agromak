@@ -5,7 +5,11 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="text-center">Create</ion-title>
+    @if (isEdit) {
+      <ion-title class="text-center">Edit Ad</ion-title>
+    } @else {
+      <ion-title class="text-center">Create Ad</ion-title>
+    }
 
     <ion-buttons slot="end">
       <ion-button id="open-popover" expand="block">
@@ -25,8 +29,12 @@
 </ion-header>
 
 <ion-content>
-  @if (!isLoading && formData) {
-    <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onFormSubmitted($event)"></app-dynamic-form>
+  @if (!isLoading) {
+    @if (isEdit) {
+      <app-dynamic-form [jsonFormData]="formData" [ad]="ad" (formSubmitted)="onSubmit($event)"></app-dynamic-form>
+    } @else {
+      <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onSubmit($event)"></app-dynamic-form>
+    }
   }
 
 </ion-content>
