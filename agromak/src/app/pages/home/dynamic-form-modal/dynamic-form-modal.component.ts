@@ -96,7 +96,7 @@ export class DynamicFormModalComponent implements OnInit {
     await toast.present();
   };
 
-  cancel() {
+  dismiss() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 }
