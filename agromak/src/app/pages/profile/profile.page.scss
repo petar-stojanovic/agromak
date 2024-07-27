@@ -37,6 +37,7 @@
 
 .background-white {
   --ion-background-color: white;
+  border: 1px solid var(--ion-color-medium-tint);
   border-radius: 1rem;
   box-shadow: 0 0 15px #80aefb5e;
 }

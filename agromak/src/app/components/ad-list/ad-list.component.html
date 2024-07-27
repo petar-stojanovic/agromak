@@ -32,11 +32,13 @@
             <img src="assets/images/no-image.png" alt="placeholder"/>
           }
         </ion-thumbnail>
-        <ion-label class="ion-padding-vertical">
+        <ion-label class="ad-label">
           <ion-text>
             <h2 class="ad-title">{{ ad.title }}</h2>
           </ion-text>
-          <ion-badge>{{ ad.category }}</ion-badge>
+          <div>
+            <ion-badge>{{ ad.category }}</ion-badge>
+          </div>
           <div class="flex justify-space-between">
             <ion-text color="medium">
               <p class="font-size-12">{{ ad.location }}</p>

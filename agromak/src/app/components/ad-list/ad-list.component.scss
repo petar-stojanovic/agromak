@@ -57,3 +57,11 @@
   color: var(--ion-color-primary-tint);
   font-size: 1.1rem;
 }
+
+ion-badge {
+  --background: transparent;
+  color: black;
+  border: 1px solid black;
+  font-weight: 400;
+  font-size: 8px;
+}
