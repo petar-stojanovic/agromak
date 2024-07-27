@@ -16,6 +16,7 @@ import {User} from "../shared/models/user";
 import {deleteDoc, deleteField, doc, documentId, Firestore, updateDoc} from "@angular/fire/firestore";
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
 import {ImageService} from "./image.service";
+import {UpdateDynamicAd} from "../shared/models/update-dynamic-ad-";
 
 @Injectable({
   providedIn: 'root'
@@ -96,13 +97,17 @@ export class AdService {
     return;
   }
 
-  async updateAd(ad: any) {
+  async updateAd(ad: UpdateDynamicAd) {
     if (!this.user) {
       return;
     }
 
-    const imagesToDelete: string[] = ad.oldImages.filter((oldImage: string) => !ad.images.includes(oldImage));
+    const imagesToDelete: string[] = !ad.oldImages ?
+      [] :
+      ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage));
 
+
+    console.log(imagesToDelete);
     if (imagesToDelete.length > 0) {
       await this.imageService.deleteImages(ad, imagesToDelete);
     }
@@ -110,17 +115,13 @@ export class AdService {
     const adDocRef = doc(this.firestore, `ads/${ad.id}`)
 
     const updatedAdData = {
-      category: ad.category,
-      title: ad.title,
-      description: ad.description,
-      price: ad.price,
-      phone: ad.phone,
+      ...ad,
       images: deleteField()
     }
 
     await updateDoc(adDocRef, updatedAdData)
 
-    if (ad.images.length > 0) {
+    if (ad.images && ad.images.length > 0) {
       return await this.imageService.uploadAdImages(ad.id, ad.images);
     }
     return;

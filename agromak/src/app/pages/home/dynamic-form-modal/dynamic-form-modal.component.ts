@@ -23,6 +23,7 @@ import {alertCircleOutline, arrowBack} from "ionicons/icons";
 import {AdService} from "../../../services/ad.service";
 import {CreateDynamicAd} from "../../../shared/models/create-dynamic-ad-";
 import {Ad} from "../../../shared/models/ad";
+import {UpdateDynamicAd} from "../../../shared/models/update-dynamic-ad-";
 
 @Component({
   selector: 'app-dynamic-form-modal',
@@ -85,7 +86,7 @@ export class DynamicFormModalComponent implements OnInit {
       })
   }
 
-  async onSubmit(formValues: CreateDynamicAd) {
+  async onCreate(formValues: CreateDynamicAd) {
     const loading = await this.loadingController.create({
       message: 'Saving Ad, please wait...',
     });
@@ -103,6 +104,23 @@ export class DynamicFormModalComponent implements OnInit {
 
     await toast.present();
   };
+
+  async onUpdate(formValues: UpdateDynamicAd) {
+    console.log(formValues);
+
+    const loading = await this.loadingController.create({
+      message: 'Saving Ad, please wait...',
+    });
+    await loading.present();
+    await this.adService.updateAd(formValues);
+    await loading.dismiss();
+
+    const toast = await this.toastController.create({
+      message: 'Ad edited successfully',
+      duration: 2000,
+    });
+    await toast.present();
+  }
 
   dismiss() {
     return this.modalCtrl.dismiss(null, 'cancel');

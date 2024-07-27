@@ -128,7 +128,7 @@
             <ion-row>
               @for (img of images; track $index) {
                 <ion-col size="4">
-                  <img [src]="img.webPath" alt="image" class="img-fluid">
+                  <img [src]="getImageSource(img)" alt="image" class="img-fluid">
                   <ion-icon class="delete-image-icon" name="close-outline" (click)="images.splice($index,1)"></ion-icon>
                 </ion-col>
               }
@@ -143,7 +143,11 @@
     }
     <ion-button [disabled]="!form.valid" expand="full" type="submit"
                 class="ion-margin-top">
-      Submit
+      @if (isEdit) {
+        Update
+      } @else {
+        Create
+      }
     </ion-button>
   </form>
 </div>

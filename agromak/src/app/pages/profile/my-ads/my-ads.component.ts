@@ -22,6 +22,7 @@ import {arrowBack} from "ionicons/icons";
 import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {EditAdModalComponent} from "../../../components/edit-ad-modal/edit-ad-modal.component";
+import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-form-modal.component";
 
 @Component({
   selector: 'app-my-ads',
@@ -79,21 +80,8 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   async editAd(ad: Ad, $event: MouseEvent) {
-    // const modal = await this.modalCtrl.create({
-    //   component: DynamicFormModalComponent,
-    //   componentProps: {
-    //     ad: ad
-    //   }
-    // });
-    // await modal.present();
-    //
-    // const {data, role} = await modal.onWillDismiss();
-    //
-    // if (role === 'confirm') {
-    //   console.log('Data:', data);
-    // }
     const modal = await this.modalCtrl.create({
-      component: EditAdModalComponent,
+      component: DynamicFormModalComponent,
       componentProps: {
         ad: ad
       }
@@ -102,21 +90,27 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
     const {data, role} = await modal.onWillDismiss();
 
-    if (role === 'submit') {
-
-      const loading = await this.loadingController.create({
-        message: 'Saving Ad, please wait...',
-      });
-      await loading.present();
-      await this.adService.updateAd(data);
-      await loading.dismiss();
-
-      const toast = await this.toastController.create({
-        message: 'Ad edited successfully',
-        duration: 2000,
-      });
-      await toast.present();
+    if (role === 'confirm') {
+      console.log('Data:', data);
     }
+    //
+    // const {data, role} = await modal.onWillDismiss();
+    //
+    // if (role === 'submit') {
+    //
+    //   const loading = await this.loadingController.create({
+    //     message: 'Saving Ad, please wait...',
+    //   });
+    //   await loading.present();
+    //   await this.adService.updateAd(data);
+    //   await loading.dismiss();
+    //
+    //   const toast = await this.toastController.create({
+    //     message: 'Ad edited successfully',
+    //     duration: 2000,
+    //   });
+    //   await toast.present();
+    // }
 
   }
 

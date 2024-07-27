@@ -92,7 +92,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   chosenCategory = 'Choose Category';
   form: FormGroup;
 
-  images: GalleryPhoto[] = [];
+  images: Array<string | GalleryPhoto> = [];
+  oldImages: string[] = [];
 
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
@@ -171,12 +172,18 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     }
     if (this.isEdit) {
       this.updateForm();
+      this.images = this.ad!.images ? this.ad!.images : [];
+      this.oldImages = this.ad!.images ? [...this.ad!.images] : [];
     }
     this.form.updateValueAndValidity();
   }
 
   onSubmit() {
     const formData = {category: this.chosenCategory, ...this.form.value}
+    if (this.isEdit) {
+      formData['id'] = this.ad!.id;
+      formData['oldImages'] = this.oldImages;
+    }
 
     if (this.form.valid) {
       this.formSubmitted.emit(formData);
@@ -243,10 +250,15 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.form.updateValueAndValidity();
   }
 
+  getImageSource(img: string | GalleryPhoto) {
+    if (typeof img === 'string') {
+      return img;
+    }
+    return img.webPath;
+  }
 
   private updateForm() {
     for (const control of this.jsonFormData.controls) {
-      console.log(control)
       this.updateControlValue(control.name);
     }
   }

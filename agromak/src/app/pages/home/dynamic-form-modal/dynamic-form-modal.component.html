@@ -31,9 +31,9 @@
 <ion-content>
   @if (!isLoading) {
     @if (isEdit) {
-      <app-dynamic-form [jsonFormData]="formData" [ad]="ad" (formSubmitted)="onSubmit($event)"></app-dynamic-form>
+      <app-dynamic-form [jsonFormData]="formData" [ad]="ad" (formSubmitted)="onUpdate($event)"></app-dynamic-form>
     } @else {
-      <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onSubmit($event)"></app-dynamic-form>
+      <app-dynamic-form [jsonFormData]="formData" (formSubmitted)="onCreate($event)"></app-dynamic-form>
     }
   }
 
