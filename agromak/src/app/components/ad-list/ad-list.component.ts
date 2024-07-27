@@ -2,6 +2,7 @@ import {Component, Input, TemplateRef} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
+  IonBadge,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonItem,
@@ -30,6 +31,7 @@ import {NgTemplateOutlet} from "@angular/common";
     IonInfiniteScrollContent,
     IonText,
     NgTemplateOutlet,
+    IonBadge,
   ],
   standalone: true
 })
