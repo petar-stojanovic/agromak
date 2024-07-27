@@ -101,18 +101,17 @@ export class MyAdsComponent implements OnInit, OnDestroy {
         role: 'cancel'
       }, {
         text: 'Delete',
-        handler: () => {
-          this.adService.deleteAd(ad);
+        handler: async () => {
+          await this.adService.deleteAd(ad);
+          const toast = await this.toastController.create({
+            message: 'Ad deleted successfully',
+            duration: 2000,
+          });
+          await toast.present();
         }
       }]
     });
     await alert.present();
-
-    const toast = await this.toastController.create({
-      message: 'Ad deleted successfully',
-      duration: 2000,
-    });
-    await toast.present();
 
   }
 }
