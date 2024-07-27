@@ -9,5 +9,68 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <ion-note>
+        <small>Please choose a category</small>
+      </ion-note>
+      <ion-item [button]="true" (click)="openCategoriesModal()" lines="none" fill="outline">
+        <ion-label>{{ form.get('category')?.value }}</ion-label>
+        <ion-icon name="caret-down-outline"></ion-icon>
+      </ion-item>
+      @if (form.controls['category'].errors) {
+        <app-input-error [errors]="form.controls['category'].errors"></app-input-error>
+      }
+    </div>
+    <div>
+      <ion-input formControlName="title" label="Title" labelPlacement="floating" fill="outline"></ion-input>
+      @if (form.controls['title'].errors) {
+        <app-input-error [errors]="form.controls['title'].errors"></app-input-error>
+      }
+    </div>
+    <div>
+      <ion-textarea
+        formControlName="description"
+        label="Description"
+        rows="5"
+        fill="outline"
+        labelPlacement="floating"></ion-textarea>
+      @if (form.controls['description'].errors) {
+        <app-input-error [errors]="form.controls['description'].errors"></app-input-error>
+      }
+    </div>
+    <div>
+      <ion-input type="number" formControlName="price" label="Price" labelPlacement="floating"
+                 fill="outline"></ion-input>
+      @if (form.controls['price'].errors) {
+        <app-input-error [errors]="form.controls['price'].errors"></app-input-error>
+      }
+    </div>
+    <div>
+      <ion-input formControlName="phone" label="Phone" labelPlacement="floating" fill="outline"></ion-input>
+      @if (form.controls['phone'].errors) {
+        <app-input-error [errors]="form.controls['phone'].errors"></app-input-error>
+      }
+    </div>
+    <div>
+      <ion-note>
+        <small>Please upload images</small>
+      </ion-note>
+      <ion-item [button]="true" (click)="uploadImages()" lines="none" class="open-images">
+        <ion-label>Upload Images</ion-label>
+        <ion-icon name="caret-down-outline"></ion-icon>
+      </ion-item>
+      <ion-grid *ngIf="images">
+        <ion-row>
+          <ion-col size="4" *ngFor="let img of images">
+            <img [src]="img" alt="image" class="img-fluid">
+            <ion-icon class="delete-image-icon" name="close-outline" (click)="deleteImage(img)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-button [disabled]="!form.valid" expand="full" type="submit">Save</ion-button>
+
+  </form>
 </ion-content>

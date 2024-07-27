@@ -1,0 +1,36 @@
+form > *:not(app-input-error):not(ion-note) {
+  margin: 2.25rem 0 0.25rem 0;
+  display: block;
+}
+
+ion-input.md,
+ion-select.md {
+  height: 4rem !important;
+}
+
+ion-textarea.md {
+  height: 8rem !important;
+}
+
+.open-categories-modal, .open-images {
+  border: 1px solid #bcc5d4;
+  border-radius: 4px;
+
+  & ion-icon {
+    font-size: 1rem;
+  }
+}
+
+ion-note {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.delete-image-icon {
+  position: absolute;
+  right: 0;
+  border-radius: 10rem;
+  font-size: 1rem !important;
+  background: var(--ion-color-danger);
+  color: var(--ion-color-light);
+}

@@ -3,16 +3,31 @@ import {Ad} from "../../shared/models/ad";
 import {
   IonButton,
   IonButtons,
+  IonCol,
   IonContent,
-  IonHeader, IonIcon, IonPopover, IonTitle, IonToolbar,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonNote,
+  IonPopover,
+  IonRow,
+  IonTextarea,
+  IonTitle,
+  IonToolbar,
   ModalController,
   ToastController
 } from "@ionic/angular/standalone";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {addIcons} from "ionicons";
-import {arrowBack} from "ionicons/icons";
+import {arrowBack, caretDownOutline, closeOutline} from "ionicons/icons";
+import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
+import {InputErrorComponent} from "../input-error/input-error.component";
 
 @Component({
   selector: 'app-edit-ad-modal',
@@ -25,7 +40,21 @@ import {arrowBack} from "ionicons/icons";
     IonHeader,
     IonIcon,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    ReactiveFormsModule,
+    NgForOf,
+    InputErrorComponent,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonTextarea,
+    IonGrid,
+    IonRow,
+    IonCol,
+    KeyValuePipe,
+    NgIf,
+    IonList,
+    IonNote
   ],
   standalone: true
 })
@@ -39,7 +68,7 @@ export class EditAdModalComponent implements OnInit {
               private adService: AdService,
               private toastController: ToastController,
               private authService: AuthService) {
-    addIcons({arrowBack})
+    addIcons({arrowBack, caretDownOutline, closeOutline})
   }
 
   ngOnInit() {
@@ -56,6 +85,7 @@ export class EditAdModalComponent implements OnInit {
       images: [this.ad.images]
     });
 
+    console.log(this.form);
     this.images = this.ad.images;
   }
 
@@ -64,4 +94,19 @@ export class EditAdModalComponent implements OnInit {
   }
 
 
+  onSubmit() {
+
+  }
+
+  uploadImages() {
+
+  }
+
+  deleteImage(img: any) {
+
+  }
+
+  openCategoriesModal() {
+
+  }
 }
