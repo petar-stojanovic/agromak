@@ -116,6 +116,9 @@ export class AdService {
 
     const updatedAdData = {
       ...ad,
+      title_lowercase: ad.title.toLowerCase(),
+      ownerId: this.user!.uid,
+      ownerName: this.user!.displayName,
       images: deleteField()
     }
 

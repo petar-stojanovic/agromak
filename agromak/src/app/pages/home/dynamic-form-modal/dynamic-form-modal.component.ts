@@ -120,6 +120,8 @@ export class DynamicFormModalComponent implements OnInit {
       duration: 2000,
     });
     await toast.present();
+    await this.modalCtrl.dismiss();
+
   }
 
   dismiss() {

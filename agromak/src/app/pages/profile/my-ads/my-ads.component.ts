@@ -87,31 +87,6 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }
     });
     await modal.present();
-
-    const {data, role} = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log('Data:', data);
-    }
-    //
-    // const {data, role} = await modal.onWillDismiss();
-    //
-    // if (role === 'submit') {
-    //
-    //   const loading = await this.loadingController.create({
-    //     message: 'Saving Ad, please wait...',
-    //   });
-    //   await loading.present();
-    //   await this.adService.updateAd(data);
-    //   await loading.dismiss();
-    //
-    //   const toast = await this.toastController.create({
-    //     message: 'Ad edited successfully',
-    //     duration: 2000,
-    //   });
-    //   await toast.present();
-    // }
-
   }
 
   promoteAd(ad: Ad, $event: MouseEvent) {
