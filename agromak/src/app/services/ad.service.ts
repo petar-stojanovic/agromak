@@ -13,7 +13,7 @@ import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, Observable, of, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
-import {documentId} from "@angular/fire/firestore";
+import {doc, documentId, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
 import {ImageService} from "./image.service";
 
@@ -38,6 +38,7 @@ export class AdService {
 
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
+              private firestore: Firestore,
               private authService: AuthService,
               private imageService: ImageService,
               private router: Router) {
@@ -230,4 +231,20 @@ export class AdService {
     return {id, ...data} as Ad;
   }
 
+  updateAd(ad: any) {
+    if (!this.user) {
+      return;
+    }
+
+    const adDocRef = doc(this.firestore, `ads/${ad.id}`)
+    return setDoc(adDocRef, {
+        category: ad.category,
+        title: ad.title,
+        description: ad.description,
+        price: ad.price,
+        phone: ad.phone,
+        ownerId: this.user!.uid,
+      },{merge: true}
+    );
+  }
 }

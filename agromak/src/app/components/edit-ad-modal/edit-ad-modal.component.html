@@ -48,7 +48,12 @@
       }
     </div>
     <div>
-      <ion-input formControlName="phone" label="Phone" labelPlacement="floating" fill="outline"></ion-input>
+      <ion-input
+        (ionInput)="formatPhoneNumber($event)"
+        formControlName="phone"
+        label="Phone"
+        labelPlacement="floating"
+        fill="outline"></ion-input>
       @if (form.controls['phone'].errors) {
         <app-input-error [errors]="form.controls['phone'].errors"></app-input-error>
       }

@@ -7,8 +7,8 @@ import {
   IonHeader,
   IonIcon, IonItemDivider,
   IonTitle,
-  IonToolbar,
-  ModalController
+  IonToolbar, LoadingController,
+  ModalController, ToastController
 } from "@ionic/angular/standalone";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Ad} from "../../../shared/models/ad";
@@ -52,6 +52,8 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
+              private loadingController: LoadingController,
+              private toastController: ToastController,
               private adService: AdService) {
     addIcons({arrowBack})
   }
@@ -80,6 +82,27 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }
     });
     await modal.present();
+
+    const {data, role} = await modal.onWillDismiss();
+
+    if (role === 'submit') {
+
+      const loading = await this.loadingController.create({
+        message: 'Saving Ad, please wait...',
+      });
+      await loading.present();
+      await this.adService.updateAd(data);
+      await loading.dismiss();
+
+      // await this.modalCtrl.dismiss(null, 'success');
+
+      const toast = await this.toastController.create({
+        message: 'Ad edited successfully',
+        duration: 2000,
+      });
+      await toast.present();
+    }
+
   }
 
   promoteAd(ad: Ad, $event: MouseEvent) {

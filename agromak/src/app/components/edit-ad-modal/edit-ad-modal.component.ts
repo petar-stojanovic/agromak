@@ -84,7 +84,6 @@ export class EditAdModalComponent implements OnInit {
       images: [this.ad.images]
     });
 
-    console.log(this.form);
     this.images = this.ad.images;
   }
 
@@ -92,9 +91,8 @@ export class EditAdModalComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-
   onSubmit() {
-    console.log(this.form.value);
+    return this.modalCtrl.dismiss({id: this.ad.id, ...this.form.value}, 'submit');
   }
 
   async uploadImages() {
@@ -113,7 +111,6 @@ export class EditAdModalComponent implements OnInit {
           console.log(image, this.images)
         });
         this.form.get('images')!.setValue(this.images);
-        // this.ref.markForCheck();
       } else {
         console.log('No images selected')
       }
@@ -134,7 +131,6 @@ export class EditAdModalComponent implements OnInit {
     if (data !== undefined) {
       this.form.get('category')!.setValue(data);
     }
-    // this.ref.markForCheck();
   }
 
   getImageSource(img: string | GalleryPhoto) {
@@ -142,5 +138,20 @@ export class EditAdModalComponent implements OnInit {
       return img;
     }
     return img.webPath;
+  }
+
+  formatPhoneNumber(event: any) {
+    const input = event.target.value;
+    let formattedInput = input.replace(/\D/g, '');
+
+    if (formattedInput.length >= 3) {
+      formattedInput = formattedInput.slice(0, 3) + '/' + formattedInput.slice(3);
+    }
+    if (formattedInput.length >= 7) {
+      formattedInput = formattedInput.slice(0, 7) + '-' + formattedInput.slice(7, 10);
+    }
+
+    this.form.controls['phone'].setValue(formattedInput);
+    this.form.updateValueAndValidity();
   }
 }
