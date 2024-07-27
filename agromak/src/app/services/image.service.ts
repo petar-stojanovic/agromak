@@ -55,8 +55,8 @@ export class ImageService {
     }
   }
 
-  async uploadAdImages(documentId: string, galleryPhotos: GalleryPhoto[] | string[]) {
-    const basePath = `ads/${documentId}/`;
+  async uploadAdImages(adId: string, galleryPhotos: GalleryPhoto[] | string[]) {
+    const basePath = `ads/${adId}/`;
     const userDocRef = doc(this.firestore, basePath);
 
     try {
@@ -76,11 +76,9 @@ export class ImageService {
           const imageUrl = await getDownloadURL(storageReference);
           imagesToUpload.push(imageUrl);
         }
-
       }
 
       await setDoc(userDocRef, {images: imagesToUpload}, {merge: true});
-      console.log(imagesToUpload)
 
       return imagesToUpload;
     } catch (e) {
@@ -90,9 +88,6 @@ export class ImageService {
   }
 
   async deleteImages(ad: any, imagesToDelete: string[]) {
-    const basePath = `ads/${ad.id}/`;
-    const adDocRef = doc(this.firestore, basePath);
-    const imagesToUpload = ad.images.filter((image: string) => !imagesToDelete.includes(image));
     for (const imageUrl of imagesToDelete) {
       try {
         const storageRef = ref(this.storage, imageUrl);
@@ -101,7 +96,6 @@ export class ImageService {
         console.error("Failed to delete image:", error);
       }
     }
-    await setDoc(adDocRef, {images: imagesToUpload}, {merge: true});
   }
 
   private getImageName(fullPath: string) {

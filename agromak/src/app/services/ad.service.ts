@@ -13,7 +13,7 @@ import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, Observable, of, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
-import {doc, documentId, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
+import {deleteDoc, deleteField, doc, documentId, Firestore, updateDoc} from "@angular/fire/firestore";
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
 import {ImageService} from "./image.service";
 
@@ -94,6 +94,42 @@ export class AdService {
     }
 
     return;
+  }
+
+  async updateAd(ad: any) {
+    if (!this.user) {
+      return;
+    }
+
+    const imagesToDelete: string[] = ad.oldImages.filter((oldImage: string) => !ad.images.includes(oldImage));
+
+    if (imagesToDelete.length > 0) {
+      await this.imageService.deleteImages(ad, imagesToDelete);
+    }
+
+    const adDocRef = doc(this.firestore, `ads/${ad.id}`)
+
+    const updatedAdData = {
+      category: ad.category,
+      title: ad.title,
+      description: ad.description,
+      price: ad.price,
+      phone: ad.phone,
+      images: deleteField()
+    }
+
+    await updateDoc(adDocRef, updatedAdData)
+
+    if (ad.images.length > 0) {
+      return await this.imageService.uploadAdImages(ad.id, ad.images);
+    }
+    return;
+  }
+
+  async deleteAd(ad: Ad) {
+    const adDocRef = doc(this.firestore, `ads/${ad.id}`);
+    await this.imageService.deleteImages(ad, ad.images);
+    return await deleteDoc(adDocRef);
   }
 
 
@@ -231,32 +267,4 @@ export class AdService {
     return {id, ...data} as Ad;
   }
 
-  async updateAd(ad: any) {
-    if (!this.user) {
-      return;
-    }
-    console.log(ad)
-
-    const imagesToDelete: string[] = ad.oldImages.filter((oldImage: string) => !ad.images.includes(oldImage));
-    console.log(imagesToDelete);
-
-    if (imagesToDelete.length > 0) {
-      await this.imageService.deleteImages(ad, imagesToDelete);
-    }
-
-    const adDocRef = doc(this.firestore, `ads/${ad.id}`)
-
-    const updatedAdData = {
-      category: ad.category,
-      title: ad.title,
-      description: ad.description,
-      price: ad.price,
-      phone: ad.phone,
-      ownerId: this.user!.uid,
-    }
-
-    await setDoc(adDocRef, updatedAdData, {merge: true})
-
-    return;
-  }
 }

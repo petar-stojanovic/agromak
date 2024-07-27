@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
+  AlertController,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -54,6 +55,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   constructor(private modalCtrl: ModalController,
               private loadingController: LoadingController,
               private toastController: ToastController,
+              private alertController: AlertController,
               private adService: AdService) {
     addIcons({arrowBack})
   }
@@ -107,7 +109,19 @@ export class MyAdsComponent implements OnInit, OnDestroy {
     console.log('Promote Ad:', ad);
   }
 
-  deleteAd(ad: Ad, $event: MouseEvent) {
-    console.log('Delete Ad:', ad);
+  async deleteAd(ad: Ad, $event: MouseEvent) {
+    const alert = await this.alertController.create({
+      header: 'Are you sure you want to delete this Ad?',
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'Delete',
+        handler: () => {
+          this.adService.deleteAd(ad);
+        }
+      }]
+    });
+    await alert.present();
   }
 }

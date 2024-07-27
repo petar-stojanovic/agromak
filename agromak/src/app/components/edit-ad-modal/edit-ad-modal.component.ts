@@ -85,8 +85,8 @@ export class EditAdModalComponent implements OnInit {
       images: [this.ad.images]
     });
 
-    this.oldImages = [...this.ad.images];
-    this.allImages = this.ad.images;
+    this.oldImages = this.ad.images ? [...this.ad.images] : [];
+    this.allImages = this.ad.images ? this.ad.images : [];
   }
 
   onSubmit() {
