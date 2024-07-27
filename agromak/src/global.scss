@@ -106,3 +106,12 @@ h2 {
 .gap-1 {
   gap: 1rem;
 }
+
+.delete-image-icon {
+  position: absolute;
+  right: 0;
+  border-radius: 10rem;
+  font-size: 1rem !important;
+  background: var(--ion-color-danger);
+  color: var(--ion-color-light);
+}
