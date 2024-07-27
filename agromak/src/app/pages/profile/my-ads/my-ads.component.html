@@ -16,7 +16,7 @@
     <app-ad-list [ads]="ads" [isLoading]="isLoading" [adContent]="adContent"></app-ad-list>
     <ng-template #adContent let-ad>
       <ion-item-divider>
-        <div class="ion-padding-horizontal ad-buttons">
+        <div class="ion-padding-horizontal ad-buttons w-100">
           <ion-button (click)="editAd(ad, $event)" size="small" fill="outline" shape="round">Edit</ion-button>
           <ion-button (click)="promoteAd(ad, $event)" size="small" fill="outline" shape="round">Promote</ion-button>
           <ion-button (click)="deleteAd(ad, $event)" size="small" fill="outline" shape="round">Delete</ion-button>

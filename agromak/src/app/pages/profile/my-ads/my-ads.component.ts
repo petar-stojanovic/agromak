@@ -17,6 +17,8 @@ import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
 import {Subscription, switchMap, tap, timer} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
+import {AddProductModalComponent} from "../../home/add-product-modal/add-product-modal.component";
+import {EditAdModalComponent} from "../../../components/edit-ad-modal/edit-ad-modal.component";
 
 @Component({
   selector: 'app-my-ads',
@@ -70,9 +72,14 @@ export class MyAdsComponent implements OnInit, OnDestroy {
     this.adsSubscription?.unsubscribe();
   }
 
-  editAd(ad: Ad, $event: MouseEvent) {
-    console.log('Edit Ad:', ad);
-    console.log('Event:', $event);
+  async editAd(ad: Ad, $event: MouseEvent) {
+    const modal = await this.modalCtrl.create({
+      component: EditAdModalComponent,
+      componentProps: {
+        ad: ad
+      }
+    });
+    await modal.present();
   }
 
   promoteAd(ad: Ad, $event: MouseEvent) {
