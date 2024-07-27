@@ -13,11 +13,11 @@ import {
   IonLabel,
   IonList,
   IonNote,
-  IonPopover,
   IonRow,
   IonTextarea,
   IonTitle,
   IonToolbar,
+  LoadingController,
   ModalController,
   ToastController
 } from "@ionic/angular/standalone";
@@ -26,8 +26,9 @@ import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {addIcons} from "ionicons";
 import {arrowBack, caretDownOutline, closeOutline} from "ionicons/icons";
-import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {InputErrorComponent} from "../input-error/input-error.component";
+import {SelectCategoryModalComponent} from "../select-category-modal/select-category-modal.component";
+import {Camera, GalleryPhoto} from "@capacitor/camera";
 
 @Component({
   selector: 'app-edit-ad-modal',
@@ -42,7 +43,6 @@ import {InputErrorComponent} from "../input-error/input-error.component";
     IonTitle,
     IonToolbar,
     ReactiveFormsModule,
-    NgForOf,
     InputErrorComponent,
     IonItem,
     IonLabel,
@@ -51,8 +51,6 @@ import {InputErrorComponent} from "../input-error/input-error.component";
     IonGrid,
     IonRow,
     IonCol,
-    KeyValuePipe,
-    NgIf,
     IonList,
     IonNote
   ],
@@ -61,12 +59,13 @@ import {InputErrorComponent} from "../input-error/input-error.component";
 export class EditAdModalComponent implements OnInit {
   @Input() ad!: Ad;
   form!: FormGroup;
-  images: any[] = []; // Define your image structure accordingly
+  images: Array<string | GalleryPhoto> = [];
 
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
               private adService: AdService,
               private toastController: ToastController,
+              private loadingController: LoadingController,
               private authService: AuthService) {
     addIcons({arrowBack, caretDownOutline, closeOutline})
   }
@@ -95,18 +94,53 @@ export class EditAdModalComponent implements OnInit {
 
 
   onSubmit() {
-
+    console.log(this.form.value);
   }
 
-  uploadImages() {
+  async uploadImages() {
+    const loading = await this.loadingController.create();
+    await loading.present();
 
+    try {
+      const images = await Camera.pickImages({
+        quality: 90,
+      })
+
+      if (images) {
+        images.photos.forEach((image) => {
+          this.images.push(image);
+
+          console.log(image, this.images)
+        });
+        this.form.get('images')!.setValue(this.images);
+        // this.ref.markForCheck();
+      } else {
+        console.log('No images selected')
+      }
+    } finally {
+      await loading.dismiss();
+    }
   }
 
-  deleteImage(img: any) {
 
+  async openCategoriesModal() {
+    const modal = await this.modalCtrl.create({
+      component: SelectCategoryModalComponent,
+    });
+    await modal.present();
+
+    const {data, role} = await modal.onWillDismiss();
+
+    if (data !== undefined) {
+      this.form.get('category')!.setValue(data);
+    }
+    // this.ref.markForCheck();
   }
 
-  openCategoriesModal() {
-
+  getImageSource(img: string | GalleryPhoto) {
+    if (typeof img === 'string') {
+      return img;
+    }
+    return img.webPath;
   }
 }
