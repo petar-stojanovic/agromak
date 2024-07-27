@@ -94,8 +94,6 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       await this.adService.updateAd(data);
       await loading.dismiss();
 
-      // await this.modalCtrl.dismiss(null, 'success');
-
       const toast = await this.toastController.create({
         message: 'Ad edited successfully',
         duration: 2000,

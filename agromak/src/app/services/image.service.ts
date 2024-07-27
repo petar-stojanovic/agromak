@@ -2,7 +2,7 @@ import {Filesystem} from '@capacitor/filesystem';
 
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {getDownloadURL, ref, Storage, uploadString} from "@angular/fire/storage";
+import {deleteObject, getDownloadURL, ref, Storage, uploadString} from "@angular/fire/storage";
 import {AuthService} from "./auth.service";
 import {doc, Firestore, setDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
@@ -87,6 +87,21 @@ export class ImageService {
       console.error("ERROR - ", e);
       return null;
     }
+  }
+
+  async deleteImages(ad: any, imagesToDelete: string[]) {
+    const basePath = `ads/${ad.id}/`;
+    const adDocRef = doc(this.firestore, basePath);
+    const imagesToUpload = ad.images.filter((image: string) => !imagesToDelete.includes(image));
+    for (const imageUrl of imagesToDelete) {
+      try {
+        const storageRef = ref(this.storage, imageUrl);
+        await deleteObject(storageRef);
+      } catch (error) {
+        console.error("Failed to delete image:", error);
+      }
+    }
+    await setDoc(adDocRef, {images: imagesToUpload}, {merge: true});
   }
 
   private getImageName(fullPath: string) {

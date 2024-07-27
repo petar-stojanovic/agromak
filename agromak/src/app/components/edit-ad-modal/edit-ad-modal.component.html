@@ -66,13 +66,13 @@
         <ion-label>Upload Images</ion-label>
         <ion-icon name="caret-down-outline"></ion-icon>
       </ion-item>
-      @if (images) {
+      @if (allImages) {
         <ion-grid>
           <ion-row>
-            @for (img of images; track $index) {
+            @for (img of allImages; track $index) {
               <ion-col size="4">
                 <img [src]="getImageSource(img)" alt="image" class="img-fluid">
-                <ion-icon class="delete-image-icon" name="close-outline" (click)="images.splice($index,1)"></ion-icon>
+                <ion-icon class="delete-image-icon" name="close-outline" (click)="allImages.splice($index,1)"></ion-icon>
               </ion-col>
             }
           </ion-row>

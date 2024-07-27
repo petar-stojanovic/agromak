@@ -231,20 +231,32 @@ export class AdService {
     return {id, ...data} as Ad;
   }
 
-  updateAd(ad: any) {
+  async updateAd(ad: any) {
     if (!this.user) {
       return;
     }
+    console.log(ad)
+
+    const imagesToDelete: string[] = ad.oldImages.filter((oldImage: string) => !ad.images.includes(oldImage));
+    console.log(imagesToDelete);
+
+    if (imagesToDelete.length > 0) {
+      await this.imageService.deleteImages(ad, imagesToDelete);
+    }
 
     const adDocRef = doc(this.firestore, `ads/${ad.id}`)
-    return setDoc(adDocRef, {
-        category: ad.category,
-        title: ad.title,
-        description: ad.description,
-        price: ad.price,
-        phone: ad.phone,
-        ownerId: this.user!.uid,
-      },{merge: true}
-    );
+
+    const updatedAdData = {
+      category: ad.category,
+      title: ad.title,
+      description: ad.description,
+      price: ad.price,
+      phone: ad.phone,
+      ownerId: this.user!.uid,
+    }
+
+    await setDoc(adDocRef, updatedAdData, {merge: true})
+
+    return;
   }
 }

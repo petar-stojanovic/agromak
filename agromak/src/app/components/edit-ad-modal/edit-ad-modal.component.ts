@@ -59,7 +59,8 @@ import {Camera, GalleryPhoto} from "@capacitor/camera";
 export class EditAdModalComponent implements OnInit {
   @Input() ad!: Ad;
   form!: FormGroup;
-  images: Array<string | GalleryPhoto> = [];
+  oldImages: string[] = [];
+  allImages: Array<string | GalleryPhoto> = [];
 
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
@@ -84,15 +85,18 @@ export class EditAdModalComponent implements OnInit {
       images: [this.ad.images]
     });
 
-    this.images = this.ad.images;
-  }
-
-  dismiss() {
-    return this.modalCtrl.dismiss(null, 'cancel');
+    this.oldImages = [...this.ad.images];
+    this.allImages = this.ad.images;
   }
 
   onSubmit() {
-    return this.modalCtrl.dismiss({id: this.ad.id, ...this.form.value}, 'submit');
+    const data = {
+      id: this.ad.id,
+      oldImages: this.oldImages,
+      ...this.form.value
+    }
+
+    return this.modalCtrl.dismiss(data, 'submit');
   }
 
   async uploadImages() {
@@ -106,11 +110,11 @@ export class EditAdModalComponent implements OnInit {
 
       if (images) {
         images.photos.forEach((image) => {
-          this.images.push(image);
+          this.allImages.push(image);
 
-          console.log(image, this.images)
+          console.log(image, this.allImages)
         });
-        this.form.get('images')!.setValue(this.images);
+        this.form.get('images')!.setValue(this.allImages);
       } else {
         console.log('No images selected')
       }
@@ -153,5 +157,9 @@ export class EditAdModalComponent implements OnInit {
 
     this.form.controls['phone'].setValue(formattedInput);
     this.form.updateValueAndValidity();
+  }
+
+  dismiss() {
+    return this.modalCtrl.dismiss(null, 'cancel');
   }
 }
