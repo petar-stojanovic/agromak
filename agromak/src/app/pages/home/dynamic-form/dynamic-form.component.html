@@ -11,7 +11,7 @@
             </ion-note>
           }
           <ion-item [button]="true" (click)="openCategoriesModal()" class="open-categories-modal" lines="none">
-            <ion-label>{{ chosenCategory }}</ion-label>
+            <ion-label>{{ form.controls[control.name].value }}</ion-label>
             <ion-icon name="caret-down-outline"></ion-icon>
           </ion-item>
         </div>
