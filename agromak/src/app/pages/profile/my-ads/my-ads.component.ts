@@ -21,7 +21,6 @@ import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
 import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
-import {EditAdModalComponent} from "../../../components/edit-ad-modal/edit-ad-modal.component";
 import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-form-modal.component";
 
 @Component({
