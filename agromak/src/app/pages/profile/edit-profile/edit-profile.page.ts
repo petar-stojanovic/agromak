@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
+  AlertController,
   IonBackButton,
   IonButtons,
   IonContent,
@@ -14,11 +15,14 @@ import {
   IonText,
   IonThumbnail,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  LoadingController
 } from "@ionic/angular/standalone";
 import {AuthService} from "../../../services/auth.service";
 import {addIcons} from "ionicons";
 import {cameraOutline} from "ionicons/icons";
+import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -33,7 +37,10 @@ export class EditProfilePage implements OnInit {
   form!: FormGroup;
 
   constructor(private authService: AuthService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private loadingController: LoadingController,
+              private imageService: ImageService,
+              private alertController: AlertController) {
     addIcons({cameraOutline})
   }
 
@@ -56,7 +63,30 @@ export class EditProfilePage implements OnInit {
     console.log(this.form.value);
   }
 
-  changeImage() {
+  async changeImage() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Photos
+    });
 
+    console.log(image)
+
+    if (image) {
+      const loading = await this.loadingController.create();
+      await loading.present();
+
+      const result = await this.imageService.uploadProfileImage(image);
+
+      if (!result) {
+        const alert = await this.alertController.create({
+          header: 'Upload Failed',
+          message: 'There was an error uploading your image',
+          buttons: ['OK']
+        });
+      }
+      await loading.dismiss();
+    }
   }
 }

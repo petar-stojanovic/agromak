@@ -9,7 +9,7 @@
     <ion-list class="background-white ion-margin-vertical">
 
       <ion-item lines="none">
-        <ion-thumbnail slot="start" class="profile-thumbnail" (click)="changeImage()">
+        <ion-thumbnail slot="start" class="profile-thumbnail">
           <img *ngIf="user.photoURL; else placeholderAvatar;" [src]="user.photoURL" alt="Profile Picture"/>
 
           <ng-template #placeholderAvatar>

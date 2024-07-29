@@ -1,4 +1,4 @@
-import {Component, inject, Type} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
   AlertController,
   IonContent,
@@ -13,11 +13,13 @@ import {
   IonThumbnail,
   IonTitle,
   IonToolbar,
-  LoadingController, ModalController
+  LoadingController,
+  ModalController
 } from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
 import {
-  chevronForwardOutline, cubeOutline,
+  chevronForwardOutline,
+  cubeOutline,
   heart,
   lockClosed,
   logOutOutline,
@@ -25,14 +27,11 @@ import {
   personOutline
 } from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
-import {Router, RouterLink} from "@angular/router";
-import {ImageService} from "../../services/image.service";
-import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
+import {RouterLink} from "@angular/router";
 import {User} from "../../shared/models/user";
 import {CommonModule} from "@angular/common";
 import {MyAdsComponent} from "./my-ads/my-ads.component";
 import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
-import {AdDetailsModalComponent} from "../../components/ad-details-modal/ad-details-modal.component";
 import {AdService} from "../../services/ad.service";
 
 @Component({
@@ -62,9 +61,7 @@ export class ProfilePage {
 
   user: User | null = null;
 
-  constructor(private router: Router,
-              private loadingController: LoadingController,
-              private imageService: ImageService,
+  constructor(private loadingController: LoadingController,
               private alertController: AlertController,
               private modalCtrl: ModalController,
               private adService: AdService) {
@@ -108,33 +105,6 @@ export class ProfilePage {
       }]
     });
     await alert.present();
-  }
-
-  async changeImage() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Photos
-    });
-
-    console.log(image)
-
-    if (image) {
-      const loading = await this.loadingController.create();
-      await loading.present();
-
-      const result = await this.imageService.uploadProfileImage(image);
-
-      if (!result) {
-        const alert = await this.alertController.create({
-          header: 'Upload Failed',
-          message: 'There was an error uploading your image',
-          buttons: ['OK']
-        });
-      }
-      await loading.dismiss();
-    }
   }
 
   async openModal(type: string) {
