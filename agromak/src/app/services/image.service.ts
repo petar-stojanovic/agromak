@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {deleteObject, getDownloadURL, ref, Storage, uploadString} from "@angular/fire/storage";
 import {AuthService} from "./auth.service";
-import {doc, Firestore, setDoc} from "@angular/fire/firestore";
+import {doc, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
@@ -41,10 +41,8 @@ export class ImageService {
       const imageUrl = await getDownloadURL(storageRef);
 
       const userDocRef = doc(this.firestore, `users/${this.user.uid}`)
-      await setDoc(userDocRef, {
+      await updateDoc(userDocRef, {
           photoURL: imageUrl
-        }, {
-          merge: true
         }
       );
       return true;

@@ -16,7 +16,7 @@ import {
   IonThumbnail,
   IonTitle,
   IonToolbar,
-  LoadingController
+  LoadingController, ToastController
 } from "@ionic/angular/standalone";
 import {AuthService} from "../../../services/auth.service";
 import {addIcons} from "ionicons";
@@ -40,6 +40,7 @@ export class EditProfilePage implements OnInit {
               private fb: FormBuilder,
               private loadingController: LoadingController,
               private imageService: ImageService,
+              private toastController: ToastController,
               private alertController: AlertController) {
     addIcons({cameraOutline})
   }
@@ -77,16 +78,16 @@ export class EditProfilePage implements OnInit {
       const loading = await this.loadingController.create();
       await loading.present();
 
-      const result = await this.imageService.uploadProfileImage(image);
+      await this.imageService.uploadProfileImage(image);
 
-      if (!result) {
-        const alert = await this.alertController.create({
-          header: 'Upload Failed',
-          message: 'There was an error uploading your image',
-          buttons: ['OK']
-        });
-      }
       await loading.dismiss();
+
+      const toast = await this.toastController.create({
+        message: 'Profile photo changed successfully',
+        duration: 1500,
+      });
+
+      await toast.present();
     }
   }
 }
