@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
+import * as path from "node:path";
 
 export const routes: Routes = [
   {
@@ -22,8 +23,16 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        loadComponent: () =>
-          import('../pages/profile/profile.page').then((m) => m.ProfilePage),
+        children:[
+          {
+            path: '',
+            loadComponent: () => import('../pages/profile/profile.page').then((m) => m.ProfilePage),
+          },
+          {
+            path: 'edit',
+            loadComponent: () => import('../pages/profile/edit-profile/edit-profile.page').then(m => m.EditProfilePage)
+          }
+        ]
       },
       {
         path: '',

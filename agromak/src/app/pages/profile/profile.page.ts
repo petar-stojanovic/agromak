@@ -25,7 +25,7 @@ import {
   personOutline
 } from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {ImageService} from "../../services/image.service";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {User} from "../../shared/models/user";
@@ -54,6 +54,7 @@ import {AdService} from "../../services/ad.service";
     IonListHeader,
     IonIcon,
     IonSkeletonText,
+    RouterLink,
   ],
 })
 export class ProfilePage {
