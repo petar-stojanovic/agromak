@@ -13,6 +13,8 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class EditProfilePage implements OnInit {
 
+  user$ = this.authService.user$;
+
   constructor(private authService: AuthService) {
   }
 
