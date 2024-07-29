@@ -7,8 +7,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  @if (user$ | async; as user){
-    {{user.displayName}}
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (user$ | async; as user) {
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <ion-list>
+        <ion-item lines="none">
+          <div class="m-auto">
+            <ion-thumbnail class="profile-thumbnail" (click)="changeImage()">
+              @if (user.photoURL) {
+                <img [src]="user.photoURL" alt="Profile Picture"/>
+              } @else {
+                <div class="preview">
+                  <p class="font-size-12">Select avatar</p>
+                </div>
+              }
+
+            </ion-thumbnail>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <ion-input
+        [value]="user.displayName"
+      >
+      </ion-input>
+    </form>
   }
 </ion-content>
