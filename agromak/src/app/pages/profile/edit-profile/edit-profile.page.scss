@@ -9,4 +9,17 @@ ion-thumbnail {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  & ion-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background: var(--ion-color-primary-shade);
+    color: var(--ion-background-color);
+    padding: 5px;
+    border: 2px solid;
+  }
 }

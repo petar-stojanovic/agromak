@@ -6,18 +6,26 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonInput, IonItem, IonLabel, IonList, IonText, IonThumbnail,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonText,
+  IonThumbnail,
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
 import {AuthService} from "../../../services/auth.service";
+import {addIcons} from "ionicons";
+import {cameraOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, ReactiveFormsModule, IonInput, IonItem, IonLabel, IonText, IonThumbnail, IonList]
+  imports: [CommonModule, FormsModule, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, ReactiveFormsModule, IonInput, IonItem, IonLabel, IonText, IonThumbnail, IonList, IonIcon]
 })
 export class EditProfilePage implements OnInit {
 
@@ -26,6 +34,7 @@ export class EditProfilePage implements OnInit {
 
   constructor(private authService: AuthService,
               private fb: FormBuilder) {
+    addIcons({cameraOutline})
   }
 
   ngOnInit() {
