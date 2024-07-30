@@ -3,7 +3,8 @@ import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   AlertController,
-  IonBackButton, IonButton,
+  IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -11,22 +12,25 @@ import {
   IonInput,
   IonItem,
   IonLabel,
-  IonList, IonSelect, IonSelectOption,
+  IonList,
+  IonSelect,
+  IonSelectOption,
   IonText,
   IonThumbnail,
   IonTitle,
   IonToolbar,
-  LoadingController, ToastController
+  LoadingController,
+  ToastController
 } from "@ionic/angular/standalone";
 import {AuthService} from "../../../services/auth.service";
 import {addIcons} from "ionicons";
-import {call, callOutline, cameraOutline, locationOutline, locationSharp, mail, person} from "ionicons/icons";
+import {call, cameraOutline, locationSharp, mail, person} from "ionicons/icons";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {ImageService} from "../../../services/image.service";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormControls, JsonFormData} from "../../../shared/models/json-form-data";
 import {InputErrorComponent} from "../../../components/input-error/input-error.component";
-import {combineLatest, Observable} from "rxjs";
+import {combineLatest} from "rxjs";
 import {User} from "../../../shared/models/user";
 
 @Component({
@@ -61,7 +65,6 @@ export class EditProfilePage implements OnInit {
     const location$ = this.http.get<JsonFormData>('/assets/edit-profile-form.json');
 
     combineLatest([user$, location$]).subscribe(async ([user, location]) => {
-      console.log(user, location);
       this.user = user;
       this.phoneFormControl = location.controls[0];
       this.locationFormControl = location.controls[1];
@@ -76,13 +79,16 @@ export class EditProfilePage implements OnInit {
       city: [this.user?.city ? this.user.city : ''],
       phoneNumber: [this.user?.phoneNumber ? this.user.phoneNumber : '', [Validators.pattern(this.phoneFormControl?.validators.pattern!)]],
     });
-    console.log(this.form)
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.form?.valid) {
-      console.log(this.form?.value);
       this.authService.updateUser(this.form.value);
+      const toast = await this.toastController.create({
+        message: 'Profile updated successfully',
+        duration: 1500,
+      });
+      await toast.present();
     }
   }
 
