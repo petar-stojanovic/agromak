@@ -8,31 +8,87 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  @if (user$ | async; as user) {
+  @if (form && user) {
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="ion-padding-horizontal">
 
-      <ion-list>
-        <ion-item lines="none">
-          <div class="m-auto">
-            <ion-thumbnail class="profile-thumbnail" (click)="changeImage()">
-              @if (user.photoURL) {
-                <img [src]="user.photoURL" alt="Profile Picture"/>
-              } @else {
-                <div class="preview">
-                  <p class="font-size-12">Select avatar</p>
-                </div>
-              }
-            <ion-icon name="camera-outline"></ion-icon>
-            </ion-thumbnail>
-          </div>
-        </ion-item>
-      </ion-list>
+
+      <div>
+        <ion-thumbnail class="profile-thumbnail" (click)="changeImage()">
+          @if (user.photoURL) {
+            <img [src]="user.photoURL" alt="Profile Picture"/>
+          } @else {
+            <div class="preview">
+              <p class="font-size-12">Select avatar</p>
+            </div>
+          }
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-thumbnail>
+      </div>
+
 
       <ion-input
+        formControlName="displayName"
+        labelPlacement="floating"
+        fill="outline"
+        label="Name"
+        placeholder="Full Name"
+        type="text"
+        required
         [value]="user.displayName"
       >
+        <ion-icon slot="start" name="person" aria-hidden="true"></ion-icon>
       </ion-input>
+      <ng-container *ngIf="form.controls['displayName'] as ctrl">
+        <app-input-error *ngIf="ctrl.dirty" [errors]="ctrl.errors"></app-input-error>
+      </ng-container>
+
+      <ion-input
+        formControlName="phoneNumber"
+        labelPlacement="stacked"
+        fill="outline"
+        label="Phone"
+        placeholder="070/123-456"
+        (ionInput)="formatPhoneNumber($event, 'phoneNumber')"
+      >
+        <ion-icon slot="start" name="call" aria-hidden="true"></ion-icon>
+      </ion-input>
+      <ng-container *ngIf="form.controls['phoneNumber'] as ctrl">
+        <app-input-error *ngIf="ctrl.touched" [errors]="ctrl.errors"></app-input-error>
+      </ng-container>
+
+      <ion-select
+        formControlName="city"
+        labelPlacement="stacked"
+        placeholder="Select City"
+        label="City"
+        fill="outline">
+        <ion-icon slot="start" name="location-sharp" aria-hidden="true"></ion-icon>
+
+        @for (option of locationFormControl?.options?.items; track $index) {
+          <ion-select-option value="{{ option.value }}">{{ option.label }}</ion-select-option>
+        }
+      </ion-select>
+      <ng-container *ngIf="form.controls['city'] as selectControl">
+        <app-input-error *ngIf="selectControl.touched" [errors]="selectControl.errors"></app-input-error>
+      </ng-container>
+
+      <ion-input
+        labelPlacement="floating"
+        fill="outline"
+        label="Email"
+        placeholder="Email Address"
+        type="email"
+        [value]="user.email"
+        disabled
+      >
+        <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+      </ion-input>
+
+      <ion-button [disabled]="!form.valid" expand="full" type="submit"
+                  class="ion-margin-top">
+        Update
+      </ion-button>
     </form>
   }
 </ion-content>

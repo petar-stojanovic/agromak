@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   AlertController,
-  IonBackButton,
+  IonBackButton, IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -11,7 +11,7 @@ import {
   IonInput,
   IonItem,
   IonLabel,
-  IonList,
+  IonList, IonSelect, IonSelectOption,
   IonText,
   IonThumbnail,
   IonTitle,
@@ -20,48 +20,67 @@ import {
 } from "@ionic/angular/standalone";
 import {AuthService} from "../../../services/auth.service";
 import {addIcons} from "ionicons";
-import {cameraOutline} from "ionicons/icons";
+import {call, callOutline, cameraOutline, locationOutline, locationSharp, mail, person} from "ionicons/icons";
 import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {ImageService} from "../../../services/image.service";
+import {HttpClient} from "@angular/common/http";
+import {JsonFormControls, JsonFormData} from "../../../shared/models/json-form-data";
+import {InputErrorComponent} from "../../../components/input-error/input-error.component";
+import {combineLatest, Observable} from "rxjs";
+import {User} from "../../../shared/models/user";
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, ReactiveFormsModule, IonInput, IonItem, IonLabel, IonText, IonThumbnail, IonList, IonIcon]
+  imports: [CommonModule, FormsModule, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, ReactiveFormsModule, IonInput, IonItem, IonLabel, IonText, IonThumbnail, IonList, IonIcon, InputErrorComponent, IonSelect, IonSelectOption, IonButton]
 })
 export class EditProfilePage implements OnInit {
 
-  user$ = this.authService.user$;
-  form!: FormGroup;
+  user: User | null = null;
+  form: FormGroup | undefined;
+  phoneFormControl: JsonFormControls | null = null;
+  locationFormControl: JsonFormControls | null = null;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
+              private http: HttpClient,
               private loadingController: LoadingController,
               private imageService: ImageService,
               private toastController: ToastController,
               private alertController: AlertController) {
-    addIcons({cameraOutline})
+    addIcons({cameraOutline, mail, person, call, locationSharp})
   }
 
-  ngOnInit() {
-    this.createForm();
-    this.authService.user$.subscribe(user => {
-      console.log(user);
+  async ngOnInit() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    const user$ = this.authService.user$;
+    const location$ = this.http.get<JsonFormData>('/assets/edit-profile-form.json');
+
+    combineLatest([user$, location$]).subscribe(async ([user, location]) => {
+      console.log(user, location);
+      this.user = user;
+      this.phoneFormControl = location.controls[0];
+      this.locationFormControl = location.controls[1];
+      this.createForm();
+      await loading.dismiss();
     })
   }
 
   private createForm() {
     this.form = this.fb.group({
-      displayName: [''],
-      email: [''],
-      phoneNumber: ['']
+      displayName: [this.user?.displayName],
+      city: [this.user?.city ? this.user.city : ''],
+      phoneNumber: [this.user?.phone ? this.user.phone : '', [Validators.pattern(this.phoneFormControl?.validators.pattern!)]],
     });
+    console.log(this.form)
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    console.log(this.form?.value);
   }
 
   async changeImage() {
@@ -89,5 +108,20 @@ export class EditProfilePage implements OnInit {
 
       await toast.present();
     }
+  }
+
+  formatPhoneNumber(event: any, controlName: string) {
+    const input = event.target.value;
+    let formattedInput = input.replace(/\D/g, '');
+
+    if (formattedInput.length >= 3) {
+      formattedInput = formattedInput.slice(0, 3) + '/' + formattedInput.slice(3);
+    }
+    if (formattedInput.length >= 7) {
+      formattedInput = formattedInput.slice(0, 7) + '-' + formattedInput.slice(7, 10);
+    }
+
+    this.form!.controls[controlName].setValue(formattedInput);
+    this.form!.updateValueAndValidity();
   }
 }

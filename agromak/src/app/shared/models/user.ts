@@ -8,4 +8,7 @@ export interface User {
   phoneNumber?: string;
   refreshToken?: string;
   favoriteAds: string[];
+  city?: string;
+  createdAt: number;
+  phone?: string;
 }
