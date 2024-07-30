@@ -10,5 +10,4 @@ export interface User {
   favoriteAds: string[];
   city?: string;
   createdAt: number;
-  phone?: string;
 }

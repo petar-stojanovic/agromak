@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {map, Observable, of, switchMap} from "rxjs";
+import {first, map, Observable, of, switchMap} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
 import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
-import {Firestore} from "@angular/fire/firestore";
+import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 
 
@@ -96,5 +96,22 @@ export class AuthService {
     await this.afAuth.signOut().finally(() => {
       this.router.navigate(['/login']);
     });
+  }
+
+  updateUser(value: { displayName: string, city: string, phoneNumber: string })  {
+    this.user$
+      .pipe(first())
+      .subscribe(async (user) => {
+        if (user) {
+          const userDocRef = doc(this.firestore, `users/${user.uid}`)
+          await updateDoc(userDocRef, {
+              displayName: value.displayName,
+              city: value.city,
+              phoneNumber: value.phoneNumber
+            }
+          );
+        }
+      });
+
   }
 }

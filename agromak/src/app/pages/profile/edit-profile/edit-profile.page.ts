@@ -74,13 +74,16 @@ export class EditProfilePage implements OnInit {
     this.form = this.fb.group({
       displayName: [this.user?.displayName],
       city: [this.user?.city ? this.user.city : ''],
-      phoneNumber: [this.user?.phone ? this.user.phone : '', [Validators.pattern(this.phoneFormControl?.validators.pattern!)]],
+      phoneNumber: [this.user?.phoneNumber ? this.user.phoneNumber : '', [Validators.pattern(this.phoneFormControl?.validators.pattern!)]],
     });
     console.log(this.form)
   }
 
   onSubmit() {
-    console.log(this.form?.value);
+    if (this.form?.valid) {
+      console.log(this.form?.value);
+      this.authService.updateUser(this.form.value);
+    }
   }
 
   async changeImage() {
