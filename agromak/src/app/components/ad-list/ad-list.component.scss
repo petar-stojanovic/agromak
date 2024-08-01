@@ -3,7 +3,7 @@
   --background: var(--ion-color-light);
   border-radius: 10px;
   border: 1px solid var(--ion-color-medium-tint);
-  box-shadow: 0 0 5px #2857CA68;
+  box-shadow: var(--ion-box-shadow);
 
   & ion-thumbnail {
     --size: 7rem;
