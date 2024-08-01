@@ -106,8 +106,6 @@ export class AdService {
       [] :
       ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage));
 
-
-    console.log(imagesToDelete);
     if (imagesToDelete.length > 0) {
       await this.imageService.deleteImages(ad, imagesToDelete);
     }

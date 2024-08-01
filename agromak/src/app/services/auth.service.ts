@@ -114,4 +114,8 @@ export class AuthService {
       });
 
   }
+
+  getUserProfile(userId: string){
+    return this.angularFirestore.doc(`users/${userId}`).valueChanges()
+  }
 }
