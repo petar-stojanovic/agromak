@@ -1,77 +1,74 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title> SELLING</ion-title>
-    <ion-title class="subtitle">Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-icon (click)="toggleFavorite()"
-                [name]="isFavoriteAd ? 'heart' : 'heart-outline'"
-                [class.favorite-ad]="isFavoriteAd"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="images">
+    <ion-icon (click)="dismiss()" name="arrow-back" class="icon-back"></ion-icon>
 
-<ion-content class="ion-padding">
-  <ion-text>
-    <h1 class="font-weight-bold">
-      {{ ad.title }}
-    </h1>
-  </ion-text>
+    <ion-icon (click)="toggleFavorite()"
+              [name]="isFavoriteAd ? 'heart' : 'heart-outline'"
+              class="icon-favorite"></ion-icon>
+    <swiper-container #swiper pagination>
+      @for (image of ad.images; track image) {
+        <swiper-slide>
+          <img [src]="image" alt="image">
+        </swiper-slide>
+      } @empty {
+        <swiper-slide>
+          <img src="assets/images/no-image.png" alt="placeholder"/>
+        </swiper-slide>
+      }
+      <div class="shadow"></div>
+    </swiper-container>
 
-  <swiper-container #swiper pagination class="ion-margin-vertical">
-    @for (image of ad.images; track image) {
-      <swiper-slide>
-        <img [src]="image" alt="image">
-      </swiper-slide>
-    } @empty {
-      <swiper-slide>
-        <img src="assets/images/no-image.png" alt="placeholder"/>
-      </swiper-slide>
-    }
-  </swiper-container>
-  <ion-item-divider></ion-item-divider>
+  </div>
 
+  <div class="ion-padding">
 
-  <ion-text color="primary">
-    <h2 class="font-weight-bold">
-      Price: {{ ad.price }} {{ ad.currency }}
-    </h2>
-  </ion-text>
+    <ion-text>
+      <h1 class="font-weight-bold">
+        {{ ad.title }}
+      </h1>
+    </ion-text>
 
-  <ion-text>
-    <p>{{ ad.description }}</p>
-  </ion-text>
+    <ion-text color="primary">
+      <h2 class="font-weight-bold">
+        Price: {{ ad.price }} {{ ad.currency }}
+      </h2>
+    </ion-text>
+
+    <ion-text>
+      <p>{{ ad.description }}</p>
+    </ion-text>
+
+    <ion-text>
+      <p> Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</p>
+    </ion-text>
 
 
-  <ion-list class="user-info ion-margin-vertical">
-    <ion-list-header>Seller details</ion-list-header>
+    <ion-list class="user-info ion-margin-vertical">
+      <ion-list-header>Seller details</ion-list-header>
 
-    <ion-item lines="none" class="flex">
-      <ion-text class="flex ion-align-items-center">
-        <ion-icon name="person-outline"></ion-icon>
-        <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
-      </ion-text>
-    </ion-item>
+      <ion-item lines="none" class="flex">
+        <ion-text class="flex ion-align-items-center">
+          <ion-icon name="person-outline"></ion-icon>
+          <span class="font-weight-500">{{ ad.ownerName ? ad.ownerName : "unknown" }}</span>
+        </ion-text>
+      </ion-item>
 
-    <ion-item lines="none" class="flex">
-      <ion-text class="flex ion-align-items-center">
-        <ion-icon name="call-outline"></ion-icon>
-        <span>{{ ad.phone }}</span>
-      </ion-text>
+      <ion-item lines="none" class="flex">
+        <ion-text class="flex ion-align-items-center">
+          <ion-icon name="call-outline"></ion-icon>
+          <span>{{ ad.phone }}</span>
+        </ion-text>
 
-    </ion-item>
+      </ion-item>
 
-    <ion-item lines="none" class="flex">
-      <ion-text class="flex ion-align-items-center">
-        <ion-icon name="location-outline"></ion-icon>
-        <span>{{ ad.location }}</span>
-      </ion-text>
+      <ion-item lines="none" class="flex">
+        <ion-text class="flex ion-align-items-center">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>{{ ad.location }}</span>
+        </ion-text>
 
-    </ion-item>
-  </ion-list>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
