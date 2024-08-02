@@ -57,3 +57,15 @@ ion-list ion-icon {
 ion-text {
   white-space: pre-line;
 }
+
+ion-badge {
+  --background: transparent;
+  color: black;
+  border: 1px solid black;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

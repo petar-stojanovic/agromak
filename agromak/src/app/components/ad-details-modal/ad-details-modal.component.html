@@ -19,7 +19,7 @@
     </swiper-container>
   </div>
 
-  <div class="ion-padding">
+  <div class="ion-padding-horizontal">
 
     <ion-text>
       <h1 class="font-weight-bold">
@@ -29,9 +29,24 @@
 
     <ion-text color="primary">
       <h2 class="font-weight-bold">
-        Price: {{ ad.price }} {{ ad.currency }}
+        {{ ad.price }} {{ ad.currency }}
       </h2>
     </ion-text>
+
+    <div class="flex gap-1 ion-wrap">
+      <ion-badge>
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-text> {{ ad.location }}</ion-text>
+      </ion-badge>
+      <ion-badge>
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-text>{{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-text>
+      </ion-badge>
+      <ion-badge>
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <ion-text>{{ ad.itemCondition }}</ion-text>
+      </ion-badge>
+    </div>
 
     <ion-text>
       <p>{{ ad.description }}</p>

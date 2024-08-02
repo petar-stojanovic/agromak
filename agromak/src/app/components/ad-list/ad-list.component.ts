@@ -51,6 +51,12 @@ export class AdListComponent {
               private adService: AdService) {
   }
 
+  ngOnInit() {
+    setTimeout(() =>{
+      // this.openAdDetailsModal(this.ads[0]);
+    }, 1500);
+  }
+
   async openAdDetailsModal(ad: Ad) {
     const modal = await this.modalCtrl.create({
       component: AdDetailsModalComponent,

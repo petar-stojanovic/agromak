@@ -1,6 +1,6 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
-  IonBackButton,
+  IonBackButton, IonBadge,
   IonButton,
   IonButtons,
   IonContent,
@@ -17,10 +17,29 @@ import {
 import {Ad} from "../../shared/models/ad";
 import {DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
-import {arrowBack, callOutline, heart, heartOutline, locationOutline, personOutline} from "ionicons/icons";
+import {
+  arrowBack,
+  calendarOutline,
+  callOutline,
+  heart,
+  heartOutline, informationCircleOutline,
+  locationOutline,
+  personOutline
+} from "ionicons/icons";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
+
+const icons = {
+  personOutline,
+  callOutline,
+  locationOutline,
+  heart,
+  heartOutline,
+  arrowBack,
+  calendarOutline,
+  informationCircleOutline
+};
 
 @Component({
   selector: 'app-ad-details-modal',
@@ -41,7 +60,8 @@ import {Subscription} from "rxjs";
     IonListHeader,
     IonItem,
     IonIcon,
-    IonButton
+    IonButton,
+    IonBadge
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -54,7 +74,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private adService: AdService,
               private toastController: ToastController,
               private authService: AuthService) {
-    addIcons({personOutline, callOutline, locationOutline, heart, heartOutline, arrowBack});
+    addIcons(icons);
   }
 
   ngOnInit() {
@@ -63,7 +83,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
     })
 
-    this.authService.getUserProfile(this.ad.ownerId).subscribe(it =>{
+    this.authService.getUserProfile(this.ad.ownerId).subscribe(it => {
       console.log(it);
 
     })
