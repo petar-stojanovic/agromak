@@ -33,7 +33,7 @@
       </h2>
     </ion-text>
 
-    <div class="flex gap-1 ion-wrap">
+    <div class="flex gap-1 ion-wrap ion-text-uppercase">
       <ion-badge>
         <ion-icon name="location-outline"></ion-icon>
         <ion-text> {{ ad.location }}</ion-text>
@@ -45,6 +45,10 @@
       <ion-badge>
         <ion-icon name="information-circle-outline"></ion-icon>
         <ion-text>{{ ad.itemCondition }}</ion-text>
+      </ion-badge>
+      <ion-badge>
+        <ion-icon name="eye-outline"></ion-icon>
+        <ion-text>Views: {{ ad.viewCount }}</ion-text>
       </ion-badge>
     </div>
 

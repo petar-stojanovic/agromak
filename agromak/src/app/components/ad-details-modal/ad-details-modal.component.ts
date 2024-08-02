@@ -20,7 +20,7 @@ import {addIcons} from "ionicons";
 import {
   arrowBack,
   calendarOutline,
-  callOutline,
+  callOutline, eyeOutline,
   heart,
   heartOutline, informationCircleOutline,
   locationOutline,
@@ -38,7 +38,8 @@ const icons = {
   heartOutline,
   arrowBack,
   calendarOutline,
-  informationCircleOutline
+  informationCircleOutline,
+  eyeOutline
 };
 
 @Component({
@@ -85,8 +86,9 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
     this.authService.getUserProfile(this.ad.ownerId).subscribe(it => {
       console.log(it);
-
     })
+
+    this.adService.incrementViewCount(this.ad.id);
   }
 
   ngOnDestroy() {

@@ -17,6 +17,8 @@ import {deleteDoc, deleteField, doc, documentId, Firestore, updateDoc} from "@an
 import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
 import {ImageService} from "./image.service";
 import {UpdateDynamicAd} from "../shared/models/update-dynamic-ad-";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +69,7 @@ export class AdService {
       ownerId: this.user!.uid,
       ownerName: this.user!.displayName,
       uploadedAt: new Date(),
+      viewCount: 1,
       images: []
     };
 
@@ -85,6 +88,7 @@ export class AdService {
       title_lowercase: dynamicAd.title.toLowerCase(),
       ownerId: this.user!.uid,
       ownerName: this.user!.displayName,
+      viewCount: 1,
       uploadedAt: new Date(),
     };
 
@@ -269,4 +273,10 @@ export class AdService {
     return {id, ...data} as Ad;
   }
 
+  async incrementViewCount(id: string) {
+    const adDocRef = doc(this.firestore, `ads/${id}`);
+    return await updateDoc(adDocRef, {
+      viewCount: FieldValue.increment(1)
+    });
+  }
 }

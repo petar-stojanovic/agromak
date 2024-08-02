@@ -16,5 +16,6 @@ export interface Ad {
   ownerName?: string;
   fixedPrice: boolean;
   itemCondition: string;
+  viewCount: number;
   uploadedAt: Timestamp;
 }
