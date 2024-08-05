@@ -1,11 +1,11 @@
 @if (user(); as user) {
   <ion-item lines="none">
-    <ion-thumbnail slot="start" class="profile-thumbnail">
+    <ion-thumbnail slot="start">
       @if (user.photoURL) {
         <img [src]="user.photoURL" alt="Profile Picture"/>
       } @else {
         <div class="preview">
-          <p class="font-size-12">Select avatar</p>
+          <p class="font-size-12">No Image</p>
         </div>
       }
     </ion-thumbnail>
