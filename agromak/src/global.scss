@@ -123,3 +123,7 @@ h2 {
   background: var(--ion-color-danger);
   color: var(--ion-color-light);
 }
+
+.selectable {
+  user-select: text;
+}

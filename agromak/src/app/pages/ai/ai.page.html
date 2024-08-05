@@ -8,22 +8,22 @@
 
 <ion-content #content class="ion-padding">
 
-  @for (i of messages; track i) {
+  @for (message of messages; track message) {
     <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
               [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
-        <img [src]="i.from === 'YOU'? (user$ | async)?.photoURL : 'assets/images/openai.png'"/>
+        <img [src]="message.from === 'YOU'? (user$ | async)?.photoURL : 'assets/images/openai.png'"/>
       </ion-thumbnail>
-      <ion-label>
+      <ion-label class="selectable">
         <ion-text>
-          <h2 class="font-weight-500">{{ i.from }}</h2>
+          <h2 class="font-weight-500">{{ message.from }}</h2>
         </ion-text>
         <ion-text>
-          <p class="font-size-12">{{ i.message }}</p>
+          <p class="font-size-12">{{ message.message }}</p>
         </ion-text>
-        @if (i.image) {
+        @if (message.image) {
           <ion-text>
-            <img [src]="i.image" alt="image" class="img-fluid">
+            <img [src]="message.image" alt="image" class="img-fluid">
           </ion-text>
         }
       </ion-label>
