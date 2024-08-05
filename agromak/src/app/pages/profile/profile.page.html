@@ -5,144 +5,125 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  @if (user) {
-    <ion-list class="background-white ion-margin-vertical">
-      <app-profile-info [user]="user"/>
-    </ion-list>
 
-    <ion-list class="background-white ion-margin-vertical">
-      <ion-list-header>General</ion-list-header>
+  <ion-list>
+    <app-profile-info [user]="user"/>
+  </ion-list>
 
-      <ion-item lines="none" (click)="openModal('myAds')">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon name="cube-outline"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h2 class="font-weight-500">My Ads</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Manage your ads</p>
-          </ion-text>
-        </ion-label>
+  <ion-list>
+    <ion-list-header>General</ion-list-header>
 
-        <ion-icon slot="end" class="ion-margin-none" name="chevron-forward-outline"></ion-icon>
+    <ion-item lines="none" (click)="openModal('myAds')">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
+        <ion-icon name="cube-outline"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">My Ads</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Manage your ads</p>
+        </ion-text>
+      </ion-label>
 
-      </ion-item>
+      <ion-icon slot="end" class="ion-margin-none" name="chevron-forward-outline"></ion-icon>
 
-      <ion-item lines="none" (click)="openModal('favoriteAds')">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon name="heart"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h2 class="font-weight-500">Favorite Ads</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Manage your favorite ads</p>
-          </ion-text>
-        </ion-label>
+    </ion-item>
 
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    <ion-item lines="none" (click)="openModal('favoriteAds')">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
+        <ion-icon name="heart"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">Favorite Ads</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Manage your favorite ads</p>
+        </ion-text>
+      </ion-label>
 
-      </ion-item>
-    </ion-list>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
 
-    <ion-list class="background-white ion-margin-vertical">
-      <ion-list-header>Profile</ion-list-header>
+    </ion-item>
+  </ion-list>
 
-      <ion-item lines="none" routerLink="./edit">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon name="person-outline"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h2 class="font-weight-500">Edit Profile</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Change profile picture, number, name</p>
-          </ion-text>
-        </ion-label>
+  <ion-list>
+    <ion-list-header>Profile</ion-list-header>
 
-        <ion-icon slot="end" class="ion-margin-none" name="chevron-forward-outline"></ion-icon>
+    <ion-item lines="none" routerLink="./edit">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">Edit Profile</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Change profile picture, number, name</p>
+        </ion-text>
+      </ion-label>
 
-      </ion-item>
+      <ion-icon slot="end" class="ion-margin-none" name="chevron-forward-outline"></ion-icon>
 
-      <ion-item lines="none">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon name="lock-closed"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h2 class="font-weight-500">Change Password</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Update and strengthen your security</p>
-          </ion-text>
-        </ion-label>
+    </ion-item>
 
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    <ion-item lines="none">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
+        <ion-icon name="lock-closed"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">Change Password</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Update and strengthen your security</p>
+        </ion-text>
+      </ion-label>
 
-      </ion-item>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
 
-    </ion-list>
+    </ion-item>
 
-    <ion-list class="background-white ion-margin-vertical">
-      <ion-list-header>Preferences</ion-list-header>
+  </ion-list>
 
-      <ion-item lines="none">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
-          <ion-icon name="notifications-outline"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h2 class="font-weight-500">Notifications</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Customize your notification preferences</p>
-          </ion-text>
-        </ion-label>
+  <ion-list>
+    <ion-list-header>Preferences</ion-list-header>
 
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
+    <ion-item lines="none">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center circle" slot="start">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>
+          <h2 class="font-weight-500">Notifications</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Customize your notification preferences</p>
+        </ion-text>
+      </ion-label>
 
-      <ion-item lines="none" (click)="logOut()">
-        <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center background-danger circle"
-                       slot="start">
-          <ion-icon color="danger" name="log-out-outline"></ion-icon>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text color="danger">
-            <h2 class="font-weight-500">Log Out</h2>
-          </ion-text>
-          <ion-text color="medium">
-            <p class="font-size-12">Securely log out of Account</p>
-          </ion-text>
-        </ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
 
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    <ion-item lines="none" (click)="logOut()">
+      <ion-thumbnail class="flex ion-justify-content-center ion-align-items-center background-danger circle"
+                     slot="start">
+        <ion-icon color="danger" name="log-out-outline"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text color="danger">
+          <h2 class="font-weight-500">Log Out</h2>
+        </ion-text>
+        <ion-text color="medium">
+          <p class="font-size-12">Securely log out of Account</p>
+        </ion-text>
+      </ion-label>
 
-      </ion-item>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
 
-    </ion-list>
+    </ion-item>
 
-  } @else {
-    <div>
-      <div class="skeleton">
-        <ion-thumbnail class="thumbnail-skeleton">
-          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-        </ion-thumbnail>
-      </div>
+  </ion-list>
 
-      <ion-item lines="none">
-        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-skeleton-text [animated]="true" style="width: 60%"></ion-skeleton-text>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
-      </ion-item>
-    </div>
-  }
 </ion-content>

@@ -1,15 +1,18 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
-  IonBackButton, IonBadge,
+  IonBackButton,
+  IonBadge,
   IonButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonIcon,
-  IonItem, IonLabel,
+  IonItem,
+  IonLabel,
   IonList,
   IonListHeader,
-  IonText, IonThumbnail,
+  IonText,
+  IonThumbnail,
   IonToolbar,
   ModalController,
   ToastController
@@ -20,15 +23,17 @@ import {addIcons} from "ionicons";
 import {
   arrowBack,
   calendarOutline,
-  callOutline, eyeOutline,
+  callOutline,
+  eyeOutline,
   heart,
-  heartOutline, informationCircleOutline,
+  heartOutline,
+  informationCircleOutline,
   locationOutline,
   personOutline
 } from "ionicons/icons";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
-import {delay, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 
@@ -91,14 +96,9 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
     })
 
-    this.authService.getUserProfile(this.ad.ownerId)
-      .pipe(
-        delay(3000)
-      )
-      .subscribe(user => {
+    this.authService.getUserProfile(this.ad.ownerId).subscribe(user => {
       this.owner = user as User;
-      console.log(this.owner);
-    })
+    });
 
     this.adService.incrementViewCount(this.ad.id);
   }

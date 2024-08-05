@@ -1,31 +1,15 @@
-.skeleton {
-  --vertical-margin: 1.4rem;
-  margin-top: var(--vertical-margin);
-  margin-bottom: var(--vertical-margin);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.thumbnail-skeleton {
-  --size: 8rem;
-
-  & ion-skeleton-text {
-    --border-radius: 9999px;
-  }
-}
-
 .circle {
   --border-radius: 50%;
   --size: 2.5rem;
   background-color: rgba(70, 123, 244, 0.125);
 }
 
-.background-white {
+ion-list {
   --ion-background-color: white;
   border: 1px solid var(--ion-color-medium-tint);
   border-radius: 1rem;
-  box-shadow: 0 0 15px #80aefb5e;
+  box-shadow: var(--ion-box-shadow);
+  margin-top: 1rem;
 }
 
 .background-danger {
