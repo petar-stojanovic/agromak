@@ -1,6 +1,6 @@
 @if (user(); as user) {
   <ion-item lines="none">
-    <ion-thumbnail slot="start">
+    <ion-thumbnail slot="start" class="profile-thumbnail">
       @if (user.photoURL) {
         <img [src]="user.photoURL" alt="Profile Picture"/>
       } @else {
@@ -16,6 +16,20 @@
       <ion-text color="medium">
         <h3>{{ user.email }}</h3>
       </ion-text>
+    </ion-label>
+  </ion-item>
+} @else {
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+      </p>
     </ion-label>
   </ion-item>
 }

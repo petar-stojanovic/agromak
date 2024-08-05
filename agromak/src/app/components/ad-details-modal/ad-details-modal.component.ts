@@ -30,6 +30,7 @@ import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
 import {delay, Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
+import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 
 const icons = {
   personOutline,
@@ -65,7 +66,8 @@ const icons = {
     IonButton,
     IonBadge,
     IonThumbnail,
-    IonLabel
+    IonLabel,
+    ProfileInfoComponent
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {

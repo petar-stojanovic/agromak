@@ -61,35 +61,10 @@
     </ion-text>
 
 
-    @defer (when owner !== null) {
-      @if (owner) {
-        <ion-list class="user-info ion-margin-vertical">
-          <ion-list-header>Seller details</ion-list-header>
-
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="Owner Photo" [src]="owner.photoURL"/>
-            </ion-thumbnail>
-            <ion-label>
-              <ion-text>
-                <h1>
-                  {{ owner.displayName }}
-                </h1>
-              </ion-text>
-              <ion-text color="medium">
-                <h3>
-                  {{ owner.email }}
-                </h3>
-              </ion-text>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      }
-    } @placeholder {
-      <div>
-        OMG
-      </div>
-    }
+    <ion-list class="user-info ion-margin-vertical">
+      <ion-list-header>Seller details</ion-list-header>
+      <app-profile-info [user]="owner"/>
+    </ion-list>
 
     <ion-list class="user-info ion-margin-vertical">
       <ion-list-header>Seller details</ion-list-header>

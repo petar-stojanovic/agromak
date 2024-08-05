@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {User} from "../../shared/models/user";
-import {IonItem, IonLabel, IonText, IonThumbnail} from "@ionic/angular/standalone";
+import {IonItem, IonLabel, IonSkeletonText, IonText, IonThumbnail} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-profile-info',
@@ -10,13 +10,14 @@ import {IonItem, IonLabel, IonText, IonThumbnail} from "@ionic/angular/standalon
     IonItem,
     IonThumbnail,
     IonLabel,
-    IonText
+    IonText,
+    IonSkeletonText
   ],
   standalone: true
 })
 export class ProfileInfoComponent {
 
-  user = input<User>();
+  user = input<User | null>();
 
   constructor() {
   }
