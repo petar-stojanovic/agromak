@@ -85,6 +85,10 @@
 
 img {
   max-height: 100%;
+  background-image: url("/assets/logo.png");
+  background-size: 2rem 2rem;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .w-100 {
