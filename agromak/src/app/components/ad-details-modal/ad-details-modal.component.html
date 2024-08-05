@@ -28,7 +28,7 @@
     </ion-text>
 
     <ion-text color="primary">
-      <h2 class="font-weight-bold">
+      <h2 class="font-weight-bold ion-margin-vertical">
         {{ ad.price }} {{ ad.currency }}
       </h2>
     </ion-text>
@@ -56,16 +56,28 @@
       </ion-badge>
     </div>
 
-    <ion-text>
-      <p>{{ ad.description }}</p>
-    </ion-text>
 
-    <ion-text>
-      <p> Posted on: {{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</p>
-    </ion-text>
+    <ion-list class="ion-margin-vertical ion-no-padding">
+      <ion-list-header>Description</ion-list-header>
+      <ion-item lines="none">
+        <ion-label>
+          <p class="description"
+             [class.collapsed]="!isReadAllDescription && ad.description.length>100">{{ ad.description }}</p>
+          @if (ad.description.length > 100) {
+            <ion-button
+              (click)="isReadAllDescription = !isReadAllDescription"
+              fill="clear"
+              expand="block"
+              size="small"
+            >{{ !isReadAllDescription ? "read more" : " show less" }}
+            </ion-button>
+          }
+        </ion-label>
 
+      </ion-item>
+    </ion-list>
 
-    <ion-list class="user-info ion-margin-vertical">
+    <ion-list class="ion-margin-vertical">
       <ion-list-header>Seller details</ion-list-header>
       <app-profile-info [user]="owner"/>
     </ion-list>

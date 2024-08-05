@@ -67,9 +67,7 @@ export class AiPage {
     if (image) {
       this.image = image;
     }
-
   }
-
 
   async generateContentWithOpenAI() {
 
@@ -96,7 +94,6 @@ export class AiPage {
       console.log(this.messages)
       await this.content.scrollToBottom(100);
     }
-
   }
 
 }

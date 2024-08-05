@@ -81,6 +81,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   owner: User | null = null;
 
+  isReadAllDescription = false;
+
   constructor(private modalCtrl: ModalController,
               private adService: AdService,
               private toastController: ToastController,

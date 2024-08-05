@@ -37,25 +37,22 @@ swiper-container {
   }
 }
 
-.user-info {
+
+ion-list {
   --ion-background-color: var(--ion-color-primary-light);
   border-radius: 1rem;
   border: 1px solid var(--ion-color-medium-tint);
   box-shadow: var(--ion-box-shadow);
-}
 
-ion-list-header {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
+  & ion-list-header {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
 
-ion-list ion-icon {
-  font-size: 1.75rem;
-  margin-right: 0.5rem;
-}
+  & ion-label {
+    white-space: pre-line;
+  }
 
-ion-text {
-  white-space: pre-line;
 }
 
 ion-badge {
@@ -70,5 +67,30 @@ ion-badge {
 
   & ion-icon {
     font-size: 1rem;
+  }
+}
+
+
+.description {
+  position: relative;
+  max-height: 100rem;
+  transition: max-height 0.5s ease-out;
+
+
+  &.collapsed {
+    max-height: 4rem;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      height: 2rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(0deg, var(--ion-color-primary-light) 10%, transparent);
+    }
   }
 }
