@@ -12,7 +12,7 @@
     <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
               [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
-        <img [src]="message.from === 'YOU'? (user$ | async)?.photoURL : 'assets/images/openai.png'"/>
+        <img [src]="message.from === 'YOU'? (user$ | async)?.photoURL : 'assets/logo.svg'"/>
       </ion-thumbnail>
       <ion-label class="selectable">
         <ion-text>
@@ -31,7 +31,7 @@
   } @empty {
     <div class="ion-text-center h-100 flex ion-align-items-center ion-justify-content-center">
       <ion-text color="medium">
-        <img class="openai-logo" src="assets/images/openai.png" alt="openAiLogo"/>
+        <img class="openai-logo" src="assets/logo.svg" alt="openAiLogo"/>
         <h2 class="font-weight-500">How can I help you today?</h2>
       </ion-text>
     </div>

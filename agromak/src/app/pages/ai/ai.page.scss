@@ -28,7 +28,7 @@ ion-footer {
 
 
 ion-input {
-  color: #1e2023;
+  color: var(--ion-color-dark);
 
   --highlight-color-focused: none;
   --highlight-color-invalid: none;
@@ -36,6 +36,9 @@ ion-input {
 
   border-radius: 10rem;
   background: #8ab4f6;
+
+  box-shadow: var(--ion-box-shadow);
+  border: 1px solid var(--ion-color-secondary-shade);
 }
 
 .max-width-75 {

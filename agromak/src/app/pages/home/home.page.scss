@@ -4,10 +4,16 @@ ion-header {
     padding: 10px 16px !important;
 
     & ion-icon {
-      font-size: 2.5rem;
+      //font-size: 2.5rem;
 
       fill: var(--ion-color-logo);
       //stroke: blue;
+
+      border-radius: 50%;
+      width: 2.5rem;
+      aspect-ratio: 1;
+      height: 100%;
+      padding: 0.5rem;
     }
   }
 
