@@ -28,8 +28,7 @@ import {
   heart,
   heartOutline,
   informationCircleOutline,
-  locationOutline,
-  personOutline
+  locationOutline
 } from "ionicons/icons";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
@@ -38,7 +37,6 @@ import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 
 const icons = {
-  personOutline,
   callOutline,
   locationOutline,
   heart,
