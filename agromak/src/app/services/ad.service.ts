@@ -37,7 +37,7 @@ export class AdService {
   myAds$: Observable<Ad[]>;
   favoriteAds$: Observable<Ad[]>;
 
-  user: User | null = null;
+  user!: User;
 
   constructor(private angularFirestore: AngularFirestore,
               private auth: Auth,
@@ -57,17 +57,14 @@ export class AdService {
   }
 
   async createAd(value: CreateAd, images?: GalleryPhoto[]) {
-    if (!this.user) {
-      await this.router.navigate(['/login']);
-    }
 
     const data = {
       ...value,
       title_lowercase: value.title.toLowerCase(),
       category: value.category,
       subcategory: value.subcategory,
-      ownerId: this.user!.uid,
-      ownerName: this.user!.displayName,
+      ownerId: this.user.uid,
+      ownerName: this.user.displayName,
       uploadedAt: new Date(),
       viewCount: 1,
       images: []
@@ -79,15 +76,11 @@ export class AdService {
   }
 
   async createDynamicAd(dynamicAd: CreateDynamicAd) {
-    if (!this.user) {
-      await this.router.navigate(['/login']);
-    }
-
     const data = {
       ...dynamicAd,
       title_lowercase: dynamicAd.title.toLowerCase(),
-      ownerId: this.user!.uid,
-      ownerName: this.user!.displayName,
+      ownerId: this.user.uid,
+      ownerName: this.user.displayName,
       viewCount: 1,
       uploadedAt: new Date(),
     };
@@ -102,10 +95,6 @@ export class AdService {
   }
 
   async updateAd(ad: UpdateDynamicAd) {
-    if (!this.user) {
-      return;
-    }
-
     const imagesToDelete: string[] = !ad.oldImages ?
       [] :
       ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage));
@@ -119,8 +108,8 @@ export class AdService {
     const updatedAdData = {
       ...ad,
       title_lowercase: ad.title.toLowerCase(),
-      ownerId: this.user!.uid,
-      ownerName: this.user!.displayName,
+      ownerId: this.user.uid,
+      ownerName: this.user.displayName,
       images: deleteField()
     }
 
@@ -209,12 +198,8 @@ export class AdService {
 
 
   async toggleFavoriteAd(adId: string) {
-    if (!this.user) {
-      await this.router.navigate(['/login']);
-    }
-
-    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user!.uid}`);
-    let favoriteAds = this.user!.favoriteAds;
+    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user.uid}`);
+    let favoriteAds = this.user.favoriteAds;
     const adIndex = favoriteAds.indexOf(adId);
 
     if (adIndex > -1) {
@@ -224,7 +209,7 @@ export class AdService {
     }
 
     const data = {
-      ...this.user!,
+      ...this.user,
       favoriteAds: favoriteAds,
     }
     await userRef.set(data, {merge: true});
@@ -233,12 +218,12 @@ export class AdService {
   }
 
   updateFavoriteAds() {
-    if (!this.user || this.user.favoriteAds.length === 0) {
+    if (this.user.favoriteAds.length === 0) {
       return;
     }
 
     this.angularFirestore
-      .collection('ads', ref => ref.where(documentId(), 'in', this.user!.favoriteAds))
+      .collection('ads', ref => ref.where(documentId(), 'in', this.user.favoriteAds))
       .snapshotChanges()
       .pipe(
         map((query) => {
@@ -250,12 +235,8 @@ export class AdService {
   }
 
   fetchMyAds() {
-    if (!this.user) {
-      return of([] as Ad[]);
-    }
-
     return this.angularFirestore
-      .collection('ads', ref => ref.where('ownerId', '==', this.user!.uid))
+      .collection('ads', ref => ref.where('ownerId', '==', this.user.uid))
       .snapshotChanges()
       .pipe(
         map((query) => {

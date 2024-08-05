@@ -15,7 +15,7 @@ import {Auth} from "@angular/fire/auth";
 })
 export class AuthService {
 
-  user$: Observable<User | null>;
+  user$: Observable<User>;
 
   constructor(private afAuth: AngularFireAuth,
               private angularFirestore: AngularFirestore,
@@ -31,10 +31,16 @@ export class AuthService {
           return this.angularFirestore.doc<User>(`users/${user.uid}`)
             .valueChanges()
             .pipe(
-              map(userData => userData || null)
+              map(userData => {
+                if (userData) {
+                  return userData;
+                } else {
+                  throw new Error('User not found');
+                }
+              })
             );
         } else {
-          return of(null);
+          throw new Error('No authenticated user');
         }
       })
     );

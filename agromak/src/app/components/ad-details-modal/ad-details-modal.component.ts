@@ -90,8 +90,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.ad)
-    this.favoriteSubscription = this.authService.user$.subscribe(async user => {
-      this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
+    this.favoriteSubscription = this.authService.user$.subscribe( user => {
+      this.isFavoriteAd = user.favoriteAds?.includes(this.ad.id);
     })
 
     this.authService.getUserProfile(this.ad.ownerId).subscribe(user => {

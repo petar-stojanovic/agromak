@@ -15,7 +15,7 @@ import {GalleryPhoto, Photo} from "@capacitor/camera";
 })
 export class ImageService {
 
-  user: User | null = null;
+  user!: User;
 
   constructor(private auth: Auth,
               private firestore: Firestore,
@@ -29,9 +29,7 @@ export class ImageService {
   }
 
   async uploadProfileImage(cameraFile: Photo) {
-    if (!this.user) {
-      return null;
-    }
+
     const path = `profile/${this.user.uid}/profile.png`;
     const storageRef = ref(this.storage, path);
 
@@ -124,6 +122,4 @@ export class ImageService {
     }
     return new Blob([int8Array], {type: 'image/jpeg'});
   }
-
-
 }

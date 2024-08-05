@@ -61,7 +61,7 @@ import {ProfileInfoComponent} from "../../components/profile-info/profile-info.c
 export class ProfilePage {
   private authService = inject(AuthService);
 
-  user: User | null = null;
+  user$ = this.authService.user$;
 
   constructor(private loadingController: LoadingController,
               private alertController: AlertController,
@@ -76,21 +76,6 @@ export class ProfilePage {
       heart,
       cubeOutline
     })
-    this.fetchData();
-  }
-
-  fetchData() {
-    this.authService.user$
-      .subscribe({
-          next: (data) => {
-            this.user = data;
-          },
-          error: (error) => {
-            console.error('Error fetching user:', error);
-            this.user = null;
-          }
-        }
-      );
   }
 
   async logOut() {

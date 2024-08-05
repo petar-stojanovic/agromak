@@ -42,7 +42,7 @@ import {User} from "../../../shared/models/user";
 })
 export class EditProfilePage implements OnInit {
 
-  user: User | null = null;
+  user!: User;
   form: FormGroup | undefined;
   phoneFormControl: JsonFormControls | null = null;
   locationFormControl: JsonFormControls | null = null;

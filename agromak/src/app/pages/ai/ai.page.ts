@@ -22,14 +22,14 @@ import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Message} from "../../shared/models/message";
 import {AuthService} from "../../services/auth.service";
-import {User} from "../../shared/models/user";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe]
 })
 export class AiPage {
   image: Photo | null = null;
@@ -39,7 +39,7 @@ export class AiPage {
 
   messages: Message[] = [];
 
-  user: User | null = null;
+  user$ = this.authService.user$;
 
   @ViewChild('content') content: any;
 
@@ -49,13 +49,7 @@ export class AiPage {
               private ng2ImgMaxService: Ng2ImgMaxService,
               private authService: AuthService) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
-    this.authService.user$
-      .subscribe({
-          next: (data) => {
-            this.user = data;
-          }
-        }
-      );
+
     this.form = new FormGroup({
       question: new FormControl("", [Validators.required])
     });

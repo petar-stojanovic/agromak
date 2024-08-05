@@ -12,7 +12,7 @@
     <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
               [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
-        <img [src]="i.from === 'YOU'? user?.photoURL : 'assets/images/openai.png'"/>
+        <img [src]="i.from === 'YOU'? (user$ | async)?.photoURL : 'assets/images/openai.png'"/>
       </ion-thumbnail>
       <ion-label>
         <ion-text>

@@ -7,7 +7,7 @@
 <ion-content class="ion-padding">
 
   <ion-list>
-    <app-profile-info [user]="user"/>
+    <app-profile-info [user]="user$ | async"/>
   </ion-list>
 
   <ion-list>
