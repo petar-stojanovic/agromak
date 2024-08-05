@@ -1,0 +1,21 @@
+@if (user(); as user) {
+  <ion-item lines="none">
+    <ion-thumbnail slot="start" class="profile-thumbnail">
+      @if (user.photoURL) {
+        <img [src]="user.photoURL" alt="Profile Picture"/>
+      } @else {
+        <div class="preview">
+          <p class="font-size-12">Select avatar</p>
+        </div>
+      }
+    </ion-thumbnail>
+    <ion-label>
+      <ion-text>
+        <h1 class="font-weight-bold">{{ user.displayName }}</h1>
+      </ion-text>
+      <ion-text color="medium">
+        <h3>{{ user.email }}</h3>
+      </ion-text>
+    </ion-label>
+  </ion-item>
+}

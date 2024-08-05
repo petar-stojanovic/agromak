@@ -6,10 +6,10 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
-  IonItem,
+  IonItem, IonLabel,
   IonList,
   IonListHeader,
-  IonText,
+  IonText, IonThumbnail,
   IonToolbar,
   ModalController,
   ToastController
@@ -28,7 +28,8 @@ import {
 } from "ionicons/icons";
 import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
-import {Subscription} from "rxjs";
+import {delay, Subscription} from "rxjs";
+import {User} from "../../shared/models/user";
 
 const icons = {
   personOutline,
@@ -62,7 +63,9 @@ const icons = {
     IonItem,
     IonIcon,
     IonButton,
-    IonBadge
+    IonBadge,
+    IonThumbnail,
+    IonLabel
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -70,6 +73,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   isFavoriteAd = false;
   favoriteSubscription: Subscription | null = null;
+
+  owner: User | null = null;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService,
@@ -84,8 +89,13 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       this.isFavoriteAd = !!user?.favoriteAds?.includes(this.ad.id);
     })
 
-    this.authService.getUserProfile(this.ad.ownerId).subscribe(it => {
-      console.log(it);
+    this.authService.getUserProfile(this.ad.ownerId)
+      .pipe(
+        delay(3000)
+      )
+      .subscribe(user => {
+      this.owner = user as User;
+      console.log(this.owner);
     })
 
     this.adService.incrementViewCount(this.ad.id);

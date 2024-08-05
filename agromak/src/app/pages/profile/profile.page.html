@@ -7,26 +7,7 @@
 <ion-content class="ion-padding">
   @if (user) {
     <ion-list class="background-white ion-margin-vertical">
-
-      <ion-item lines="none">
-        <ion-thumbnail slot="start" class="profile-thumbnail">
-          <img *ngIf="user.photoURL; else placeholderAvatar;" [src]="user.photoURL" alt="Profile Picture"/>
-
-          <ng-template #placeholderAvatar>
-            <div class="preview">
-              <p class="font-size-12">Select avatar</p>
-            </div>
-          </ng-template>
-        </ion-thumbnail>
-        <ion-label>
-          <ion-text>
-            <h1 class="font-weight-bold">{{ user.displayName }}</h1>
-          </ion-text>
-          <ion-text color="medium">
-            <h3>{{ user.email }}</h3>
-          </ion-text>
-        </ion-label>
-      </ion-item>
+      <app-profile-info [user]="user"/>
     </ion-list>
 
     <ion-list class="background-white ion-margin-vertical">

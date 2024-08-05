@@ -33,6 +33,7 @@ import {CommonModule} from "@angular/common";
 import {MyAdsComponent} from "./my-ads/my-ads.component";
 import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
 import {AdService} from "../../services/ad.service";
+import {ProfileInfoComponent} from "../../components/profile-info/profile-info.component";
 
 @Component({
   selector: 'app-profile',
@@ -54,6 +55,7 @@ import {AdService} from "../../services/ad.service";
     IonIcon,
     IonSkeletonText,
     RouterLink,
+    ProfileInfoComponent,
   ],
 })
 export class ProfilePage {
