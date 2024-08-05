@@ -62,8 +62,8 @@
       <ion-item lines="none">
         <ion-label>
           <p class="description"
-             [class.collapsed]="!isReadAllDescription && ad.description.length>100">{{ ad.description }}</p>
-          @if (ad.description.length > 100) {
+             [class.collapsed]="!isReadAllDescription && ad.description.length>300">{{ ad.description }}</p>
+          @if (ad.description.length > 300) {
             <ion-button
               (click)="isReadAllDescription = !isReadAllDescription"
               fill="clear"
