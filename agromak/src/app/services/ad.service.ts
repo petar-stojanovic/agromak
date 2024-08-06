@@ -105,8 +105,10 @@ export class AdService {
 
     const adDocRef = doc(this.firestore, `ads/${ad.id}`)
 
+    const { oldImages, ...adDataWithoutOldImages } = ad;
+
     const updatedAdData = {
-      ...ad,
+      ...adDataWithoutOldImages,
       title_lowercase: ad.title.toLowerCase(),
       ownerId: this.user.uid,
       ownerName: this.user.displayName,
@@ -134,7 +136,7 @@ export class AdService {
       query = this.angularFirestore
         .collection('ads', ref => ref
           .orderBy(documentId(), 'asc')
-          .limit(this.NUM_OF_STARTING_ADS)
+          // .limit(this.NUM_OF_STARTING_ADS)
         );
     } else {
       query = this.angularFirestore
