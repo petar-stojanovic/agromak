@@ -61,6 +61,7 @@ export class HomePage implements OnInit {
     this.adService.ads$
       .subscribe(async (ads) => {
         this.ads = ads;
+        console.log(this.ads)
         setTimeout(() => {
           this.isLoading = ads.length === 0;
         }, 500);

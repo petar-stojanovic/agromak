@@ -136,7 +136,7 @@ export class AdService {
       query = this.angularFirestore
         .collection('ads', ref => ref
           .orderBy(documentId(), 'asc')
-          // .limit(this.NUM_OF_STARTING_ADS)
+          .limit(this.NUM_OF_STARTING_ADS)
         );
     } else {
       query = this.angularFirestore
