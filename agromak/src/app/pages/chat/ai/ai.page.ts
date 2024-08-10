@@ -14,14 +14,14 @@ import {
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
-import {ImageService} from "../../services/image.service";
-import {OpenAiService} from "../../services/open-ai.service";
+import {ImageService} from "../../../services/image.service";
+import {OpenAiService} from "../../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Message} from "../../shared/models/message";
-import {AuthService} from "../../services/auth.service";
+import {Message} from "../../../shared/models/message";
+import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 
 @Component({

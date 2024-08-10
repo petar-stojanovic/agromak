@@ -9,7 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        children:[
+        children: [
           {
             path: '',
             loadComponent: () => import('../pages/home/home.page').then((m) => m.HomePage),
@@ -18,12 +18,21 @@ export const routes: Routes = [
       },
       {
         path: 'chat',
-        loadComponent: () =>
-          import('../pages/chat/chat.page').then((m) => m.ChatPage),
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('../pages/chat/chat.page').then((m) => m.ChatPage),
+          },
+          {
+            path: 'ai',
+            loadComponent: () => import('../pages/chat/ai/ai.page').then(m => m.AiPage)
+          }
+        ]
       },
       {
         path: 'profile',
-        children:[
+        children: [
           {
             path: '',
             loadComponent: () => import('../pages/profile/profile.page').then((m) => m.ProfilePage),
