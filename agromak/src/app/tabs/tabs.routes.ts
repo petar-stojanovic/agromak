@@ -17,9 +17,9 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'ai',
+        path: 'chat',
         loadComponent: () =>
-          import('../pages/ai/ai.page').then((m) => m.AiPage),
+          import('../pages/chat/chat.page').then((m) => m.ChatPage),
       },
       {
         path: 'profile',
