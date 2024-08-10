@@ -1,13 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>chat</ion-title>
+    <ion-title>Chat</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">chat</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-list>
+    @if (isLoading) {
+      @for (i of [1, 2, 3, 4, 5, 6]; track $index) {
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      }
+
+    } @else if (chats.length > 0) {
+
+      @for (chat of chats; track $index) {
+        <ion-item class="ion-no-padding" [routerLink]="['./ai']" lines="none">
+
+        </ion-item>
+
+      }
+    }
+  </ion-list>
 </ion-content>
