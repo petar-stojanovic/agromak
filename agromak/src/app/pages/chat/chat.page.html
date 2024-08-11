@@ -4,10 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+  <ion-segment [value]="segment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="chats">
+      <ion-label>All Chats</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="ai">
+      <ion-label>AI</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-list>
+
     @if (isLoading) {
-      @for (i of [1, 2, 3, 4, 5, 6]; track $index) {
+      @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
         <ion-item>
           <ion-thumbnail slot="start">
             <ion-skeleton-text [animated]="true"></ion-skeleton-text>
@@ -22,15 +32,36 @@
           </ion-label>
         </ion-item>
       }
-
-    } @else if (chats.length > 0) {
+    } @else if (segment === 'chats') {
 
       @for (chat of chats; track $index) {
-        <ion-item class="ion-no-padding" [routerLink]="['./ai']" lines="none">
 
+        <ion-item button detail>
+          <ion-thumbnail slot="start">
+            @if (chat.photoURL) {
+              <ion-img [src]="chat.photoURL"/>
+            } @else {
+              <ion-img src="assets/images/no-image.png"/>
+            }
+          </ion-thumbnail>
+          <ion-label>
+            <h2>User</h2>
+            <p>Chat with our User</p>
+          </ion-label>
         </ion-item>
 
       }
+    } @else if (segment === 'ai') {
+      <ion-item [routerLink]="['./ai']" button detail>
+        <ion-thumbnail slot="start">
+          <ion-img src="assets/logo.svg"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>AI</h2>
+          <p>Chat with our AI</p>
+        </ion-label>
+      </ion-item>
     }
   </ion-list>
+
 </ion-content>

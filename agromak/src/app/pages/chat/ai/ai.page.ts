@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {
-  IonButton,
+  IonBackButton,
+  IonButton, IonButtons,
   IonContent,
   IonFooter,
   IonHeader,
@@ -29,7 +30,7 @@ import {AsyncPipe} from "@angular/common";
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons]
 })
 export class AiPage {
   image: Photo | null = null;
