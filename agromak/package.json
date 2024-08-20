@@ -38,6 +38,7 @@
     "firebase": "^10.7.2",
     "ionicons": "^7.2.1",
     "ng2-img-max": "^2.2.9",
+    "ngx-markdown": "^18.0.0",
     "openai": "^4.55.4",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.6",

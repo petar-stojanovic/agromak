@@ -24,13 +24,14 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {Message} from "../../../shared/models/message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
+import {MarkdownComponent} from "ngx-markdown";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
 export class AiPage {
   image: Photo | null = null;

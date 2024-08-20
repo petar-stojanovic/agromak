@@ -53,7 +53,6 @@ export class OpenAiService {
           };
         })
       ],
-      "max_tokens": 200
     } as ChatCompletionCreateParamsStreaming);
 
     return stream;

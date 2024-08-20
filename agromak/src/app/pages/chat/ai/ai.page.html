@@ -20,7 +20,8 @@
           <h2 class="font-weight-500">{{ message.from }}</h2>
         </ion-text>
         <ion-text>
-          <p class="font-size-12">{{ message.message }}</p>
+<!--          <p class="font-size-12">{{ message.message }}</p>-->
+          <markdown [data]="message.message"></markdown>
         </ion-text>
         @if (message.image) {
           <ion-text>
