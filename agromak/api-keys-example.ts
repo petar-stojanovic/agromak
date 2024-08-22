@@ -4,4 +4,5 @@
 const OPEN_AI_SETTINGS = {
   "apiKey": "",
   "project": "",
+  "organization": ""
 }

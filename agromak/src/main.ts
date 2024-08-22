@@ -1,4 +1,4 @@
-import {enableProdMode, importProvidersFrom} from '@angular/core';
+import {enableProdMode, SecurityContext} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideRouter, RouteReuseStrategy} from '@angular/router';
 import {IonicRouteStrategy, provideIonicAngular} from '@ionic/angular/standalone';
@@ -11,8 +11,9 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 import {getDatabase, provideDatabase} from "@angular/fire/database";
-import { provideHttpClient } from "@angular/common/http";
+import {provideHttpClient} from "@angular/common/http";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
+import {provideMarkdown} from "ngx-markdown";
 
 if (environment.production) {
   enableProdMode();
@@ -24,6 +25,10 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideHttpClient(),
     provideRouter(routes),
+
+    provideMarkdown({
+      sanitize: SecurityContext.NONE
+    }),
 
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),

@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Ai
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ai</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +20,8 @@
           <h2 class="font-weight-500">{{ message.from }}</h2>
         </ion-text>
         <ion-text>
-          <p class="font-size-12">{{ message.message }}</p>
+<!--          <p class="font-size-12">{{ message.message }}</p>-->
+          <markdown [data]="message.message"></markdown>
         </ion-text>
         @if (message.image) {
           <ion-text>
@@ -31,7 +33,7 @@
   } @empty {
     <div class="ion-text-center h-100 flex ion-align-items-center ion-justify-content-center">
       <ion-text color="medium">
-        <img class="openai-logo" src="assets/logo.svg" alt="openAiLogo"/>
+        <img class="openai-logo" src="../../../../assets/logo.svg" alt="openAiLogo"/>
         <h2 class="font-weight-500">How can I help you today?</h2>
       </ion-text>
     </div>

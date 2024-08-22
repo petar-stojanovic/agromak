@@ -1,0 +1,55 @@
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {
+  IonBadge,
+  IonContent,
+  IonHeader, IonImg,
+  IonItem,
+  IonLabel,
+  IonList, IonSegment, IonSegmentButton,
+  IonSkeletonText,
+  IonText,
+  IonThumbnail,
+  IonTitle,
+  IonToolbar
+} from "@ionic/angular/standalone";
+import {RouterLink} from "@angular/router";
+import {SegmentCustomEvent} from "@ionic/angular";
+
+@Component({
+  selector: 'app-chat',
+  templateUrl: './chat.page.html',
+  styleUrls: ['./chat.page.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonBadge, IonItem, IonLabel, IonList, IonSkeletonText, IonText, IonThumbnail, RouterLink, IonImg, IonSegment, IonSegmentButton]
+})
+export class ChatPage implements OnInit {
+
+  isLoading = true;
+  chats: any;
+
+  segment = "chats";
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+    setTimeout(() =>{
+      this.isLoading = false;
+      this.chats = [
+        {
+          name: "AI",
+          photoURL: "assets/logo.svg",
+          lastMessage: "Hello there!",
+        }
+      ]
+    }, 1000)
+  }
+
+  onSegmentChanged(e: SegmentCustomEvent) {
+    console.log(e.target.value);
+    this.segment = e.target.value?.toString() || "chats";
+  }
+}

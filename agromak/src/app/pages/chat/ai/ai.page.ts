@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {
-  IonButton,
+  IonBackButton,
+  IonButton, IonButtons,
   IonContent,
   IonFooter,
   IonHeader,
@@ -14,22 +15,23 @@ import {
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
-import {ImageService} from "../../services/image.service";
-import {OpenAiService} from "../../services/open-ai.service";
+import {ImageService} from "../../../services/image.service";
+import {OpenAiService} from "../../../services/open-ai.service";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Message} from "../../shared/models/message";
-import {AuthService} from "../../services/auth.service";
+import {Message} from "../../../shared/models/message";
+import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
+import {MarkdownComponent} from "ngx-markdown";
 
 @Component({
   selector: 'app-ai',
   templateUrl: 'ai.page.html',
   styleUrls: ['ai.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
 export class AiPage {
   image: Photo | null = null;
