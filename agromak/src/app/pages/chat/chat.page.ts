@@ -20,6 +20,8 @@ import {
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {SegmentCustomEvent} from "@ionic/angular";
 import {ChatService} from "../../services/chat.service";
+import {AuthService} from "../../services/auth.service";
+import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-chat',
@@ -35,11 +37,16 @@ export class ChatPage implements OnInit {
 
   segment = "chats";
 
+  user!: User;
+
   constructor(private chatService: ChatService,
               private router: Router,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private authService: AuthService
   ) {
-
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    })
   }
 
   ngOnInit() {
