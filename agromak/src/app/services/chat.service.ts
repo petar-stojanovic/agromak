@@ -7,6 +7,7 @@ import {Message} from '../shared/models/message';
 import firebase from "firebase/compat/app";
 import FieldValue = firebase.firestore.FieldValue;
 import {take} from "rxjs";
+import {Chat} from "../shared/models/chat";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class ChatService {
   }
 
 
-  async createChat() {
+  async createAiChat() {
     const newChatRef = await this.angularFirestore.collection('chatgpt').add({
       createdBy: this.user.uid,
       messages: [],
@@ -40,6 +41,13 @@ export class ChatService {
       aiChats: FieldValue.arrayUnion(newChatRef.id)
     });
     return newChatRef.id;
+  }
+
+  getChat(chatId: string) {
+    return this.angularFirestore.collection<Chat>('chatgpt').doc(chatId).valueChanges()
+      .pipe(
+        take(1)
+      );
   }
 
   async updateChat(chatId: string, message: Message) {
@@ -57,7 +65,7 @@ export class ChatService {
     });
   }
 
-  deleteChatIfEmpty(chatId: string) {
+  deleteAiChatIfEmpty(chatId: string) {
     const chatDocRef = this.angularFirestore.collection('chatgpt').doc(chatId);
 
     chatDocRef.get()

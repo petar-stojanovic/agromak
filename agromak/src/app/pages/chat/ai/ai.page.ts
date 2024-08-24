@@ -1,4 +1,4 @@
-import {Component, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -36,7 +36,7 @@ import {ActivatedRoute} from "@angular/router";
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage implements OnDestroy {
+export class AiPage implements OnInit, OnDestroy {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -63,6 +63,16 @@ export class AiPage implements OnDestroy {
     });
 
     this.chatId = this.route.snapshot.paramMap.get('id')!;
+  }
+
+  ngOnInit() {
+    this.chatService.getChat(this.chatId).subscribe(chat => {
+      console.log(chat)
+      if (chat && chat.messages) {
+        this.messages = chat.messages;
+      }
+      this.scrollToBottom();
+    });
   }
 
   async uploadImage() {
@@ -102,19 +112,24 @@ export class AiPage implements OnDestroy {
 
     this.messages.push({from: "AI", message: "", image: null});
 
+    this.scrollToBottom();
+
     const latestMessageIndex = this.messages.length - 1;
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
       console.log(this.messages)
-      await this.content.scrollToBottom(100);
     }
 
     await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
   }
 
+  scrollToBottom() {
+    this.content.scrollToBottom(500);
+  }
+
   ngOnDestroy() {
-    this.chatService.deleteChatIfEmpty(this.chatId);
+    this.chatService.deleteAiChatIfEmpty(this.chatId);
   }
 }

@@ -55,9 +55,7 @@ export class ChatPage implements OnInit {
     }, 1000)
   }
 
-  onSegmentChanged(e
-                     :
-                     SegmentCustomEvent
+  onSegmentChanged(e: SegmentCustomEvent
   ) {
     console.log(e.target.value);
     this.segment = e.target.value?.toString() || "chats";
@@ -65,7 +63,7 @@ export class ChatPage implements OnInit {
 
 
   async navigateToNewAiPage() {
-    const id = await this.chatService.createChat();
+    const id = await this.chatService.createAiChat();
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 }

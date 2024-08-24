@@ -3,9 +3,8 @@ import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
 
 export interface Chat {
-  id: string;
-  userId: string;
+  createdBy: string;
   messages: Message[];
-  createdAt: Timestamp;
   updatedAt: Timestamp;
+  createdAt: Timestamp;
 }
