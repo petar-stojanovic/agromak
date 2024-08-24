@@ -62,14 +62,14 @@
         </ion-label>
       </ion-item>
       @for (chat of user.aiChats; track $index) {
-        <ion-item button detail lines="none">
+        <ion-item [routerLink]="['./ai', chat.id]" button detail lines="none">
           <ion-thumbnail slot="start">
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
             <h2>AI</h2>
-            <p>{{chat.lastMessage}}</p>
-            <p>{{chat.updatedAt.toDate() | date:'dd.MM.yyyy' }}</p>
+            <p>{{ chat.lastMessage }}</p>
+            <p>{{ chat.updatedAt.toDate() | date:'dd.MM.yyyy' }}</p>
           </ion-label>
         </ion-item>
       }
