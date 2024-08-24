@@ -6,7 +6,7 @@ import {User} from "../shared/models/user";
 import {Message} from '../shared/models/message';
 import firebase from "firebase/compat/app";
 import FieldValue = firebase.firestore.FieldValue;
-import {take} from "rxjs";
+import {of, switchMap, take} from "rxjs";
 import {Chat} from "../shared/models/chat";
 
 @Injectable({
@@ -29,16 +29,22 @@ export class ChatService {
 
 
   async createAiChat() {
+    const currentDate = new Date();
     const newChatRef = await this.angularFirestore.collection('chatgpt').add({
       createdBy: this.user.uid,
       messages: [],
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: currentDate,
+      updatedAt: currentDate
     });
 
     const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
     await updateDoc(userDocRef, {
-      aiChats: FieldValue.arrayUnion(newChatRef.id)
+      aiChats: FieldValue.arrayUnion({
+        id: newChatRef.id,
+        lastMessage: '',
+        updatedAt: currentDate
+      })
+
     });
     return newChatRef.id;
   }
@@ -51,17 +57,18 @@ export class ChatService {
   }
 
   async updateChat(chatId: string, message: Message) {
+    const currentDate = new Date();
 
     console.log(message)
     const data = {
       ...message,
-      createdAt: new Date()
+      createdAt: currentDate
     };
 
     const chatDocRef = doc(this.firestore, `chatgpt/${chatId}`);
     await updateDoc(chatDocRef, {
       messages: FieldValue.arrayUnion(data),
-      updatedAt: new Date()
+      updatedAt: currentDate
     });
   }
 
@@ -75,11 +82,22 @@ export class ChatService {
       .subscribe(async chatData => {
         if (chatData.exists) {
           const data: any = chatData.data();
+          console.log(data)
+
           if (data && data.messages.length === 0) {
             await chatDocRef.delete();
+
             const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
+
+            const objToDelete = {
+              id: chatId,
+              lastMessage: '',
+              updatedAt: data.createdAt
+            }
+            console.log(objToDelete)
+
             await updateDoc(userDocRef, {
-              aiChats: FieldValue.arrayRemove(chatId)
+              aiChats: FieldValue.arrayRemove(objToDelete)
             });
           }
         }
