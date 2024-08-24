@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy, ViewChild} from '@angular/core';
 import {
   IonBackButton,
   IonButton, IonButtons,
@@ -33,7 +33,7 @@ import {MarkdownComponent} from "ngx-markdown";
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage {
+export class AiPage implements OnDestroy {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -96,6 +96,10 @@ export class AiPage {
       console.log(this.messages)
       await this.content.scrollToBottom(100);
     }
+  }
+
+  ngOnDestroy(){
+
   }
 
 }
