@@ -1,7 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {
   IonBackButton,
-  IonButton, IonButtons,
+  IonButton,
+  IonButtons,
   IonContent,
   IonFooter,
   IonHeader,
@@ -25,6 +26,8 @@ import {Message} from "../../../shared/models/message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
+import {ChatService} from "../../../services/chat.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-ai',
@@ -33,7 +36,7 @@ import {MarkdownComponent} from "ngx-markdown";
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage {
+export class AiPage implements OnInit, OnDestroy, AfterViewInit {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -43,19 +46,38 @@ export class AiPage {
 
   user$ = this.authService.user$;
 
-  @ViewChild('content') content: any;
+  @ViewChild('content') content!: IonContent;
 
+  chatId = '';
 
   constructor(private openAiService: OpenAiService,
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private chatService: ChatService,
+              private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 
     this.form = new FormGroup({
       question: new FormControl("", [Validators.required])
     });
 
+    this.chatId = this.route.snapshot.paramMap.get('id')!;
+  }
+
+  ngOnInit() {
+    this.chatService.getChat(this.chatId).subscribe(chat => {
+      console.log(chat)
+      if (chat && chat.messages) {
+        this.messages = chat.messages;
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(async () => {
+      await this.scrollToBottom()
+    }, 500)
   }
 
   async uploadImage() {
@@ -75,27 +97,44 @@ export class AiPage {
 
     const {question} = this.form.value;
     this.form.reset();
-    this.messages.push({
+
+
+    const userMessage: Message = {
       from: "YOU",
       message: question,
-      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : undefined
-    });
+      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : null
+    };
+
+    this.messages.push(userMessage);
 
     this.image = null;
     this.compressedImage = null;
 
+
+    await this.chatService.updateChat(this.chatId, userMessage);
+
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
-    this.messages.push({from: "AI", message: ""});
+    this.messages.push({from: "AI", message: "", image: null});
+
+   await this.scrollToBottom();
 
     const latestMessageIndex = this.messages.length - 1;
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
-      console.log(this.messages)
-      await this.content.scrollToBottom(100);
+      // console.log(this.messages)
     }
+
+    await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
   }
 
+  private async scrollToBottom() {
+    await this.content.scrollToBottom(500);
+  }
+
+  ngOnDestroy() {
+    this.chatService.deleteAiChatIfEmpty(this.chatId);
+  }
 }

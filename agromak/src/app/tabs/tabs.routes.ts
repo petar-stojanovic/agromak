@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
-import * as path from "node:path";
 
 export const routes: Routes = [
   {
@@ -25,7 +24,7 @@ export const routes: Routes = [
               import('../pages/chat/chat.page').then((m) => m.ChatPage),
           },
           {
-            path: 'ai',
+            path: 'ai/:id',
             loadComponent: () => import('../pages/chat/ai/ai.page').then(m => m.AiPage)
           }
         ]
