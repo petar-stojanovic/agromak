@@ -6,6 +6,7 @@ import {User} from "../shared/models/user";
 import {Message} from '../shared/models/message';
 import firebase from "firebase/compat/app";
 import FieldValue = firebase.firestore.FieldValue;
+import {take} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,15 @@ export class ChatService {
 
   async createChat() {
     const newChatRef = await this.angularFirestore.collection('chatgpt').add({
-      createdAt: new Date(),
       createdBy: this.user.uid,
-      messages: []
+      messages: [],
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
+
+    const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
+    await updateDoc(userDocRef, {
+      aiChats: FieldValue.arrayUnion(newChatRef.id)
     });
     return newChatRef.id;
   }
@@ -40,42 +47,35 @@ export class ChatService {
     console.log(message)
     const data = {
       ...message,
-      userId: this.user.uid,
-      createdAt: new Date(),
+      createdAt: new Date()
     };
 
-
-    if (chatId) {
-      const chatDocRef = doc(this.firestore, `chatgpt/${chatId}`);
-      await updateDoc(chatDocRef, {
-        messages: FieldValue.arrayUnion(data),
-        updatedAt: FieldValue.serverTimestamp()
-      });
-      return;
-    } else {
-      const newChatRef = this.angularFirestore.collection('chatgpt').doc();
-      await newChatRef.set({
-        userId: this.user.uid,
-        messages: [data],
-        createdAt: new Date(),
-        updatedAt: FieldValue.serverTimestamp(),
-      });
-      return newChatRef.ref.id;
-    }
+    const chatDocRef = doc(this.firestore, `chatgpt/${chatId}`);
+    await updateDoc(chatDocRef, {
+      messages: FieldValue.arrayUnion(data),
+      updatedAt: new Date()
+    });
   }
 
   deleteChatIfEmpty(chatId: string) {
     const chatDocRef = this.angularFirestore.collection('chatgpt').doc(chatId);
 
-    chatDocRef.get().subscribe(async chatData => {
-      if (chatData.exists) {
-        const data: any = chatData.data();
-        if (data && data.messages.length === 0) {
-          console.log("EMPTY", data);
-          await chatDocRef.delete();
+    chatDocRef.get()
+      .pipe(
+        take(1)
+      )
+      .subscribe(async chatData => {
+        if (chatData.exists) {
+          const data: any = chatData.data();
+          if (data && data.messages.length === 0) {
+            await chatDocRef.delete();
+            const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
+            await updateDoc(userDocRef, {
+              aiChats: FieldValue.arrayRemove(chatId)
+            });
+          }
         }
-      }
-    })
+      })
 
   }
 }
