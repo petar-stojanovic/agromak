@@ -4,18 +4,22 @@ import {FormsModule} from '@angular/forms';
 import {
   IonBadge,
   IonContent,
-  IonHeader, IonImg,
+  IonHeader,
+  IonImg,
   IonItem,
   IonLabel,
-  IonList, IonSegment, IonSegmentButton,
+  IonList,
+  IonSegment,
+  IonSegmentButton,
   IonSkeletonText,
   IonText,
   IonThumbnail,
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {SegmentCustomEvent} from "@ionic/angular";
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-chat',
@@ -31,12 +35,15 @@ export class ChatPage implements OnInit {
 
   segment = "chats";
 
-  constructor() {
+  constructor(private chatService: ChatService,
+              private router: Router,
+              private route: ActivatedRoute
+  ) {
 
   }
 
   ngOnInit() {
-    setTimeout(() =>{
+    setTimeout(() => {
       this.isLoading = false;
       this.chats = [
         {
@@ -48,8 +55,17 @@ export class ChatPage implements OnInit {
     }, 1000)
   }
 
-  onSegmentChanged(e: SegmentCustomEvent) {
+  onSegmentChanged(e
+                     :
+                     SegmentCustomEvent
+  ) {
     console.log(e.target.value);
     this.segment = e.target.value?.toString() || "chats";
+  }
+
+
+  async navigateToNewAiPage() {
+    const id = await this.chatService.createChat();
+    await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 }

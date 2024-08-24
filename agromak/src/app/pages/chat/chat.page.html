@@ -52,7 +52,7 @@
 
       }
     } @else if (segment === 'ai') {
-      <ion-item [routerLink]="['./ai']" button detail>
+      <ion-item (click)="navigateToNewAiPage()" button detail>
         <ion-thumbnail slot="start">
           <ion-img src="assets/logo.svg"/>
         </ion-thumbnail>

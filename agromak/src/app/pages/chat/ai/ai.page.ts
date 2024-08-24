@@ -1,7 +1,8 @@
 import {Component, OnDestroy, ViewChild} from '@angular/core';
 import {
   IonBackButton,
-  IonButton, IonButtons,
+  IonButton,
+  IonButtons,
   IonContent,
   IonFooter,
   IonHeader,
@@ -25,6 +26,8 @@ import {Message} from "../../../shared/models/message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
+import {ChatService} from "../../../services/chat.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-ai',
@@ -45,17 +48,21 @@ export class AiPage implements OnDestroy {
 
   @ViewChild('content') content: any;
 
+  chatId = '';
 
   constructor(private openAiService: OpenAiService,
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private chatService: ChatService,
+              private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 
     this.form = new FormGroup({
       question: new FormControl("", [Validators.required])
     });
 
+    this.chatId = this.route.snapshot.paramMap.get('id')!;
   }
 
   async uploadImage() {
@@ -75,18 +82,25 @@ export class AiPage implements OnDestroy {
 
     const {question} = this.form.value;
     this.form.reset();
-    this.messages.push({
+
+
+    const userMessage: Message = {
       from: "YOU",
       message: question,
-      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : undefined
-    });
+      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : null
+    };
+
+    this.messages.push(userMessage);
 
     this.image = null;
     this.compressedImage = null;
 
+
+    await this.chatService.updateChat(this.chatId, userMessage);
+
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
-    this.messages.push({from: "AI", message: ""});
+    this.messages.push({from: "AI", message: "", image: null});
 
     const latestMessageIndex = this.messages.length - 1;
 
@@ -96,10 +110,11 @@ export class AiPage implements OnDestroy {
       console.log(this.messages)
       await this.content.scrollToBottom(100);
     }
+
+    await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
   }
 
-  ngOnDestroy(){
-
+  ngOnDestroy() {
+    this.chatService.deleteChatIfEmpty(this.chatId);
   }
-
 }
