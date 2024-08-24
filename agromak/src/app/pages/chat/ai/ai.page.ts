@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -36,7 +36,7 @@ import {ActivatedRoute} from "@angular/router";
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage implements OnInit, OnDestroy {
+export class AiPage implements OnInit, OnDestroy, AfterViewInit {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -46,7 +46,7 @@ export class AiPage implements OnInit, OnDestroy {
 
   user$ = this.authService.user$;
 
-  @ViewChild('content') content: any;
+  @ViewChild('content') content!: IonContent;
 
   chatId = '';
 
@@ -71,8 +71,13 @@ export class AiPage implements OnInit, OnDestroy {
       if (chat && chat.messages) {
         this.messages = chat.messages;
       }
-      this.scrollToBottom();
     });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(async () => {
+      await this.scrollToBottom()
+    }, 500)
   }
 
   async uploadImage() {
@@ -112,21 +117,21 @@ export class AiPage implements OnInit, OnDestroy {
 
     this.messages.push({from: "AI", message: "", image: null});
 
-    this.scrollToBottom();
+   await this.scrollToBottom();
 
     const latestMessageIndex = this.messages.length - 1;
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
-      console.log(this.messages)
+      // console.log(this.messages)
     }
 
     await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
   }
 
-  scrollToBottom() {
-    this.content.scrollToBottom(500);
+  private async scrollToBottom() {
+    await this.content.scrollToBottom(500);
   }
 
   ngOnDestroy() {

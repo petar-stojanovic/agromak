@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
+import {doc, Firestore, getDoc, updateDoc} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
 import {Message} from '../shared/models/message';
@@ -71,14 +71,31 @@ export class ChatService {
     });
 
     if (message.from === 'AI') {
-      const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
-      await updateDoc(userDocRef, {
-        aiChats: FieldValue.arrayUnion({
-          id: chatId,
-          lastMessage: message.message,
-          updatedAt: currentDate
+      const userDocRef = this.angularFirestore.doc(`users/${this.user.uid}`);
+
+      userDocRef.get().subscribe(userDoc => {
+        const userDocData: any = userDoc.data();
+        if (userDocData && userDocData.aiChats) {
+          userDocData.aiChats.forEach((chat: any) => {
+            if (chat.id === chatId) {
+              const objToDelete = {...chat};
+              userDocRef.update({
+                aiChats: FieldValue.arrayRemove(objToDelete)
+              },)
+            }
+          });
+        }
+
+        userDocRef.update({
+          aiChats: FieldValue.arrayUnion({
+            id: chatId,
+            lastMessage: message.message,
+            updatedAt: currentDate
+          })
         })
-      });
+      })
+
+
     }
   }
 
