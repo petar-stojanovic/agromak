@@ -59,7 +59,6 @@ export class ChatService {
   async updateChat(chatId: string, message: Message) {
     const currentDate = new Date();
 
-    console.log(message)
     const data = {
       ...message,
       createdAt: currentDate
@@ -70,6 +69,17 @@ export class ChatService {
       messages: FieldValue.arrayUnion(data),
       updatedAt: currentDate
     });
+
+    if (message.from === 'AI') {
+      const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
+      await updateDoc(userDocRef, {
+        aiChats: FieldValue.arrayUnion({
+          id: chatId,
+          lastMessage: message.message,
+          updatedAt: currentDate
+        })
+      });
+    }
   }
 
   deleteAiChatIfEmpty(chatId: string) {
