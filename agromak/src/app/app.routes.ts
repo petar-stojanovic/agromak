@@ -30,5 +30,9 @@ export const routes: Routes = [
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
+  },  {
+    path: 'user',
+    loadComponent: () => import('./pages/chat/user/user.page').then( m => m.UserPage)
   },
+
 ];

@@ -2,8 +2,19 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  margin: 5px 0;
 }
 
 ion-thumbnail {
   --size: 2rem;
+}
+
+.new-ai-chat {
+  --background: var(--ion-color-primary-light);
+
+  border-radius: 10rem;
+
+  & h2 {
+    margin: 10px 0;
+  }
 }

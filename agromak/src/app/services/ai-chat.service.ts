@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {doc, Firestore, getDoc, updateDoc} from "@angular/fire/firestore";
+import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
-import {Message} from '../shared/models/message';
+import {AiMessage} from '../shared/models/ai-message';
 import firebase from "firebase/compat/app";
+import {take} from "rxjs";
+import {AiChat} from "../shared/models/ai-chat";
+import {ChatService} from "./interfaces/chat-service";
 import FieldValue = firebase.firestore.FieldValue;
-import {of, switchMap, take} from "rxjs";
-import {Chat} from "../shared/models/chat";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService {
+export class AiChatService implements ChatService {
 
   user!: User;
 
@@ -27,8 +28,7 @@ export class ChatService {
     });
   }
 
-
-  async createAiChat() {
+  async createChat() {
     const currentDate = new Date();
     const newChatRef = await this.angularFirestore.collection('chatgpt').add({
       createdBy: this.user.uid,
@@ -50,13 +50,13 @@ export class ChatService {
   }
 
   getChat(chatId: string) {
-    return this.angularFirestore.collection<Chat>('chatgpt').doc(chatId).valueChanges()
+    return this.angularFirestore.collection<AiChat>('chatgpt').doc(chatId).valueChanges()
       .pipe(
         take(1)
       );
   }
 
-  async updateChat(chatId: string, message: Message) {
+  async sendMessage(chatId: string, message: AiMessage) {
     const currentDate = new Date();
 
     const data = {
@@ -99,13 +99,15 @@ export class ChatService {
     }
   }
 
+  async deleteChat(chatId: string) {
+    await this.angularFirestore.collection('chatgpt').doc(chatId).delete();
+  }
+
+
   deleteAiChatIfEmpty(chatId: string) {
     const chatDocRef = this.angularFirestore.collection('chatgpt').doc(chatId);
 
     chatDocRef.get()
-      .pipe(
-        take(1)
-      )
       .subscribe(async chatData => {
         if (chatData.exists) {
           const data: any = chatData.data();

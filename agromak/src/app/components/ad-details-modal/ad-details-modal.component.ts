@@ -1,10 +1,13 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
+  AlertController,
+  IonAlert,
   IonBackButton,
   IonBadge,
   IonButton,
   IonButtons,
   IonContent,
+  IonFooter,
   IonHeader,
   IonIcon,
   IonItem,
@@ -24,6 +27,8 @@ import {
   arrowBack,
   calendarOutline,
   callOutline,
+  chatboxEllipsesOutline,
+  copyOutline,
   eyeOutline,
   heart,
   heartOutline,
@@ -35,6 +40,7 @@ import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
+import {UserChatService} from "../../services/user-chat.service";
 
 const icons = {
   callOutline,
@@ -44,7 +50,9 @@ const icons = {
   arrowBack,
   calendarOutline,
   informationCircleOutline,
-  eyeOutline
+  eyeOutline,
+  chatboxEllipsesOutline,
+  copyOutline
 };
 
 @Component({
@@ -70,7 +78,9 @@ const icons = {
     IonBadge,
     IonThumbnail,
     IonLabel,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    IonFooter,
+    IonAlert
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -86,13 +96,15 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   constructor(private modalCtrl: ModalController,
               private adService: AdService,
               private toastController: ToastController,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private alertController: AlertController,
+              private chatService: UserChatService) {
     addIcons(icons);
   }
 
   ngOnInit() {
     console.log(this.ad)
-    this.favoriteSubscription = this.authService.user$.subscribe( user => {
+    this.favoriteSubscription = this.authService.user$.subscribe(user => {
       this.isFavoriteAd = user.favoriteAds?.includes(this.ad.id);
     })
 
@@ -101,6 +113,11 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     });
 
     this.adService.incrementViewCount(this.ad.id);
+
+    setTimeout(() => {
+        // this.openMessageModal()
+      }
+      , 1000)
   }
 
   ngOnDestroy() {
@@ -119,5 +136,55 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     });
 
     await toast.present();
+  }
+
+  async openProfileInfoModal() {
+    const modal = await this.modalCtrl.create({
+      component: ProfileInfoComponent,
+      componentProps: {user: this.owner}
+    });
+
+    await modal.present();
+  }
+
+  async callPerson() {
+    window.open(`tel:${this.owner?.phoneNumber}`);
+  }
+
+  async openMessageModal() {
+    if(this.owner === null) {
+      return;
+    }
+    const alert = await this.alertController.create({
+      header: 'Send Message',
+      message: 'Please send a message',
+      cssClass: 'message-alert',
+      inputs: [
+        {
+          type: 'textarea',
+          name: 'message',
+          placeholder: 'Type your message here',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'Cancel',
+        },
+        {
+          text: 'Send Message',
+          role: 'send',
+          handler: async (data) => {
+            console.log(data['message']);
+
+            const chatroomId = await this.chatService.createChatRoom(this.owner!.uid)
+            await this.chatService.sendMessage(chatroomId, data['message'])
+
+            return true;
+          },
+        }]
+    });
+
+    await alert.present();
   }
 }

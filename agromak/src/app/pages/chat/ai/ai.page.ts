@@ -22,11 +22,11 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Message} from "../../../shared/models/message";
+import {AiMessage} from "../../../shared/models/ai-message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
-import {ChatService} from "../../../services/chat.service";
+import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -42,7 +42,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
 
   form: FormGroup;
 
-  messages: Message[] = [];
+  messages: AiMessage[] = [];
 
   user$ = this.authService.user$;
 
@@ -54,7 +54,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private authService: AuthService,
-              private chatService: ChatService,
+              private chatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 
@@ -99,7 +99,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     this.form.reset();
 
 
-    const userMessage: Message = {
+    const userMessage: AiMessage = {
       from: "YOU",
       message: question,
       image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : null
@@ -111,7 +111,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     this.compressedImage = null;
 
 
-    await this.chatService.updateChat(this.chatId, userMessage);
+    await this.chatService.sendMessage(this.chatId, userMessage);
 
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
@@ -127,7 +127,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
       // console.log(this.messages)
     }
 
-    await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
+    await this.chatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
   }
 
   private async scrollToBottom() {
