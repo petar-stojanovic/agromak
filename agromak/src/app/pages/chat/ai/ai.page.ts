@@ -26,7 +26,7 @@ import {AiMessage} from "../../../shared/models/ai-message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
-import {ChatService} from "../../../services/chat.service";
+import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -54,7 +54,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private authService: AuthService,
-              private chatService: ChatService,
+              private chatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 

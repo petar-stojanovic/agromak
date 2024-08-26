@@ -12,7 +12,7 @@ import FieldValue = firebase.firestore.FieldValue;
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService {
+export class AiChatService {
 
   user!: User;
 

@@ -19,7 +19,7 @@ import {
 } from "@ionic/angular/standalone";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {SegmentCustomEvent} from "@ionic/angular";
-import {ChatService} from "../../services/chat.service";
+import {AiChatService} from "../../services/ai-chat.service";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../shared/models/user";
 
@@ -39,7 +39,7 @@ export class ChatPage implements OnInit {
 
   user!: User;
 
-  constructor(private chatService: ChatService,
+  constructor(private aiChatService: AiChatService,
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService
@@ -70,7 +70,7 @@ export class ChatPage implements OnInit {
 
 
   async navigateToNewAiPage() {
-    const id = await this.chatService.createAiChat();
+    const id = await this.aiChatService.createAiChat();
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 }
