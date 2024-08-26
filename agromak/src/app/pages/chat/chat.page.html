@@ -58,7 +58,7 @@
         </ion-thumbnail>
         <ion-label>
           <h2>AI</h2>
-          <p>Chat with our AI</p>
+          <p>Start new chat with our AI</p>
         </ion-label>
       </ion-item>
       @for (chat of user.aiChats; track $index) {
@@ -67,9 +67,8 @@
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
-            <h2>AI</h2>
-            <p class="last-message">{{ chat.lastMessage }}</p>
-            <p>{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
+            <p class="last-message font-weight-bold">{{ chat.lastMessage }}</p>
+            <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
           </ion-label>
         </ion-item>
       }
