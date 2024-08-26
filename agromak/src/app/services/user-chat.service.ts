@@ -37,6 +37,7 @@ export class UserChatService implements ChatService {
   }
 
   sendMessage(chatId: string, message: any): Promise<any> {
+    console.log(chatId, message);
     throw new Error('Method not implemented.');
   }
 
@@ -63,11 +64,11 @@ export class UserChatService implements ChatService {
       console.log("existing room", room);
 
       if (room.length > 0) {
-        return room[0];
+        return room[0].id;
       }
 
       const dateCreated = new Date();
-      const data: UserChat = {
+      const data: any = {
         members: [
           this.user.uid,
           userId
@@ -77,7 +78,8 @@ export class UserChatService implements ChatService {
         createdAt: dateCreated as unknown as Timestamp,
       }
       room = await this.api.addDocument('chatRooms', data);
-      return room;
+      console.log("new room", room);
+      return room.id;
     } catch (e) {
       console.log(e);
       throw e;

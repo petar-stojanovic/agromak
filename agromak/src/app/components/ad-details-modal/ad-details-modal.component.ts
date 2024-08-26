@@ -6,7 +6,8 @@ import {
   IonBadge,
   IonButton,
   IonButtons,
-  IonContent, IonFooter,
+  IonContent,
+  IonFooter,
   IonHeader,
   IonIcon,
   IonItem,
@@ -25,7 +26,9 @@ import {addIcons} from "ionicons";
 import {
   arrowBack,
   calendarOutline,
-  callOutline, chatboxEllipsesOutline, copyOutline,
+  callOutline,
+  chatboxEllipsesOutline,
+  copyOutline,
   eyeOutline,
   heart,
   heartOutline,
@@ -37,8 +40,7 @@ import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
-import {AlertButton} from "@ionic/angular/standalone";
-import {IonicSafeString} from "@ionic/angular";
+import {UserChatService} from "../../services/user-chat.service";
 
 const icons = {
   callOutline,
@@ -95,7 +97,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private adService: AdService,
               private toastController: ToastController,
               private authService: AuthService,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private chatService: UserChatService) {
     addIcons(icons);
   }
 
@@ -112,7 +115,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     this.adService.incrementViewCount(this.ad.id);
 
     setTimeout(() => {
-        this.openMessageModal()
+        // this.openMessageModal()
       }
       , 1000)
   }
@@ -149,11 +152,14 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   async openMessageModal() {
+    if(this.owner === null) {
+      return;
+    }
     const alert = await this.alertController.create({
       header: 'Send Message',
       message: 'Please send a message',
       cssClass: 'message-alert',
-      inputs:[
+      inputs: [
         {
           type: 'textarea',
           name: 'message',
@@ -168,8 +174,13 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
         {
           text: 'Send Message',
           role: 'send',
-          handler: (data) => {
+          handler: async (data) => {
             console.log(data['message']);
+
+            const chatroomId = await this.chatService.createChatRoom(this.owner!.uid)
+            await this.chatService.sendMessage(chatroomId, data['message'])
+
+            return true;
           },
         }]
     });
