@@ -4,7 +4,7 @@ import {
   IonBadge,
   IonButton,
   IonButtons,
-  IonContent,
+  IonContent, IonFooter,
   IonHeader,
   IonIcon,
   IonItem,
@@ -23,7 +23,7 @@ import {addIcons} from "ionicons";
 import {
   arrowBack,
   calendarOutline,
-  callOutline,
+  callOutline, chatboxEllipsesOutline,
   eyeOutline,
   heart,
   heartOutline,
@@ -44,7 +44,8 @@ const icons = {
   arrowBack,
   calendarOutline,
   informationCircleOutline,
-  eyeOutline
+  eyeOutline,
+  chatboxEllipsesOutline
 };
 
 @Component({
@@ -70,7 +71,8 @@ const icons = {
     IonBadge,
     IonThumbnail,
     IonLabel,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    IonFooter
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
