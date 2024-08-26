@@ -70,7 +70,7 @@ export class ChatPage implements OnInit {
 
 
   async navigateToNewAiPage() {
-    const id = await this.aiChatService.createAiChat();
+    const id = await this.aiChatService.createChat();
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 }

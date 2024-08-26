@@ -111,7 +111,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     this.compressedImage = null;
 
 
-    await this.chatService.updateChat(this.chatId, userMessage);
+    await this.chatService.sendMessage(this.chatId, userMessage);
 
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
@@ -127,7 +127,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
       // console.log(this.messages)
     }
 
-    await this.chatService.updateChat(this.chatId, this.messages[latestMessageIndex]);
+    await this.chatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
   }
 
   private async scrollToBottom() {

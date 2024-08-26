@@ -7,12 +7,13 @@ import {AiMessage} from '../shared/models/ai-message';
 import firebase from "firebase/compat/app";
 import {take} from "rxjs";
 import {AiChat} from "../shared/models/ai-chat";
+import {ChatService} from "./interfaces/chat-service";
 import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
   providedIn: 'root'
 })
-export class AiChatService {
+export class AiChatService implements ChatService {
 
   user!: User;
 
@@ -27,8 +28,7 @@ export class AiChatService {
     });
   }
 
-
-  async createAiChat() {
+  async createChat() {
     const currentDate = new Date();
     const newChatRef = await this.angularFirestore.collection('chatgpt').add({
       createdBy: this.user.uid,
@@ -56,7 +56,7 @@ export class AiChatService {
       );
   }
 
-  async updateChat(chatId: string, message: AiMessage) {
+  async sendMessage(chatId: string, message: AiMessage) {
     const currentDate = new Date();
 
     const data = {
@@ -99,13 +99,15 @@ export class AiChatService {
     }
   }
 
+  async deleteChat(chatId: string) {
+    await this.angularFirestore.collection('chatgpt').doc(chatId).delete();
+  }
+
+
   deleteAiChatIfEmpty(chatId: string) {
     const chatDocRef = this.angularFirestore.collection('chatgpt').doc(chatId);
 
     chatDocRef.get()
-      .pipe(
-        take(1)
-      )
       .subscribe(async chatData => {
         if (chatData.exists) {
           const data: any = chatData.data();
