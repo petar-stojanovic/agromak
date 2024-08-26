@@ -35,7 +35,7 @@ export class ChatPage implements OnInit {
   isLoading = true;
   chats: any;
 
-  segment = "ai";
+  segment = "chats";
 
   user!: User;
 

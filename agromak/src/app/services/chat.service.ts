@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {doc, Firestore, getDoc, updateDoc} from "@angular/fire/firestore";
+import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
 import {Message} from '../shared/models/message';
 import firebase from "firebase/compat/app";
+import {take} from "rxjs";
+import {AiChat} from "../shared/models/ai-chat";
 import FieldValue = firebase.firestore.FieldValue;
-import {of, switchMap, take} from "rxjs";
-import {Chat} from "../shared/models/chat";
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class ChatService {
   }
 
   getChat(chatId: string) {
-    return this.angularFirestore.collection<Chat>('chatgpt').doc(chatId).valueChanges()
+    return this.angularFirestore.collection<AiChat>('chatgpt').doc(chatId).valueChanges()
       .pipe(
         take(1)
       );
