@@ -52,13 +52,12 @@
 
       }
     } @else if (segment === 'ai') {
-      <ion-item (click)="navigateToNewAiPage()" button detail lines="none">
+      <ion-item (click)="navigateToNewAiPage()" button detail lines="none" class="new-ai-chat">
         <ion-thumbnail slot="start">
           <ion-img src="assets/logo.svg"/>
         </ion-thumbnail>
         <ion-label>
-          <h2>AI</h2>
-          <p>Start new chat with our AI</p>
+          <h2 class="font-weight-bold">Start new chat with our AI</h2>
         </ion-label>
       </ion-item>
       @for (chat of user.aiChats; track $index) {
