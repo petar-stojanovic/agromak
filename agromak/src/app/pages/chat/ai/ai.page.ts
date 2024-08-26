@@ -22,7 +22,7 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 import {addIcons} from "ionicons";
 import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Message} from "../../../shared/models/message";
+import {AiMessage} from "../../../shared/models/ai-message";
 import {AuthService} from "../../../services/auth.service";
 import {AsyncPipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
@@ -42,7 +42,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
 
   form: FormGroup;
 
-  messages: Message[] = [];
+  messages: AiMessage[] = [];
 
   user$ = this.authService.user$;
 
@@ -99,7 +99,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     this.form.reset();
 
 
-    const userMessage: Message = {
+    const userMessage: AiMessage = {
       from: "YOU",
       message: question,
       image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : null

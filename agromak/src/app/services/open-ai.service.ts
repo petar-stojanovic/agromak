@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import OpenAI from "openai";
 import {ChatCompletionCreateParamsStreaming,} from "openai/src/resources/chat/completions";
-import {Message} from "../shared/models/message";
+import {AiMessage} from "../shared/models/ai-message";
 import {OPEN_AI_SETTINGS} from "../../../api-keys";
 
 @Injectable({
@@ -15,7 +15,7 @@ export class OpenAiService {
     this.openai = new OpenAI(OPEN_AI_SETTINGS);
   }
 
-  async generateContentWithOpenAI(messages: Message[]) {
+  async generateContentWithOpenAI(messages: AiMessage[]) {
 
     const stream = await this.openai.chat.completions.create({
       "model": "gpt-4o-mini",
@@ -95,7 +95,7 @@ export class OpenAiService {
     return stream;
   }
 
-  async test(messages: Message[]) {
+  async test(messages: AiMessage[]) {
 
     const stream = await this.openai.chat.completions.create({
       "model": "gpt-4o",

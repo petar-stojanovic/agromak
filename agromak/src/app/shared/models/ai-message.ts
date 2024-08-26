@@ -1,7 +1,7 @@
 import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
 
-export interface Message {
+export interface AiMessage {
   from: MessageType;
   message: string;
   image: string | null;

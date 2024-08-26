@@ -3,7 +3,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
-import {Message} from '../shared/models/message';
+import {AiMessage} from '../shared/models/ai-message';
 import firebase from "firebase/compat/app";
 import {take} from "rxjs";
 import {AiChat} from "../shared/models/ai-chat";
@@ -56,7 +56,7 @@ export class ChatService {
       );
   }
 
-  async updateChat(chatId: string, message: Message) {
+  async updateChat(chatId: string, message: AiMessage) {
     const currentDate = new Date();
 
     const data = {
