@@ -110,6 +110,11 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     });
 
     this.adService.incrementViewCount(this.ad.id);
+
+    setTimeout(() => {
+        this.openMessageModal()
+      }
+      , 1000)
   }
 
   ngOnDestroy() {
@@ -144,6 +149,31 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   async openMessageModal() {
+    const alert = await this.alertController.create({
+      header: 'Send Message',
+      message: 'Please send a message',
+      cssClass: 'message-alert',
+      inputs:[
+        {
+          type: 'textarea',
+          name: 'message',
+          placeholder: 'Type your message here',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'Cancel',
+        },
+        {
+          text: 'Send Message',
+          role: 'send',
+          handler: (data) => {
+            console.log(data['message']);
+          },
+        }]
+    });
 
+    await alert.present();
   }
 }
