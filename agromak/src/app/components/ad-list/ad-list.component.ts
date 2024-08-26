@@ -53,7 +53,7 @@ export class AdListComponent {
 
   ngOnInit() {
     setTimeout(() =>{
-      this.openAdDetailsModal(this.ads[0]);
+      // this.openAdDetailsModal(this.ads[0]);
     }, 1500);
   }
 

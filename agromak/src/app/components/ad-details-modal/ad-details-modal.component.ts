@@ -1,5 +1,7 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy, OnInit} from '@angular/core';
 import {
+  AlertController,
+  IonAlert,
   IonBackButton,
   IonBadge,
   IonButton,
@@ -23,7 +25,7 @@ import {addIcons} from "ionicons";
 import {
   arrowBack,
   calendarOutline,
-  callOutline, chatboxEllipsesOutline,
+  callOutline, chatboxEllipsesOutline, copyOutline,
   eyeOutline,
   heart,
   heartOutline,
@@ -35,6 +37,8 @@ import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
+import {AlertButton} from "@ionic/angular/standalone";
+import {IonicSafeString} from "@ionic/angular";
 
 const icons = {
   callOutline,
@@ -45,7 +49,8 @@ const icons = {
   calendarOutline,
   informationCircleOutline,
   eyeOutline,
-  chatboxEllipsesOutline
+  chatboxEllipsesOutline,
+  copyOutline
 };
 
 @Component({
@@ -72,7 +77,8 @@ const icons = {
     IonThumbnail,
     IonLabel,
     ProfileInfoComponent,
-    IonFooter
+    IonFooter,
+    IonAlert
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -88,13 +94,14 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   constructor(private modalCtrl: ModalController,
               private adService: AdService,
               private toastController: ToastController,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private alertController: AlertController) {
     addIcons(icons);
   }
 
   ngOnInit() {
     console.log(this.ad)
-    this.favoriteSubscription = this.authService.user$.subscribe( user => {
+    this.favoriteSubscription = this.authService.user$.subscribe(user => {
       this.isFavoriteAd = user.favoriteAds?.includes(this.ad.id);
     })
 
@@ -121,5 +128,22 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     });
 
     await toast.present();
+  }
+
+  async openProfileInfoModal() {
+    const modal = await this.modalCtrl.create({
+      component: ProfileInfoComponent,
+      componentProps: {user: this.owner}
+    });
+
+    await modal.present();
+  }
+
+  async callPerson() {
+    window.open(`tel:${this.owner?.phoneNumber}`);
+  }
+
+  async openMessageModal() {
+
   }
 }

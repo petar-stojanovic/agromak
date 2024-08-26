@@ -89,11 +89,11 @@
 <ion-footer class="ion-padding-horizontal">
   <ion-toolbar class="ion-no-border">
     <div class="contact-buttons">
-      <ion-button fill="outline" color="dark" shape="round" class="gap-1">
+      <ion-button (click)="callPerson()" fill="outline" color="dark" shape="round" class="gap-1">
         <ion-icon slot="start" name="call-outline"></ion-icon>
         Call
       </ion-button>
-      <ion-button shape="round" color="dark" class="gap-1">
+      <ion-button (click)="openMessageModal()" shape="round" color="dark" class="gap-1">
         <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
         Message
       </ion-button>
