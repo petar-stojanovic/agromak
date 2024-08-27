@@ -31,12 +31,12 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-ai',
-  templateUrl: 'ai.page.html',
-  styleUrls: ['ai.page.scss'],
+  templateUrl: 'ai-chat-page.component.html',
+  styleUrls: ['ai-chat-page.component.scss'],
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage implements OnInit, OnDestroy, AfterViewChecked {
+export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
