@@ -78,8 +78,6 @@ export class AiPage implements OnInit, OnDestroy, AfterViewChecked {
     if (this.messages.length > 0) {
       this.scrollToBottom()
     }
-    // setTimeout(async () => {
-    // }, 500)
   }
 
   async uploadImage() {
