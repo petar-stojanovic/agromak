@@ -36,6 +36,7 @@ export class UserChatService {
       createdAt: new Date() as unknown as Timestamp
     }
     await this.api.addDocument(`chats/${chatId}/messages`, data);
+    await this.api.updateDocument(`chatRooms/${chatId}`, {lastMessage: message});
   }
 
   async createChatRoom(ad: Ad) {

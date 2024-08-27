@@ -42,6 +42,11 @@ export class ApiService {
     return addDoc(dataRef, data);
   }
 
+  updateDocument(path: string, data: any) {
+    const dataRef = this.docRef(path);
+    return setDoc(dataRef, data, {merge: true});
+  }
+
   getDocById(path: string) {
     const dataRef = this.docRef(path);
     return getDoc(dataRef);
