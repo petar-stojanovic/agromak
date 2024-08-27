@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  selector: 'app-user-chat',
+  templateUrl: './user-chat.page.html',
+  styleUrls: ['./user-chat.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class UserPage implements OnInit {
+export class UserChatPage implements OnInit {
 
   constructor() { }
 

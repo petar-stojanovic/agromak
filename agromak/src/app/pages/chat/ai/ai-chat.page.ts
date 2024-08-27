@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit, AfterViewChecked} from '@angular/core';
+import {AfterViewChecked, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
