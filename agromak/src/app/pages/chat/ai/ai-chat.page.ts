@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {AfterViewChecked, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -30,13 +30,13 @@ import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-ai',
-  templateUrl: 'ai.page.html',
-  styleUrls: ['ai.page.scss'],
+  selector: 'app-ai-chat',
+  templateUrl: './ai-chat.page.html',
+  styleUrls: ['./ai-chat.page.scss'],
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage implements OnInit, OnDestroy, AfterViewInit {
+export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -54,7 +54,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private authService: AuthService,
-              private chatService: AiChatService,
+              private aiChatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 
@@ -66,7 +66,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.chatService.getChat(this.chatId).subscribe(chat => {
+    this.aiChatService.getChat(this.chatId).subscribe(chat => {
       console.log(chat)
       if (chat && chat.messages) {
         this.messages = chat.messages;
@@ -74,10 +74,10 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    setTimeout(async () => {
-      await this.scrollToBottom()
-    }, 500)
+  ngAfterViewChecked() {
+    if (this.messages.length > 0) {
+      this.scrollToBottom()
+    }
   }
 
   async uploadImage() {
@@ -111,13 +111,13 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     this.compressedImage = null;
 
 
-    await this.chatService.sendMessage(this.chatId, userMessage);
+    await this.aiChatService.sendMessage(this.chatId, userMessage);
 
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
     this.messages.push({from: "AI", message: "", image: null});
 
-   await this.scrollToBottom();
+    await this.scrollToBottom();
 
     const latestMessageIndex = this.messages.length - 1;
 
@@ -127,14 +127,14 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
       // console.log(this.messages)
     }
 
-    await this.chatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
+    await this.aiChatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
   }
 
-  private async scrollToBottom() {
-    await this.content.scrollToBottom(500);
+  private scrollToBottom() {
+    this.content.scrollToBottom(100);
   }
 
   ngOnDestroy() {
-    this.chatService.deleteAiChatIfEmpty(this.chatId);
+    this.aiChatService.deleteAiChatIfEmpty(this.chatId);
   }
 }

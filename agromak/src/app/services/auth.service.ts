@@ -100,6 +100,8 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.signOut().finally(() => {
+      localStorage.clear();
+      window.location.reload();
       this.router.navigate(['/login']);
     });
   }

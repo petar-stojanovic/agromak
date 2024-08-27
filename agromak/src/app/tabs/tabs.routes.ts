@@ -24,8 +24,13 @@ export const routes: Routes = [
               import('../pages/chat/chat.page').then((m) => m.ChatPage),
           },
           {
+            path: ':id',
+            loadComponent: () =>
+              import('../pages/chat/user/user-chat.page').then((m) => m.UserChatPage),
+          },
+          {
             path: 'ai/:id',
-            loadComponent: () => import('../pages/chat/ai/ai.page').then(m => m.AiPage)
+            loadComponent: () => import('../pages/chat/ai/ai-chat.page').then(m => m.AiChatPage)
           }
         ]
       },
