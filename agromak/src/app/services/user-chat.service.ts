@@ -1,20 +1,18 @@
 import {Injectable} from '@angular/core';
-import {ChatService} from "./interfaces/chat-service";
-import {Observable} from 'rxjs';
 import {User} from "../shared/models/user";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import firebase from "firebase/compat";
-import Timestamp = firebase.firestore.Timestamp;
 import {UserChat} from "../shared/models/user-chat";
 import {Ad} from "../shared/models/ad";
+import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserChatService implements ChatService {
+export class UserChatService  {
   user!: User;
 
   constructor(
@@ -29,13 +27,6 @@ export class UserChatService implements ChatService {
     });
   }
 
-  createChat(): Promise<any> {
-    throw new Error('Method not implemented.');
-  }
-
-  getChat(chatId: string): Observable<any> {
-    throw new Error('Method not implemented.');
-  }
 
   async sendMessage(chatId: string, message: any): Promise<any> {
     console.log(chatId, message);
@@ -52,9 +43,6 @@ export class UserChatService implements ChatService {
     }
   }
 
-  deleteChat(chatId: string): void {
-    throw new Error('Method not implemented.');
-  }
 
   async createChatRoom(userId: string, ad: Ad) {
     try {

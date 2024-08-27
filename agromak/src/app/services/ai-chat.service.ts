@@ -7,13 +7,12 @@ import {AiMessage} from '../shared/models/ai-message';
 import firebase from "firebase/compat/app";
 import {take} from "rxjs";
 import {AiChat} from "../shared/models/ai-chat";
-import {ChatService} from "./interfaces/chat-service";
 import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
   providedIn: 'root'
 })
-export class AiChatService implements ChatService {
+export class AiChatService {
 
   user!: User;
 
