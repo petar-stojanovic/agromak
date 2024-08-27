@@ -157,7 +157,6 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     }
     const alert = await this.alertController.create({
       header: 'Send Message',
-      message: 'Please send a message',
       cssClass: 'message-alert',
       inputs: [
         {
@@ -179,6 +178,12 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
             const chatroomId = await this.chatService.createChatRoom(this.ad);
             await this.chatService.sendMessage(chatroomId, data['message']);
+
+            const toast = await this.toastController.create({
+              message:  'Message sent successfully',
+              duration: 1000,
+            });
+            await toast.present();
             return true;
           },
         }]

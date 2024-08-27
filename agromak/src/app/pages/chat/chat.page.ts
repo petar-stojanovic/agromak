@@ -95,14 +95,6 @@ export class ChatPage implements OnInit {
         return of(data)
       })
     )
-    // this.chatRooms = this.apiService.collectionDataQuery(
-    //   'chatRooms',
-    //   this.apiService.whereQuery('members', 'array-contains', this.user.uid)
-    // ).pipe(
-    //   map((data) => {
-    //     console.log(data);
-    //   })
-    // )
   }
 
   onSegmentChanged(e: SegmentCustomEvent
