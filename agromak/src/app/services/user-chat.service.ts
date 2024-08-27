@@ -6,9 +6,10 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
-import {UserChat} from "../shared/models/user-chat";
 import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
+import {UserChat} from "../shared/models/user-chat";
+import {Ad} from "../shared/models/ad";
 
 @Injectable({
   providedIn: 'root'
@@ -36,25 +37,34 @@ export class UserChatService implements ChatService {
     throw new Error('Method not implemented.');
   }
 
-  sendMessage(chatId: string, message: any): Promise<any> {
+  async sendMessage(chatId: string, message: any): Promise<any> {
     console.log(chatId, message);
-    throw new Error('Method not implemented.');
+    try{
+      const data = {
+        message: message,
+        from: this.user.uid,
+        createdAt: new Date() as unknown as Timestamp
+      }
+      await this.api.addDocument(`chats/${chatId}/messages`, data);
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
   }
 
   deleteChat(chatId: string): void {
     throw new Error('Method not implemented.');
   }
 
-  async createChatRoom(userId: string) {
+  async createChatRoom(userId: string, ad: Ad) {
     try {
       let room: any;
       const querySnapshot = await this.api.getDocs(
         'chatRooms',
-        this.api.whereQuery(
-          'members',
-          'in',
-          [[this.user.uid, userId], [userId, this.user.uid]]
-        )
+        [
+          this.api.whereQuery('members', 'in', [[this.user.uid, userId], [userId, this.user.uid]]),
+          this.api.whereQuery('adId', '==', ad.id)
+        ]
       );
 
       room = querySnapshot.docs.map((doc: any) => {
@@ -68,17 +78,20 @@ export class UserChatService implements ChatService {
       }
 
       const dateCreated = new Date();
-      const data: any = {
+      const data: UserChat = {
         members: [
           this.user.uid,
           userId
         ],
-        messages: [],
         updatedAt: dateCreated as unknown as Timestamp,
         createdAt: dateCreated as unknown as Timestamp,
+        adId: ad.id,
+        adTitle: ad.title,
+        lastMessage: ''
       }
       room = await this.api.addDocument('chatRooms', data);
       console.log("new room", room);
+
       return room.id;
     } catch (e) {
       console.log(e);

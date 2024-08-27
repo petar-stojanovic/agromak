@@ -34,23 +34,30 @@
       }
     } @else if (segment === 'chats') {
 
-      @for (chat of  chats; track $index) {
+      @if (chatRooms$| async; as chatRooms) {
 
-        <ion-item button detail>
-          <ion-thumbnail slot="start">
-            @if (chat.photoURL) {
-              <ion-img [src]="chat.photoURL"/>
-            } @else {
-              <ion-img src="assets/images/no-image.png"/>
-            }
-          </ion-thumbnail>
-          <ion-label>
-            <h2>User</h2>
-            <p>Chat with our User</p>
-          </ion-label>
-        </ion-item>
+        @for (chat of chatRooms; track $index) {
 
+          <ion-item button detail>
+            <ion-thumbnail slot="start">
+              @if (chat.photoURL) {
+                <ion-img [src]="chat.photoURL"/>
+              } @else {
+                <ion-img src="assets/images/no-image.png"/>
+              }
+            </ion-thumbnail>
+            <ion-label>
+              @if (chat){
+              }
+              <h2>User</h2>
+              <p>Chat with our User</p>
+              <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
+            </ion-label>
+          </ion-item>
+
+        }
       }
+
     } @else if (segment === 'ai') {
       <ion-item (click)="navigateToNewAiPage()" button detail lines="none" class="new-ai-chat">
         <ion-thumbnail slot="start">
