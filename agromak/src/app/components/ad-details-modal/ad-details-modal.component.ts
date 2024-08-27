@@ -177,7 +177,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
           handler: async (data) => {
             console.log(data['message']);
 
-            const chatroomId = await this.chatService.createChatRoom(this.owner!.uid, this.ad);
+            const chatroomId = await this.chatService.createChatRoom(this.ad);
             await this.chatService.sendMessage(chatroomId, data['message']);
             return true;
           },

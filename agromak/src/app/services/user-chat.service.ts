@@ -12,7 +12,7 @@ import Timestamp = firebase.firestore.Timestamp;
 @Injectable({
   providedIn: 'root'
 })
-export class UserChatService  {
+export class UserChatService {
   user!: User;
 
   constructor(
@@ -30,61 +30,50 @@ export class UserChatService  {
 
   async sendMessage(chatId: string, message: any): Promise<any> {
     console.log(chatId, message);
-    try{
-      const data = {
-        message: message,
-        from: this.user.uid,
-        createdAt: new Date() as unknown as Timestamp
-      }
-      await this.api.addDocument(`chats/${chatId}/messages`, data);
-    } catch (e) {
-      console.log(e);
-      throw e;
+    const data = {
+      message: message,
+      from: this.user.uid,
+      createdAt: new Date() as unknown as Timestamp
     }
+    await this.api.addDocument(`chats/${chatId}/messages`, data);
   }
 
+  async createChatRoom(ad: Ad) {
+    let room: any;
+    const querySnapshot = await this.api.getDocs(
+      'chatRooms',
+      [
+        this.api.whereQuery('members', 'in', [[this.user.uid, ad.ownerId], [ad.ownerId, this.user.uid]]),
+        this.api.whereQuery('adId', '==', ad.id)
+      ]
+    );
 
-  async createChatRoom(userId: string, ad: Ad) {
-    try {
-      let room: any;
-      const querySnapshot = await this.api.getDocs(
-        'chatRooms',
-        [
-          this.api.whereQuery('members', 'in', [[this.user.uid, userId], [userId, this.user.uid]]),
-          this.api.whereQuery('adId', '==', ad.id)
-        ]
-      );
+    room = querySnapshot.docs.map((doc: any) => {
+      return {id: doc.id, ...doc.data()};
+    });
 
-      room = querySnapshot.docs.map((doc: any) => {
-        return {id: doc.id, ...doc.data()};
-      });
+    console.log("existing room", room);
 
-      console.log("existing room", room);
-
-      if (room.length > 0) {
-        return room[0].id;
-      }
-
-      const dateCreated = new Date();
-      const data: UserChat = {
-        members: [
-          this.user.uid,
-          userId
-        ],
-        updatedAt: dateCreated as unknown as Timestamp,
-        createdAt: dateCreated as unknown as Timestamp,
-        adId: ad.id,
-        adTitle: ad.title,
-        lastMessage: ''
-      }
-      room = await this.api.addDocument('chatRooms', data);
-      console.log("new room", room);
-
-      return room.id;
-    } catch (e) {
-      console.log(e);
-      throw e;
+    if (room.length > 0) {
+      return room[0].id;
     }
+
+    const dateCreated = new Date();
+    const data: UserChat = {
+      members: [
+        this.user.uid,
+        ad.ownerId
+      ],
+      updatedAt: dateCreated as unknown as Timestamp,
+      createdAt: dateCreated as unknown as Timestamp,
+      adId: ad.id,
+      adTitle: ad.title,
+      lastMessage: ''
+    }
+    room = await this.api.addDocument('chatRooms', data);
+    console.log("new room", room);
+
+    return room.id;
   }
 }
 
