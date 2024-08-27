@@ -7,13 +7,14 @@ import {
   docData,
   Firestore,
   getDoc,
-  getDocs,
+  getDocs, orderBy,
   query,
   setDoc,
   where
 } from "@angular/fire/firestore";
 import firebase from "firebase/compat";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
+import OrderByDirection = firebase.firestore.OrderByDirection;
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +66,7 @@ export class ApiService {
     if (queryFn) {
       dataRef = query(dataRef, queryFn);
     }
-    return collectionData<any>(dataRef,{idField: 'id'});
+    return collectionData<any>(dataRef, {idField: 'id'});
   }
 
   docDataQuery(path: string, shouldHaveId?: boolean, queryFn?: any) {
@@ -81,5 +82,9 @@ export class ApiService {
 
   whereQuery(fieldPath: string, condition: WhereFilterOp, value: any) {
     return where(fieldPath, condition, value);
+  }
+
+  orderByQuery(fieldPath: string, direction: OrderByDirection = 'asc') {
+    return orderBy(fieldPath, direction);
   }
 }

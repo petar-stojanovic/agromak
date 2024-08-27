@@ -97,7 +97,6 @@ export class ChatPage implements OnInit {
     this.segment = e.target.value?.toString() || "chats";
   }
 
-
   async navigateToNewAiPage() {
     const id = await this.aiChatService.createChat();
     await this.router.navigate(['ai', id], {relativeTo: this.route});

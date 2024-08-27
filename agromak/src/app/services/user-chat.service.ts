@@ -5,15 +5,19 @@ import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import firebase from "firebase/compat";
-import {ChatRoom} from "../shared/models/chat-room";
+import {ChatRoom, UserMessage} from "../shared/models/chat-room";
 import {Ad} from "../shared/models/ad";
 import Timestamp = firebase.firestore.Timestamp;
+import {BehaviorSubject, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserChatService {
+  private messages = new BehaviorSubject<UserMessage[]>([]);
+
   user!: User;
+  messages$: Observable<UserMessage[]>;
 
   constructor(
     private angularFirestore: AngularFirestore,
@@ -25,6 +29,8 @@ export class UserChatService {
     this.authService.user$.subscribe(user => {
       this.user = user;
     });
+
+    this.messages$ = this.messages.asObservable();
   }
 
 
@@ -75,6 +81,13 @@ export class UserChatService {
     console.log("new room", room);
 
     return room.id;
+  }
+
+  getChatRoomMessages(chatId: string) {
+     return this.api.collectionDataQuery(
+      `chats/${chatId}/messages`,
+      this.api.orderByQuery('createdAt', 'asc')
+    )
   }
 }
 
