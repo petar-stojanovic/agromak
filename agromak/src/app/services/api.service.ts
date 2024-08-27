@@ -65,7 +65,7 @@ export class ApiService {
     if (queryFn) {
       dataRef = query(dataRef, queryFn);
     }
-    return collectionData<any>(dataRef);
+    return collectionData<any>(dataRef,{idField: 'id'});
   }
 
   docDataQuery(path: string, shouldHaveId?: boolean, queryFn?: any) {
