@@ -1,7 +1,7 @@
 import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
 
-export interface UserChat {
+export interface ChatRoom {
   members: string[];
   adId: string;
   adTitle: string;

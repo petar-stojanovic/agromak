@@ -5,7 +5,7 @@ import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import firebase from "firebase/compat";
-import {UserChat} from "../shared/models/user-chat";
+import {ChatRoom} from "../shared/models/chat-room";
 import {Ad} from "../shared/models/ad";
 import Timestamp = firebase.firestore.Timestamp;
 
@@ -59,7 +59,7 @@ export class UserChatService {
     }
 
     const dateCreated = new Date();
-    const data: UserChat = {
+    const data: ChatRoom = {
       members: [
         this.user.uid,
         ad.ownerId

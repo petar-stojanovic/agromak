@@ -25,6 +25,7 @@ import {User} from "../../shared/models/user";
 import {UserChatService} from "../../services/user-chat.service";
 import {ApiService} from "../../services/api.service";
 import {map, Observable, of, switchMap} from "rxjs";
+import {ChatRoom} from "../../shared/models/chat-room";
 
 @Component({
   selector: 'app-chat',
@@ -82,7 +83,7 @@ export class ChatPage implements OnInit {
         data.map((element) => {
           const user_data = element.members.filter((x: string) => x !== this.user.uid);
           console.log(user_data);
-          const user = this.apiService.docDataQuery(`users/${user_data[0]}`, true);
+          const user: Observable<User> = this.apiService.docDataQuery(`users/${user_data[0]}`, true);
           console.log(user);
           element.user$ = user;
           console.log(element);
@@ -114,5 +115,9 @@ export class ChatPage implements OnInit {
   async navigateToNewAiPage() {
     const id = await this.aiChatService.createChat();
     await this.router.navigate(['ai', id], {relativeTo: this.route});
+  }
+
+  getUser(user: unknown) {
+    return user as User;
   }
 }

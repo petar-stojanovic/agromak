@@ -15,70 +15,72 @@
   </ion-segment>
 
   <ion-list>
+    @if (chatRooms$ | async; as chatRooms) {
 
-    @if (isLoading) {
-      @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-          </ion-thumbnail>
-          <ion-label>
-            <h3>
-              <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
-            </h3>
-            <p>
-              <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      }
-    } @else if (segment === 'chats') {
+      @if (isLoading) {
+        @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        }
+      } @else if (segment === 'chats') {
 
-      @if (chatRooms$| async; as chatRooms) {
 
         @for (chat of chatRooms; track $index) {
 
-          <ion-item button detail>
-            <ion-thumbnail slot="start">
-              @if (chat.photoURL) {
-                <ion-img [src]="chat.photoURL"/>
-              } @else {
-                <ion-img src="assets/images/no-image.png"/>
-              }
-            </ion-thumbnail>
-            <ion-label>
-              @if (chat){
-              }
-              <h2>User</h2>
-              <p>Chat with our User</p>
-              <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
-            </ion-label>
-          </ion-item>
+          @if (chat.user$ | async; as user) {
+
+            <ion-item button detail>
+              <ion-thumbnail slot="start">
+                @if (getUser(user).photoURL) {
+                  <ion-img [src]="getUser(user).photoURL"/>
+                } @else {
+                  <ion-img src="assets/images/no-image.png"/>
+                }
+              </ion-thumbnail>
+              <ion-label>
+                <h2>{{ getUser(user).displayName }}</h2>
+                <p>{{ chat.lastMessage }}</p>
+                <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
+              </ion-label>
+            </ion-item>
+          }
 
         }
-      }
 
-    } @else if (segment === 'ai') {
-      <ion-item (click)="navigateToNewAiPage()" button detail lines="none" class="new-ai-chat">
-        <ion-thumbnail slot="start">
-          <ion-img src="assets/logo.svg"/>
-        </ion-thumbnail>
-        <ion-label>
-          <h2 class="font-weight-bold">Start new chat with our AI</h2>
-        </ion-label>
-      </ion-item>
-      @for (chat of user.aiChats; track $index) {
-        <ion-item [routerLink]="['./ai', chat.id]" button detail lines="none">
+      } @else if (segment === 'ai') {
+        <ion-item (click)="navigateToNewAiPage()" button detail lines="none" class="new-ai-chat">
           <ion-thumbnail slot="start">
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
-            <p class="last-message font-weight-bold">{{ chat.lastMessage }}</p>
-            <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
+            <h2 class="font-weight-bold">Start new chat with our AI</h2>
           </ion-label>
         </ion-item>
+        @for (chat of user.aiChats; track $index) {
+          <ion-item [routerLink]="['./ai', chat.id]" button detail lines="none">
+            <ion-thumbnail slot="start">
+              <ion-img src="assets/logo.svg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p class="last-message font-weight-bold">{{ chat.lastMessage }}</p>
+              <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
+            </ion-label>
+          </ion-item>
+        }
       }
     }
+
   </ion-list>
 
 </ion-content>
