@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, AfterViewInit, AfterViewChecked} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
@@ -36,7 +36,7 @@ import {ActivatedRoute} from "@angular/router";
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
-export class AiPage implements OnInit, OnDestroy, AfterViewInit {
+export class AiPage implements OnInit, OnDestroy, AfterViewChecked {
   image: Photo | null = null;
   compressedImage: string | null = null;
 
@@ -74,10 +74,12 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    setTimeout(async () => {
-      await this.scrollToBottom()
-    }, 500)
+  ngAfterViewChecked() {
+    if (this.messages.length > 0) {
+      this.scrollToBottom()
+    }
+    // setTimeout(async () => {
+    // }, 500)
   }
 
   async uploadImage() {
@@ -117,7 +119,7 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
 
     this.messages.push({from: "AI", message: "", image: null});
 
-   await this.scrollToBottom();
+    await this.scrollToBottom();
 
     const latestMessageIndex = this.messages.length - 1;
 
@@ -130,8 +132,8 @@ export class AiPage implements OnInit, OnDestroy, AfterViewInit {
     await this.chatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
   }
 
-  private async scrollToBottom() {
-    await this.content.scrollToBottom(500);
+  private scrollToBottom() {
+    this.content.scrollToBottom(100);
   }
 
   ngOnDestroy() {
