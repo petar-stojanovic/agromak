@@ -54,7 +54,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private authService: AuthService,
-              private chatService: AiChatService,
+              private aiChatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
 
@@ -66,7 +66,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.chatService.getChat(this.chatId).subscribe(chat => {
+    this.aiChatService.getChat(this.chatId).subscribe(chat => {
       console.log(chat)
       if (chat && chat.messages) {
         this.messages = chat.messages;
@@ -111,7 +111,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
     this.compressedImage = null;
 
 
-    await this.chatService.sendMessage(this.chatId, userMessage);
+    await this.aiChatService.sendMessage(this.chatId, userMessage);
 
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
@@ -127,7 +127,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
       // console.log(this.messages)
     }
 
-    await this.chatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
+    await this.aiChatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
   }
 
   private scrollToBottom() {
@@ -135,6 +135,6 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngOnDestroy() {
-    this.chatService.deleteAiChatIfEmpty(this.chatId);
+    this.aiChatService.deleteAiChatIfEmpty(this.chatId);
   }
 }
