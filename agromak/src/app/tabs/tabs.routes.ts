@@ -30,7 +30,7 @@ export const routes: Routes = [
           },
           {
             path: 'ai/:id',
-            loadComponent: () => import('../pages/chat/ai/ai-chat-page.component').then(m => m.AiChatPage)
+            loadComponent: () => import('../pages/chat/ai/ai-chat.page').then(m => m.AiChatPage)
           }
         ]
       },

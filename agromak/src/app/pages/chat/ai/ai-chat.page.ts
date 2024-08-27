@@ -30,9 +30,9 @@ import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-ai',
-  templateUrl: 'ai-chat-page.component.html',
-  styleUrls: ['ai-chat-page.component.scss'],
+  selector: 'app-ai-chat',
+  templateUrl: './ai-chat.page.html',
+  styleUrls: ['./ai-chat.page.scss'],
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
 })
