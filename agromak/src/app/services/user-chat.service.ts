@@ -50,7 +50,8 @@ export class UserChatService {
     const querySnapshot = await this.api.getDocs(
       'chatRooms',
       [
-        this.api.whereQuery('members', 'in', [[this.user.uid, ad.ownerId], [ad.ownerId, this.user.uid]]),
+        this.api.whereQuery('adOwnerId', '==', ad.ownerId),
+        this.api.whereQuery('senderId', '==', this.user.uid),
         this.api.whereQuery('adId', '==', ad.id)
       ]
     );
@@ -67,15 +68,12 @@ export class UserChatService {
 
     const dateCreated = new Date();
     const data: ChatRoom = {
-      members: [
-        this.user.uid,
-        ad.ownerId
-      ],
-      updatedAt: dateCreated as unknown as Timestamp,
-      createdAt: dateCreated as unknown as Timestamp,
       adId: ad.id,
       adTitle: ad.title,
-      adOwner: ad.ownerId,
+      adOwnerId: ad.ownerId,
+      senderId: this.user.uid,
+      updatedAt: dateCreated as unknown as Timestamp,
+      createdAt: dateCreated as unknown as Timestamp,
       lastMessage: ''
     }
     room = await this.api.addDocument('chatRooms', data);
@@ -85,9 +83,11 @@ export class UserChatService {
   }
 
   getChatRoomMessages(chatId: string) {
-     return this.api.collectionDataQuery(
+    return this.api.collectionDataQuery(
       `chats/${chatId}/messages`,
-      this.api.orderByQuery('createdAt', 'asc')
+      [
+        this.api.orderByQuery('createdAt', 'asc')
+      ]
     )
   }
 }

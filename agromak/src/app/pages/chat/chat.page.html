@@ -38,18 +38,18 @@
 
         @for (chat of chatRooms; track $index) {
 
-          @if (chat.user$ | async; as user) {
+          @if (chat.owner; as owner) {
 
             <ion-item (click)="goToChat(chat)" button detail>
               <ion-thumbnail slot="start">
-                @if (getUser(user).photoURL) {
-                  <ion-img [src]="getUser(user).photoURL"/>
+                @if (getUser(owner).photoURL) {
+                  <ion-img [src]="getUser(owner).photoURL"/>
                 } @else {
                   <ion-img src="assets/images/no-image.png"/>
                 }
               </ion-thumbnail>
               <ion-label>
-                <h2>{{ getUser(user).displayName }}</h2>
+                <h2>{{ getUser(owner).displayName }}</h2>
                 <p>{{ chat.lastMessage }}</p>
                 <p class="">{{ chat.updatedAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
               </ion-label>

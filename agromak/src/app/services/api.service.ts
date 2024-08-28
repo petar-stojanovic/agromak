@@ -7,7 +7,7 @@ import {
   docData,
   Firestore,
   getDoc,
-  getDocs,
+  getDocs, or,
   orderBy,
   query,
   setDoc,
@@ -62,9 +62,11 @@ export class ApiService {
     return getDocs(dataRef);
   }
 
-  collectionDataQuery(path: string, queryFn?: any) {
+  collectionDataQuery(path: string, queryFns: any[] = [], isORQuery = false) {
     let dataRef: any = this.collectionRef(path);
-    if (queryFn) {
+
+    if (queryFns.length > 0) {
+      const queryFn = isORQuery ? or(...queryFns) : (queryFns as any);
       dataRef = query(dataRef, queryFn);
     }
     return collectionData<any>(dataRef, {idField: 'id'});

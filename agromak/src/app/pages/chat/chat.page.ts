@@ -24,7 +24,7 @@ import {AuthService} from "../../services/auth.service";
 import {User} from "../../shared/models/user";
 import {UserChatService} from "../../services/user-chat.service";
 import {ApiService} from "../../services/api.service";
-import {map, Observable, of, switchMap} from "rxjs";
+import {map, Observable, of, switchMap, take} from "rxjs";
 
 @Component({
   selector: 'app-chat',
@@ -51,9 +51,6 @@ export class ChatPage implements OnInit {
               private route: ActivatedRoute,
               private authService: AuthService
   ) {
-    this.authService.user$.subscribe(user => {
-      this.user = user;
-    })
   }
 
   ngOnInit() {
@@ -73,15 +70,23 @@ export class ChatPage implements OnInit {
         this.user = user;
         return this.apiService.collectionDataQuery(
           'chatRooms',
-          this.apiService.whereQuery('members', 'array-contains', user.uid),
+          [
+            this.apiService.whereQuery('senderId', '==', user.uid),
+            this.apiService.whereQuery('adOwnerId', '==', user.uid)
+          ],
+          true
         );
       })
     ).pipe(
       map((data: any[]) => {
-        console.log("data", data);
         data.map((element) => {
-          element.user$ = this.apiService.docDataQuery(`users/${element.adOwner}`);
-          console.log(element);
+          this.authService.getUserProfile(element.adOwnerId)
+            .pipe(
+              take(1)
+            )
+            .subscribe((user) => {
+              element.owner = user;
+          });
         })
         return data;
       }),
@@ -102,7 +107,8 @@ export class ChatPage implements OnInit {
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 
-  async goToChat(chat:any) {
+  async goToChat(chat: any) {
+    console.log("chat", chat);
     const navData: NavigationExtras = {
       relativeTo: this.route,
       queryParams: {
