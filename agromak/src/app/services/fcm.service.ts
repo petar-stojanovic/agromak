@@ -6,8 +6,14 @@ import {ApiService} from "./api.service";
 import {Capacitor} from "@capacitor/core";
 import {PushNotifications} from "@capacitor/push-notifications";
 import {StorageService} from "./storage.service";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
 
-@Injectable()
+export const FCM_TOKEN = 'push_notification_token';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class FcmService {
 
   user!: User;
@@ -47,11 +53,20 @@ export class FcmService {
   }
 
 
-  async addListeners() {
+  private async addListeners() {
     await PushNotifications.addListener(
-      'registration', token => {
-      console.info('Registration token: ', token.value);
-    });
+      'registration', async token => {
+        const fcmToken = token.value;
+        this.storageService.removeStorage(FCM_TOKEN);
+        const savedToken = (await this.storageService.getStorage(FCM_TOKEN)).value;
+
+        if (fcmToken === savedToken) {
+          return;
+        }
+
+        await this.saveToken(fcmToken);
+      }
+    );
 
     await PushNotifications.addListener('registrationError', err => {
       console.error('Registration error: ', err.error);
@@ -66,13 +81,14 @@ export class FcmService {
     });
   }
 
-  async saveToken(token: string) {
+  private async saveToken(token: string) {
     const data = {
       token,
-      userId: this.user.uid,
-    }
-    await this.apiService.setDocument(`devices/${token}`, data);
-  }
+      timestamp: FieldValue.serverTimestamp()
+    };
 
+    this.storageService.setStorage(FCM_TOKEN, token);
+    await this.apiService.setDocument(`fcmTokens/${this.user.uid}`, data);
+  }
 }
 

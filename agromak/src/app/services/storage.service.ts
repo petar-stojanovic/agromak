@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Preferences} from "@capacitor/preferences";
-import {from, Observable} from "rxjs";
+import {GetResult, Preferences} from "@capacitor/preferences";
+import {from, map, Observable, take} from "rxjs";
 
 export const APP_TOKEN = 'app_token';
 
@@ -16,7 +16,7 @@ export class StorageService {
     Preferences.set({key: key, value: value});
   }
 
-  getStorage(key: string): any {
+  getStorage(key: string): Promise<GetResult> {
     return Preferences.get({key: key});
   }
 
@@ -28,7 +28,7 @@ export class StorageService {
     Preferences.clear();
   }
 
-  getToken(): Observable<any> {
-    return from(this.getStorage(APP_TOKEN));
+  getToken() {
+    return this.getStorage(APP_TOKEN);
   }
 }
