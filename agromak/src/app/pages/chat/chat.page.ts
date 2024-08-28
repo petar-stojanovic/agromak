@@ -84,11 +84,11 @@ export class ChatPage implements OnInit, OnDestroy {
   private loadChatRooms(userId: string): Observable<[ChatRoom[], ChatRoom[]]> {
     const userSentChats$ = this.apiService.collectionDataQuery('chatRooms', [
       this.apiService.whereQuery('senderId', '==', userId)
-    ], true);
+    ], true).pipe(map(chats => chats.sort((a, b) => b.createdAt - a.createdAt)));
 
     const userReceivedChats$ = this.apiService.collectionDataQuery('chatRooms', [
       this.apiService.whereQuery('adOwnerId', '==', userId)
-    ], true);
+    ], true).pipe(map(chats => chats.sort((a, b) => b.createdAt - a.createdAt)));
 
     return combineLatest([userSentChats$, userReceivedChats$]);
   }

@@ -11,6 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "apk": "ionic build --prod && ionic cap copy android && cd android && gradlew assembleDebug && adb -s 88bea475 install .\\app\\build\\outputs\\apk\\debug\\app-debug.apk && adb -s 88bea475 shell am start -n \"io.ionic.starter/io.ionic.starter.MainActivity\" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER",
+    "apk-7": "ionic build --prod && ionic cap copy android && cd android && gradlew assembleDebug && adb -s edf495e install .\\app\\build\\outputs\\apk\\debug\\app-debug.apk && adb -s edf495e shell am start -n \"io.ionic.starter/io.ionic.starter.MainActivity\" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER",
     "ext": "ionic cap run android -l --external"
   },
   "private": true,
