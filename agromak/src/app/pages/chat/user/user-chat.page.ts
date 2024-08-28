@@ -42,12 +42,12 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   @ViewChild('content') content!: IonContent;
 
-  chatId = '';
-  user!: User;
-
   ad?: Ad;
   messages: UserMessage[] = [];
+
+  user?: User;
   owner?: User;
+  otherUser = this.user || this.owner;
 
   subscription?: Subscription;
 
@@ -58,17 +58,19 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     private authService: AuthService,
     private modalCtrl: ModalController,
   ) {
+    this.authService.user$.subscribe(user => this.user = user);
   }
 
 
   ngOnInit() {
-    this.chatId = this.route.snapshot.paramMap.get('id')!;
+    const chatId = this.route.snapshot.paramMap.get('id')!;
     const adId = this.route.snapshot.queryParamMap.get('adId')!;
     const adOwnerId = this.route.snapshot.queryParamMap.get('ownerId')!;
 
-    const messages$ = this.chatService.getChatRoomMessages(this.chatId);
+    const messages$ = this.chatService.getChatRoomMessages(chatId);
     const ad$ = this.adService.getAdById(adId);
     const owner$ = this.authService.getUserProfile(adOwnerId);
+
 
     this.subscription = combineLatest([messages$, ad$, owner$])
       .subscribe(
