@@ -6,6 +6,7 @@ export interface ChatRoom {
   adId: string;
   adTitle: string;
   lastMessage: string;
+  adOwner: string;
   updatedAt: Timestamp;
   createdAt: Timestamp;
 }

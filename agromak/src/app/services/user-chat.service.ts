@@ -75,6 +75,7 @@ export class UserChatService {
       createdAt: dateCreated as unknown as Timestamp,
       adId: ad.id,
       adTitle: ad.title,
+      adOwner: ad.ownerId,
       lastMessage: ''
     }
     room = await this.api.addDocument('chatRooms', data);

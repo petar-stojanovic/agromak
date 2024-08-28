@@ -5,7 +5,7 @@ import {NavController} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
-import {Observable} from "rxjs";
+import {combineLatest, map, Observable, of, switchMap} from "rxjs";
 import {
   IonBackButton,
   IonButton,
@@ -24,6 +24,11 @@ import {
   IonToolbar
 } from "@ionic/angular/standalone";
 import {MarkdownComponent} from "ngx-markdown";
+import {AuthService} from "../../../services/auth.service";
+import {ApiService} from "../../../services/api.service";
+import {User} from "../../../shared/models/user";
+import {Ad} from "../../../shared/models/ad";
+import {AdService} from "../../../services/ad.service";
 
 @Component({
   selector: 'app-user-chat',
@@ -37,26 +42,67 @@ export class UserChatPage implements OnInit, AfterViewChecked {
   @ViewChild('content') content!: IonContent;
 
   chatId = '';
+  user!: User;
 
-  messages$: Observable<UserMessage[]>;
+  ad!: Ad;
+  messages: UserMessage[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private navCtrl: NavController,
-    private chatService: UserChatService
+    private adService: AdService,
+    private chatService: UserChatService,
+    private authService: AuthService,
+    private apiService: ApiService
   ) {
-    this.messages$ = this.chatService.messages$;
   }
 
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    if (!id) {
-      this.navCtrl.back();
-      return;
-    }
-    this.chatId = id;
-    this.messages$ = this.chatService.getChatRoomMessages(this.chatId);
+    this.chatId = this.route.snapshot.paramMap.get('id')!;
+    const adId = this.route.snapshot.queryParamMap.get('adId')!;
+    const adOwnerId = this.route.snapshot.queryParamMap.get('ownerId')!;
+
+    const messages$ = this.chatService.getChatRoomMessages(this.chatId);
+    const ad$ = this.adService.getAdById(adId);
+    const owner$ = this.apiService.docDataQuery(`users/${adOwnerId}`);
+
+    const x = combineLatest([messages$, ad$, owner$])
+      .subscribe(
+        ([messages, ad, owner]) => {
+          this.ad = ad;
+          this.messages = messages
+        }
+      );
+
+    // fetch chatRoom
+
+    // get second user from chatRoom.members
+
+    // fetch second user data
+
+    //
+
+    this.authService.user$.pipe(
+      switchMap(user => {
+        this.user = user;
+        return this.apiService.collectionDataQuery(
+          'chatRooms',
+          this.apiService.whereQuery('members', 'array-contains', user.uid),
+        );
+      })
+    ).pipe(
+      map((data: any[]) => {
+        data.map((element) => {
+          const user_data = element.members.filter((x: string) => x !== this.user.uid);
+          element.user$ = this.apiService.docDataQuery(`users/${user_data[0]}`);
+          console.log(element);
+        })
+        return data;
+      }),
+      switchMap((data) => {
+        return of(data)
+      })
+    )
   }
 
   ngAfterViewChecked() {
@@ -64,7 +110,7 @@ export class UserChatPage implements OnInit, AfterViewChecked {
   }
 
   private scrollToBottom() {
-    if (this.messages$) {
+    if (this.messages.length > 0) {
       this.content.scrollToBottom(100);
     }
   }

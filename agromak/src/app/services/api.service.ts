@@ -70,15 +70,12 @@ export class ApiService {
     return collectionData<any>(dataRef, {idField: 'id'});
   }
 
-  docDataQuery(path: string, shouldHaveId?: boolean, queryFn?: any) {
+  docDataQuery(path: string, queryFn?: any) {
     let dataRef: any = this.docRef(path);
     if (queryFn) {
       dataRef = query(dataRef, queryFn);
     }
-    if (shouldHaveId) {
-      return docData(dataRef, {idField: 'id'});
-    }
-    return docData<any>(dataRef);
+    return docData<any>(dataRef, {idField: 'id'});
   }
 
   whereQuery(fieldPath: string, condition: WhereFilterOp, value: any) {

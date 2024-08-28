@@ -9,7 +9,7 @@
 
 <ion-content #content class="ion-padding">
 
-  @if (messages$| async; as messages) {
+  @if (messages.length > 0) {
     @for (message of messages; track message) {
       <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
                 [class.ai-response]="$odd">

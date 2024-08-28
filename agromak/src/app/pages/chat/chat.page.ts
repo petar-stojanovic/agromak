@@ -17,7 +17,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, NavigationExtras, Router, RouterLink} from "@angular/router";
 import {SegmentCustomEvent} from "@ionic/angular";
 import {AiChatService} from "../../services/ai-chat.service";
 import {AuthService} from "../../services/auth.service";
@@ -78,9 +78,9 @@ export class ChatPage implements OnInit {
       })
     ).pipe(
       map((data: any[]) => {
+        console.log("data", data);
         data.map((element) => {
-          const user_data = element.members.filter((x: string) => x !== this.user.uid);
-          element.user$ = this.apiService.docDataQuery(`users/${user_data[0]}`, true);
+          element.user$ = this.apiService.docDataQuery(`users/${element.adOwner}`);
           console.log(element);
         })
         return data;
@@ -102,8 +102,15 @@ export class ChatPage implements OnInit {
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 
-  async goToChat(chatId: string) {
-    await this.router.navigate([chatId], {relativeTo: this.route});
+  async goToChat(chat:any) {
+    const navData: NavigationExtras = {
+      relativeTo: this.route,
+      queryParams: {
+        adId: chat.adId,
+        ownerId: chat.adOwner
+      }
+    }
+    await this.router.navigate([chat.id], navData);
   }
 
   getUser(user: unknown) {

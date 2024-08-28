@@ -19,6 +19,7 @@ import {ImageService} from "./image.service";
 import {UpdateDynamicAd} from "../shared/models/update-dynamic-ad-";
 import firebase from "firebase/compat/app";
 import FieldValue = firebase.firestore.FieldValue;
+import {ApiService} from "./api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,7 @@ export class AdService {
               private firestore: Firestore,
               private authService: AuthService,
               private imageService: ImageService,
+              private apiService: ApiService,
               private router: Router) {
 
     this.ads$ = this.ads.asObservable();
@@ -180,16 +182,7 @@ export class AdService {
 
 
   getAdById(id: string) {
-    return this.angularFirestore
-      .doc(`ads/${id}`)
-      .get()
-      .pipe(
-        map(doc => {
-          const data: any = doc.data();
-          const id = doc.id;
-          return {id, ...data} as Ad;
-        })
-      );
+    return this.apiService.docDataQuery(`ads/${id}`)
   }
 
   resetAds() {

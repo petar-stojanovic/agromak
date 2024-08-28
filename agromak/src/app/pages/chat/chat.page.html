@@ -40,7 +40,7 @@
 
           @if (chat.user$ | async; as user) {
 
-            <ion-item (click)="goToChat(chat.id)" button detail>
+            <ion-item (click)="goToChat(chat)" button detail>
               <ion-thumbnail slot="start">
                 @if (getUser(user).photoURL) {
                   <ion-img [src]="getUser(user).photoURL"/>
