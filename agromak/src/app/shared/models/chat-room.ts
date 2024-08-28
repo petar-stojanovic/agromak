@@ -10,9 +10,9 @@ export interface ChatRoom {
   createdAt: Timestamp;
 }
 
-interface UserMessage {
+export interface UserMessage {
   from: string;
   message: string;
-  createdAt?: Timestamp;
+  createdAt: Timestamp;
 }
 

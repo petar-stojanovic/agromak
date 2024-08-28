@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "585229624701",
+    "firebase_url": "https://agromak-1e9c8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "agromak-1e9c8",
+    "storage_bucket": "agromak-1e9c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585229624701:android:70d838fdc24cdaeeab9814",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585229624701-jct035hl35g4bvbfeg27ojbuarb5ig26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR14OggQ5Tkd8NcSnXTPC_5JFFd_jgUSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585229624701-b1pf89nfltssh95m1bhtpbc2n3pi85vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
