@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {IonApp, IonRouterOutlet, Platform} from '@ionic/angular/standalone';
 import {register} from 'swiper/element/bundle';
 import {ActionPerformed, PushNotifications, PushNotificationSchema, Token} from "@capacitor/push-notifications";
+import {FcmService} from "./services/fcm.service";
 
 register();
 
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
 
   @ViewChild(IonRouterOutlet) outlet!: IonRouterOutlet;
 
-  constructor(private platform: Platform,) {
+  constructor(private platform: Platform,
+              private fcmService: FcmService) {
     this.platform.backButton.subscribeWithPriority(-1, () => {
       if (!this.outlet.canGoBack()) {
         // App.exitApp();
