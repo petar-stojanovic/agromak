@@ -1,11 +1,11 @@
-import {AfterViewChecked, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavController} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
-import {combineLatest, map, Observable, of, switchMap} from "rxjs";
+import {combineLatest, map, Observable, of, Subscription, switchMap} from "rxjs";
 import {
   IonBackButton,
   IonButton,
@@ -37,7 +37,7 @@ import {AdService} from "../../../services/ad.service";
   standalone: true,
   imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText]
 })
-export class UserChatPage implements OnInit, AfterViewChecked {
+export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   @ViewChild('content') content!: IonContent;
 
@@ -46,6 +46,9 @@ export class UserChatPage implements OnInit, AfterViewChecked {
 
   ad!: Ad;
   messages: UserMessage[] = [];
+  owner!: User;
+
+  subscription?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,49 +67,24 @@ export class UserChatPage implements OnInit, AfterViewChecked {
 
     const messages$ = this.chatService.getChatRoomMessages(this.chatId);
     const ad$ = this.adService.getAdById(adId);
-    const owner$ = this.apiService.docDataQuery(`users/${adOwnerId}`);
+    const owner$ = this.authService.getUserProfile(adOwnerId);
 
-    const x = combineLatest([messages$, ad$, owner$])
+    this.subscription = combineLatest([messages$, ad$, owner$])
       .subscribe(
         ([messages, ad, owner]) => {
           this.ad = ad;
-          this.messages = messages
+          this.messages = messages;
+          this.owner = owner;
         }
       );
-
-    // fetch chatRoom
-
-    // get second user from chatRoom.members
-
-    // fetch second user data
-
-    //
-
-    this.authService.user$.pipe(
-      switchMap(user => {
-        this.user = user;
-        return this.apiService.collectionDataQuery(
-          'chatRooms',
-          this.apiService.whereQuery('members', 'array-contains', user.uid),
-        );
-      })
-    ).pipe(
-      map((data: any[]) => {
-        data.map((element) => {
-          const user_data = element.members.filter((x: string) => x !== this.user.uid);
-          element.user$ = this.apiService.docDataQuery(`users/${user_data[0]}`);
-          console.log(element);
-        })
-        return data;
-      }),
-      switchMap((data) => {
-        return of(data)
-      })
-    )
   }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 
   private scrollToBottom() {
