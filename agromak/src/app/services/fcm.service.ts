@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
 import {ApiService} from "./api.service";
@@ -7,6 +6,9 @@ import {Capacitor} from "@capacitor/core";
 import {PushNotifications} from "@capacitor/push-notifications";
 import {StorageService} from "./storage.service";
 import firebase from "firebase/compat/app";
+import {ToastController} from "@ionic/angular/standalone";
+import {addIcons} from "ionicons";
+import {globe} from "ionicons/icons";
 import FieldValue = firebase.firestore.FieldValue;
 
 export const FCM_TOKEN = 'push_notification_token';
@@ -19,11 +21,13 @@ export class FcmService {
   user!: User;
 
   constructor(
-    private angularFirestore: AngularFirestore,
+    private toastController: ToastController,
     private authService: AuthService,
     private apiService: ApiService,
     private storageService: StorageService
   ) {
+    addIcons({globe});
+
     this.authService.user$.subscribe(user => {
       this.user = user;
     });
@@ -54,8 +58,7 @@ export class FcmService {
 
 
   private async addListeners() {
-    await PushNotifications.addListener(
-      'registration', async token => {
+    await PushNotifications.addListener('registration', async token => {
         const fcmToken = token.value;
         this.storageService.removeStorage(FCM_TOKEN);
         const savedToken = (await this.storageService.getStorage(FCM_TOKEN)).value;
@@ -72,8 +75,18 @@ export class FcmService {
       console.error('Registration error: ', err.error);
     });
 
-    await PushNotifications.addListener('pushNotificationReceived', notification => {
+    await PushNotifications.addListener('pushNotificationReceived', async notification => {
       console.log('Push notification received: ', notification);
+
+      const toast = await this.toastController.create({
+        icon: 'globe',
+        header: notification.title,
+        message: notification.body,
+        position: 'top',
+        duration: 3000,
+      });
+
+      await toast.present();
     });
 
     await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
