@@ -35,14 +35,18 @@ export class UserChatService {
 
 
   async sendMessage(chatId: string, message: any): Promise<any> {
+    const dateCreated = new Date();
     const data: UserMessage = {
       from: this.user.uid,
       message: message,
-      createdAt: new Date() as unknown as Timestamp
+      createdAt: dateCreated as unknown as Timestamp
     }
 
     await this.api.addDocument(`chats/${chatId}/messages`, data);
-    await this.api.updateDocument(`chatRooms/${chatId}`, {lastMessage: message});
+    await this.api.updateDocument(`chatRooms/${chatId}`, {
+      lastMessage: message,
+      updatedAt: dateCreated as unknown as Timestamp
+    });
   }
 
   async createChatRoom(ad: Ad) {
