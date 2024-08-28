@@ -5,6 +5,7 @@ import {User} from "../shared/models/user";
 import {ApiService} from "./api.service";
 import {Capacitor} from "@capacitor/core";
 import {PushNotifications} from "@capacitor/push-notifications";
+import {StorageService} from "./storage.service";
 
 @Injectable()
 export class FcmService {
@@ -15,6 +16,7 @@ export class FcmService {
     private angularFirestore: AngularFirestore,
     private authService: AuthService,
     private apiService: ApiService,
+    private storageService: StorageService
   ) {
     this.authService.user$.subscribe(user => {
       this.user = user;
