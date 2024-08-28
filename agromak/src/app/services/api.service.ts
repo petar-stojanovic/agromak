@@ -7,7 +7,8 @@ import {
   docData,
   Firestore,
   getDoc,
-  getDocs, orderBy,
+  getDocs,
+  orderBy,
   query,
   setDoc,
   where
