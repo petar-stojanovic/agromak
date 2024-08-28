@@ -25,6 +25,7 @@ import {User} from "../../shared/models/user";
 import {UserChatService} from "../../services/user-chat.service";
 import {ApiService} from "../../services/api.service";
 import {map, Observable, of, switchMap, take} from "rxjs";
+import {ChatRoom} from "../../shared/models/chat-room";
 
 @Component({
   selector: 'app-chat',
@@ -107,13 +108,14 @@ export class ChatPage implements OnInit {
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 
-  async goToChat(chat: any) {
+  async goToChat(chat: ChatRoom) {
     console.log("chat", chat);
     const navData: NavigationExtras = {
       relativeTo: this.route,
       queryParams: {
         adId: chat.adId,
-        ownerId: chat.adOwner
+        adOwnerId: chat.adOwnerId,
+        senderId: chat.senderId
       }
     }
     await this.router.navigate([chat.id], navData);

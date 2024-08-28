@@ -47,7 +47,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   user?: User;
   owner?: User;
-  otherUser = this.user || this.owner;
+  otherUser?: User;
 
   subscription?: Subscription;
 
@@ -65,19 +65,25 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
   ngOnInit() {
     const chatId = this.route.snapshot.paramMap.get('id')!;
     const adId = this.route.snapshot.queryParamMap.get('adId')!;
-    const adOwnerId = this.route.snapshot.queryParamMap.get('ownerId')!;
+    const adOwnerId = this.route.snapshot.queryParamMap.get('adOwnerId')!;
+    const senderId = this.route.snapshot.queryParamMap.get('senderId')!;
 
     const messages$ = this.chatService.getChatRoomMessages(chatId);
     const ad$ = this.adService.getAdById(adId);
     const owner$ = this.authService.getUserProfile(adOwnerId);
+    const sender$ = this.authService.getUserProfile(senderId);
 
-
-    this.subscription = combineLatest([messages$, ad$, owner$])
+    this.subscription = combineLatest([messages$, ad$, owner$, sender$])
       .subscribe(
-        ([messages, ad, owner]) => {
+        ([messages, ad, owner, sender]) => {
+          console.log(messages, ad, owner, sender);
           this.ad = ad;
           this.messages = messages;
           this.owner = owner;
+
+          this.otherUser = this.user?.uid === owner.id ? sender : owner;
+
+          console.log(this.otherUser);
         }
       );
   }
@@ -89,6 +95,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
   ngOnDestroy() {
     this.subscription?.unsubscribe();
   }
+
   async openAdDetailsModal(ad: Ad) {
     const modal = await this.modalCtrl.create({
       component: AdDetailsModalComponent,
@@ -101,5 +108,9 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     if (this.messages.length > 0) {
       this.content.scrollToBottom(100);
     }
+  }
+
+  getUser(userId: string): User {
+    return this.user?.uid === userId ? this.user : this.otherUser!;
   }
 }
