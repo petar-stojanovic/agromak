@@ -7,7 +7,7 @@ import {
   docData,
   Firestore,
   getDoc,
-  getDocs,
+  getDocs, or,
   orderBy,
   query,
   setDoc,
@@ -62,23 +62,22 @@ export class ApiService {
     return getDocs(dataRef);
   }
 
-  collectionDataQuery(path: string, queryFn?: any) {
+  collectionDataQuery(path: string, queryFns: any[] = [], isORQuery = false) {
     let dataRef: any = this.collectionRef(path);
-    if (queryFn) {
+
+    if (queryFns.length > 0) {
+      const queryFn = isORQuery ? or(...queryFns) : (queryFns as any);
       dataRef = query(dataRef, queryFn);
     }
     return collectionData<any>(dataRef, {idField: 'id'});
   }
 
-  docDataQuery(path: string, shouldHaveId?: boolean, queryFn?: any) {
+  docDataQuery(path: string, queryFn?: any) {
     let dataRef: any = this.docRef(path);
     if (queryFn) {
       dataRef = query(dataRef, queryFn);
     }
-    if (shouldHaveId) {
-      return docData(dataRef, {idField: 'id'});
-    }
-    return docData<any>(dataRef);
+    return docData<any>(dataRef, {idField: 'id'});
   }
 
   whereQuery(fieldPath: string, condition: WhereFilterOp, value: any) {

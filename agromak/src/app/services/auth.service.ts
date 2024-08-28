@@ -8,6 +8,7 @@ import {GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
 import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
 import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
+import {ApiService} from "./api.service";
 
 
 @Injectable({
@@ -21,7 +22,8 @@ export class AuthService {
               private angularFirestore: AngularFirestore,
               private auth: Auth,
               private firestore: Firestore,
-              private router: Router) {
+              private router: Router,
+              private apiService: ApiService) {
 
     GoogleAuth.initialize();
 
@@ -106,7 +108,7 @@ export class AuthService {
     });
   }
 
-  updateUser(value: { displayName: string, city: string, phoneNumber: string })  {
+  updateUser(value: { displayName: string, city: string, phoneNumber: string }) {
     this.user$
       .pipe(first())
       .subscribe(async (user) => {
@@ -123,7 +125,7 @@ export class AuthService {
 
   }
 
-  getUserProfile(userId: string){
-    return this.angularFirestore.doc(`users/${userId}`).valueChanges()
+  getUserProfile(userId: string) {
+    return this.apiService.docDataQuery(`users/${userId}`);
   }
 }

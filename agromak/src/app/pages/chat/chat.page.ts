@@ -17,14 +17,15 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, NavigationExtras, Router, RouterLink} from "@angular/router";
 import {SegmentCustomEvent} from "@ionic/angular";
 import {AiChatService} from "../../services/ai-chat.service";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../shared/models/user";
 import {UserChatService} from "../../services/user-chat.service";
 import {ApiService} from "../../services/api.service";
-import {map, Observable, of, switchMap} from "rxjs";
+import {map, Observable, of, switchMap, take} from "rxjs";
+import {ChatRoom} from "../../shared/models/chat-room";
 
 @Component({
   selector: 'app-chat',
@@ -51,9 +52,6 @@ export class ChatPage implements OnInit {
               private route: ActivatedRoute,
               private authService: AuthService
   ) {
-    this.authService.user$.subscribe(user => {
-      this.user = user;
-    })
   }
 
   ngOnInit() {
@@ -73,15 +71,23 @@ export class ChatPage implements OnInit {
         this.user = user;
         return this.apiService.collectionDataQuery(
           'chatRooms',
-          this.apiService.whereQuery('members', 'array-contains', user.uid),
+          [
+            this.apiService.whereQuery('senderId', '==', user.uid),
+            this.apiService.whereQuery('adOwnerId', '==', user.uid)
+          ],
+          true
         );
       })
     ).pipe(
       map((data: any[]) => {
         data.map((element) => {
-          const user_data = element.members.filter((x: string) => x !== this.user.uid);
-          element.user$ = this.apiService.docDataQuery(`users/${user_data[0]}`, true);
-          console.log(element);
+          this.authService.getUserProfile(element.adOwnerId)
+            .pipe(
+              take(1)
+            )
+            .subscribe((user) => {
+              element.owner = user;
+          });
         })
         return data;
       }),
@@ -102,8 +108,17 @@ export class ChatPage implements OnInit {
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 
-  async goToChat(chatId: string) {
-    await this.router.navigate([chatId], {relativeTo: this.route});
+  async goToChat(chat: ChatRoom) {
+    console.log("chat", chat);
+    const navData: NavigationExtras = {
+      relativeTo: this.route,
+      queryParams: {
+        adId: chat.adId,
+        adOwnerId: chat.adOwnerId,
+        senderId: chat.senderId
+      }
+    }
+    await this.router.navigate([chat.id], navData);
   }
 
   getUser(user: unknown) {

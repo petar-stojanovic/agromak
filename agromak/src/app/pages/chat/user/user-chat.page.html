@@ -3,22 +3,43 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/chat"></ion-back-button>
     </ion-buttons>
-    <ion-title>Chat</ion-title>
+
+    @if (owner && ad) {
+      <ion-item class="ion-no-padding" (click)="openAdDetailsModal(ad)" button lines="none">
+
+        <ion-thumbnail slot="start">
+          @if (owner.photoURL) {
+            <ion-img [src]="owner.photoURL"/>
+          } @else {
+            <ion-img src="assets/images/no-image.png"/>
+          }
+        </ion-thumbnail>
+        <ion-label>
+          <ion-title>{{ ad.title }}</ion-title>
+          <ion-title size="small">{{ owner.displayName }}</ion-title>
+        </ion-label>
+      </ion-item>
+    }
   </ion-toolbar>
 </ion-header>
 
 <ion-content #content class="ion-padding">
 
-  @if (messages$| async; as messages) {
-    @for (message of messages; track message) {
-      <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
-                [class.ai-response]="$odd">
+  @if (messages.length > 0 && owner && user && otherUser) {
+
+    @for (message of messages; track $index) {
+
+      <ion-item class="ion-align-items-start ion-margin-vertical">
         <ion-thumbnail slot="start">
-          <img [src]="'assets/logo.svg'"/>
+          @if (getUser(message.from).photoURL) {
+            <ion-img [src]="getUser(message.from).photoURL"/>
+          } @else {
+            <ion-img src="assets/images/no-image.png"/>
+          }
         </ion-thumbnail>
         <ion-label class="selectable">
           <ion-text>
-            <h2 class="font-weight-500">{{ message.from }}</h2>
+            <h2 class="font-weight-500">{{ getUser(message.from).displayName }}</h2>
           </ion-text>
           <ion-text>
             <p class="font-size-12">{{ message.message }}</p>

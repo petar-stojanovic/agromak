@@ -9,7 +9,7 @@
 
 <ion-content #content class="ion-padding">
 
-  @for (message of messages; track message) {
+  @for (message of messages; track $index) {
     <ion-item class="ion-align-items-start ion-margin-vertical" [class.user-response]="$even"
               [class.ai-response]="$odd">
       <ion-thumbnail slot="start">
