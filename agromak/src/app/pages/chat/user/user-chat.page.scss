@@ -29,3 +29,28 @@ ion-thumbnail {
   --size: 2rem;
   --border-radius: 50%;
 }
+
+
+ion-footer {
+  box-shadow: none;
+
+  padding: 0.5rem 1rem;
+
+  & ion-icon {
+    font-size: 1.5rem;
+  }
+
+  & ion-input {
+    color: var(--ion-color-dark);
+
+    --highlight-color-focused: none;
+    --highlight-color-invalid: none;
+    --highlight-color-valid: none;
+
+    border-radius: 10rem;
+    background: var(--ion-color-light);
+
+    box-shadow: var(--ion-box-shadow);
+    border: 1px solid var(--ion-color-secondary-shade);
+  }
+}

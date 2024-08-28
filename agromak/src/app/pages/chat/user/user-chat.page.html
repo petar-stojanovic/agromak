@@ -67,15 +67,14 @@
   }
 
 </ion-content>
-<!--<ion-footer>-->
+<ion-footer>
 
-<!--  <form [formGroup]="form" (ngSubmit)="generateContentWithOpenAI()">-->
+  <form [formGroup]="form" (ngSubmit)="sendMessage()">
 
-<!--    <ion-input formControlName="question" class="ion-padding-horizontal" placeholder="Start typing here to chat...">-->
-<!--      <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>-->
-<!--      <ion-button fill="clear" slot="end" type="submit" [disabled]="form.invalid">-->
-<!--        <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>-->
-<!--      </ion-button>-->
-<!--    </ion-input>-->
-<!--  </form>-->
-<!--</ion-footer>-->
+    <ion-input formControlName="message" class="ion-padding-horizontal" placeholder="Start typing here to chat...">
+      <ion-button fill="clear" slot="end" type="submit" [disabled]="form.invalid">
+        <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-input>
+  </form>
+</ion-footer>

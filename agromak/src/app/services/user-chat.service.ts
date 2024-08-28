@@ -8,7 +8,7 @@ import firebase from "firebase/compat";
 import {ChatRoom, UserMessage} from "../shared/models/chat-room";
 import {Ad} from "../shared/models/ad";
 import Timestamp = firebase.firestore.Timestamp;
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {BehaviorSubject, map, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +35,12 @@ export class UserChatService {
 
 
   async sendMessage(chatId: string, message: any): Promise<any> {
-    console.log(chatId, message);
-    const data = {
-      message: message,
+    const data: UserMessage = {
       from: this.user.uid,
+      message: message,
       createdAt: new Date() as unknown as Timestamp
     }
+
     await this.api.addDocument(`chats/${chatId}/messages`, data);
     await this.api.updateDocument(`chatRooms/${chatId}`, {lastMessage: message});
   }

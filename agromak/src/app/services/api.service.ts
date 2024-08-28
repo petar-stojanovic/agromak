@@ -65,10 +65,12 @@ export class ApiService {
   collectionDataQuery(path: string, queryFns: any[] = [], isORQuery = false) {
     let dataRef: any = this.collectionRef(path);
 
-    if (queryFns.length > 0) {
-      const queryFn = isORQuery ? or(...queryFns) : (queryFns as any);
-      dataRef = query(dataRef, queryFn);
+    if (isORQuery) {
+      dataRef = query(dataRef, or(...queryFns));
+    } else {
+      dataRef = query(dataRef, ...queryFns);
     }
+
     return collectionData<any>(dataRef, {idField: 'id'});
   }
 

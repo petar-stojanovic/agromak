@@ -93,7 +93,7 @@
         <ion-icon slot="start" name="call-outline"></ion-icon>
         Call
       </ion-button>
-      <ion-button (click)="openMessageModal()" shape="round" color="dark" class="gap-1">
+      <ion-button [disabled]="ad.ownerId === user?.uid" (click)="openMessageModal()" shape="round" color="dark" class="gap-1">
         <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
         Message
       </ion-button>

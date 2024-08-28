@@ -90,7 +90,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   favoriteSubscription: Subscription | null = null;
 
   owner: User | null = null;
-
+  user?: User;
   isReadAllDescription = false;
 
   constructor(private modalCtrl: ModalController,
@@ -100,6 +100,9 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private alertController: AlertController,
               private chatService: UserChatService) {
     addIcons(icons);
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit() {

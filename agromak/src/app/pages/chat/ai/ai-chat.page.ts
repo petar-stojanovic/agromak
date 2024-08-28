@@ -98,7 +98,6 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
     const {question} = this.form.value;
     this.form.reset();
 
-
     const userMessage: AiMessage = {
       from: "YOU",
       message: question,
@@ -109,7 +108,6 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
 
     this.image = null;
     this.compressedImage = null;
-
 
     await this.aiChatService.sendMessage(this.chatId, userMessage);
 
