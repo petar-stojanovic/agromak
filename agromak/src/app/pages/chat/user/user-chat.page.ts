@@ -1,11 +1,10 @@
-import {AfterViewChecked, Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import {AfterViewChecked, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NavController} from '@ionic/angular';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
-import {combineLatest, map, Observable, of, Subscription, switchMap} from "rxjs";
+import {combineLatest, Subscription} from "rxjs";
 import {
   IonBackButton,
   IonButton,
@@ -13,7 +12,8 @@ import {
   IonContent,
   IonFooter,
   IonHeader,
-  IonIcon, IonImg,
+  IonIcon,
+  IonImg,
   IonInput,
   IonItem,
   IonLabel,
@@ -21,15 +21,17 @@ import {
   IonText,
   IonThumbnail,
   IonTitle,
-  IonToolbar, ModalController
+  IonToolbar,
+  ModalController
 } from "@ionic/angular/standalone";
 import {MarkdownComponent} from "ngx-markdown";
 import {AuthService} from "../../../services/auth.service";
-import {ApiService} from "../../../services/api.service";
 import {User} from "../../../shared/models/user";
 import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
+import {addIcons} from "ionicons";
+import {sendOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-user-chat',
@@ -45,11 +47,14 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
   ad?: Ad;
   messages: UserMessage[] = [];
 
+  chatId = '';
   user?: User;
   owner?: User;
   otherUser?: User;
 
   subscription?: Subscription;
+
+  form: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,12 +63,18 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     private authService: AuthService,
     private modalCtrl: ModalController,
   ) {
+    addIcons({sendOutline});
+    this.form = new FormGroup({
+      message: new FormControl("", [Validators.required])
+    });
+
     this.authService.user$.subscribe(user => this.user = user);
   }
 
 
   ngOnInit() {
     const chatId = this.route.snapshot.paramMap.get('id')!;
+    this.chatId = chatId;
     const adId = this.route.snapshot.queryParamMap.get('adId')!;
     const adOwnerId = this.route.snapshot.queryParamMap.get('adOwnerId')!;
     const senderId = this.route.snapshot.queryParamMap.get('senderId')!;
@@ -76,17 +87,15 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     this.subscription = combineLatest([messages$, ad$, owner$, sender$])
       .subscribe(
         ([messages, ad, owner, sender]) => {
-          console.log(messages, ad, owner, sender);
           this.ad = ad;
           this.messages = messages;
           this.owner = owner;
 
           this.otherUser = this.user?.uid === owner.id ? sender : owner;
-
-          console.log(this.otherUser);
         }
       );
   }
+
 
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -104,9 +113,17 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     await modal.present();
   }
 
+  async sendMessage() {
+    const {message} = this.form.value;
+
+    await this.chatService.sendMessage(this.chatId, message);
+    this.form.reset();
+    this.scrollToBottom();
+  }
+
   private scrollToBottom() {
     if (this.messages.length > 0) {
-      this.content.scrollToBottom(100);
+      this.content.scrollToBottom();
     }
   }
 

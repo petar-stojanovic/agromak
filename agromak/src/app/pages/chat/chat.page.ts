@@ -109,7 +109,6 @@ export class ChatPage implements OnInit {
   }
 
   async goToChat(chat: ChatRoom) {
-    console.log("chat", chat);
     const navData: NavigationExtras = {
       relativeTo: this.route,
       queryParams: {
