@@ -13,7 +13,7 @@ import {
   IonContent,
   IonFooter,
   IonHeader,
-  IonIcon,
+  IonIcon, IonImg,
   IonInput,
   IonItem,
   IonLabel,
@@ -21,7 +21,7 @@ import {
   IonText,
   IonThumbnail,
   IonTitle,
-  IonToolbar
+  IonToolbar, ModalController
 } from "@ionic/angular/standalone";
 import {MarkdownComponent} from "ngx-markdown";
 import {AuthService} from "../../../services/auth.service";
@@ -29,13 +29,14 @@ import {ApiService} from "../../../services/api.service";
 import {User} from "../../../shared/models/user";
 import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
+import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
 
 @Component({
   selector: 'app-user-chat',
   templateUrl: './user-chat.page.html',
   styleUrls: ['./user-chat.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText]
+  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg]
 })
 export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
@@ -44,9 +45,9 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
   chatId = '';
   user!: User;
 
-  ad!: Ad;
+  ad?: Ad;
   messages: UserMessage[] = [];
-  owner!: User;
+  owner?: User;
 
   subscription?: Subscription;
 
@@ -55,7 +56,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     private adService: AdService,
     private chatService: UserChatService,
     private authService: AuthService,
-    private apiService: ApiService
+    private modalCtrl: ModalController,
   ) {
   }
 
@@ -85,6 +86,13 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   ngOnDestroy() {
     this.subscription?.unsubscribe();
+  }
+  async openAdDetailsModal(ad: Ad) {
+    const modal = await this.modalCtrl.create({
+      component: AdDetailsModalComponent,
+      componentProps: {ad}
+    });
+    await modal.present();
   }
 
   private scrollToBottom() {

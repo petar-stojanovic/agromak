@@ -3,7 +3,23 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/chat"></ion-back-button>
     </ion-buttons>
-    <ion-title>Chat</ion-title>
+
+    @if (owner && ad) {
+      <ion-item class="ion-no-padding" (click)="openAdDetailsModal(ad)" button lines="none">
+
+        <ion-thumbnail slot="start">
+          @if (owner.photoURL) {
+            <ion-img [src]="owner.photoURL"/>
+          } @else {
+            <ion-img src="assets/images/no-image.png"/>
+          }
+        </ion-thumbnail>
+        <ion-label>
+          <ion-title>{{ ad.title }}</ion-title>
+          <ion-title size="small">{{ owner.displayName }}</ion-title>
+        </ion-label>
+      </ion-item>
+    }
   </ion-toolbar>
 </ion-header>
 
