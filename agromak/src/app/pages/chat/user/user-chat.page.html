@@ -8,11 +8,7 @@
       <ion-item class="ion-no-padding" (click)="openAdDetailsModal(ad)" button lines="none">
 
         <ion-thumbnail slot="start">
-          @if (owner.photoURL) {
-            <ion-img [src]="owner.photoURL"/>
-          } @else {
-            <ion-img src="assets/images/no-image.png"/>
-          }
+            <ion-img [src]="owner.photoURL || 'assets/images/no-image.png'"/>
         </ion-thumbnail>
         <ion-label>
           <ion-title>{{ ad.title }}</ion-title>
@@ -31,11 +27,7 @@
 
       <ion-item class="ion-align-items-start ion-margin-vertical">
         <ion-thumbnail slot="start">
-          @if (getUser(message.from).photoURL) {
-            <ion-img [src]="getUser(message.from).photoURL"/>
-          } @else {
-            <ion-img src="assets/images/no-image.png"/>
-          }
+            <ion-img [src]="getUser(message.from).photoURL || 'assets/images/no-image.png'"/>
         </ion-thumbnail>
         <ion-label class="selectable">
           <ion-text>

@@ -1,5 +1,6 @@
 import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
+import {User} from "./user";
 
 export interface ChatRoom {
   id?: string;
@@ -10,6 +11,7 @@ export interface ChatRoom {
   updatedAt: Timestamp;
   createdAt: Timestamp;
   lastMessage: string;
+  userToDisplay?: User;
 }
 
 export interface UserMessage {

@@ -64,13 +64,14 @@ export class EditProfilePage implements OnInit {
     const user$ = this.authService.user$;
     const location$ = this.http.get<JsonFormData>('/assets/edit-profile-form.json');
 
-    combineLatest([user$, location$]).subscribe(async ([user, location]) => {
-      this.user = user;
-      this.phoneFormControl = location.controls[0];
-      this.locationFormControl = location.controls[1];
-      this.createForm();
-      await loading.dismiss();
-    })
+    combineLatest([user$, location$])
+      .subscribe(async ([user, location]) => {
+        this.user = user;
+        this.phoneFormControl = location.controls[0];
+        this.locationFormControl = location.controls[1];
+        this.createForm();
+        await loading.dismiss();
+      })
   }
 
   private createForm() {
