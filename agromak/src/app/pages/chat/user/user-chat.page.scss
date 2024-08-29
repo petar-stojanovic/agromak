@@ -58,7 +58,7 @@ ion-footer {
   text-align: right;
 
   & .message-box {
-    max-width: 75%;
+    max-width: calc(75% - 4rem);
     margin-left: auto;
     margin-right: 0.5rem;
 
@@ -78,8 +78,10 @@ ion-footer {
 }
 
 .other-user {
+  width: calc(75% - 4rem);
+
   & .message-box {
-    max-width: 75%;
+
 
     & .date-created {
       font-size: 0.75rem;
@@ -96,9 +98,6 @@ ion-footer {
       min-width: 2.25rem;
       border: 1px solid var(--ion-color-medium-tint);
 
-      &.indent {
-        margin-left: 4rem; //TODO: add a variable for this
-      }
     }
   }
 }
@@ -112,4 +111,8 @@ p {
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
   color: var(--ion-color-medium);
+}
+
+.indent {
+  margin-left: 4rem; //TODO: add a variable for this
 }

@@ -45,18 +45,15 @@
               <ion-img [src]="getUser(message.from).photoURL || 'assets/images/no-image.png'"/>
             </ion-thumbnail>
           }
-          <ion-text class="selectable other-user">
+          <ion-text class="selectable other-user"
+                    [class.indent]="!(message.shouldShowDate || message.from !== messages[$index - 1].from)">
             <div class="message-box">
-              @if (message.shouldShowDate || message.from !== messages[$index - 1].from) {
-                <p class="message ">{{ message.message }}</p>
-              } @else {
-                <p class="message indent">{{ message.message }}</p>
-              }
+              <p class="message">{{ message.message }}</p>
             </div>
           </ion-text>
+
         </div>
       }
-
 
     }
   } @else {
