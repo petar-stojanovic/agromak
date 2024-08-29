@@ -15,7 +15,7 @@ import {
   IonIcon,
   IonImg,
   IonInput,
-  IonItem,
+  IonItem, IonItemDivider,
   IonLabel,
   IonSkeletonText,
   IonText,
@@ -38,7 +38,7 @@ import {sendOutline} from "ionicons/icons";
   templateUrl: './user-chat.page.html',
   styleUrls: ['./user-chat.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg]
+  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg, IonItemDivider]
 })
 export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
@@ -129,7 +129,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   private scrollToBottom() {
     if (this.messages.length > 0) {
-      this.content.scrollToBottom();
+      this.content.scrollToBottom(100);
     }
   }
 

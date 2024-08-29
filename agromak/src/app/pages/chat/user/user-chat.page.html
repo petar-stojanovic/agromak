@@ -26,32 +26,35 @@
     @for (message of messages; track $index) {
 
       @if (getUser(message.from) === user) {
-        <ion-item lines="none">
-          <ion-label class="selectable ion-no-margin">
-            <ion-text class="my-user">
-              <div class="message-box">
-                @if (message.shouldShowDate) {
-                  <p class="font-size-12">{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
-                }
-<!--                <p>{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</p>-->
-                <p class="font-size-12 message">{{ message.message }}</p>
-              </div>
-            </ion-text>
-          </ion-label>
-        </ion-item>
+        @if (message.shouldShowDate) {
+          <div class="date-created text-center">{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</div>
+        }
+        <ion-text class="selectable my-user">
+          <div class="message-box">
+            <p class="message">{{ message.message }}</p>
+          </div>
+        </ion-text>
 
       } @else {
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <ion-img [src]="getUser(message.from).photoURL || 'assets/images/no-image.png'"/>
-          </ion-thumbnail>
-          <ion-label class="selectable ion-no-margin">
-            <ion-text>
-              <p class="font-size-12">{{ message.message }}</p>
-              <p>{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
-            </ion-text>
-          </ion-label>
-        </ion-item>
+        @if (message.shouldShowDate) {
+          <div class="date-created text-center">{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</div>
+        }
+        <div class="flex">
+          @if (message.shouldShowDate || message.from !== messages[$index - 1].from) {
+            <ion-thumbnail slot="start">
+              <ion-img [src]="getUser(message.from).photoURL || 'assets/images/no-image.png'"/>
+            </ion-thumbnail>
+          }
+          <ion-text class="selectable other-user">
+            <div class="message-box">
+              @if (message.shouldShowDate || message.from !== messages[$index - 1].from) {
+                <p class="message ">{{ message.message }}</p>
+              } @else {
+                <p class="message indent">{{ message.message }}</p>
+              }
+            </div>
+          </ion-text>
+        </div>
       }
 
 
