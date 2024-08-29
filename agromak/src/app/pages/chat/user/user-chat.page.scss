@@ -32,8 +32,6 @@ ion-thumbnail {
 
 
 ion-footer {
-  box-shadow: none;
-
   padding: 0.5rem 1rem;
 
   & ion-icon {
@@ -52,5 +50,23 @@ ion-footer {
 
     box-shadow: var(--ion-box-shadow);
     border: 1px solid var(--ion-color-secondary-shade);
+  }
+}
+
+.my-user {
+  text-align: right;
+
+  & .message-box {
+    max-width: 75%;
+    margin-left: auto;
+
+    & .message {
+      display: inline-block;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      background: var(--ion-color-primary-light);
+      white-space: pre-line;
+      text-align: left;
+    }
   }
 }
