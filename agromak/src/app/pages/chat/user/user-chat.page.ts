@@ -90,7 +90,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
           this.ad = ad;
           this.messages = messages;
           this.owner = owner;
-
+          console.log(messages);
           this.otherUser = this.user?.uid === owner.id ? sender : owner;
         }
       );
@@ -129,5 +129,26 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   getUser(userId: string): User {
     return this.user?.uid === userId ? this.user : this.otherUser!;
+  }
+
+  shouldShowDate(currentMessageIndex: number, messages: UserMessage[]): boolean {
+    if (currentMessageIndex === 0) {
+      return true;
+    }
+
+    const currentMessage = messages[currentMessageIndex];
+    const previousMessage = messages[currentMessageIndex - 1];
+
+    const currentDate = new Date(currentMessage.createdAt.seconds * 1000);
+    const previousDate = new Date(previousMessage.createdAt.seconds * 1000);
+
+    // Calculate the time difference in minutes
+    const diffInMinutes = (currentDate.getTime() - previousDate.getTime()) / (1000 * 60);
+
+    console.log(diffInMinutes);
+    console.log(currentDate);
+    console.log(previousDate);
+    // Return true if the difference is more than 30 minutes
+    return diffInMinutes > 30;
   }
 }
