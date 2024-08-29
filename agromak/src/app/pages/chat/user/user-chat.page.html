@@ -30,7 +30,7 @@
           <ion-label class="selectable ion-no-margin">
             <ion-text class="my-user">
               <div class="message-box">
-                @if (shouldShowDate($index, messages)) {
+                @if (message.shouldShowDate) {
                   <p class="font-size-12">{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
                 }
 <!--                <p>{{ message.createdAt.toDate() | date:'MMM d, y, HH:mm' }}</p>-->

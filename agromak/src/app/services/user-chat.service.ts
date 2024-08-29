@@ -92,7 +92,7 @@ export class UserChatService {
       [
         this.api.orderByQuery('createdAt', 'asc')
       ]
-    )
+    ) as Observable<UserMessage[]>;
   }
 }
 

@@ -4,7 +4,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
-import {combineLatest, Subscription} from "rxjs";
+import {combineLatest, Subscription, tap} from "rxjs";
 import {
   IonBackButton,
   IonButton,
@@ -85,12 +85,18 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     const sender$ = this.authService.getUserProfile(senderId);
 
     this.subscription = combineLatest([messages$, ad$, owner$, sender$])
+      .pipe(
+        tap(([messages, ad, owner, sender]) => {
+          console.log("UPDATE MESSAGES DATE");
+            this.updateMessagesDate(messages);
+          }
+        )
+      )
       .subscribe(
         ([messages, ad, owner, sender]) => {
           this.ad = ad;
           this.messages = messages;
           this.owner = owner;
-          console.log(messages);
           this.otherUser = this.user?.uid === owner.id ? sender : owner;
         }
       );
@@ -131,24 +137,25 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     return this.user?.uid === userId ? this.user : this.otherUser!;
   }
 
-  shouldShowDate(currentMessageIndex: number, messages: UserMessage[]): boolean {
-    if (currentMessageIndex === 0) {
-      return true;
+
+  private updateMessagesDate(messages: UserMessage[]) {
+    const DATE_DIFFERENCE_MINUTES = 22;
+    const TIME_IN_MILLISECONDS = 1000 * 60;
+
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      if (i === 0) {
+        message.shouldShowDate = true;
+        continue;
+      }
+      const previousMessage = messages[i - 1];
+
+      const currentDate = new Date(message.createdAt.toMillis());
+      const previousDate = new Date(previousMessage.createdAt.toMillis());
+
+      const diffInMinutes = (currentDate.getTime() - previousDate.getTime()) / TIME_IN_MILLISECONDS;
+
+      messages[i].shouldShowDate = diffInMinutes > DATE_DIFFERENCE_MINUTES;
     }
-
-    const currentMessage = messages[currentMessageIndex];
-    const previousMessage = messages[currentMessageIndex - 1];
-
-    const currentDate = new Date(currentMessage.createdAt.seconds * 1000);
-    const previousDate = new Date(previousMessage.createdAt.seconds * 1000);
-
-    // Calculate the time difference in minutes
-    const diffInMinutes = (currentDate.getTime() - previousDate.getTime()) / (1000 * 60);
-
-    console.log(diffInMinutes);
-    console.log(currentDate);
-    console.log(previousDate);
-    // Return true if the difference is more than 30 minutes
-    return diffInMinutes > 30;
   }
 }
