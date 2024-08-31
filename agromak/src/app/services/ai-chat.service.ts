@@ -1,13 +1,17 @@
+import firebase from "firebase/compat/app";
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {User} from "../shared/models/user";
 import {AiMessage} from '../shared/models/ai-message';
-import firebase from "firebase/compat/app";
 import {take} from "rxjs";
 import {AiChat} from "../shared/models/ai-chat";
+import {ApiService} from "./api.service";
+import {AiChatRoom} from "../shared/models/ai-chat-room";
+import Timestamp = firebase.firestore.Timestamp;
 import FieldValue = firebase.firestore.FieldValue;
+import {UserMessage} from "../shared/models/chat-room";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +23,8 @@ export class AiChatService {
   constructor(
     private angularFirestore: AngularFirestore,
     private firestore: Firestore,
-    private authService: AuthService
+    private authService: AuthService,
+    private api: ApiService
   ) {
 
     this.authService.user$.subscribe(user => {
@@ -27,25 +32,20 @@ export class AiChatService {
     });
   }
 
-  async createChat() {
-    const currentDate = new Date();
-    const newChatRef = await this.angularFirestore.collection('chatgpt').add({
-      createdBy: this.user.uid,
-      messages: [],
-      createdAt: currentDate,
-      updatedAt: currentDate
-    });
+  async createChatRoom() {
 
-    const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
-    await updateDoc(userDocRef, {
-      aiChats: FieldValue.arrayUnion({
-        id: newChatRef.id,
-        lastMessage: '',
-        updatedAt: currentDate
-      })
+    const dateCreated = new Date();
+    const data: AiChatRoom = {
+      id: "",
+      createdBy: "",
+      updatedAt: dateCreated as unknown as Timestamp,
+      createdAt: dateCreated as unknown as Timestamp,
+      lastMessage: "",
+    }
+    const aiChatRoom = await this.api.addDocument('aiChatRooms', data);
+    console.log("new aiChatRoom", aiChatRoom);
 
-    });
-    return newChatRef.id;
+    return aiChatRoom.id;
   }
 
   getChat(chatId: string) {

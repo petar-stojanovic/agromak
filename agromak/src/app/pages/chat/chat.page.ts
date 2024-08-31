@@ -39,7 +39,7 @@ import {sparkles} from "ionicons/icons";
 })
 export class ChatPage implements OnInit, OnDestroy {
   isLoading = true;
-  segment = "userSentChats";
+  segment = "ai";
 
   userSentChats: ChatRoom[] = [];
   userReceivedChats: ChatRoom[] = [];
@@ -50,7 +50,7 @@ export class ChatPage implements OnInit, OnDestroy {
   private subscription?: Subscription;
 
   constructor(private aiChatService: AiChatService,
-              private chatService: UserChatService,
+              private userChatService: UserChatService,
               private apiService: ApiService,
               private router: Router,
               private route: ActivatedRoute,
@@ -112,7 +112,7 @@ export class ChatPage implements OnInit, OnDestroy {
   }
 
   async navigateToNewAiPage() {
-    const id = await this.aiChatService.createChat();
+    const id = await this.aiChatService.createChatRoom();
     await this.router.navigate(['ai', id], {relativeTo: this.route});
   }
 
