@@ -147,3 +147,13 @@ h2 {
     padding: 0 1rem;
   }
 }
+
+.single-line {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+}
+
+p, ol, li {
+  margin: 0;
+}

@@ -42,14 +42,21 @@
 
         @if (chat.userToDisplay; as userToDisplay) {
 
-          <ion-item (click)="goToChat(chat)" button detail>
+          <ion-item (click)="goToChat(chat)" button class="chat" lines="none">
             <ion-thumbnail slot="start">
               <ion-img [src]="userToDisplay.photoURL || 'assets/images/no-image.png'"/>
             </ion-thumbnail>
             <ion-label>
-              <h2>{{ userToDisplay.displayName }}</h2>
-              <p>{{ chat.lastMessage }}</p>
-              <p>{{ chat.updatedAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
+              <div class="flex gap-1 ion-align-items-center justify-space-between">
+                <h2 class="ad-user single-line max-width-75">{{ userToDisplay.displayName }}</h2>
+                @if (isToday(chat.updatedAt.toDate())) {
+                  <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'HH:mm' }}</p>
+                } @else {
+                  <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'MMM d' }}</p>
+                }
+              </div>
+              <p class="ad-title single-line">{{ chat.adTitle }}</p>
+              <p class="ad-last-message single-line">{{ chat.lastMessage }}</p>
             </ion-label>
           </ion-item>
         }
@@ -57,8 +64,8 @@
       }
 
     } @else if (segment === 'ai') {
-      <ion-item (click)="navigateToNewAiPage()" button detail lines="none" class="new-ai-chat">
-        <ion-thumbnail slot="start">
+      <ion-item (click)="navigateToNewAiPage()" button lines="none" class="chat new-ai-chat">
+        <ion-thumbnail class="ai-thumbnail" slot="start">
           <ion-img src="assets/logo.svg"/>
         </ion-thumbnail>
         <ion-label>
@@ -66,14 +73,14 @@
         </ion-label>
       </ion-item>
 
-      @for (chat of user.aiChats; track $index) {
-        <ion-item [routerLink]="['./ai', chat.id]" button detail lines="none">
-          <ion-thumbnail slot="start">
+      @for (chat of aiChats; track $index) {
+        <ion-item [routerLink]="['./ai', chat.id]" button lines="none" class="chat">
+          <ion-thumbnail class="ai-thumbnail" slot="start">
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
-            <p class="last-message font-weight-bold">{{ chat.lastMessage }}</p>
-            <p>{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
+            <h2 class="single-line font-weight-bold mb-10">{{ chat.lastMessage.message }}</h2>
+            <p class="date-created">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
           </ion-label>
         </ion-item>
       }
@@ -82,14 +89,21 @@
       @for (chat of userReceivedChats; track $index) {
         @if (chat.userToDisplay; as userToDisplay) {
 
-          <ion-item (click)="goToChat(chat)" button detail>
+          <ion-item (click)="goToChat(chat)" button lines="none" class="chat">
             <ion-thumbnail slot="start">
               <ion-img [src]="userToDisplay.photoURL || 'assets/images/no-image.png'"/>
             </ion-thumbnail>
             <ion-label>
-              <h2>{{ userToDisplay.displayName }}</h2>
-              <p>{{ chat.lastMessage }}</p>
-              <p>{{ chat.updatedAt.toDate() | date:'MMM d, y, HH:mm' }}</p>
+              <div class="flex gap-1 ion-align-items-center justify-space-between">
+                <h2 class="ad-user single-line max-width-75">{{ userToDisplay.displayName }}</h2>
+                @if (isToday(chat.updatedAt.toDate())) {
+                  <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'HH:mm' }}</p>
+                } @else {
+                  <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'MMM d' }}</p>
+                }
+              </div>
+              <p class="ad-title single-line">{{ chat.adTitle }}</p>
+              <p class="ad-last-message single-line">{{ chat.lastMessage }}</p>
             </ion-label>
           </ion-item>
         }

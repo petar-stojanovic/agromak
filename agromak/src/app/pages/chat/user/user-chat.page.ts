@@ -4,7 +4,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
-import {combineLatest, Subscription} from "rxjs";
+import {combineLatest, Subscription, tap} from "rxjs";
 import {
   IonBackButton,
   IonButton,
@@ -15,7 +15,7 @@ import {
   IonIcon,
   IonImg,
   IonInput,
-  IonItem,
+  IonItem, IonItemDivider,
   IonLabel,
   IonSkeletonText,
   IonText,
@@ -38,7 +38,7 @@ import {sendOutline} from "ionicons/icons";
   templateUrl: './user-chat.page.html',
   styleUrls: ['./user-chat.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg]
+  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg, IonItemDivider]
 })
 export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
@@ -85,12 +85,17 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     const sender$ = this.authService.getUserProfile(senderId);
 
     this.subscription = combineLatest([messages$, ad$, owner$, sender$])
+      .pipe(
+        tap(([messages, ad, owner, sender]) => {
+            this.updateMessagesDate(messages);
+          }
+        )
+      )
       .subscribe(
         ([messages, ad, owner, sender]) => {
           this.ad = ad;
           this.messages = messages;
           this.owner = owner;
-
           this.otherUser = this.user?.uid === owner.id ? sender : owner;
         }
       );
@@ -123,11 +128,33 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   private scrollToBottom() {
     if (this.messages.length > 0) {
-      this.content.scrollToBottom();
+      this.content.scrollToBottom(100);
     }
   }
 
   getUser(userId: string): User {
     return this.user?.uid === userId ? this.user : this.otherUser!;
+  }
+
+
+  private updateMessagesDate(messages: UserMessage[]) {
+    const DATE_DIFFERENCE_MINUTES = 22;
+    const TIME_IN_MILLISECONDS = 1000 * 60;
+
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      if (i === 0) {
+        message.shouldShowDate = true;
+        continue;
+      }
+      const previousMessage = messages[i - 1];
+
+      const currentDate = new Date(message.createdAt.toMillis());
+      const previousDate = new Date(previousMessage.createdAt.toMillis());
+
+      const diffInMinutes = (currentDate.getTime() - previousDate.getTime()) / TIME_IN_MILLISECONDS;
+
+      messages[i].shouldShowDate = diffInMinutes > DATE_DIFFERENCE_MINUTES;
+    }
   }
 }

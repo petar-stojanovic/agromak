@@ -18,5 +18,6 @@ export interface UserMessage {
   from: string;
   message: string;
   createdAt: Timestamp;
+  shouldShowDate?: boolean; // Used to display date in chat
 }
 

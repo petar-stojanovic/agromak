@@ -26,14 +26,13 @@ img {
 }
 
 ion-thumbnail {
-  --size: 2rem;
+  --size: 2.5rem;
   --border-radius: 50%;
+  margin: 0 0.75rem;
 }
 
 
 ion-footer {
-  box-shadow: none;
-
   padding: 0.5rem 1rem;
 
   & ion-icon {
@@ -53,4 +52,66 @@ ion-footer {
     box-shadow: var(--ion-box-shadow);
     border: 1px solid var(--ion-color-secondary-shade);
   }
+}
+
+.my-user {
+  text-align: right;
+
+  & .message-box {
+    max-width: calc(75% - 4rem);
+    margin-left: auto;
+    margin-right: 0.5rem;
+
+    & .message {
+      display: inline-block;
+      border-radius: 1rem;
+      margin: 0 0.25rem 0.25rem 0;
+      padding: 0.4rem 0.75rem;
+      background: var(--ion-color-primary-chat);
+      color: var(--ion-color-light);
+      white-space: pre-line;
+      text-align: left;
+      min-width: 2.25rem;
+      border: 1px solid var(--ion-color-medium-tint);
+    }
+  }
+}
+
+.other-user {
+  width: calc(75% - 4rem);
+
+  & .message-box {
+
+    & .date-created {
+      font-size: 0.75rem;
+      color: var(--ion-color-medium);
+    }
+
+    & .message {
+      display: inline-block;
+      border-radius: 1rem;
+      margin: 0.15rem 0;
+      padding: 0.4rem 0.75rem;
+      background: var(--ion-color-light);
+      white-space: pre-line;
+      min-width: 2.25rem;
+      border: 1px solid var(--ion-color-medium-tint);
+
+    }
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.date-created {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--ion-color-medium);
+}
+
+.indent {
+  margin-left: 4rem; //TODO: add a variable for this
 }

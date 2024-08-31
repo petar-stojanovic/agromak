@@ -7,6 +7,7 @@ import {
   IonFooter,
   IonHeader,
   IonIcon,
+  IonImg,
   IonInput,
   IonItem,
   IonLabel,
@@ -24,17 +25,19 @@ import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AiMessage} from "../../../shared/models/ai-message";
 import {AuthService} from "../../../services/auth.service";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, DatePipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
 import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../../../shared/models/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-ai-chat',
   templateUrl: './ai-chat.page.html',
   styleUrls: ['./ai-chat.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent, IonImg, DatePipe]
 })
 export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   image: Photo | null = null;
@@ -44,11 +47,12 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
 
   messages: AiMessage[] = [];
 
-  user$ = this.authService.user$;
+  user?: User;
 
   @ViewChild('content') content!: IonContent;
 
   chatId = '';
+  subscription?: Subscription;
 
   constructor(private openAiService: OpenAiService,
               private imageService: ImageService,
@@ -57,6 +61,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
               private aiChatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
+    this.authService.user$.subscribe(user => this.user = user);
 
     this.form = new FormGroup({
       question: new FormControl("", [Validators.required])
@@ -66,11 +71,8 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.aiChatService.getChat(this.chatId).subscribe(chat => {
-      console.log(chat)
-      if (chat && chat.messages) {
-        this.messages = chat.messages;
-      }
+    this.subscription = this.aiChatService.getChat(this.chatId).subscribe(messages => {
+      this.messages = messages;
     });
   }
 
@@ -98,11 +100,19 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
     const {question} = this.form.value;
     this.form.reset();
 
-    const userMessage: AiMessage = {
-      from: "YOU",
-      message: question,
-      image: this.image ? `data:image/jpeg;base64,${this.image?.base64String}` : null
-    };
+    let userMessage: AiMessage;
+    if (this.image) {
+      userMessage = {
+        from: this.user?.uid || 'YOU',
+        message: question,
+        image: `data:image/jpeg;base64,${this.image.base64String}`
+      }
+    } else {
+      userMessage = {
+        from: this.user?.uid || 'YOU',
+        message: question,
+      }
+    }
 
     this.messages.push(userMessage);
 
@@ -113,16 +123,15 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
 
     const stream = await this.openAiService.generateContentWithOpenAI(this.messages);
 
-    this.messages.push({from: "AI", message: "", image: null});
+    this.messages.push({from: "AI", message: ""});
 
-    await this.scrollToBottom();
+    this.scrollToBottom();
 
     const latestMessageIndex = this.messages.length - 1;
 
     for await (const chunk of stream) {
       const aiResponse = chunk.choices[0].delta.content || '';
       this.messages[latestMessageIndex].message += aiResponse;
-      // console.log(this.messages)
     }
 
     await this.aiChatService.sendMessage(this.chatId, this.messages[latestMessageIndex]);
@@ -134,5 +143,6 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
 
   ngOnDestroy() {
     this.aiChatService.deleteAiChatIfEmpty(this.chatId);
+    this.subscription?.unsubscribe();
   }
 }
