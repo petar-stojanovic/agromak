@@ -17,10 +17,13 @@ ion-segment {
 
   & .ad-user {
     font-weight: bold;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    font-size: 1.1rem;
     margin: 5px 0;
+  }
+
+  & .ad-title {
+    font-weight: 600;
+    font-size: 1rem;
   }
 
   & .ad-date{
@@ -29,7 +32,11 @@ ion-segment {
     text-wrap: nowrap;
   }
 
-  & .ad-title {
-    font-weight: 500;
+  & .ad-last-message{
+    font-size: 0.9rem;
   }
+}
+
+max-width-75 {
+  max-width: 75%;
 }

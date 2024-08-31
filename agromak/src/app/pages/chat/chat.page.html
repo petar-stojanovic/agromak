@@ -48,15 +48,15 @@
             </ion-thumbnail>
             <ion-label>
               <div class="flex gap-1 ion-align-items-center justify-space-between">
-                <h2 class="ad-user">{{ userToDisplay.displayName }}</h2>
+                <h2 class="ad-user single-line max-width-75">{{ userToDisplay.displayName }}</h2>
                 @if (isToday(chat.updatedAt.toDate())) {
                   <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'HH:mm' }}</p>
                 } @else {
                   <p class="ad-date">{{ chat.updatedAt.toDate() | date: 'MMM d' }}</p>
                 }
               </div>
-              <p class="ad-title">{{ chat.adTitle }}</p>
-              <p class="single-line">{{ chat.lastMessage }}</p>
+              <p class="ad-title single-line">{{ chat.adTitle }}</p>
+              <p class="ad-last-message single-line">{{ chat.lastMessage }}</p>
             </ion-label>
           </ion-item>
         }
