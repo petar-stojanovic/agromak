@@ -6,7 +6,7 @@ import {
   IonContent,
   IonFooter,
   IonHeader,
-  IonIcon,
+  IonIcon, IonImg,
   IonInput,
   IonItem,
   IonLabel,
@@ -24,17 +24,18 @@ import {addCircleOutline, closeOutline, sendOutline} from "ionicons/icons";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AiMessage} from "../../../shared/models/ai-message";
 import {AuthService} from "../../../services/auth.service";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, DatePipe} from "@angular/common";
 import {MarkdownComponent} from "ngx-markdown";
 import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../../../shared/models/user";
 
 @Component({
   selector: 'app-ai-chat',
   templateUrl: './ai-chat.page.html',
   styleUrls: ['./ai-chat.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent, IonImg, DatePipe]
 })
 export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
   image: Photo | null = null;
@@ -44,7 +45,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
 
   messages: AiMessage[] = [];
 
-  user$ = this.authService.user$;
+  user?: User;
 
   @ViewChild('content') content!: IonContent;
 
@@ -57,6 +58,7 @@ export class AiChatPage implements OnInit, OnDestroy, AfterViewChecked {
               private aiChatService: AiChatService,
               private route: ActivatedRoute) {
     addIcons({addCircleOutline, sendOutline, closeOutline})
+    this.authService.user$.subscribe(user => this.user = user);
 
     this.form = new FormGroup({
       question: new FormControl("", [Validators.required])

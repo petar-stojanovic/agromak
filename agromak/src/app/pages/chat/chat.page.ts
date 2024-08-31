@@ -46,6 +46,7 @@ export class ChatPage implements OnInit, OnDestroy {
 
   user!: User;
 
+  yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
   private subscription?: Subscription;
 
   constructor(private aiChatService: AiChatService,
@@ -125,5 +126,12 @@ export class ChatPage implements OnInit, OnDestroy {
       }
     }
     await this.router.navigate([chat.id], navData);
+  }
+
+  isToday(date: Date): boolean {
+    const today = new Date();
+    return date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear();
   }
 }

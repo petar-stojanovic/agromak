@@ -87,7 +87,6 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     this.subscription = combineLatest([messages$, ad$, owner$, sender$])
       .pipe(
         tap(([messages, ad, owner, sender]) => {
-          console.log("UPDATE MESSAGES DATE");
             this.updateMessagesDate(messages);
           }
         )
