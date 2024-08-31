@@ -38,6 +38,7 @@
     "@capacitor/status-bar": "^6.0.0",
     "@codetrix-studio/capacitor-google-auth": "^3.4.0-rc.4",
     "@ionic/angular": "^7.5.0",
+    "@types/node": "^22.5.1",
     "firebase": "^10.7.2",
     "ionicons": "^7.2.1",
     "ng2-img-max": "^2.2.9",
