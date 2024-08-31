@@ -4,11 +4,11 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
-import firebase from "firebase/compat";
+import firebase from "firebase/compat/app";
 import {ChatRoom, UserMessage} from "../shared/models/chat-room";
 import {Ad} from "../shared/models/ad";
+import {BehaviorSubject, Observable} from "rxjs";
 import Timestamp = firebase.firestore.Timestamp;
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

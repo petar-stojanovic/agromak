@@ -13,7 +13,6 @@ export interface User {
   favoriteAds: string[];
   city?: string;
   createdAt: number;
-  aiChats: UserAiChatDetails[];
 }
 
 interface UserAiChatDetails {
