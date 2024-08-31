@@ -12,7 +12,9 @@
         </ion-thumbnail>
         <ion-label>
           <ion-title>{{ ad.title }}</ion-title>
-          <ion-title size="small">{{ owner.displayName }}</ion-title>
+          <ion-title size="small">
+            <p class="single-line">{{ owner.displayName }}</p>
+          </ion-title>
         </ion-label>
       </ion-item>
     }

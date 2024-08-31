@@ -1,20 +1,35 @@
-.last-message {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 5px 0;
-}
-
 ion-thumbnail {
   --size: 4.5rem;
   --border-radius: 50%;
   padding: 0.5rem;
+  margin: 0 0.5rem 0 0;
 }
 
 .new-ai-chat {
   --background: var(--ion-color-primary-light);
 }
 
-ion-segment{
+ion-segment {
   border-bottom: 1px solid var(--ion-color-dark-tint);
+}
+
+.chat {
+
+  & .ad-user {
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 5px 0;
+  }
+
+  & .ad-date{
+    font-size: 0.8rem;
+    color: var(--ion-color-medium);
+    text-wrap: nowrap;
+  }
+
+  & .ad-title {
+    font-weight: 500;
+  }
 }
