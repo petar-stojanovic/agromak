@@ -65,7 +65,7 @@
 
     } @else if (segment === 'ai') {
       <ion-item (click)="navigateToNewAiPage()" button lines="none" class="chat new-ai-chat">
-        <ion-thumbnail slot="start">
+        <ion-thumbnail class="ai-thumbnail" slot="start">
           <ion-img src="assets/logo.svg"/>
         </ion-thumbnail>
         <ion-label>
@@ -75,7 +75,7 @@
 
       @for (chat of user.aiChats; track $index) {
         <ion-item [routerLink]="['./ai', chat.id]" button lines="none" class="chat">
-          <ion-thumbnail slot="start">
+          <ion-thumbnail class="ai-thumbnail" slot="start">
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
