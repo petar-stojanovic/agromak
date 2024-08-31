@@ -4,7 +4,7 @@ import Timestamp = firebase.firestore.Timestamp;
 export interface AiMessage {
   from: string;
   message: string;
-  image: string | null;
+  image?: string;
   createdAt?: Timestamp;
 }
 

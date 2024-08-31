@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {
   addDoc,
   collection,
-  collectionData,
+  collectionData, deleteDoc,
   doc,
   docData,
   Firestore,
@@ -88,5 +88,10 @@ export class ApiService {
 
   orderByQuery(fieldPath: string, direction: OrderByDirection = 'asc') {
     return orderBy(fieldPath, direction);
+  }
+
+  deleteDocument(path: string) {
+    const dataRef = this.docRef(path);
+    return deleteDoc(dataRef);
   }
 }

@@ -29,6 +29,8 @@ import {combineLatest, map, Observable, Subscription, switchMap, take} from "rxj
 import {ChatRoom} from "../../shared/models/chat-room";
 import {addIcons} from "ionicons";
 import {sparkles} from "ionicons/icons";
+import {AiChatRoom} from "../../shared/models/ai-chat-room";
+import {AiChatPage} from "./ai/ai-chat.page";
 
 @Component({
   selector: 'app-chat',
@@ -42,6 +44,7 @@ export class ChatPage implements OnInit, OnDestroy {
   segment = "ai";
 
   userSentChats: ChatRoom[] = [];
+  aiChats: AiChatRoom[] = [];
   userReceivedChats: ChatRoom[] = [];
 
   user!: User;
@@ -65,14 +68,16 @@ export class ChatPage implements OnInit, OnDestroy {
         this.user = user;
         return this.loadChatRooms(user.uid);
       }),
-      map(([userSentChats, userReceivedChats]) =>
-        this.setChatRoomUsers(userSentChats, userReceivedChats)
+      map(([userSentChats, aiChats, userReceivedChats]) =>
+        this.setChatRoomUsers(userSentChats, aiChats, userReceivedChats)
       ),
     )
-      .subscribe(([userSentChats, userReceivedChats]) => {
-        this.userSentChats = userSentChats;
-        this.userReceivedChats = userReceivedChats;
+      .subscribe(([userSentChats, aiChats, userReceivedChats]) => {
+        this.userSentChats = userSentChats as ChatRoom[];
+        this.aiChats = aiChats as AiChatRoom[];
+        this.userReceivedChats = userReceivedChats as ChatRoom[];
         console.log(this.userSentChats, this.userReceivedChats);
+        console.log(aiChats);
 
         this.isLoading = false;
       });
@@ -82,23 +87,27 @@ export class ChatPage implements OnInit, OnDestroy {
     this.subscription?.unsubscribe();
   }
 
-  private loadChatRooms(userId: string): Observable<[ChatRoom[], ChatRoom[]]> {
+  private loadChatRooms(userId: string): Observable<[ChatRoom[], AiChatRoom[], ChatRoom[]]> {
     const userSentChats$ = this.apiService.collectionDataQuery('chatRooms', [
       this.apiService.whereQuery('senderId', '==', userId)
-    ], true).pipe(map(chats => chats.sort((a, b) => b.createdAt - a.createdAt)));
+    ], true).pipe(map(chats => chats.sort((a, b) => b.updatedAt - a.updatedAt)));
+
+    const aiChats$ = this.apiService.collectionDataQuery('aiChatRooms', [
+      this.apiService.whereQuery('createdBy', '==', userId)
+    ], true).pipe(map(chats => chats.sort((a, b) => b.updatedAt - a.updatedAt)));
 
     const userReceivedChats$ = this.apiService.collectionDataQuery('chatRooms', [
       this.apiService.whereQuery('adOwnerId', '==', userId)
-    ], true).pipe(map(chats => chats.sort((a, b) => b.createdAt - a.createdAt)));
+    ], true).pipe(map(chats => chats.sort((a, b) => b.updatedAt - a.updatedAt)));
 
-    return combineLatest([userSentChats$, userReceivedChats$]);
+    return combineLatest([userSentChats$, aiChats$, userReceivedChats$]);
   }
 
 
-  private setChatRoomUsers(userSentChats: ChatRoom[], userReceivedChats: ChatRoom[]) {
+  private setChatRoomUsers(userSentChats: ChatRoom[], aiChats: AiChatRoom[], userReceivedChats: ChatRoom[]) {
     userSentChats.forEach(chatRoom => this.fetchUserProfile(chatRoom.adOwnerId, chatRoom));
     userReceivedChats.forEach(chatRoom => this.fetchUserProfile(chatRoom.senderId, chatRoom));
-    return [userSentChats, userReceivedChats];
+    return [userSentChats, aiChats, userReceivedChats];
   }
 
   private fetchUserProfile(userId: string, chatRoom: ChatRoom) {
