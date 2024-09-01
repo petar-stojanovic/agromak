@@ -30,7 +30,6 @@ import {ChatRoom} from "../../shared/models/chat-room";
 import {addIcons} from "ionicons";
 import {sparkles} from "ionicons/icons";
 import {AiChatRoom} from "../../shared/models/ai-chat-room";
-import {AiChatPage} from "./ai/ai-chat.page";
 
 @Component({
   selector: 'app-chat',
@@ -41,7 +40,7 @@ import {AiChatPage} from "./ai/ai-chat.page";
 })
 export class ChatPage implements OnInit, OnDestroy {
   isLoading = true;
-  segment = "ai";
+  segment = "userSentChats";
 
   userSentChats: ChatRoom[] = [];
   aiChats: AiChatRoom[] = [];

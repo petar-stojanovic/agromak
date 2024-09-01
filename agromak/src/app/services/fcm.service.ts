@@ -9,6 +9,7 @@ import firebase from "firebase/compat/app";
 import {ToastController} from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
 import {globe} from "ionicons/icons";
+import {Router} from "@angular/router";
 import FieldValue = firebase.firestore.FieldValue;
 
 export const FCM_TOKEN = 'push_notification_token';
@@ -24,7 +25,8 @@ export class FcmService {
     private toastController: ToastController,
     private authService: AuthService,
     private apiService: ApiService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {
     addIcons({globe});
 
@@ -83,14 +85,27 @@ export class FcmService {
         header: notification.title,
         message: notification.body,
         position: 'top',
+        swipeGesture: "vertical",
+        buttons: [
+          {
+            text: 'Open',
+            role: 'open',
+            handler: async () => {
+              const {chatId, adId, adOwnerId, senderId} = notification.data;
+              await this.navigateToChat(chatId, adId, adOwnerId, senderId);
+            }
+          }
+        ],
         duration: 3000,
       });
+
 
       await toast.present();
     });
 
     await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-      console.log('Push notification action performed', notification.actionId, notification.inputValue);
+      const {chatId, adId, adOwnerId, senderId} = notification.notification.data;
+      this.navigateToChat(chatId, adId, adOwnerId, senderId);
     });
   }
 
@@ -102,6 +117,10 @@ export class FcmService {
 
     this.storageService.setStorage(FCM_TOKEN, token);
     await this.apiService.setDocument(`fcmTokens/${this.user.uid}`, data);
+  }
+
+  private async navigateToChat(chatId: string, adId: string, adOwnerId: string, senderId: string) {
+    await this.router.navigate(["app", "chat", chatId], {queryParams: {adId, adOwnerId, senderId}});
   }
 }
 

@@ -1,6 +1,3 @@
-import firebase from "firebase/compat";
-import Timestamp = firebase.firestore.Timestamp;
-
 export interface User {
   uid: string;
   email: string;
@@ -13,10 +10,4 @@ export interface User {
   favoriteAds: string[];
   city?: string;
   createdAt: number;
-}
-
-interface UserAiChatDetails {
-  id: string;
-  lastMessage: string;
-  updatedAt: Timestamp;
 }
