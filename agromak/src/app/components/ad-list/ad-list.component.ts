@@ -14,7 +14,7 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AdDetailsModalComponent} from "../ad-details-modal/ad-details-modal.component";
-import {AdService} from "../../services/ad.service";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 import {NgTemplateOutlet} from "@angular/common";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data";
@@ -57,7 +57,7 @@ export class AdListComponent {
   placeholderArray = new Array(10);
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
   }
 
   ngOnInit() {
@@ -82,9 +82,7 @@ export class AdListComponent {
   }
 
   private fetchMoreAds() {
-    // this.adService.getAds(this.ads[this.ads.length - 1]);
-
-    this.adService.fetchAds(this.adFetchType, {
+    this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       searchValue: this.additionalData?.searchValue,
       order: this.additionalData?.order,

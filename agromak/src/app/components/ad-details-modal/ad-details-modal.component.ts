@@ -35,7 +35,7 @@ import {
   informationCircleOutline,
   locationOutline
 } from "ionicons/icons";
-import {AdService} from "../../services/ad.service";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
@@ -94,7 +94,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   isReadAllDescription = false;
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService,
+              private adFetchingService: AdFetchingService,
               private toastController: ToastController,
               private authService: AuthService,
               private alertController: AlertController,
@@ -115,7 +115,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       this.owner = user as User;
     });
 
-    this.adService.incrementViewCount(this.ad.id);
+    this.adFetchingService.incrementViewCount(this.ad.id);
 
     setTimeout(() => {
         // this.openMessageModal()
@@ -132,7 +132,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   async toggleFavorite() {
-    await this.adService.toggleFavoriteAd(this.ad.id);
+    await this.adFetchingService.toggleFavoriteAd(this.ad.id);
     const toast = await this.toastController.create({
       message: this.isFavoriteAd ? 'Added to favorites' : 'Removed from favorites',
       duration: 1500,

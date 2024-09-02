@@ -20,7 +20,7 @@ import {JsonFormData} from "../../../shared/models/json-form-data";
 import {DynamicFormComponent} from "../dynamic-form/dynamic-form.component";
 import {addIcons} from "ionicons";
 import {alertCircleOutline, arrowBack} from "ionicons/icons";
-import {AdService} from "../../../services/ad.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {CreateDynamicAd} from "../../../shared/models/create-dynamic-ad-";
 import {Ad} from "../../../shared/models/ad";
 import {UpdateDynamicAd} from "../../../shared/models/update-dynamic-ad-";
@@ -63,7 +63,7 @@ export class DynamicFormModalComponent implements OnInit {
   constructor(private http: HttpClient,
               private modalCtrl: ModalController,
               private loadingController: LoadingController,
-              private adService: AdService,
+              private adFetchingService: AdFetchingService,
               private toastController: ToastController) {
     addIcons({alertCircleOutline, arrowBack})
   }
@@ -92,7 +92,7 @@ export class DynamicFormModalComponent implements OnInit {
     });
     await loading.present();
 
-    await this.adService.createDynamicAd(formValues);
+    await this.adFetchingService.createDynamicAd(formValues);
 
     await loading.dismiss();
     await this.modalCtrl.dismiss(null, 'success');
@@ -112,7 +112,7 @@ export class DynamicFormModalComponent implements OnInit {
       message: 'Saving Ad, please wait...',
     });
     await loading.present();
-    await this.adService.updateAd(formValues);
+    await this.adFetchingService.updateAd(formValues);
     await loading.dismiss();
 
     const toast = await this.toastController.create({

@@ -11,7 +11,7 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
-import {AdService} from "../../../services/ad.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {addIcons} from "ionicons";
 import {arrowBack, logoGoogle} from "ionicons/icons";
 import {tap} from "rxjs";
@@ -42,11 +42,11 @@ import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 export class FavoriteAdsComponent implements OnInit {
 
   isLoading = true;
-  ads$ = this.adService.favoriteAds$;
+  ads$ = this.adFetchingService.favoriteAds$;
   protected readonly AdFetchType = AdFetchType;
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
     addIcons({arrowBack})
   }
 
@@ -55,7 +55,7 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   fetchAds() {
-    this.adService.fetchAds(AdFetchType.FAVORITE);
+    this.adFetchingService.fetchAds(AdFetchType.FAVORITE);
   }
 
   dismiss() {

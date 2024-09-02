@@ -21,16 +21,13 @@ import {AdFetchType} from "../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../shared/models/ad-list-additional-data";
 import FieldValue = firebase.firestore.FieldValue;
 
-import {query, limit, startAfter} from 'firebase/firestore';
-import CollectionReference = firebase.firestore.CollectionReference;
-
 
 export const AD_PAGE_SIZE = 20;
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdService {
+export class AdFetchingService {
   private adsSubject = new BehaviorSubject<Ad[]>([]);
   private myAdsSubject = new BehaviorSubject<Ad[]>([]);
   private favoriteAdsSubject = new BehaviorSubject<Ad[]>([]);

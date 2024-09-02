@@ -16,7 +16,7 @@ import {
 } from "@ionic/angular/standalone";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Ad} from "../../../shared/models/ad";
-import {AdService} from "../../../services/ad.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {addIcons} from "ionicons";
 import {arrowBack, arrowDownOutline, arrowUpOutline} from "ionicons/icons";
 import {Subscription, tap} from "rxjs";
@@ -57,7 +57,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
               private loadingController: LoadingController,
               private toastController: ToastController,
               private alertController: AlertController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
     addIcons({arrowBack, arrowDownOutline, arrowUpOutline})
   }
 
@@ -66,10 +66,10 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adsSubscription = this.adService.myAds$.subscribe(ads => {
+    this.adsSubscription = this.adFetchingService.myAds$.subscribe(ads => {
       this.ads = ads;
     });
-    this.adService.fetchAds(AdFetchType.MY_ADS, {lastVisibleAd: this.ads[this.ads.length - 1]});
+    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {lastVisibleAd: this.ads[this.ads.length - 1]});
   }
 
   dismiss() {
@@ -103,7 +103,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }, {
         text: 'Delete',
         handler: async () => {
-          await this.adService.deleteAd(ad);
+          await this.adFetchingService.deleteAd(ad);
           const toast = await this.toastController.create({
             message: 'Ad deleted successfully',
             duration: 2000,
@@ -118,8 +118,8 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   swapOrderDirection() {
     this.orderDirection = this.orderDirection === 'desc' ? 'asc' : 'desc';
-    this.adService.clearMyAds();
-    this.adService.fetchAds(AdFetchType.MY_ADS, {order: this.orderDirection});
+    this.adFetchingService.clearMyAds();
+    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {order: this.orderDirection});
 
   }
 }

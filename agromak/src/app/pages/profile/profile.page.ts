@@ -32,7 +32,7 @@ import {User} from "../../shared/models/user";
 import {CommonModule} from "@angular/common";
 import {MyAdsComponent} from "./my-ads/my-ads.component";
 import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
-import {AdService} from "../../services/ad.service";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 import {ProfileInfoComponent} from "../../components/profile-info/profile-info.component";
 
 @Component({
@@ -66,7 +66,7 @@ export class ProfilePage {
   constructor(private loadingController: LoadingController,
               private alertController: AlertController,
               private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
     addIcons({
       logOutOutline,
       personOutline,

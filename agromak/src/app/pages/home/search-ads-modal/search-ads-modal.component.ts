@@ -17,7 +17,7 @@ import {
   IonToolbar,
   ModalController
 } from "@ionic/angular/standalone";
-import {AdService} from "../../../services/ad.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Subscription, switchMap, timer} from "rxjs";
 import {addIcons} from "ionicons";
@@ -54,12 +54,12 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   @Input() searchValue!: string;
 
-  ads$ = this.adService.searchedAds$;
+  ads$ = this.adFetchingService.searchedAds$;
   isLoading = true;
 
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
     addIcons({filterCircleOutline, arrowBack})
   }
 
@@ -69,7 +69,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue});
+    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue});
   }
 
   dismiss() {
@@ -77,7 +77,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.adService.clearSearchedAds();
+    this.adFetchingService.clearSearchedAds();
   }
 
   protected readonly AdFetchType = AdFetchType;

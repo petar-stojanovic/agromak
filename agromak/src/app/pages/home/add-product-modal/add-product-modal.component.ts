@@ -25,7 +25,7 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AdService} from "../../../services/ad.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {NgForOf, NgIf} from "@angular/common";
 import Swiper from "swiper";
 import {ImageService} from "../../../services/image.service";
@@ -73,7 +73,7 @@ interface AgriculturalCategories {
   ],
 })
 export class AddProductModalComponent implements OnInit {
-  private adService = inject(AdService);
+  private adFetchingService = inject(AdFetchingService);
 
   form: FormGroup;
   images: GalleryPhoto[] = [];
@@ -202,7 +202,7 @@ export class AddProductModalComponent implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const adId = await this.adService.createAd(this.form.value as CreateAd);
+    const adId = await this.adFetchingService.createAd(this.form.value as CreateAd);
     if (this.images.length > 0) {
       await this.imageService.uploadAdImages(adId, this.images);
     }

@@ -15,7 +15,7 @@ import {
   ModalController
 } from '@ionic/angular/standalone';
 import {AddProductModalComponent} from "./add-product-modal/add-product-modal.component";
-import {AdService} from "../../services/ad.service";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {RefresherCustomEvent} from "@ionic/angular";
@@ -42,10 +42,10 @@ export class HomePage implements OnInit {
   isLoading = true;
   protected readonly AdFetchType = AdFetchType;
 
-  ads$ = this.adService.ads$;
+  ads$ = this.adFetchingService.ads$;
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
     addIcons({add, 'logo': 'assets/logo.svg'})
   }
 
@@ -59,12 +59,12 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.adService.fetchAds(AdFetchType.ALL);
+    this.adFetchingService.fetchAds(AdFetchType.ALL);
   }
 
   async refreshAds(event: RefresherCustomEvent) {
     this.isLoading = true;
-    this.adService.clearAllAds();
+    this.adFetchingService.clearAllAds();
     this.getAds();
 
     await Haptics.impact({style: ImpactStyle.Medium});
