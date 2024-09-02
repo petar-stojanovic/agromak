@@ -5,16 +5,12 @@ import {
   AngularFirestoreDocument,
   DocumentChangeAction
 } from "@angular/fire/compat/firestore";
-import {GalleryPhoto} from "@capacitor/camera";
-import {CreateAd} from "../shared/models/create-ad";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
-import {deleteDoc, deleteField, doc, documentId, Firestore, updateDoc} from "@angular/fire/firestore";
-import {CreateDynamicAd} from "../shared/models/create-dynamic-ad-";
+import {doc, documentId, Firestore, updateDoc} from "@angular/fire/firestore";
 import {ImageService} from "./image.service";
-import {UpdateDynamicAd} from "../shared/models/update-dynamic-ad-";
 import firebase from "firebase/compat/app";
 import {ApiService} from "./api.service";
 import {AdFetchType} from "../shared/ad-fetch-type.enum";
@@ -39,7 +35,6 @@ export class AdFetchingService {
   searchedAds$ = this.searchedAdsSubject.asObservable();
   similarAds$ = this.similarAdsSubject.asObservable();
 
-
   user!: User;
 
   constructor(private angularFirestore: AngularFirestore,
@@ -52,79 +47,6 @@ export class AdFetchingService {
     this.authService.user$.subscribe(user => {
       this.user = user;
     })
-  }
-
-  async createAd(value: CreateAd, images?: GalleryPhoto[]) {
-
-    const data = {
-      ...value,
-      title_lowercase: value.title.toLowerCase(),
-      category: value.category,
-      subcategory: value.subcategory,
-      ownerId: this.user.uid,
-      ownerName: this.user.displayName,
-      uploadedAt: new Date(),
-      viewCount: 1,
-      images: []
-    };
-
-    const adRef = await this.angularFirestore.collection('ads').add(data);
-
-    return adRef.id;
-  }
-
-  async createDynamicAd(dynamicAd: CreateDynamicAd) {
-    const data = {
-      ...dynamicAd,
-      title_lowercase: dynamicAd.title.toLowerCase(),
-      ownerId: this.user.uid,
-      ownerName: this.user.displayName,
-      viewCount: 1,
-      uploadedAt: new Date(),
-    };
-
-    const adRef = await this.angularFirestore.collection('ads').add(data);
-
-    if (dynamicAd.images) {
-      return await this.imageService.uploadAdImages(adRef.id, dynamicAd.images);
-    }
-
-    return;
-  }
-
-  async updateAd(ad: UpdateDynamicAd) {
-    const imagesToDelete: string[] = !ad.oldImages ?
-      [] :
-      ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage));
-
-    if (imagesToDelete.length > 0) {
-      await this.imageService.deleteImages(ad, imagesToDelete);
-    }
-
-    const adDocRef = doc(this.firestore, `ads/${ad.id}`)
-
-    const {oldImages, ...adDataWithoutOldImages} = ad;
-
-    const updatedAdData = {
-      ...adDataWithoutOldImages,
-      title_lowercase: ad.title.toLowerCase(),
-      ownerId: this.user.uid,
-      ownerName: this.user.displayName,
-      images: deleteField()
-    }
-
-    await updateDoc(adDocRef, updatedAdData)
-
-    if (ad.images && ad.images.length > 0) {
-      return await this.imageService.uploadAdImages(ad.id, ad.images);
-    }
-    return;
-  }
-
-  async deleteAd(ad: Ad) {
-    const adDocRef = doc(this.firestore, `ads/${ad.id}`);
-    await this.imageService.deleteImages(ad, ad.images);
-    return await deleteDoc(adDocRef);
   }
 
 
@@ -151,7 +73,7 @@ export class AdFetchingService {
         return;
     }
     if (query !== undefined) {
-      this.mapAndUpdateNew(query, type);
+      this.mapAndUpdateAds(query, type);
     }
   }
 
@@ -224,7 +146,7 @@ export class AdFetchingService {
     );
   }
 
-  private mapAndUpdateNew(query: AngularFirestoreCollection<any>, type: AdFetchType) {
+  private mapAndUpdateAds(query: AngularFirestoreCollection<any>, type: AdFetchType) {
     query.snapshotChanges()
       .pipe(
         map(actions => actions.map(doc => this.mapQuery(doc))),
@@ -238,11 +160,6 @@ export class AdFetchingService {
         take(1)
       ).subscribe();
   }
-
-  getAdById(id: string) {
-    return this.apiService.docDataQuery(`ads/${id}`)
-  }
-
 
   async toggleFavoriteAd(adId: string) {
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user.uid}`);
@@ -277,18 +194,6 @@ export class AdFetchingService {
     });
   }
 
-  clearAllAds() {
-    this.adsSubject.next([]);
-  }
-
-  clearSearchedAds() {
-    this.searchedAdsSubject.next([]);
-  }
-
-  clearMyAds() {
-    this.myAdsSubject.next([]);
-  }
-
   private updateSubjectBasedOnType(ads: Ad[], type: AdFetchType) {
     switch (type) {
       case AdFetchType.ALL:
@@ -307,6 +212,18 @@ export class AdFetchingService {
         this.similarAdsSubject.next(this.similarAdsSubject.value.concat(ads));
         break;
     }
+  }
 
+
+  clearAllAds() {
+    this.adsSubject.next([]);
+  }
+
+  clearSearchedAds() {
+    this.searchedAdsSubject.next([]);
+  }
+
+  clearMyAds() {
+    this.myAdsSubject.next([]);
   }
 }

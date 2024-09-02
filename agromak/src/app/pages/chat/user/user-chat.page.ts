@@ -32,6 +32,7 @@ import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
 import {addIcons} from "ionicons";
 import {sendOutline} from "ionicons/icons";
+import {AdManagementService} from "../../../services/ad-management.service";
 
 @Component({
   selector: 'app-user-chat',
@@ -58,7 +59,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private adFetchingService: AdFetchingService,
+    private adManagementService: AdManagementService,
     private chatService: UserChatService,
     private authService: AuthService,
     private modalCtrl: ModalController,
@@ -80,7 +81,7 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     const senderId = this.route.snapshot.queryParamMap.get('senderId')!;
 
     const messages$ = this.chatService.getChatRoomMessages(chatId);
-    const ad$ = this.adFetchingService.getAdById(adId);
+    const ad$ = this.adManagementService.getAdById(adId);
     const owner$ = this.authService.getUserProfile(adOwnerId);
     const sender$ = this.authService.getUserProfile(senderId);
 

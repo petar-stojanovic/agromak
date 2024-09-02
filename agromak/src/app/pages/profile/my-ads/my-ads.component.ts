@@ -23,6 +23,7 @@ import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-form-modal.component";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
+import {AdManagementService} from "../../../services/ad-management.service";
 
 @Component({
   selector: 'app-my-ads',
@@ -57,7 +58,8 @@ export class MyAdsComponent implements OnInit, OnDestroy {
               private loadingController: LoadingController,
               private toastController: ToastController,
               private alertController: AlertController,
-              private adFetchingService: AdFetchingService) {
+              private adFetchingService: AdFetchingService,
+              private adManagementService: AdManagementService) {
     addIcons({arrowBack, arrowDownOutline, arrowUpOutline})
   }
 
@@ -103,7 +105,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }, {
         text: 'Delete',
         handler: async () => {
-          await this.adFetchingService.deleteAd(ad);
+          await this.adManagementService.deleteAd(ad);
           const toast = await this.toastController.create({
             message: 'Ad deleted successfully',
             duration: 2000,
