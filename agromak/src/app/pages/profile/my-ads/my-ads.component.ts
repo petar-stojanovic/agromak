@@ -18,10 +18,11 @@ import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Ad} from "../../../shared/models/ad";
 import {AdService} from "../../../services/ad.service";
 import {addIcons} from "ionicons";
-import {arrowBack} from "ionicons/icons";
+import {arrowBack, arrowDownOutline, arrowUpOutline} from "ionicons/icons";
 import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-form-modal.component";
+import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 
 @Component({
   selector: 'app-my-ads',
@@ -45,13 +46,11 @@ import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-f
 })
 export class MyAdsComponent implements OnInit, OnDestroy {
 
-  isLoading = true;
-  ads$ = this.adService.myAds$.pipe(
-    tap(ads => {
-      this.isLoading = false;
-    })
-  );
+  ads: Ad[] = [];
 
+  orderDirection: 'asc' | 'desc' = 'desc';
+
+  protected readonly AdFetchType = AdFetchType;
   private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
@@ -59,7 +58,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
               private toastController: ToastController,
               private alertController: AlertController,
               private adService: AdService) {
-    addIcons({arrowBack})
+    addIcons({arrowBack, arrowDownOutline, arrowUpOutline})
   }
 
   ngOnInit() {
@@ -67,7 +66,10 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adsSubscription = this.adService.fetchMyAds().subscribe();
+    this.adsSubscription = this.adService.myAds$.subscribe(ads => {
+      this.ads = ads;
+    });
+    this.adService.fetchAds(AdFetchType.MY_ADS, {lastVisibleAd: this.ads[this.ads.length - 1]});
   }
 
   dismiss() {
@@ -111,6 +113,13 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }]
     });
     await alert.present();
+
+  }
+
+  swapOrderDirection() {
+    this.orderDirection = this.orderDirection === 'desc' ? 'asc' : 'desc';
+    this.adService.clearMyAds();
+    this.adService.fetchAds(AdFetchType.MY_ADS, {order: this.orderDirection});
 
   }
 }

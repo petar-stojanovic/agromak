@@ -25,6 +25,7 @@ import {RouterLink} from "@angular/router";
 import {DynamicFormModalComponent} from "./dynamic-form-modal/dynamic-form-modal.component";
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
+import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,9 @@ export class HomePage implements OnInit {
 
   ads: Ad[] = [];
   isLoading = true;
+  protected readonly AdFetchType = AdFetchType;
 
+  ads$ = this.adService.ads$;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
@@ -56,23 +59,13 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.ads = [];
-
-    this.adService.ads$
-      .subscribe(async (ads) => {
-        this.ads = ads;
-        console.log(this.ads)
-        setTimeout(() => {
-          this.isLoading = ads.length === 0;
-        }, 500);
-      });
-
-    this.adService.getAds();
+    this.adService.fetchAds(AdFetchType.ALL);
   }
 
   async refreshAds(event: RefresherCustomEvent) {
     this.isLoading = true;
-    this.adService.resetAds();
+    this.adService.clearAllAds();
+    this.getAds();
 
     await Haptics.impact({style: ImpactStyle.Medium});
     await event.target.complete();
@@ -96,12 +89,6 @@ export class HomePage implements OnInit {
       component: DynamicFormModalComponent,
     });
     await modal.present();
-
-    const {data, role} = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log('Data:', data);
-    }
   }
 
 
@@ -123,4 +110,5 @@ export class HomePage implements OnInit {
     await modal.present();
     this.searchbar.value = null;
   }
+
 }

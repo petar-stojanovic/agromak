@@ -1,6 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Ad} from "../../../shared/models/ad";
-import {DatePipe, NgIf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgIf} from "@angular/common";
 import {
   IonAvatar,
   IonBackButton,
@@ -23,6 +22,7 @@ import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {Subscription, switchMap, timer} from "rxjs";
 import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline} from "ionicons/icons";
+import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -45,7 +45,8 @@ import {arrowBack, filterCircleOutline} from "ionicons/icons";
     IonItem,
     IonAvatar,
     IonImg,
-    IonLabel
+    IonLabel,
+    AsyncPipe
   ],
   standalone: true
 })
@@ -53,10 +54,9 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   @Input() searchValue!: string;
 
-  ads: Ad[] = [];
+  ads$ = this.adService.searchedAds$;
   isLoading = true;
 
-  private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
@@ -69,25 +69,16 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adsSubscription = this.adService.searchedAds$
-      .pipe(
-        switchMap((ads) => {
-          this.ads = ads;
-          return ads.length > 0 ? timer(1000) : timer(3500);
-        })
-      )
-      .subscribe(() => {
-        this.isLoading = false;
-      });
-
-    this.adService.searchAds(this.searchValue);
+    this.adService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue});
   }
 
   dismiss() {
     return this.modalCtrl.dismiss();
   }
 
-  ngOnDestroy(): void {
-    this.adsSubscription?.unsubscribe();
+  ngOnDestroy() {
+    this.adService.clearSearchedAds();
   }
+
+  protected readonly AdFetchType = AdFetchType;
 }

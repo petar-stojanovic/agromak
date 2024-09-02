@@ -17,6 +17,7 @@ import {arrowBack, logoGoogle} from "ionicons/icons";
 import {tap} from "rxjs";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {Ad} from "../../../shared/models/ad";
+import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 
 @Component({
   selector: 'app-favorite-ads',
@@ -41,11 +42,8 @@ import {Ad} from "../../../shared/models/ad";
 export class FavoriteAdsComponent implements OnInit {
 
   isLoading = true;
-  ads$ = this.adService.favoriteAds$.pipe(
-    tap(ads => {
-      this.isLoading = false;
-    })
-  );
+  ads$ = this.adService.favoriteAds$;
+  protected readonly AdFetchType = AdFetchType;
 
   constructor(private modalCtrl: ModalController,
               private adService: AdService) {
@@ -57,10 +55,11 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   fetchAds() {
-    this.adService.updateFavoriteAds();
+    this.adService.fetchAds(AdFetchType.FAVORITE);
   }
 
   dismiss() {
     return this.modalCtrl.dismiss();
   }
+
 }
