@@ -4,9 +4,7 @@ import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
-import {documentId, Firestore} from "@angular/fire/firestore";
-import {ImageService} from "./image.service";
-import firebase from "firebase/compat/app";
+import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
 import {AdFetchType} from "../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../shared/models/ad-list-additional-data";
@@ -23,6 +21,7 @@ export class AdFetchingService {
   private favoriteAdsSubject = new BehaviorSubject<Ad[]>([]);
   private searchedAdsSubject = new BehaviorSubject<Ad[]>([]);
   private similarAdsSubject = new BehaviorSubject<Ad[]>([]);
+
   ads$ = this.adsSubject.asObservable();
   myAds$ = this.myAdsSubject.asObservable();
   favoriteAds$ = this.favoriteAdsSubject.asObservable();
@@ -32,9 +31,7 @@ export class AdFetchingService {
   user!: User;
 
   constructor(private angularFirestore: AngularFirestore,
-              private firestore: Firestore,
               private authService: AuthService,
-              private imageService: ImageService,
               private apiService: ApiService,
   ) {
 
@@ -44,99 +41,100 @@ export class AdFetchingService {
   }
 
 
-  fetchAds(type: AdFetchType, params?: AdListAdditionalData) {
+  fetchAds(type: AdFetchType, params: AdListAdditionalData) {
     let query: AngularFirestoreCollection<any> | undefined;
 
-    switch (type) {
-      case AdFetchType.ALL:
-        query = this.getAllAdsQuery(params?.lastVisibleAd);
-        break;
-      case AdFetchType.SEARCHED:
-        query = this.getSearchedAdsQuery(params?.searchValue!, params?.lastVisibleAd);
-        break;
-      case AdFetchType.MY_ADS:
-        query = this.getMyAdsQuery(params?.lastVisibleAd, params?.order);
-        break;
-      case AdFetchType.FAVORITE:
-        query = this.getFavoriteAdsQuery();
-        break;
-      case AdFetchType.SIMILAR:
-        query = this.getSimilarAdsQuery(params?.similarAd!);
-        break;
-      default:
-        return;
+    if (type === AdFetchType.ALL) {
+      query = this.getAllAdsQuery(params);
+    } else if (type === AdFetchType.SEARCHED) {
+      query = this.getSearchedAdsQuery(params);
+    } else if (type === AdFetchType.MY_ADS) {
+      query = this.getMyAdsQuery(params);
+    } else if (type === AdFetchType.FAVORITE) {
+      query = this.getFavoriteAdsQuery(params);
+    } else if (type === AdFetchType.SIMILAR) {
+      query = this.getSimilarAdsQuery(params?.similarAd!);
     }
+
     if (query !== undefined) {
       this.mapAndUpdateAds(query, type);
     }
   }
 
-  private getAllAdsQuery(lastVisible?: Ad): AngularFirestoreCollection<any> {
-    if (!lastVisible) {
+  private getAllAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
+    const {searchValue, lastVisibleAd, order, similarAd} = params;
+
+    if (lastVisibleAd) {
       return this.angularFirestore.collection('ads', ref =>
-        ref.orderBy('uploadedAt', 'asc')
+        ref.orderBy('uploadedAt', order)
           .limit(AD_PAGE_SIZE)
+          .startAfter(params.lastVisibleAd!.uploadedAt)
       );
     } else {
       return this.angularFirestore.collection('ads', ref =>
-        ref.orderBy('uploadedAt', 'asc')
+        ref.orderBy('uploadedAt', order)
           .limit(AD_PAGE_SIZE)
-          .startAfter(lastVisible.uploadedAt)
       );
     }
   }
 
-  private getSearchedAdsQuery(searchValue: string, lastVisibleAd: Ad | undefined): AngularFirestoreCollection<any> {
-    const lowerCaseSearchValue = searchValue.toLowerCase();
-    if (!lastVisibleAd) {
+  private getSearchedAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
+    const {searchValue, lastVisibleAd, order, similarAd} = params;
+    const lowerCaseSearchValue = searchValue?.toLowerCase();
+    if (lastVisibleAd) {
       return this.angularFirestore.collection('ads', ref =>
         ref.where('title_lowercase', '>=', lowerCaseSearchValue)
           .where('title_lowercase', '<=', lowerCaseSearchValue + '\uf8ff')
-          .orderBy('uploadedAt', 'asc')
-          .limit(AD_PAGE_SIZE)
-      );
-    } else {
-      return this.angularFirestore.collection('ads', ref =>
-        ref.where('title_lowercase', '>=', lowerCaseSearchValue)
-          .where('title_lowercase', '<=', lowerCaseSearchValue + '\uf8ff')
-          .orderBy('uploadedAt', 'asc')
+          .orderBy('uploadedAt', order)
           .limit(AD_PAGE_SIZE)
           .startAfter(lastVisibleAd.uploadedAt)
       );
+    } else {
+      return this.angularFirestore.collection('ads', ref =>
+        ref.where('title_lowercase', '>=', lowerCaseSearchValue)
+          .where('title_lowercase', '<=', lowerCaseSearchValue + '\uf8ff')
+          .orderBy('uploadedAt', order)
+          .limit(AD_PAGE_SIZE)
+      );
     }
   }
 
-  private getMyAdsQuery(lastVisibleAd: Ad | undefined, order: 'asc' | 'desc' | undefined): AngularFirestoreCollection<any> {
+  private getMyAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
+    const {searchValue, lastVisibleAd, order, similarAd} = params;
+
     console.log('lastVisibleAd', lastVisibleAd)
-    if (!lastVisibleAd) {
+    if (lastVisibleAd) {
       return this.angularFirestore.collection('ads', ref =>
         ref.where('ownerId', '==', this.user.uid)
-          .orderBy('uploadedAt', order || 'desc')
+          .orderBy('uploadedAt', order)
           .limit(AD_PAGE_SIZE)
+          .startAfter(lastVisibleAd?.uploadedAt)
       );
     } else {
       return this.angularFirestore.collection('ads', ref =>
         ref.where('ownerId', '==', this.user.uid)
-          .orderBy('uploadedAt', order || 'desc')
+          .orderBy('uploadedAt', order)
           .limit(AD_PAGE_SIZE)
-          .startAfter(lastVisibleAd?.uploadedAt)
       );
     }
   }
 
-  private getFavoriteAdsQuery(): undefined | AngularFirestoreCollection<any> {
+  private getFavoriteAdsQuery(params: AdListAdditionalData): undefined | AngularFirestoreCollection<any> {
+    const {searchValue, lastVisibleAd, order, similarAd} = params;
+
     if (!this.user.favoriteAds || this.user.favoriteAds.length === 0) {
       this.favoriteAdsSubject.next([]);
       return;
     }
     return this.angularFirestore.collection('ads', ref =>
       ref.where(documentId(), 'in', this.user.favoriteAds)
+        .orderBy('uploadedAt', order)
     );
   }
 
   private getSimilarAdsQuery(similarAd: Ad): AngularFirestoreCollection<any> {
     return this.angularFirestore.collection('ads', ref =>
-      ref.where('category', '==', similarAd.category) // Example, adjust as needed
+      ref.where('category', '==', similarAd.category)
     );
   }
 
@@ -192,5 +190,9 @@ export class AdFetchingService {
 
   clearMyAds() {
     this.myAdsSubject.next([]);
+  }
+
+  clearFavoriteAds() {
+    this.favoriteAdsSubject.next([]);
   }
 }

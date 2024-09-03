@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.adFetchingService.fetchAds(AdFetchType.ALL);
+    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: "desc"});
   }
 
   async refreshAds(event: RefresherCustomEvent) {

@@ -19,7 +19,6 @@ import {
 } from "@ionic/angular/standalone";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
-import {Subscription, switchMap, timer} from "rxjs";
 import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline} from "ionicons/icons";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
@@ -69,7 +68,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue});
+    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue, order: "desc"});
   }
 
   dismiss() {

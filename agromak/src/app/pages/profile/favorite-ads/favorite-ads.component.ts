@@ -13,10 +13,8 @@ import {
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {addIcons} from "ionicons";
-import {arrowBack, logoGoogle} from "ionicons/icons";
-import {tap} from "rxjs";
+import {arrowBack} from "ionicons/icons";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {Ad} from "../../../shared/models/ad";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 
 @Component({
@@ -55,10 +53,11 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.FAVORITE);
+    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"});
   }
 
   dismiss() {
+    this.adFetchingService.clearFavoriteAds();
     return this.modalCtrl.dismiss();
   }
 

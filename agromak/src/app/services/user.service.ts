@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
 import {AdFetchType} from "../shared/ad-fetch-type.enum";
@@ -43,6 +43,6 @@ export class UserService {
     }
     await userRef.set(data, {merge: true});
 
-    this.adFetchingService.fetchAds(AdFetchType.FAVORITE);
+    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"});
   }
 }

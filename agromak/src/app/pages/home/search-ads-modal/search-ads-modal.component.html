@@ -19,7 +19,7 @@
 <ion-content>
   @if (ads$ | async; as ads) {
     <app-ad-list [ads]="ads" [adFetchType]="AdFetchType.SEARCHED"
-                 [additionalData]='{searchValue: searchValue}'></app-ad-list>
+                 [additionalData]='{searchValue: searchValue, order: "desc"}'></app-ad-list>
   }
 
   <ion-modal #modal trigger="open-filter" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">

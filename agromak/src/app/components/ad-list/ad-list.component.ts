@@ -85,7 +85,7 @@ export class AdListComponent {
     this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       searchValue: this.additionalData?.searchValue,
-      order: this.additionalData?.order,
+      order: this.additionalData ? this.additionalData.order : "desc",
     });
 
   }

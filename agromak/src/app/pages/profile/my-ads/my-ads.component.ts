@@ -71,7 +71,10 @@ export class MyAdsComponent implements OnInit, OnDestroy {
     this.adsSubscription = this.adFetchingService.myAds$.subscribe(ads => {
       this.ads = ads;
     });
-    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {lastVisibleAd: this.ads[this.ads.length - 1]});
+    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {
+      lastVisibleAd: this.ads[this.ads.length - 1],
+      order: "desc"
+    });
   }
 
   dismiss() {
