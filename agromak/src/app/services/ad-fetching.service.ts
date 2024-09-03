@@ -1,21 +1,15 @@
 import {Injectable} from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument,
-  DocumentChangeAction
-} from "@angular/fire/compat/firestore";
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
 import {BehaviorSubject, map, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
-import {doc, documentId, Firestore, updateDoc} from "@angular/fire/firestore";
+import {documentId, Firestore} from "@angular/fire/firestore";
 import {ImageService} from "./image.service";
 import firebase from "firebase/compat/app";
 import {ApiService} from "./api.service";
 import {AdFetchType} from "../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../shared/models/ad-list-additional-data";
-import FieldValue = firebase.firestore.FieldValue;
 
 
 export const AD_PAGE_SIZE = 20;
@@ -161,37 +155,10 @@ export class AdFetchingService {
       ).subscribe();
   }
 
-  async toggleFavoriteAd(adId: string) {
-    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${this.user.uid}`);
-    let favoriteAds = this.user.favoriteAds;
-    const adIndex = favoriteAds.indexOf(adId);
-
-    if (adIndex > -1) {
-      favoriteAds.splice(adIndex, 1);
-    } else {
-      favoriteAds.push(adId);
-    }
-
-    const data = {
-      ...this.user,
-      favoriteAds: favoriteAds,
-    }
-    await userRef.set(data, {merge: true});
-
-    this.fetchAds(AdFetchType.FAVORITE);
-  }
-
   private mapQuery(doc: DocumentChangeAction<any>) {
     const data: any = doc.payload.doc.data();
     const id = doc.payload.doc.id;
     return {id, ...data} as Ad;
-  }
-
-  async incrementViewCount(id: string) {
-    const adDocRef = doc(this.firestore, `ads/${id}`);
-    return await updateDoc(adDocRef, {
-      viewCount: FieldValue.increment(1)
-    });
   }
 
   private updateSubjectBasedOnType(ads: Ad[], type: AdFetchType) {

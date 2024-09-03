@@ -10,6 +10,8 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {ImageService} from "./image.service";
 import {ApiService} from "./api.service";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
   providedIn: 'root'
@@ -104,5 +106,12 @@ export class AdManagementService {
     const adDocRef = doc(this.firestore, `ads/${ad.id}`);
     await this.imageService.deleteImages(ad, ad.images);
     return await deleteDoc(adDocRef);
+  }
+
+  async incrementAdViewCount(id: string) {
+    const adDocRef = doc(this.firestore, `ads/${id}`);
+    return await updateDoc(adDocRef, {
+      viewCount: FieldValue.increment(1)
+    });
   }
 }
