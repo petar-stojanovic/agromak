@@ -10,7 +10,8 @@
 
     <ion-buttons slot="end">
       <ion-button (click)="swapOrderDirection()">
-        <ion-icon [name]=" orderDirection === 'asc' ? 'arrow-down-outline' : 'arrow-up-outline'"></ion-icon>
+        <ion-icon class="order-icon"
+                  [name]=" orderDirection === 'desc' ? 'arrow-down-outline' : 'arrow-up-outline'"></ion-icon>
       </ion-button>
     </ion-buttons>
 
