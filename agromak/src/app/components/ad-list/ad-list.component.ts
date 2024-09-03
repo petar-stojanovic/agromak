@@ -54,7 +54,7 @@ export class AdListComponent implements OnChanges {
   @Input()
   additionalData!: AdListAdditionalData
 
-  placeholderArray = new Array(10);
+  placeholderArray = new Array(6);
 
   #currentInfiniteEvent?: InfiniteScrollCustomEvent;
 

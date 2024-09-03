@@ -13,7 +13,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
+  IonListHeader, IonSkeletonText,
   IonText,
   IonThumbnail,
   IonToolbar,
@@ -86,7 +86,8 @@ const icons = {
     IonFooter,
     IonAlert,
     AdListComponent,
-    AsyncPipe
+    AsyncPipe,
+    IonSkeletonText
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
