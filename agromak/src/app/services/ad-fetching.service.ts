@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/compat/firestore";
+import {AngularFirestore, AngularFirestoreCollection, QueryDocumentSnapshot} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, take, tap} from "rxjs";
+import {BehaviorSubject, map} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
@@ -53,7 +53,7 @@ export class AdFetchingService {
     } else if (type === AdFetchType.FAVORITE) {
       query = this.getFavoriteAdsQuery(params);
     } else if (type === AdFetchType.SIMILAR) {
-      query = this.getSimilarAdsQuery(params?.similarAd!);
+      query = this.getSimilarAdsQuery(params);
     }
 
     if (query !== undefined) {
@@ -132,30 +132,34 @@ export class AdFetchingService {
     );
   }
 
-  private getSimilarAdsQuery(similarAd: Ad): AngularFirestoreCollection<any> {
+  private getSimilarAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
+    const {searchValue, lastVisibleAd, order, similarAd} = params;
+
     return this.angularFirestore.collection('ads', ref =>
-      ref.where('category', '==', similarAd.category)
+      ref.where('category', '==', similarAd!.category)
     );
   }
 
   private mapAndUpdateAds(query: AngularFirestoreCollection<any>, type: AdFetchType) {
-    query.snapshotChanges()
+    query.get()
       .pipe(
-        map(actions => actions.map(doc => this.mapQuery(doc))),
-        tap(ads => {
-          console.log(ads)
-          if (ads.length === 0) {
-            return;
-          }
-          this.updateSubjectBasedOnType(ads, type);
-        }),
-        take(1)
-      ).subscribe();
+        map(querySnapshot =>
+          querySnapshot.docs.map(doc => this.mapQuery(doc))
+        )
+      )
+      .subscribe(ads => {
+        console.log(ads)
+        if (ads.length === 0) {
+          return;
+        }
+        this.updateSubjectBasedOnType(ads, type);
+      })
+
   }
 
-  private mapQuery(doc: DocumentChangeAction<any>) {
-    const data: any = doc.payload.doc.data();
-    const id = doc.payload.doc.id;
+  private mapQuery(doc: QueryDocumentSnapshot<any>) {
+    const data: any = doc.data();
+    const id = doc.id;
     return {id, ...data} as Ad;
   }
 
@@ -171,14 +175,13 @@ export class AdFetchingService {
         this.myAdsSubject.next(this.myAdsSubject.value.concat(ads));
         break;
       case AdFetchType.FAVORITE:
-        this.favoriteAdsSubject.next(this.favoriteAdsSubject.value.concat(ads));
+        this.favoriteAdsSubject.next(ads);
         break;
       case AdFetchType.SIMILAR:
         this.similarAdsSubject.next(this.similarAdsSubject.value.concat(ads));
         break;
     }
   }
-
 
   clearAllAds() {
     this.adsSubject.next([]);
