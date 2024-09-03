@@ -43,6 +43,7 @@ export class HomePage implements OnInit {
   adFetchType = AdFetchType;
 
   ads$ = this.adFetchingService.ads$;
+  orderDirection: 'asc' | 'desc' = 'asc';
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
@@ -59,7 +60,7 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: "desc"});
+    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: this.orderDirection}).subscribe();
   }
 
   async refreshAds(event: RefresherCustomEvent) {
@@ -76,12 +77,6 @@ export class HomePage implements OnInit {
       component: AddProductModalComponent,
     });
     await modal.present();
-
-    const {data, role} = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log('Data:', data);
-    }
   }
 
   async openDynamicModal() {

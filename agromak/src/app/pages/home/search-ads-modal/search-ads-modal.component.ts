@@ -68,7 +68,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue, order: "desc"});
+    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue, order: "desc"}).subscribe();
   }
 
   dismiss() {

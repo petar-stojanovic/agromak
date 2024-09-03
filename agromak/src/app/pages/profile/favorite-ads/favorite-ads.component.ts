@@ -52,7 +52,7 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"});
+    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).subscribe();
   }
 
   dismiss() {

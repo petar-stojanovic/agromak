@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, QueryDocumentSnapshot} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject, map, Observable, of, switchMap, tap} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
@@ -10,7 +10,7 @@ import {AdFetchType} from "../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../shared/models/ad-list-additional-data";
 
 
-export const AD_PAGE_SIZE = 20;
+export const AD_PAGE_SIZE = 10;
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,7 @@ export class AdFetchingService {
   }
 
 
-  fetchAds(type: AdFetchType, params: AdListAdditionalData) {
+  fetchAds(type: AdFetchType, params: AdListAdditionalData): Observable<boolean> {
     let query: AngularFirestoreCollection<any> | undefined;
 
     if (type === AdFetchType.ALL) {
@@ -56,9 +56,11 @@ export class AdFetchingService {
       query = this.getSimilarAdsQuery(params);
     }
 
-    if (query !== undefined) {
-      this.mapAndUpdateAds(query, type);
+    if (!query) {
+      return of(true);
     }
+
+    return this.mapAndUpdateAds(query, type);
   }
 
   private getAllAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
@@ -137,7 +139,6 @@ export class AdFetchingService {
     if (!similarAd) {
       return;
     }
-    console.log('similarAd', similarAd, params)
     if (lastVisibleAd) {
       return this.angularFirestore.collection('ads', ref =>
         ref.where('category', '==', similarAd.category)
@@ -154,20 +155,21 @@ export class AdFetchingService {
     }
   }
 
-  private mapAndUpdateAds(query: AngularFirestoreCollection<any>, type: AdFetchType) {
-    query.get()
-      .pipe(
-        map(querySnapshot =>
-          querySnapshot.docs.map(doc => this.mapQuery(doc))
-        )
-      )
-      .subscribe(ads => {
-        console.log(ads)
-        if (ads.length === 0) {
-          return;
+  private mapAndUpdateAds(query: AngularFirestoreCollection<any>, type: AdFetchType): Observable<boolean> {
+    return query.get().pipe(
+      switchMap(querySnapshot => {
+          const ads = querySnapshot.docs.map(doc => this.mapQuery(doc))
+          console.log(ads)
+
+          if (ads.length === 0 || ads.length === 1 && type === AdFetchType.SIMILAR) {
+            return of(true);
+          }
+
+          this.updateSubjectBasedOnType(ads, type);
+          return of(true);
         }
-        this.updateSubjectBasedOnType(ads, type);
-      })
+      )
+    )
 
   }
 

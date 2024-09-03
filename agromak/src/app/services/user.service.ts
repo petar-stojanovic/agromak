@@ -43,6 +43,6 @@ export class UserService {
     }
     await userRef.set(data, {merge: true});
 
-    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"});
+    this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).subscribe();
   }
 }

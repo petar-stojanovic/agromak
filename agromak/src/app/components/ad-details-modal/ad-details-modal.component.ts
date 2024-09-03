@@ -36,7 +36,7 @@ import {
   locationOutline
 } from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
-import {Subscription} from "rxjs";
+import {filter, last, map, Subscription, tap} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 import {UserChatService} from "../../services/user-chat.service";
@@ -99,7 +99,11 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   user?: User;
   isReadAllDescription = false;
 
-  similarAds$ = this.adFetchingService.similarAds$;
+  similarAds$ = this.adFetchingService.similarAds$.pipe(
+    map(ads => ads.filter(ad => ad.id !== this.ad.id)),
+    tap(ads => console.log(ads)),
+  );
+
   adFetchType = AdFetchType.SIMILAR;
 
   constructor(private modalCtrl: ModalController,
@@ -128,7 +132,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
     this.adManagementService.incrementAdViewCount(this.ad.id);
 
-    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {similarAd: this.ad, order: 'desc'});
+    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {similarAd: this.ad, order: 'desc'}).subscribe();
     setTimeout(() => {
         // this.openMessageModal()
       }

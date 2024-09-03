@@ -48,6 +48,7 @@ ion-thumbnail {
       white-space: pre-line;
       min-width: 2.25rem;
       border: 1px solid var(--ion-color-medium-tint);
+
     }
   }
 }
@@ -85,6 +86,7 @@ ion-input {
 
   box-shadow: var(--ion-box-shadow);
   border: 1px solid var(--ion-color-secondary-shade);
+  --padding-start: 1rem;
 }
 
 

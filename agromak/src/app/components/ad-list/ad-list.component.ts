@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef} from '@angular/core';
+import {Component, Input, TemplateRef, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -38,7 +38,7 @@ import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data"
   ],
   standalone: true
 })
-export class AdListComponent {
+export class AdListComponent implements OnInit, OnChanges {
   @Input()
   ads: Ad[] = [];
 
@@ -56,6 +56,8 @@ export class AdListComponent {
 
   placeholderArray = new Array(10);
 
+  #currentInfiniteEvent?: InfiniteScrollCustomEvent;
+
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
   }
@@ -64,6 +66,12 @@ export class AdListComponent {
     setTimeout(() => {
       // this.openAdDetailsModal(this.ads[0]);
     }, 1500);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['ads'] && !changes['ads'].firstChange && this.#currentInfiniteEvent) {
+      this.#currentInfiniteEvent.target.disabled = false
+    }
   }
 
   async openAdDetailsModal(ad: Ad) {
@@ -75,22 +83,22 @@ export class AdListComponent {
   }
 
   onIonInfinite(ev: InfiniteScrollCustomEvent) {
-    // if (this.adFetchType !== AdFetchType.SIMILAR) {
-      this.fetchMoreAds();
-    // }
-    setTimeout(() => {
-      ev.target.complete();
-    }, 1000);
+    this.#currentInfiniteEvent = ev;
+    this.fetchMoreAds();
   }
 
   private fetchMoreAds() {
-    console.log(this.adFetchType, this.additionalData)
+    console.log(this.additionalData)
     this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       similarAd: this.additionalData.similarAd,
       searchValue: this.additionalData.searchValue,
       order: this.additionalData.order,
+    }).subscribe(shouldStopFetching => {
+      if (this.#currentInfiniteEvent) {
+        this.#currentInfiniteEvent.target.complete();
+        this.#currentInfiniteEvent.target.disabled = shouldStopFetching;
+      }
     });
-
   }
 }
