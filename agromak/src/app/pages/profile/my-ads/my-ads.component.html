@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content>
-  <app-ad-list [ads]="ads" [adFetchType]="AdFetchType.MY_ADS"
+  <app-ad-list [ads]="ads" [adFetchType]="adFetchType.MY_ADS"
                [additionalData]="{order: orderDirection}"
                [adContent]="adContent"></app-ad-list>
   <ng-template #adContent let-ad>

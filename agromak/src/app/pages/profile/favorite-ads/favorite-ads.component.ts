@@ -39,9 +39,8 @@ import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 })
 export class FavoriteAdsComponent implements OnInit {
 
-  isLoading = true;
   ads$ = this.adFetchingService.favoriteAds$;
-  protected readonly AdFetchType = AdFetchType;
+  adFetchType = AdFetchType;
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {

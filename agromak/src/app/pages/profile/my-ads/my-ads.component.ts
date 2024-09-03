@@ -51,7 +51,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   orderDirection: 'asc' | 'desc' = 'desc';
 
-  protected readonly AdFetchType = AdFetchType;
+  adFetchType = AdFetchType;
   private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,

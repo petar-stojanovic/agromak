@@ -54,8 +54,8 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   @Input() searchValue!: string;
 
   ads$ = this.adFetchingService.searchedAds$;
-  isLoading = true;
 
+  adFetchType = AdFetchType;
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
@@ -78,6 +78,4 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.adFetchingService.clearSearchedAds();
   }
-
-  protected readonly AdFetchType = AdFetchType;
 }

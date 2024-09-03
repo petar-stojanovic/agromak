@@ -40,7 +40,7 @@ export class HomePage implements OnInit {
 
   ads: Ad[] = [];
   isLoading = true;
-  protected readonly AdFetchType = AdFetchType;
+  adFetchType = AdFetchType;
 
   ads$ = this.adFetchingService.ads$;
 
