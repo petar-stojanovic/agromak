@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, TemplateRef} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -38,7 +38,7 @@ import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data"
   ],
   standalone: true
 })
-export class AdListComponent implements OnInit, OnChanges {
+export class AdListComponent implements OnChanges {
   @Input()
   ads: Ad[] = [];
 
@@ -62,11 +62,6 @@ export class AdListComponent implements OnInit, OnChanges {
               private adFetchingService: AdFetchingService) {
   }
 
-  ngOnInit() {
-    setTimeout(() => {
-      // this.openAdDetailsModal(this.ads[0]);
-    }, 1500);
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['ads'] && !changes['ads'].firstChange && this.#currentInfiniteEvent) {
@@ -88,7 +83,6 @@ export class AdListComponent implements OnInit, OnChanges {
   }
 
   private fetchMoreAds() {
-    console.log(this.additionalData)
     this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       similarAd: this.additionalData.similarAd,

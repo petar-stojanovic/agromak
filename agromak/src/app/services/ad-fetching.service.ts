@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, QueryDocumentSnapshot} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, map, Observable, of, switchMap, tap} from "rxjs";
+import {BehaviorSubject, Observable, of, switchMap} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
@@ -104,7 +104,6 @@ export class AdFetchingService {
   private getMyAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
     const {searchValue, lastVisibleAd, order, similarAd} = params;
 
-    console.log('lastVisibleAd', lastVisibleAd)
     if (lastVisibleAd) {
       return this.angularFirestore.collection('ads', ref =>
         ref.where('ownerId', '==', this.user.uid)
