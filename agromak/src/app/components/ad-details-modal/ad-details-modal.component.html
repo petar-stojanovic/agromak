@@ -52,7 +52,7 @@
       </ion-badge>
       <ion-badge>
         <ion-icon name="call-outline"></ion-icon>
-        <ion-text>{{ ad.phone }}</ion-text>
+        <ion-text>{{ owner?.phoneNumber }}</ion-text>
       </ion-badge>
     </div>
 
@@ -82,7 +82,17 @@
       <ion-list-header>Seller details</ion-list-header>
       <app-profile-info [user]="owner"/>
     </ion-list>
+
+
+    @defer () {
+      @if (similarAds$| async; as similarAds) {
+        <ion-text><h1>Similar Ads</h1></ion-text>
+        <app-ad-list [ads]="similarAds" [adFetchType]="adFetchType"
+                     [additionalData]="{order: 'asc', similarAd: ad, lastVisibleAd: similarAds[similarAds.length-1]}"></app-ad-list>
+      }
+    }
   </div>
+
 
 </ion-content>
 
@@ -93,7 +103,8 @@
         <ion-icon slot="start" name="call-outline"></ion-icon>
         Call
       </ion-button>
-      <ion-button [disabled]="ad.ownerId === user?.uid" (click)="openMessageModal()" shape="round" color="dark" class="gap-1">
+      <ion-button [disabled]="ad.ownerId === user?.uid" (click)="openMessageModal()" shape="round" color="dark"
+                  class="gap-1">
         <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
         Message
       </ion-button>

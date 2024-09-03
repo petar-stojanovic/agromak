@@ -132,12 +132,26 @@ export class AdFetchingService {
     );
   }
 
-  private getSimilarAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> {
+  private getSimilarAdsQuery(params: AdListAdditionalData): AngularFirestoreCollection<any> | undefined {
     const {searchValue, lastVisibleAd, order, similarAd} = params;
-
-    return this.angularFirestore.collection('ads', ref =>
-      ref.where('category', '==', similarAd!.category)
-    );
+    if (!similarAd) {
+      return;
+    }
+    console.log('similarAd', similarAd, params)
+    if (lastVisibleAd) {
+      return this.angularFirestore.collection('ads', ref =>
+        ref.where('category', '==', similarAd.category)
+          .orderBy('uploadedAt', order)
+          .limit(AD_PAGE_SIZE)
+          .startAfter(lastVisibleAd.uploadedAt)
+      );
+    } else {
+      return this.angularFirestore.collection('ads', ref =>
+        ref.where('category', '==', similarAd.category)
+          .orderBy('uploadedAt', order)
+          .limit(AD_PAGE_SIZE)
+      );
+    }
   }
 
   private mapAndUpdateAds(query: AngularFirestoreCollection<any>, type: AdFetchType) {
@@ -197,5 +211,9 @@ export class AdFetchingService {
 
   clearFavoriteAds() {
     this.favoriteAdsSubject.next([]);
+  }
+
+  clearSimilarAds() {
+    this.similarAdsSubject.next([]);
   }
 }

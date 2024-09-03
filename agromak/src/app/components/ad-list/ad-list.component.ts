@@ -52,7 +52,7 @@ export class AdListComponent {
   adContent?: TemplateRef<any>;
 
   @Input()
-  additionalData?: AdListAdditionalData
+  additionalData!: AdListAdditionalData
 
   placeholderArray = new Array(10);
 
@@ -75,17 +75,21 @@ export class AdListComponent {
   }
 
   onIonInfinite(ev: InfiniteScrollCustomEvent) {
-    this.fetchMoreAds();
+    // if (this.adFetchType !== AdFetchType.SIMILAR) {
+      this.fetchMoreAds();
+    // }
     setTimeout(() => {
       ev.target.complete();
     }, 1000);
   }
 
   private fetchMoreAds() {
+    console.log(this.adFetchType, this.additionalData)
     this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
-      searchValue: this.additionalData?.searchValue,
-      order: this.additionalData ? this.additionalData.order : "desc",
+      similarAd: this.additionalData.similarAd,
+      searchValue: this.additionalData.searchValue,
+      order: this.additionalData.order,
     });
 
   }

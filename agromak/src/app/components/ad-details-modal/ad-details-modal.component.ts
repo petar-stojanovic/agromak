@@ -21,7 +21,7 @@ import {
   ToastController
 } from "@ionic/angular/standalone";
 import {Ad} from "../../shared/models/ad";
-import {DatePipe, NgIf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {
   arrowBack,
@@ -42,6 +42,9 @@ import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 import {UserChatService} from "../../services/user-chat.service";
 import {UserService} from "../../services/user.service";
 import {AdManagementService} from "../../services/ad-management.service";
+import {AdListComponent} from "../ad-list/ad-list.component";
+import {AdFetchType} from "../../shared/ad-fetch-type.enum";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 
 const icons = {
   callOutline,
@@ -81,7 +84,9 @@ const icons = {
     IonLabel,
     ProfileInfoComponent,
     IonFooter,
-    IonAlert
+    IonAlert,
+    AdListComponent,
+    AsyncPipe
   ]
 })
 export class AdDetailsModalComponent implements OnInit, OnDestroy {
@@ -94,8 +99,12 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   user?: User;
   isReadAllDescription = false;
 
+  similarAds$ = this.adFetchingService.similarAds$;
+  adFetchType = AdFetchType.SIMILAR;
+
   constructor(private modalCtrl: ModalController,
               private adManagementService: AdManagementService,
+              private adFetchingService: AdFetchingService,
               private userService: UserService,
               private toastController: ToastController,
               private authService: AuthService,
@@ -119,6 +128,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
     this.adManagementService.incrementAdViewCount(this.ad.id);
 
+    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {similarAd: this.ad, order: 'desc'});
     setTimeout(() => {
         // this.openMessageModal()
       }
@@ -126,6 +136,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.adFetchingService.clearSimilarAds();
     this.favoriteSubscription?.unsubscribe();
   }
 
