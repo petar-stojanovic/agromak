@@ -13,7 +13,9 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <app-ad-list [ads]="ads" [isLoading]="isLoading"></app-ad-list>
+  @if (ads$ | async; as ads) {
+    <app-ad-list [ads]="ads" [adFetchType]="adFetchType.ALL" ></app-ad-list>
+  }
 
   <ion-fab (click)="openDynamicModal()" horizontal="end" slot="fixed" vertical="bottom">
     <ion-fab-button>

@@ -35,12 +35,13 @@ import {
   informationCircleOutline,
   locationOutline
 } from "ionicons/icons";
-import {AdService} from "../../services/ad.service";
 import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 import {UserChatService} from "../../services/user-chat.service";
+import {UserService} from "../../services/user.service";
+import {AdManagementService} from "../../services/ad-management.service";
 
 const icons = {
   callOutline,
@@ -94,7 +95,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   isReadAllDescription = false;
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService,
+              private adManagementService: AdManagementService,
+              private userService: UserService,
               private toastController: ToastController,
               private authService: AuthService,
               private alertController: AlertController,
@@ -115,7 +117,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       this.owner = user as User;
     });
 
-    this.adService.incrementViewCount(this.ad.id);
+    this.adManagementService.incrementAdViewCount(this.ad.id);
 
     setTimeout(() => {
         // this.openMessageModal()
@@ -132,7 +134,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   async toggleFavorite() {
-    await this.adService.toggleFavoriteAd(this.ad.id);
+    await this.userService.toggleFavoriteAd(this.ad.id);
     const toast = await this.toastController.create({
       message: this.isFavoriteAd ? 'Added to favorites' : 'Removed from favorites',
       duration: 1500,
@@ -155,7 +157,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   async openMessageModal() {
-    if(this.owner === null) {
+    if (this.owner === null) {
       return;
     }
     const alert = await this.alertController.create({
@@ -183,7 +185,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
             await this.chatService.sendMessage(chatroomId, data['message']);
 
             const toast = await this.toastController.create({
-              message:  'Message sent successfully',
+              message: 'Message sent successfully',
               duration: 1000,
             });
             await toast.present();

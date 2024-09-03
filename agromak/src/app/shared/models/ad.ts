@@ -4,6 +4,7 @@ import Timestamp = firebase.firestore.Timestamp;
 export interface Ad {
   id: string;
   title: string;
+  title_lowercase: string;
   location: string;
   price: number;
   currency: string;

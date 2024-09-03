@@ -14,8 +14,11 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AdDetailsModalComponent} from "../ad-details-modal/ad-details-modal.component";
-import {AdService} from "../../services/ad.service";
+import {AdFetchingService} from "../../services/ad-fetching.service";
 import {NgTemplateOutlet} from "@angular/common";
+import {AdFetchType} from "../../shared/ad-fetch-type.enum";
+import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data";
+
 
 @Component({
   selector: 'app-ad-list',
@@ -40,19 +43,25 @@ export class AdListComponent {
   ads: Ad[] = [];
 
   @Input()
-  isLoading = true;
+  isLoading = false;
+
+  @Input({required: true})
+  adFetchType!: AdFetchType
 
   @Input()
   adContent?: TemplateRef<any>;
 
+  @Input()
+  additionalData?: AdListAdditionalData
+
   placeholderArray = new Array(10);
 
   constructor(private modalCtrl: ModalController,
-              private adService: AdService) {
+              private adFetchingService: AdFetchingService) {
   }
 
   ngOnInit() {
-    setTimeout(() =>{
+    setTimeout(() => {
       // this.openAdDetailsModal(this.ads[0]);
     }, 1500);
   }
@@ -63,22 +72,21 @@ export class AdListComponent {
       componentProps: {ad}
     });
     await modal.present();
-
-    const {data, role} = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log('Data:', data);
-    }
   }
 
   onIonInfinite(ev: InfiniteScrollCustomEvent) {
-    this.generateMoreItems();
+    this.fetchMoreAds();
     setTimeout(() => {
       ev.target.complete();
     }, 1000);
   }
 
-  private generateMoreItems() {
-    this.adService.getAds(this.ads[this.ads.length - 1]);
+  private fetchMoreAds() {
+    this.adFetchingService.fetchAds(this.adFetchType, {
+      lastVisibleAd: this.ads[this.ads.length - 1],
+      searchValue: this.additionalData?.searchValue,
+      order: this.additionalData ? this.additionalData.order : "desc",
+    });
+
   }
 }
