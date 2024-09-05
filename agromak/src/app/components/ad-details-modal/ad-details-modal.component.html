@@ -78,38 +78,19 @@
       </ion-item>
     </ion-list>
 
-    <ion-list #userDetails>
+    <ion-list>
       <ion-list-header>Seller details</ion-list-header>
       <app-profile-info [user]="owner"/>
     </ion-list>
 
 
-    @defer (on viewport(userDetails)) {
-      @if (similarAds$| async; as similarAds) {
-        <ion-text><h1>Similar Ads</h1></ion-text>
-        <app-ad-list [ads]="similarAds" [adFetchType]="adFetchType"
-                     [additionalData]="{order: 'asc', similarAd: ad, lastVisibleAd: similarAds[similarAds.length-1]}"></app-ad-list>
-      }
-    } @placeholder (minimum 750ms) {
-      @for (i of [1, 2, 3, 4]; track $index) {
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-          </ion-thumbnail>
-          <ion-label>
-            <h3>
-              <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
-            </h3>
-            <p>
-              <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
-            </p>
-            <p>
-              <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      }
+    @if (similarAds$ | async; as similarAds) {
+      <ion-text><h1>Similar Ads</h1></ion-text>
+      <app-ad-list [ads]="similarAds" [adFetchType]="adFetchType" [isLoading]="isLoading"
+                   [additionalData]="{order: 'asc', similarAd: ad, lastVisibleAd: similarAds[similarAds.length-1]}">
+      </app-ad-list>
     }
+
   </div>
 
 

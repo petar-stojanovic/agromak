@@ -33,15 +33,13 @@ import {tap} from "rxjs";
     IonIcon,
     IonButton,
     AsyncPipe,
-    NgIf,
-    NgForOf
   ],
   standalone: true
 })
 export class FavoriteAdsComponent implements OnInit {
 
   ads$ = this.adFetchingService.favoriteAds$;
-  adFetchType = AdFetchType;
+  adFetchType = AdFetchType.FAVORITE;
   isLoading = true;
 
   constructor(private modalCtrl: ModalController,

@@ -12,8 +12,8 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="ads$ | async as ads">
-    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType.FAVORITE">
+  @if (ads$ | async; as ads) {
+    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType">
     </app-ad-list>
-  </ng-container>
+  }
 </ion-content>

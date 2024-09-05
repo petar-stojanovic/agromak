@@ -99,6 +99,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   owner: User | null = null;
   user?: User;
   isReadAllDescription = false;
+  isLoading = true;
 
   similarAds$ = this.adFetchingService.similarAds$.pipe(
     map(ads => ads.filter(ad => ad.id !== this.ad.id)),
@@ -133,11 +134,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
     this.adManagementService.incrementAdViewCount(this.ad.id);
 
-    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {similarAd: this.ad, order: 'desc'}).subscribe();
-    setTimeout(() => {
-        // this.openMessageModal()
-      }
-      , 1000)
+    this.fetchAds();
   }
 
   ngOnDestroy() {
@@ -155,6 +152,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
       message: this.isFavoriteAd ? 'Added to favorites' : 'Removed from favorites',
       duration: 1500,
     });
+
+    this.fetchAds();
 
     await toast.present();
   }
@@ -211,5 +210,12 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     });
 
     await alert.present();
+  }
+
+  private fetchAds() {
+    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {
+      similarAd: this.ad,
+      order: 'desc'
+    }).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 }
