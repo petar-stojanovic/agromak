@@ -19,13 +19,13 @@
           <div>
             <ion-badge>{{ ad.category }}</ion-badge>
           </div>
-          <div class="flex justify-space-between">
+          <div class="ad-details flex justify-space-between">
             <ion-text color="medium">
-              <p class="font-size-12">{{ ad.location }}</p>
+              <p class="font-weight-600">{{ ad.location }}</p>
             </ion-text>
-            <div class="font-weight-500 price">
-              <p>{{ ad.price }} {{ ad.currency }}</p>
-            </div>
+            <ion-text color="dark">
+              <p class="ad-price">{{ ad.price }} {{ ad.currency }}</p>
+            </ion-text>
           </div>
         </ion-label>
       </ion-item>
