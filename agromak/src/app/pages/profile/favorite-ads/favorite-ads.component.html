@@ -13,7 +13,7 @@
 
 <ion-content>
   <ng-container *ngIf="ads$ | async as ads">
-    <app-ad-list [ads]="ads" [adFetchType]="adFetchType.FAVORITE">
+    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType.FAVORITE">
     </app-ad-list>
   </ng-container>
 </ion-content>

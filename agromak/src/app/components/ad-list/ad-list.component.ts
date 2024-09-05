@@ -43,7 +43,7 @@ export class AdListComponent implements OnChanges {
   ads: Ad[] = [];
 
   @Input()
-  isLoading = false;
+  isLoading = true;
 
   @Input({required: true})
   adFetchType!: AdFetchType

@@ -27,6 +27,7 @@ import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {UserService} from "../../services/user.service";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -63,7 +64,7 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: this.orderDirection}).subscribe();
+    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
   async refreshAds(event: RefresherCustomEvent) {

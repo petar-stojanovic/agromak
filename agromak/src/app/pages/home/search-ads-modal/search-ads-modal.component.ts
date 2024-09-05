@@ -22,6 +22,7 @@ import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline} from "ionicons/icons";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -56,6 +57,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   ads$ = this.adFetchingService.searchedAds$;
 
   adFetchType = AdFetchType;
+  isLoading = true;
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
@@ -68,7 +70,10 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {searchValue: this.searchValue, order: "desc"}).subscribe();
+    this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {
+      searchValue: this.searchValue,
+      order: "desc"
+    }).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
   dismiss() {

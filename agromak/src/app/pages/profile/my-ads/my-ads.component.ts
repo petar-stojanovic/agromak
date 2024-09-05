@@ -19,7 +19,7 @@ import {Ad} from "../../../shared/models/ad";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {addIcons} from "ionicons";
 import {arrowBack, arrowDownOutline, arrowUpOutline} from "ionicons/icons";
-import {Subscription} from "rxjs";
+import {Subscription, tap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {DynamicFormModalComponent} from "../../home/dynamic-form-modal/dynamic-form-modal.component";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
@@ -50,8 +50,9 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   ads: Ad[] = [];
 
   orderDirection: 'asc' | 'desc' = 'desc';
-
   adFetchType = AdFetchType;
+  isLoading = true;
+
   private adsSubscription: Subscription | undefined;
 
   constructor(private modalCtrl: ModalController,
@@ -74,7 +75,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
     this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       order: this.orderDirection
-    }).subscribe();
+    }).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
   dismiss() {

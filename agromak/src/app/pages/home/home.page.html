@@ -14,7 +14,7 @@
   </ion-refresher>
 
   @if (ads$ | async; as ads) {
-    <app-ad-list [ads]="ads" [adFetchType]="adFetchType.ALL" [additionalData]="{order: orderDirection}"></app-ad-list>
+    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType.ALL" [additionalData]="{order: orderDirection}"></app-ad-list>
   }
 
   <ion-fab (click)="openDynamicModal()" horizontal="end" slot="fixed" vertical="bottom">
