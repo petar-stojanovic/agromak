@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
 import {AdFetchType} from "../shared/ad-fetch-type.enum";
-import {Firestore} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
-import {ImageService} from "./image.service";
 import {ApiService} from "./api.service";
 import {AdFetchingService} from "./ad-fetching.service";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +44,12 @@ export class UserService {
     await userRef.set(data, {merge: true});
 
     this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).subscribe();
+  }
+
+  async updateUserSearchHistory(searchValue: string) {
+    const data = {
+      searchHistory: FieldValue.arrayUnion(searchValue),
+    }
+    await this.apiService.updateDocument(`usersSearchHistory/${this.user.uid}`, data);
   }
 }

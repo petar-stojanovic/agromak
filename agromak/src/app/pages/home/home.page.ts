@@ -26,6 +26,7 @@ import {DynamicFormModalComponent} from "./dynamic-form-modal/dynamic-form-modal
 import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-home',
@@ -43,10 +44,12 @@ export class HomePage implements OnInit {
   adFetchType = AdFetchType;
 
   ads$ = this.adFetchingService.ads$;
-  orderDirection: 'asc' | 'desc' = 'asc';
+  orderDirection: 'asc' | 'desc' = 'desc';
 
   constructor(private modalCtrl: ModalController,
-              private adFetchingService: AdFetchingService) {
+              private adFetchingService: AdFetchingService,
+              private userService: UserService
+  ) {
     addIcons({add, 'logo': 'assets/logo.svg'})
   }
 
@@ -103,6 +106,7 @@ export class HomePage implements OnInit {
       }
     });
     await modal.present();
+    await this.userService.updateUserSearchHistory(searchValue.trim());
     this.searchbar.value = null;
   }
 
