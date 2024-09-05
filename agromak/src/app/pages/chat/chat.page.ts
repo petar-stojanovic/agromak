@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {
@@ -55,6 +55,7 @@ export class ChatPage implements OnInit, OnDestroy {
               private userChatService: UserChatService,
               private apiService: ApiService,
               private router: Router,
+              private ref: ChangeDetectorRef,
               private route: ActivatedRoute,
               private authService: AuthService
   ) {
@@ -116,7 +117,8 @@ export class ChatPage implements OnInit, OnDestroy {
   }
 
   onSegmentChanged(e: SegmentCustomEvent) {
-    this.segment = e.target.value?.toString() || "allChats";
+    this.segment = e.target.value?.toString() || "userSentChats";
+    this.ref.markForCheck();
   }
 
   async navigateToNewAiPage() {
