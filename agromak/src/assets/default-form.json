@@ -32,7 +32,7 @@
       "type": "text",
       "name": "title",
       "label": "Title",
-      "value": "Samsung Galaxy A51",
+      "value": "",
       "validators": {
         "required": true,
         "maxLength": 60,
@@ -43,7 +43,7 @@
       "type": "textarea",
       "name": "description",
       "label": "Description",
-      "value": "Се продава уред Samsung Galaxy A51. Телефонот не е паѓан и нема гребнатинки на екранот.\n\nКонтакт: 073/123-604 Горан\n\n",
+      "value": "",
       "validators": {
         "required": true,
         "maxLength": 3000
@@ -53,7 +53,7 @@
       "type": "number",
       "name": "price",
       "label": "Price",
-      "value": "5500",
+      "value": "",
       "validators": {
         "required": true
       }

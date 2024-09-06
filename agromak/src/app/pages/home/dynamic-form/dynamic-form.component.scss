@@ -17,6 +17,8 @@ ion-range::part(pin) {
 }
 
 ion-input, ion-textarea {
+  --background: var(--ion-color-light);
+
   --highlight-color-valid: black;
   ////--highlight-color-focused: black;
 
@@ -43,6 +45,7 @@ form > *:not(app-input-error):not(ion-note):not(:first-child) {
 ion-input.md,
 ion-select.md {
   height: 4rem !important;
+  --background: var(--ion-color-light);
 }
 
 ion-textarea.md {
@@ -50,6 +53,7 @@ ion-textarea.md {
 }
 
 .open-categories-modal, .open-images {
+  --background: var(--ion-color-light);
   border: 1px solid #bcc5d4;
   border-radius: 4px;
 
@@ -58,7 +62,16 @@ ion-textarea.md {
   }
 }
 
-ion-note{
+ion-note {
   display: block;
   margin-bottom: 5px;
+}
+
+ion-radio-group {
+  background: var(--ion-color-light);
+  padding: 0.75rem;
+  display: flex !important;
+  gap: 0.5rem;
+  flex-direction: column;
+  border: 1px solid #bcc5d4;
 }
