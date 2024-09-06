@@ -33,4 +33,5 @@ form > *:not(app-input-error):not(ion-note):not(:first-child) {
 ion-input.md,
 ion-select.md {
   height: 4rem !important;
+  --background: var(--ion-color-light);
 }
