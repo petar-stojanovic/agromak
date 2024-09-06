@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
   @ViewChild('searchbar') searchbar!: IonSearchbar;
 
   isLoading = true;
-  adFetchType = AdFetchType;
+  adFetchType = AdFetchType.ALL;
   lastVisibleAd: Ad | undefined = undefined;
 
   ads$ = this.adFetchingService.ads$
@@ -68,12 +68,12 @@ export class HomePage implements OnInit {
   }
 
   getAds() {
-    this.adFetchingService.fetchAds(AdFetchType.ALL, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
+    this.adFetchingService.fetchAds(this.adFetchType, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
   async refreshAds(event?: RefresherCustomEvent) {
     this.isLoading = true;
-    this.adFetchingService.clearAllAds();
+    this.adFetchingService.clearAds(this.adFetchType);
     this.getAds();
 
     await Haptics.impact({style: ImpactStyle.Medium});

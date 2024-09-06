@@ -14,7 +14,7 @@
   </ion-refresher>
 
   @if (ads$ | async; as ads) {
-    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType.ALL"
+    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType"
                  [additionalData]="{order: orderDirection, lastVisibleAd: lastVisibleAd}"></app-ad-list>
   }
 

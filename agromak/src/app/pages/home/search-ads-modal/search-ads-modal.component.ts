@@ -56,7 +56,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   ads$ = this.adFetchingService.searchedAds$;
 
-  adFetchType = AdFetchType;
+  adFetchType = AdFetchType.SEARCHED;
   isLoading = true;
 
   constructor(private modalCtrl: ModalController,
@@ -81,6 +81,6 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.adFetchingService.clearSearchedAds();
+    this.adFetchingService.clearAds(this.adFetchType);
   }
 }

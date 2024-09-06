@@ -138,7 +138,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.adFetchingService.clearSimilarAds();
+    this.adFetchingService.clearAds(this.adFetchType);
     this.favoriteSubscription?.unsubscribe();
   }
 

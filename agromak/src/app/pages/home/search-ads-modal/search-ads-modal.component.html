@@ -18,7 +18,7 @@
 
 <ion-content>
   @if (ads$ | async; as ads) {
-    <app-ad-list [ads]="ads" [adFetchType]="adFetchType.SEARCHED" [isLoading]="isLoading"
+    <app-ad-list [ads]="ads" [adFetchType]="adFetchType" [isLoading]="isLoading"
                  [additionalData]='{searchValue: searchValue, order: "desc"}'></app-ad-list>
   }
 

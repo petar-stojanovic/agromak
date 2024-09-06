@@ -43,7 +43,7 @@ export class UserService {
     }
     await userRef.update(data);
 
-    this.adFetchingService.clearFavoriteAds();
+    this.adFetchingService.clearAds(AdFetchType.FAVORITE);
     this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).subscribe();
   }
 

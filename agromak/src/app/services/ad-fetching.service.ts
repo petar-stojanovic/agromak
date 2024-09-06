@@ -78,8 +78,6 @@ export class AdFetchingService {
         );
       })
     )
-
-
   }
 
   private getAllAdsQuery(params: AdListAdditionalData): Observable<Ad[]> {
@@ -109,7 +107,6 @@ export class AdFetchingService {
 
   private searchAllAds(lastVisibleAd: Ad | undefined, order: "asc" | "desc") {
     return this.queryAdsCollection(ref => ref.orderBy('uploadedAt', order), lastVisibleAd);
-
   }
 
   private getSearchedAdsQuery(params: AdListAdditionalData): Observable<Ad[]> {
@@ -151,12 +148,12 @@ export class AdFetchingService {
   }
 
   private queryAdsCollection(queryFn: (ref: CollectionReference<firebase.firestore.DocumentData>) => any, lastVisibleAd?: Ad): Observable<Ad[]> {
-
     return this.angularFirestore.collection<Ad>('ads', ref => {
       let query = queryFn(ref);
       if (lastVisibleAd) query = query.startAfter(lastVisibleAd.uploadedAt);
       return query.limit(AD_PAGE_SIZE);
-    }).valueChanges({idField: 'id'});
+    })
+      .valueChanges({idField: 'id'});
   }
 
 
@@ -166,49 +163,38 @@ export class AdFetchingService {
       return;
     }
 
-    switch (type) {
-      case AdFetchType.ALL:
-        this.adsSubject.next(this.adsSubject.value.concat(ads));
-        break;
-      case AdFetchType.SEARCHED:
-        this.searchedAdsSubject.next(this.searchedAdsSubject.value.concat(ads));
-        break;
-      case AdFetchType.MY_ADS:
-        this.myAdsSubject.next(this.myAdsSubject.value.concat(ads));
-        break;
-      case AdFetchType.FAVORITE:
-        this.favoriteAdsSubject.next(ads);
-        break;
-      case AdFetchType.SIMILAR:
-        this.similarAdsSubject.next(this.similarAdsSubject.value.concat(ads));
-        break;
+    if (type === AdFetchType.ALL) {
+      this.adsSubject.next(this.adsSubject.value.concat(ads));
+    } else if (type === AdFetchType.SEARCHED) {
+      this.searchedAdsSubject.next(this.searchedAdsSubject.value.concat(ads));
+    } else if (type === AdFetchType.MY_ADS) {
+      this.myAdsSubject.next(this.myAdsSubject.value.concat(ads));
+    } else if (type === AdFetchType.FAVORITE) {
+      this.favoriteAdsSubject.next(ads);
+    } else if (type === AdFetchType.SIMILAR) {
+      this.similarAdsSubject.next(this.similarAdsSubject.value.concat(ads));
     }
   }
 
-  clearAllAds() {
-    this.adsSubject.next([]);
-  }
 
-  clearSearchedAds() {
-    this.searchedAdsSubject.next([]);
-  }
-
-  clearMyAds() {
-    this.myAdsSubject.next([]);
-  }
-
-  clearFavoriteAds() {
-    this.favoriteAdsSubject.next([]);
-  }
-
-  clearSimilarAds() {
-    this.similarAdsSubject.next([]);
+  clearAds(type: AdFetchType) {
+    if (type === AdFetchType.ALL) {
+      this.adsSubject.next([]);
+    } else if (type === AdFetchType.SEARCHED) {
+      this.searchedAdsSubject.next([]);
+    } else if (type === AdFetchType.MY_ADS) {
+      this.myAdsSubject.next([]);
+    } else if (type === AdFetchType.FAVORITE) {
+      this.favoriteAdsSubject.next([]);
+    } else if (type === AdFetchType.SIMILAR) {
+      this.similarAdsSubject.next([]);
+    }
   }
 
   private extractKeywords(text: string): string[] {
     return text
       .toLowerCase()
       .split(' ')
-      .filter(word => word.length > 2); // Simple example: exclude single-letter words
+      .filter(word => word.length > 2);
   }
 }

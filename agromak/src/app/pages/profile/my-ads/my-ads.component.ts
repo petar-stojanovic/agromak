@@ -50,7 +50,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   ads: Ad[] = [];
 
   orderDirection: 'asc' | 'desc' = 'desc';
-  adFetchType = AdFetchType;
+  adFetchType = AdFetchType.MY_ADS;
   isLoading = true;
 
   private adsSubscription: Subscription | undefined;
@@ -124,7 +124,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   swapOrderDirection() {
     this.orderDirection = this.orderDirection === 'desc' ? 'asc' : 'desc';
-    this.adFetchingService.clearMyAds();
+    this.adFetchingService.clearAds(this.adFetchType);
     this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {order: this.orderDirection}).subscribe();
 
   }

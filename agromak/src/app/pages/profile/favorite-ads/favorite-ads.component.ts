@@ -56,7 +56,7 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   dismiss() {
-    this.adFetchingService.clearFavoriteAds();
+    this.adFetchingService.clearAds(this.adFetchType);
     return this.modalCtrl.dismiss();
   }
 
