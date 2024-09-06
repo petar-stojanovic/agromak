@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AsyncPipe, DatePipe, NgIf} from "@angular/common";
 import {
   IonAvatar,
@@ -16,6 +16,7 @@ import {
   IonPicker,
   IonPickerColumn,
   IonPickerColumnOption,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
   ModalController,
@@ -23,7 +24,7 @@ import {
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
 import {addIcons} from "ionicons";
-import {arrowBack, filterCircleOutline} from "ionicons/icons";
+import {arrowBack, filterCircleOutline, searchOutline} from "ionicons/icons";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 import {tap} from "rxjs";
 
@@ -53,6 +54,7 @@ import {tap} from "rxjs";
     IonPicker,
     IonPickerColumn,
     IonPickerColumnOption,
+    IonSearchbar,
   ],
   standalone: true
 })
@@ -62,13 +64,17 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   ads$ = this.adFetchingService.searchedAds$;
 
+  @ViewChild('searchbar', {static: false}) searchbar!: IonSearchbar;
+
   adFetchType = AdFetchType.SEARCHED;
   isLoading = true;
   orderDirection: 'asc' | 'desc' = 'desc';
 
+  isSearchBarOpened = false;
+
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
-    addIcons({filterCircleOutline, arrowBack})
+    addIcons({filterCircleOutline, arrowBack, searchOutline})
   }
 
 
@@ -88,7 +94,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.adFetchingService.clearAds(this.adFetchType);
+    this.clearAds();
   }
 
   onIonChange(event: CustomEvent) {
@@ -98,8 +104,30 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   onDidDismiss(event: CustomEvent) {
     if (event.detail.role === "confirm") {
       this.isLoading = true;
-      this.adFetchingService.clearAds(this.adFetchType);
+      this.clearAds();
       this.fetchAds();
     }
+  }
+
+  search(event: CustomEvent) {
+    if (event.detail.value === '') {
+      return;
+    }
+    this.searchValue = event.detail.value;
+    this.clearAds();
+    this.fetchAds();
+    this.isSearchBarOpened = false;
+  }
+
+  clearAds() {
+    this.adFetchingService.clearAds(this.adFetchType);
+  }
+
+  openSearchBar() {
+    this.isSearchBarOpened = true;
+    setTimeout(async () => {
+      await this.searchbar.setFocus();
+    }, 150);
+
   }
 }

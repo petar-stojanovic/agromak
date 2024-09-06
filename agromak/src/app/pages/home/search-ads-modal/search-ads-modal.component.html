@@ -1,18 +1,51 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    @if (isSearchBarOpened) {
+      <ion-searchbar (ionChange)="search($event)" #searchbar showCancelButton="focus"
+                     (ionCancel)="isSearchBarOpened = false" class="searchbar">
+        <ion-icon class="logo-icon" name="logo"/>
+      </ion-searchbar>
+    } @else {
+      <ion-buttons slot="start">
+        <ion-button (click)="dismiss()">
+          <ion-icon class="back-icon" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
 
-    <ion-title class="title">Searched: {{ searchValue }}</ion-title>
+      <ion-title class="title">Searched:</ion-title>
+      <ion-title class="subtitle">{{ searchValue }}</ion-title>
 
-    <ion-buttons slot="end">
-      <ion-button id="open-filter" expand="block">
-        <ion-icon class="filter-icon" name="filter-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button expand="block" (click)="openSearchBar()">
+          <ion-icon class="search-icon" name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button id="open-filter" expand="block">
+          <ion-icon class="filter-icon" name="filter-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+
+      <ion-modal #modal trigger="open-filter" (didDismiss)="onDidDismiss($event)">
+        <ng-template>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="modal.dismiss(null, 'cancel')">Cancel</ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss(orderDirection, 'confirm')">Done</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-picker>
+            <ion-picker-column [value]="orderDirection" (ionChange)="onIonChange($event)">
+              <ion-picker-column-option value="" disabled="true">--</ion-picker-column-option>
+              <ion-picker-column-option value="desc">Descending</ion-picker-column-option>
+              <ion-picker-column-option value="asc">Ascending</ion-picker-column-option>
+            </ion-picker-column>
+          </ion-picker>
+        </ng-template>
+      </ion-modal>
+    }
+
   </ion-toolbar>
 </ion-header>
 
@@ -24,23 +57,3 @@
 
 </ion-content>
 
-
-<ion-modal #modal trigger="open-filter" (didDismiss)="onDidDismiss($event)" >
-  <ng-template>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="modal.dismiss(null, 'cancel')">Cancel</ion-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button (click)="modal.dismiss(orderDirection, 'confirm')">Done</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-    <ion-picker>
-      <ion-picker-column [value]="orderDirection" (ionChange)="onIonChange($event)">
-        <ion-picker-column-option value="" disabled="true">--</ion-picker-column-option>
-        <ion-picker-column-option value="desc">Descending</ion-picker-column-option>
-        <ion-picker-column-option value="asc">Ascending</ion-picker-column-option>
-      </ion-picker-column>
-    </ion-picker>
-  </ng-template>
-</ion-modal>
