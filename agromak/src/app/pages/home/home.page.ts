@@ -62,7 +62,7 @@ export class HomePage implements OnInit {
     this.getAds();
     // this.openDynamicModal();
     setTimeout(() => {
-      this.openSearchModal('prodavam');
+      // this.openSearchModal('prodavam');
     }, 1000);
 
   }

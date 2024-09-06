@@ -1,19 +1,23 @@
 ion-header {
   & ion-toolbar {
-    --background: var(--ion-color-primary);
+    --background: var(--ion-background-color);
     padding: 8px 16px !important;
 
     & ion-icon {
       //font-size: 2.5rem;
 
-      fill: var(--ion-color-logo);
+      fill: var(--ion-color-primary);
       //stroke: blue;
 
       border-radius: 50%;
-      width: 2.5rem;
+      width: 1.75rem;
       aspect-ratio: 1;
       height: 100%;
-      padding: 0.5rem;
+
+      position: absolute;
+      z-index: 1000;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
@@ -29,11 +33,22 @@ ion-thumbnail {
 
 .searchbar {
   --border-radius: 10rem;
+  --box-shadow: 0 0 2px 1px var(--ion-color-primary);
 
   &::ng-deep {
 
     input.searchbar-input {
       height: 2.5rem !important;
+    }
+  }
+
+  --placeholder-opacity: 0;
+
+  &.searchbar-has-focus {
+    --placeholder-opacity: 0.6;
+
+    & ion-icon {
+      display: none;
     }
   }
 }

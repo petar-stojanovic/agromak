@@ -10,4 +10,8 @@ ion-modal {
 
 ion-picker {
   margin-bottom: var(--ion-safe-area-bottom);
+
+  & ion-picker-column ion-picker-column-option.option-active {
+    color: var(--ion-color-dark);
+  }
 }
