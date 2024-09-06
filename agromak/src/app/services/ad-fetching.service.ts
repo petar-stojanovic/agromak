@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, first, map, Observable, of, switchMap, take, tap} from "rxjs";
+import {BehaviorSubject, first, map, Observable, of, switchMap, take} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
@@ -73,8 +73,7 @@ export class AdFetchingService {
 
         return query$.pipe(
           take(1),
-          tap(ads => this.updateSubjectBasedOnType(ads, type)),
-          map(ads => ads.length === 0)
+          map(ads => this.updateSubjectBasedOnType(ads, type))
         );
       })
     )
@@ -160,7 +159,7 @@ export class AdFetchingService {
   private updateSubjectBasedOnType(ads: Ad[], type: AdFetchType) {
     console.log(ads);
     if (ads.length === 0 || ads.length === 1 && type === AdFetchType.SIMILAR) {
-      return;
+      return true;
     }
 
     if (type === AdFetchType.ALL) {
@@ -174,6 +173,7 @@ export class AdFetchingService {
     } else if (type === AdFetchType.SIMILAR) {
       this.similarAdsSubject.next(this.similarAdsSubject.value.concat(ads));
     }
+    return false;
   }
 
 

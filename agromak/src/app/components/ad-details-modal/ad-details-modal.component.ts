@@ -142,6 +142,13 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     this.favoriteSubscription?.unsubscribe();
   }
 
+  private fetchAds() {
+    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {
+      similarAd: this.ad,
+      order: 'desc'
+    }).pipe(tap(() => this.isLoading = false)).subscribe();
+  }
+
   dismiss() {
     return this.modalCtrl.dismiss();
   }
@@ -212,10 +219,4 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  private fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {
-      similarAd: this.ad,
-      order: 'desc'
-    }).pipe(tap(() => this.isLoading = false)).subscribe();
-  }
 }
