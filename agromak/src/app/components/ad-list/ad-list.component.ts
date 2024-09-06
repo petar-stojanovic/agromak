@@ -18,6 +18,7 @@ import {AdFetchingService} from "../../services/ad-fetching.service";
 import {NgTemplateOutlet} from "@angular/common";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data";
+import {tap} from "rxjs";
 
 
 @Component({
@@ -65,7 +66,7 @@ export class AdListComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['ads'] && !changes['ads'].firstChange && this.#currentInfiniteEvent) {
-      this.#currentInfiniteEvent.target.disabled = false
+      // this.#currentInfiniteEvent.target.disabled = false
     }
   }
 
@@ -84,15 +85,16 @@ export class AdListComponent implements OnChanges {
 
   private fetchMoreAds() {
     this.adFetchingService.fetchAds(this.adFetchType, {
-      lastVisibleAd: this.ads[this.ads.length - 1],
+      lastVisibleAd: this.additionalData.similarAd ?? this.ads[this.ads.length - 1],
       similarAd: this.additionalData.similarAd,
       searchValue: this.additionalData.searchValue,
       order: this.additionalData.order,
-    }).subscribe(shouldStopFetching => {
-      if (this.#currentInfiniteEvent) {
-        this.#currentInfiniteEvent.target.complete();
-        this.#currentInfiniteEvent.target.disabled = shouldStopFetching;
-      }
-    });
+    })
+      .subscribe(shouldStopFetching => {
+        if (this.#currentInfiniteEvent) {
+          this.#currentInfiniteEvent.target.complete();
+          this.#currentInfiniteEvent.target.disabled = shouldStopFetching;
+        }
+      });
   }
 }

@@ -58,6 +58,7 @@ export class AdManagementService {
     const data = {
       ...dynamicAd,
       title_lowercase: dynamicAd.title.toLowerCase(),
+      keywords: this.extractKeywords(dynamicAd.title.toLowerCase()),
       ownerId: this.user.uid,
       ownerName: this.user.displayName,
       viewCount: 1,
@@ -73,6 +74,12 @@ export class AdManagementService {
     return;
   }
 
+  private extractKeywords(text: string): string[] {
+    return text
+      .toLowerCase()
+      .split(' ')
+      .filter(word => word.length > 2); // Simple example: exclude single-letter words
+  }
   async updateAd(ad: UpdateDynamicAd) {
     const imagesToDelete: string[] = ad.oldImages
       ? ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage))
@@ -89,6 +96,7 @@ export class AdManagementService {
     const updatedAdData = {
       ...adDataWithoutOldImages,
       title_lowercase: ad.title.toLowerCase(),
+      keywords: this.extractKeywords(ad.title.toLowerCase()),
       ownerId: this.user.uid,
       ownerName: this.user.displayName,
       images: deleteField()

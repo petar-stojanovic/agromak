@@ -40,11 +40,15 @@ export class HomePage implements OnInit {
 
   @ViewChild('searchbar') searchbar!: IonSearchbar;
 
-  ads: Ad[] = [];
   isLoading = true;
   adFetchType = AdFetchType;
+  lastVisibleAd: Ad | undefined = undefined;
 
-  ads$ = this.adFetchingService.ads$;
+  ads$ = this.adFetchingService.ads$
+    .pipe(tap((ads) => {
+      this.lastVisibleAd = ads[ads.length - 1];
+      // this.shuffleAds(ads);
+    }));
   orderDirection: 'asc' | 'desc' = 'desc';
 
   constructor(private modalCtrl: ModalController,
@@ -67,13 +71,13 @@ export class HomePage implements OnInit {
     this.adFetchingService.fetchAds(AdFetchType.ALL, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
-  async refreshAds(event: RefresherCustomEvent) {
+  async refreshAds(event?: RefresherCustomEvent) {
     this.isLoading = true;
     this.adFetchingService.clearAllAds();
     this.getAds();
 
     await Haptics.impact({style: ImpactStyle.Medium});
-    await event.target.complete();
+    await event?.target.complete();
   }
 
   async openModal() {
@@ -108,7 +112,23 @@ export class HomePage implements OnInit {
     });
     await modal.present();
     await this.userService.updateUserSearchHistory(searchValue.trim());
+    await modal.onWillDismiss()
+    console.log("REFRESHING ADS");
+    await this.refreshAds();
     this.searchbar.value = null;
   }
 
+  private shuffleAds(ads: Ad[]) {
+    let currentIndex = ads.length;
+
+    while (currentIndex != 0) {
+
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [ads[currentIndex], ads[randomIndex]] = [
+        ads[randomIndex], ads[currentIndex]];
+    }
+    return ads;
+  }
 }

@@ -1,6 +1,6 @@
-import {AfterViewChecked, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {UserChatService} from "../../../services/user-chat.service";
 import {UserMessage} from "../../../shared/models/chat-room";
@@ -15,7 +15,8 @@ import {
   IonIcon,
   IonImg,
   IonInput,
-  IonItem, IonItemDivider,
+  IonItem,
+  IonItemDivider,
   IonLabel,
   IonSkeletonText,
   IonText,
@@ -28,7 +29,6 @@ import {MarkdownComponent} from "ngx-markdown";
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../shared/models/user";
 import {Ad} from "../../../shared/models/ad";
-import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
 import {addIcons} from "ionicons";
 import {sendOutline} from "ionicons/icons";
@@ -39,11 +39,14 @@ import {AdManagementService} from "../../../services/ad-management.service";
   templateUrl: './user-chat.page.html',
   styleUrls: ['./user-chat.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg, IonItemDivider]
+  imports: [CommonModule, FormsModule, IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonLabel, IonText, IonThumbnail, MarkdownComponent, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, IonSkeletonText, IonImg, IonItemDivider],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
+export class UserChatPage implements OnInit, OnDestroy {
 
   @ViewChild('content') content!: IonContent;
+  @ViewChild('chatInput') chatInput!: IonInput;
+
 
   ad?: Ad;
   messages: UserMessage[] = [];
@@ -55,19 +58,15 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
 
   subscription?: Subscription;
 
-  form: FormGroup;
-
   constructor(
     private route: ActivatedRoute,
     private adManagementService: AdManagementService,
     private chatService: UserChatService,
     private authService: AuthService,
     private modalCtrl: ModalController,
+    private ref: ChangeDetectorRef,
   ) {
     addIcons({sendOutline});
-    this.form = new FormGroup({
-      message: new FormControl("", [Validators.required])
-    });
 
     this.authService.user$.subscribe(user => this.user = user);
   }
@@ -98,14 +97,16 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
           this.messages = messages;
           this.owner = owner;
           this.otherUser = this.user?.uid === owner.id ? sender : owner;
+
+          this.ref.markForCheck();
+
+          setTimeout(() =>{
+            this.scrollToBottom();
+          }, 100);
         }
       );
   }
 
-
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
 
   ngOnDestroy() {
     this.subscription?.unsubscribe();
@@ -119,11 +120,12 @@ export class UserChatPage implements OnInit, AfterViewChecked, OnDestroy {
     await modal.present();
   }
 
-  async sendMessage() {
-    const {message} = this.form.value;
-
-    await this.chatService.sendMessage(this.chatId, message);
-    this.form.reset();
+  async sendMessage(event: CustomEvent) {
+    if (event.detail.value === '') {
+      return;
+    }
+    await this.chatService.sendMessage(this.chatId, event.detail.value);
+    this.chatInput.value = null;
     this.scrollToBottom();
   }
 

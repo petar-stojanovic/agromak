@@ -12,8 +12,8 @@ export class StorageService {
   constructor() {
   }
 
-  setStorage(key: string, value: any) {
-    Preferences.set({key: key, value: value});
+  async setStorage(key: string, value: any) {
+   await Preferences.set({key: key, value: value});
   }
 
   getStorage(key: string): Promise<GetResult> {

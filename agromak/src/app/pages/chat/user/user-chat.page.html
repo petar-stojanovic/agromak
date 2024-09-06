@@ -79,12 +79,9 @@
 </ion-content>
 <ion-footer class="ion-no-border">
 
-  <form [formGroup]="form" (ngSubmit)="sendMessage()">
-
-    <ion-input formControlName="message" class="ion-padding-horizontal" placeholder="Start typing here to chat...">
-      <ion-button fill="clear" slot="end" type="submit" [disabled]="form.invalid">
+    <ion-input class="ion-padding-horizontal" #chatInput (ionChange)="sendMessage($event)" placeholder="Start typing here to chat...">
+      <ion-button fill="clear" slot="end" type="submit">
         <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
       </ion-button>
     </ion-input>
-  </form>
 </ion-footer>

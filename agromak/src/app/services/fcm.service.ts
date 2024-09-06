@@ -115,7 +115,7 @@ export class FcmService {
       timestamp: FieldValue.serverTimestamp()
     };
 
-    this.storageService.setStorage(FCM_TOKEN, token);
+    await this.storageService.setStorage(FCM_TOKEN, token);
     await this.apiService.setDocument(`fcmTokens/${this.user.uid}`, data);
   }
 

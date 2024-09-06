@@ -71,7 +71,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   fetchAds() {
     this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {
-      searchValue: this.searchValue,
+      searchValue: this.searchValue.toLowerCase(),
       order: "desc"
     }).pipe(tap(() => this.isLoading = false)).subscribe();
   }

@@ -19,4 +19,5 @@ export interface Ad {
   itemCondition: string;
   viewCount: number;
   uploadedAt: Timestamp;
+  keywords?: string[];
 }

@@ -41,14 +41,15 @@ export class UserService {
       ...this.user,
       favoriteAds: favoriteAds,
     }
-    await userRef.set(data, {merge: true});
+    await userRef.update(data);
 
+    this.adFetchingService.clearFavoriteAds();
     this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).subscribe();
   }
 
   async updateUserSearchHistory(searchValue: string) {
     const data = {
-      searchHistory: FieldValue.arrayUnion(searchValue),
+      searchHistory: FieldValue.arrayUnion(searchValue.toLowerCase()),
     }
     await this.apiService.updateDocument(`usersSearchHistory/${this.user.uid}`, data);
   }
