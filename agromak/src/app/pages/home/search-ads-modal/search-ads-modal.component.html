@@ -19,19 +19,28 @@
 <ion-content>
   @if (ads$ | async; as ads) {
     <app-ad-list [ads]="ads" [adFetchType]="adFetchType" [isLoading]="isLoading"
-                 [additionalData]='{searchValue: searchValue, order: "desc"}'></app-ad-list>
+                 [additionalData]='{searchValue: searchValue, order: orderDirection}'></app-ad-list>
   }
 
-  <ion-modal #modal trigger="open-filter" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
-    <ng-template>
-      <ion-content>
-        <ion-list>
-          <ion-item>
-            TODO: Add filter options
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
 </ion-content>
+
+
+<ion-modal #modal trigger="open-filter" (didDismiss)="onDidDismiss($event)" >
+  <ng-template>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="modal.dismiss(null, 'cancel')">Cancel</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="modal.dismiss(orderDirection, 'confirm')">Done</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-picker>
+      <ion-picker-column [value]="orderDirection" (ionChange)="onIonChange($event)">
+        <ion-picker-column-option value="" disabled="true">--</ion-picker-column-option>
+        <ion-picker-column-option value="desc">Descending</ion-picker-column-option>
+        <ion-picker-column-option value="asc">Ascending</ion-picker-column-option>
+      </ion-picker-column>
+    </ion-picker>
+  </ng-template>
+</ion-modal>

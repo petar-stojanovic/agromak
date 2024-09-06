@@ -13,9 +13,12 @@ import {
   IonLabel,
   IonList,
   IonModal,
+  IonPicker,
+  IonPickerColumn,
+  IonPickerColumnOption,
   IonTitle,
   IonToolbar,
-  ModalController
+  ModalController,
 } from "@ionic/angular/standalone";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {AdListComponent} from "../../../components/ad-list/ad-list.component";
@@ -46,7 +49,10 @@ import {tap} from "rxjs";
     IonAvatar,
     IonImg,
     IonLabel,
-    AsyncPipe
+    AsyncPipe,
+    IonPicker,
+    IonPickerColumn,
+    IonPickerColumnOption,
   ],
   standalone: true
 })
@@ -58,6 +64,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   adFetchType = AdFetchType.SEARCHED;
   isLoading = true;
+  orderDirection: 'asc' | 'desc' = 'desc';
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
@@ -72,7 +79,7 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   fetchAds() {
     this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {
       searchValue: this.searchValue.toLowerCase(),
-      order: "desc"
+      order: this.orderDirection
     }).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
@@ -82,5 +89,17 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.adFetchingService.clearAds(this.adFetchType);
+  }
+
+  onIonChange(event: CustomEvent) {
+    this.orderDirection = event.detail.value;
+  }
+
+  onDidDismiss(event: CustomEvent) {
+    if (event.detail.role === "confirm") {
+      this.isLoading = true;
+      this.adFetchingService.clearAds(this.adFetchType);
+      this.fetchAds();
+    }
   }
 }
