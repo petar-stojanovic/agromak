@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AuthService} from "./auth.service";
 import {Ad} from "../shared/models/ad";
-import {BehaviorSubject, first, map, Observable, of, switchMap, take} from "rxjs";
+import {BehaviorSubject, first, map, Observable, of, switchMap, take, tap} from "rxjs";
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
@@ -73,7 +73,7 @@ export class AdFetchingService {
 
         return query$.pipe(
           take(1),
-          map(ads => this.updateSubjectBasedOnType(ads, type))
+          map(ads => this.updateSubjectBasedOnType(ads, type)),
         );
       })
     )
@@ -82,7 +82,6 @@ export class AdFetchingService {
   private getAllAdsQuery(params: AdListAdditionalData): Observable<Ad[]> {
     const {searchValue, lastVisibleAd, order, similarAd} = params;
 
-    console.log(lastVisibleAd);
     return this.apiService
       .docDataQuery(`usersSearchHistory/${this.user.uid}`)
       .pipe(
@@ -138,9 +137,11 @@ export class AdFetchingService {
 
   private getSimilarAdsQuery(params: AdListAdditionalData): undefined | Observable<Ad[]> {
     const {lastVisibleAd, order, similarAd} = params;
+    console.log(params)
     if (!similarAd) {
       return undefined;
     }
+
     return this.queryAdsCollection(ref =>
       ref.where('category', '==', similarAd.category)
         .orderBy('uploadedAt', order), lastVisibleAd);
@@ -158,7 +159,7 @@ export class AdFetchingService {
 
   private updateSubjectBasedOnType(ads: Ad[], type: AdFetchType) {
     console.log(ads);
-    if (ads.length === 0 || ads.length === 1 && type === AdFetchType.SIMILAR) {
+    if (ads.length === 0 || (ads.length === 1 && type === AdFetchType.SIMILAR)) {
       return true;
     }
 

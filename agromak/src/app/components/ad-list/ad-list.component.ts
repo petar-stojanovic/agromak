@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, TemplateRef} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -18,7 +18,6 @@ import {AdFetchingService} from "../../services/ad-fetching.service";
 import {NgTemplateOutlet} from "@angular/common";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data";
-import {tap} from "rxjs";
 
 
 @Component({
@@ -55,6 +54,12 @@ export class AdListComponent implements OnChanges {
   @Input()
   additionalData!: AdListAdditionalData
 
+  @Output()
+  adDetailsOpened = new EventEmitter<Ad>();
+
+  @Output()
+  adDetailsClosed = new EventEmitter<void>();
+
   placeholderArray = new Array(6);
 
   #currentInfiniteEvent?: InfiniteScrollCustomEvent;
@@ -66,7 +71,7 @@ export class AdListComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['ads'] && !changes['ads'].firstChange && this.#currentInfiniteEvent) {
-      // this.#currentInfiniteEvent.target.disabled = false
+      this.#currentInfiniteEvent.target.disabled = false
     }
   }
 
@@ -75,7 +80,11 @@ export class AdListComponent implements OnChanges {
       component: AdDetailsModalComponent,
       componentProps: {ad}
     });
+    this.adDetailsOpened.emit(ad);
     await modal.present();
+
+    await modal.onWillDismiss();
+    this.adDetailsClosed.emit();
   }
 
   onIonInfinite(ev: InfiniteScrollCustomEvent) {
@@ -84,8 +93,9 @@ export class AdListComponent implements OnChanges {
   }
 
   private fetchMoreAds() {
+    console.log("SIMILAR", this.additionalData);
     this.adFetchingService.fetchAds(this.adFetchType, {
-      lastVisibleAd: this.additionalData.similarAd ?? this.ads[this.ads.length - 1],
+      lastVisibleAd: this.additionalData.lastVisibleAd ?? this.ads[this.ads.length - 1],
       similarAd: this.additionalData.similarAd,
       searchValue: this.additionalData.searchValue,
       order: this.additionalData.order,

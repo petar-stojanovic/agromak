@@ -13,7 +13,8 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader, IonSkeletonText,
+  IonListHeader,
+  IonSkeletonText,
   IonText,
   IonThumbnail,
   IonToolbar,
@@ -36,7 +37,7 @@ import {
   locationOutline
 } from "ionicons/icons";
 import {AuthService} from "../../services/auth.service";
-import {filter, last, map, Subscription, tap} from "rxjs";
+import {map, Subscription, tap} from "rxjs";
 import {User} from "../../shared/models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
 import {UserChatService} from "../../services/user-chat.service";
@@ -94,19 +95,16 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   @Input() ad!: Ad;
 
   isFavoriteAd = false;
-  favoriteSubscription: Subscription | null = null;
-
   owner: User | null = null;
   user?: User;
   isReadAllDescription = false;
   isLoading = true;
-
-  similarAds$ = this.adFetchingService.similarAds$.pipe(
-    map(ads => ads.filter(ad => ad.id !== this.ad.id)),
-    tap(ads => console.log(ads)),
-  );
-
+  orderDirection: 'asc' | 'desc' = 'asc';
   adFetchType = AdFetchType.SIMILAR;
+  similarAds: Ad[] = [];
+
+  private favoriteSubscription: Subscription | null = null;
+  private similarAdsSubscription: Subscription | null = null;
 
   constructor(private modalCtrl: ModalController,
               private adManagementService: AdManagementService,
@@ -115,7 +113,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
               private toastController: ToastController,
               private authService: AuthService,
               private alertController: AlertController,
-              private chatService: UserChatService) {
+              private chatService: UserChatService,
+  ) {
     addIcons(icons);
     this.authService.user$.subscribe(user => {
       this.user = user;
@@ -124,29 +123,64 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.ad)
-    this.favoriteSubscription = this.authService.user$.subscribe(user => {
-      this.isFavoriteAd = user.favoriteAds?.includes(this.ad.id);
-    })
+    this.initializeAdDetails();
+    this.incrementViewCount();
+    this.fetchSimilarAds();
+  }
 
-    this.authService.getUserProfile(this.ad.ownerId).subscribe(user => {
-      this.owner = user as User;
+  private initializeAdDetails() {
+    this.favoriteSubscription = this.authService.user$.subscribe((user) => {
+      this.isFavoriteAd = user.favoriteAds?.includes(this.ad.id);
     });
 
-    this.adManagementService.incrementAdViewCount(this.ad.id);
-
-    this.fetchAds();
+    this.authService.getUserProfile(this.ad.ownerId).subscribe((user) => {
+      this.owner = user as User;
+    });
   }
+
+  private incrementViewCount() {
+    this.adManagementService.incrementAdViewCount(this.ad.id);
+  }
+
+  private fetchSimilarAds() {
+    this.isLoading = true;
+    this.similarAdsSubscription = this.adFetchingService.similarAds$
+      .pipe(map((ads) => ads.filter((ad) => ad.id !== this.ad.id)))
+      .subscribe((ads) => {
+        this.similarAds = ads;
+        this.isLoading = false;
+      });
+
+    this.adFetchingService.fetchAds(this.adFetchType, {
+      similarAd: this.ad,
+      order: this.orderDirection,
+    }).subscribe();
+  }
+
 
   ngOnDestroy() {
-    this.adFetchingService.clearAds(this.adFetchType);
     this.favoriteSubscription?.unsubscribe();
+    this.clearAds();
   }
 
-  private fetchAds() {
-    this.adFetchingService.fetchAds(AdFetchType.SIMILAR, {
+  fetchAds() {
+    this.isLoading = true;
+    this.similarAdsSubscription = this.adFetchingService.similarAds$.pipe(
+      map(ads => ads.filter(ad => ad.id !== this.ad.id)),
+    ).subscribe((ads) => {
+      this.similarAds = ads;
+    });
+
+    this.adFetchingService.fetchAds(this.adFetchType, {
       similarAd: this.ad,
-      order: 'desc'
+      order: this.orderDirection
     }).pipe(tap(() => this.isLoading = false)).subscribe();
+  }
+
+  clearAds() {
+    console.log("CLEARING ADS");
+    this.similarAdsSubscription?.unsubscribe();
+    this.adFetchingService.clearAds(this.adFetchType); // This assumes you have an adFetchType for each ad
   }
 
   dismiss() {
