@@ -40,7 +40,7 @@ import {AiChatRoom} from "../../shared/models/ai-chat-room";
 })
 export class ChatPage implements OnInit, OnDestroy {
   isLoading = true;
-  segment = "userSentChats";
+  segment = "ai";
 
   userSentChats: ChatRoom[] = [];
   aiChats: AiChatRoom[] = [];
@@ -48,7 +48,6 @@ export class ChatPage implements OnInit, OnDestroy {
 
   user!: User;
 
-  yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
   private subscription?: Subscription;
 
   constructor(private aiChatService: AiChatService,

@@ -42,6 +42,24 @@
       </ion-text>
     </div>
   }
+  @if (messageIsLoading) {
+    <div class="flex">
+      <ion-thumbnail slot="start">
+        <ion-img src="assets/logo.svg"/>
+      </ion-thumbnail>
+      <ion-text class="selectable ai-message">
+        <div class="message-box">
+          <p class="message">
+            @if (aiMessageResponse === '') {
+              <ion-spinner name="dots" color="primary"></ion-spinner>
+            } @else {
+              <markdown [data]="aiMessageResponse"></markdown>
+            }
+          </p>
+        </div>
+      </ion-text>
+    </div>
+  }
 </ion-content>
 <ion-footer>
   <div class="image-container">
@@ -52,13 +70,12 @@
       </div>
     }
   </div>
-  <form [formGroup]="form" (ngSubmit)="generateContentWithOpenAI()">
 
-    <ion-input formControlName="question" class="ion-padding-horizontal" placeholder="Start typing here to chat...">
-      <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
-      <ion-button fill="clear" slot="end" type="submit" [disabled]="form.invalid">
-        <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
-      </ion-button>
-    </ion-input>
-  </form>
+  <ion-input class="ion-padding-horizontal" #chatInput (ionChange)="sendMessage($event)"
+             placeholder="Start typing here to chat...">
+    <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
+    <ion-button fill="clear" slot="end" type="submit">
+      <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+  </ion-input>
 </ion-footer>
