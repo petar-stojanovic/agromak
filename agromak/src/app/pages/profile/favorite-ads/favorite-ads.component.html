@@ -13,7 +13,7 @@
 
 <ion-content>
   @if (ads$ | async; as ads) {
-    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType">
+    <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType" (adDetailsClosed)="fetchAds()">
     </app-ad-list>
   }
 </ion-content>

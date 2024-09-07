@@ -180,7 +180,7 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
   clearAds() {
     console.log("CLEARING ADS");
     this.similarAdsSubscription?.unsubscribe();
-    this.adFetchingService.clearAds(this.adFetchType); // This assumes you have an adFetchType for each ad
+    this.adFetchingService.clearAds(this.adFetchType);
   }
 
   dismiss() {

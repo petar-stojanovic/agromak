@@ -65,14 +65,16 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.adsSubscription = this.adFetchingService.myAds$.subscribe(ads => {
+      this.ads = ads;
+    });
     this.fetchAds();
   }
 
   fetchAds() {
-    this.adsSubscription = this.adFetchingService.myAds$.subscribe(ads => {
-      this.ads = ads;
-    });
-    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {
+    this.isLoading = true;
+    this.adFetchingService.clearAds(this.adFetchType);
+    this.adFetchingService.fetchAds(this.adFetchType, {
       lastVisibleAd: this.ads[this.ads.length - 1],
       order: this.orderDirection
     }).pipe(tap(() => this.isLoading = false)).subscribe();
@@ -124,8 +126,6 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   swapOrderDirection() {
     this.orderDirection = this.orderDirection === 'desc' ? 'asc' : 'desc';
-    this.adFetchingService.clearAds(this.adFetchType);
-    this.adFetchingService.fetchAds(AdFetchType.MY_ADS, {order: this.orderDirection}).subscribe();
-
+    this.fetchAds();
   }
 }
