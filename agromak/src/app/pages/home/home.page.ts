@@ -28,13 +28,14 @@ import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.compo
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {UserService} from "../../services/user.service";
 import {tap} from "rxjs";
+import {HideHeaderDirective} from "../../shared/directives/hide-header.directive";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe],
+  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe, HideHeaderDirective],
 })
 export class HomePage implements OnInit {
 
