@@ -40,41 +40,31 @@ export class ImageService {
       const imageUrl = await getDownloadURL(storageRef);
 
       const userDocRef = doc(this.firestore, `users/${this.user.uid}`)
-      await updateDoc(userDocRef, {
-          photoURL: imageUrl
-        }
-      );
-      return true;
+      await updateDoc(userDocRef, {photoURL: imageUrl});
+
     } catch (e) {
       console.log("ERROR - ", e)
-      return null;
     }
   }
 
-  async uploadAdImages(adId: string, galleryPhotos: GalleryPhoto[] | string[]) {
+  async uploadAdImages(adId: string, images: string[]) {
     const basePath = `ads/${adId}/`;
     const userDocRef = doc(this.firestore, basePath);
 
     try {
       const imagesToUpload = [];
+      for (const img of images) {
+        const imgName = `${Date.now()}.jpeg`;
+        const storageReference = ref(this.storage, basePath + imgName);
+        const compressedImage = await this.compressImage(img, true);
 
-      for (const photo of galleryPhotos) {
-        if (typeof photo === "string") {
-          imagesToUpload.push(photo);
-          continue;
-        }
-        const imageName = this.getImageName(photo.path!);
-        const storageReference = ref(this.storage, basePath + imageName);
-        const base64Data = await this.readAsBase64(photo.path!);
+        await uploadString(storageReference, compressedImage, 'data_url', {contentType: 'image/jpeg'});
 
-        if (typeof base64Data === "string") {
-          await uploadString(storageReference, base64Data, 'base64', {contentType: 'image/jpeg'});
-          const imageUrl = await getDownloadURL(storageReference);
-          imagesToUpload.push(imageUrl);
-        }
+        const imageUrl = await getDownloadURL(storageReference);
+        imagesToUpload.push(imageUrl);
       }
 
-      await setDoc(userDocRef, {images: imagesToUpload}, {merge: true});
+      await updateDoc(userDocRef, {images: imagesToUpload});
 
       return imagesToUpload;
     } catch (e) {
@@ -87,38 +77,24 @@ export class ImageService {
     const path = `aiChats/${chatId}/${messageId}.jpeg`;
     const storageRef = ref(this.storage, path);
 
-    try {
-      await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
+    await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
 
-      return await getDownloadURL(storageRef);
-    } catch (e) {
-      console.log("ERROR - ", e)
-      return null;
-    }
+    return await getDownloadURL(storageRef);
+
   }
 
   async deleteImages(ad: any, imagesToDelete: string[]) {
     for (const imageUrl of imagesToDelete) {
-      try {
-        const storageRef = ref(this.storage, imageUrl);
-        await deleteObject(storageRef);
-      } catch (error) {
-        console.error("Failed to delete image:", error);
-      }
+      const storageRef = ref(this.storage, imageUrl);
+      await deleteObject(storageRef);
     }
   }
 
-  private getImageName(fullPath: string) {
-    const parts = fullPath.split('/');
-    return parts[parts.length - 1];
-  }
-
-  async readAsBase64(path: string) {
+  async readAsBase64(path: string): Promise<string> {
     const file = await Filesystem.readFile({
       path: path
     });
-
-    return file.data
+    return file.data as string;
   }
 
 

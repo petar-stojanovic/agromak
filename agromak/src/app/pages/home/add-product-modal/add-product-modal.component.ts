@@ -206,7 +206,7 @@ export class AddProductModalComponent implements OnInit {
 
     const adId = await this.adManagementService.createAd(this.form.value as CreateAd);
     if (this.images.length > 0) {
-      await this.imageService.uploadAdImages(adId, this.images);
+      // await this.imageService.uploadAdImages(adId, this.images);
     }
 
     await this.modalCtrl.dismiss(this.form.value, 'confirm');

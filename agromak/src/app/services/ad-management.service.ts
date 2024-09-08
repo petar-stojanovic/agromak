@@ -63,6 +63,7 @@ export class AdManagementService {
       ownerName: this.user.displayName,
       viewCount: 1,
       uploadedAt: new Date(),
+      images: []
     };
 
     const adRef = await this.angularFirestore.collection('ads').add(data);
@@ -74,12 +75,6 @@ export class AdManagementService {
     return;
   }
 
-  private extractKeywords(text: string): string[] {
-    return text
-      .toLowerCase()
-      .split(' ')
-      .filter(word => word.length > 2); // Simple example: exclude single-letter words
-  }
   async updateAd(ad: UpdateDynamicAd) {
     const imagesToDelete: string[] = ad.oldImages
       ? ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage))
@@ -121,5 +116,12 @@ export class AdManagementService {
     return await updateDoc(adDocRef, {
       viewCount: FieldValue.increment(1)
     });
+  }
+
+  private extractKeywords(text: string): string[] {
+    return text
+      .toLowerCase()
+      .split(' ')
+      .filter(word => word.length > 2); // Simple example: exclude single-letter words
   }
 }

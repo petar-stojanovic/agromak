@@ -1,5 +1,3 @@
-import {GalleryPhoto} from "@capacitor/camera";
-
 export interface CreateDynamicAd {
   category: string;
   itemCondition: string;
@@ -11,7 +9,7 @@ export interface CreateDynamicAd {
   fixedPrice: boolean;
   location: string;
   phone: string;
-  images?: GalleryPhoto[] | string[];
-  additionalFields?: [{name: string, value: string}];
+  images?: string[];
+  additionalFields?: [{ name: string, value: string }];
 }
 

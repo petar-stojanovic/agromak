@@ -15,7 +15,9 @@ import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
 import {
   IonButton,
-  IonCheckbox, IonCol, IonGrid,
+  IonCheckbox,
+  IonCol,
+  IonGrid,
   IonIcon,
   IonInput,
   IonItem,
@@ -24,12 +26,14 @@ import {
   IonNote,
   IonRadio,
   IonRadioGroup,
-  IonRange, IonRow,
+  IonRange,
+  IonRow,
   IonSelect,
   IonSelectOption,
   IonText,
   IonTextarea,
-  IonToggle, LoadingController,
+  IonToggle,
+  LoadingController,
   ModalController
 } from "@ionic/angular/standalone";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
@@ -37,8 +41,9 @@ import {InputErrorComponent} from "../../../components/input-error/input-error.c
 import {CategoryService} from "../../../services/category.service";
 import {SelectCategoryModalComponent} from "../../../components/select-category-modal/select-category-modal.component";
 import {ErrorMessagePipe} from "../../../shared/pipes/error-message.pipe";
-import {Camera, GalleryPhoto} from "@capacitor/camera";
+import {Camera} from "@capacitor/camera";
 import {Ad} from "../../../shared/models/ad";
+import {ImageService} from "../../../services/image.service";
 
 
 @Component({
@@ -92,12 +97,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   chosenCategory = 'Choose Category';
   form: FormGroup;
 
-  images: Array<string | GalleryPhoto> = [];
+  images: string[] = [];
   oldImages: string[] = [];
 
   constructor(private fb: FormBuilder,
               private modalCtrl: ModalController,
               private categoryService: CategoryService,
+              private imageService: ImageService,
               private ref: ChangeDetectorRef,
               private loadingController: LoadingController) {
     this.form = this.fb.group({});
@@ -172,7 +178,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     }
     if (this.isEdit) {
       this.updateForm();
-      this.images = this.ad!.images ? this.ad!.images : [];
+      this.images = this.ad!.images ?? [];
       this.oldImages = this.ad!.images ? [...this.ad!.images] : [];
     }
     this.form.updateValueAndValidity();
@@ -215,11 +221,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       })
 
       if (images) {
-        images.photos.forEach((image) => {
-          this.images.push(image);
-
-          console.log(image, this.images)
-        });
+        for (const image of images.photos) {
+          const img = await this.imageService.readAsBase64(image.path!)
+          this.images.push(img);
+        }
         this.form.get('images')!.setValue(this.images);
         this.ref.markForCheck();
       } else {
@@ -250,12 +255,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.form.updateValueAndValidity();
   }
 
-  getImageSource(img: string | GalleryPhoto) {
-    if (typeof img === 'string') {
-      return img;
-    }
-    return img.webPath;
-  }
 
   private updateForm() {
     for (const control of this.jsonFormData.controls) {
