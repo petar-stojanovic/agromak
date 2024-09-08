@@ -79,7 +79,10 @@
             <ion-img src="assets/logo.svg"/>
           </ion-thumbnail>
           <ion-label>
-            <h2 class="single-line font-weight-bold mb-10">{{ chat.lastMessage.message }}</h2>
+            <span class="single-line font-weight-bold mb-10">
+              <markdown [data]="chat.lastMessage.message"></markdown>
+            </span>
+
             <p class="date-created">{{ chat.updatedAt.toDate() | date:'MMM d, y' }}</p>
           </ion-label>
         </ion-item>

@@ -141,7 +141,7 @@ export class UserChatPage implements OnInit, OnDestroy {
 
 
   private updateMessagesDate(messages: UserMessage[]) {
-    const DATE_DIFFERENCE_MINUTES = 22;
+    const DATE_DIFFERENCE_MINUTES = 30;
     const TIME_IN_MILLISECONDS = 1000 * 60;
 
     for (let i = 0; i < messages.length; i++) {

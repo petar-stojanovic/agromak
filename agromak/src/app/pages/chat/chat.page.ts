@@ -30,13 +30,14 @@ import {ChatRoom} from "../../shared/models/chat-room";
 import {addIcons} from "ionicons";
 import {sparkles} from "ionicons/icons";
 import {AiChatRoom} from "../../shared/models/ai-chat-room";
+import {MarkdownComponent} from "ngx-markdown";
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonBadge, IonItem, IonLabel, IonList, IonSkeletonText, IonText, IonThumbnail, RouterLink, IonImg, IonSegment, IonSegmentButton, IonIcon]
+  imports: [CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonBadge, IonItem, IonLabel, IonList, IonSkeletonText, IonText, IonThumbnail, RouterLink, IonImg, IonSegment, IonSegmentButton, IonIcon, MarkdownComponent]
 })
 export class ChatPage implements OnInit, OnDestroy {
   isLoading = true;
