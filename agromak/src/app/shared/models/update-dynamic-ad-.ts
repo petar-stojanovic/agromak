@@ -11,7 +11,6 @@ export interface UpdateDynamicAd {
   location: string;
   phone: string;
   images?: string[];
-  oldImages?: string[];
   additionalFields?: [{ name: string, value: string }];
 }
 

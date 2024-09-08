@@ -127,11 +127,18 @@
           @if (images) {
             <ion-grid>
               <ion-row>
+                @for (img of oldImages; track $index) {
+                  <ion-col size="4">
+                    <img [src]="img" alt="image" class="img-fluid">
+                    <ion-icon class="delete-image-icon" name="close-outline" (click)="deleteImage(img)">
+                    </ion-icon>
+                  </ion-col>
+                }
                 @for (img of images; track $index) {
                   <ion-col size="4">
                     <img src="data:image/jpeg;base64,{{img}}" alt="image" class="img-fluid">
-                    <ion-icon class="delete-image-icon" name="close-outline"
-                              (click)="images.splice($index,1)"></ion-icon>
+                    <ion-icon class="delete-image-icon" name="close-outline" (click)="images.splice($index,1)">
+                    </ion-icon>
                   </ion-col>
                 }
               </ion-row>

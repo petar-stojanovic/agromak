@@ -90,7 +90,7 @@ export class DynamicFormModalComponent implements OnInit {
 
   async onCreate(formValues: CreateDynamicAd) {
     const loading = await this.loadingController.create({
-      message: 'Saving Ad, please wait...',
+      message: 'Creating Ad, please wait...',
     });
     await loading.present();
 
@@ -111,7 +111,7 @@ export class DynamicFormModalComponent implements OnInit {
     console.log(formValues);
 
     const loading = await this.loadingController.create({
-      message: 'Saving Ad, please wait...',
+      message: 'Updating Ad, please wait...',
     });
     await loading.present();
     await this.adManagementService.updateAd(formValues);

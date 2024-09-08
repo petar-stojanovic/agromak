@@ -49,7 +49,7 @@ export class MyAdsComponent implements OnInit, OnDestroy {
 
   ads: Ad[] = [];
 
-  orderDirection: 'asc' | 'desc' = 'desc';
+  orderDirection: 'asc' | 'desc' = 'asc';
   adFetchType = AdFetchType.MY_ADS;
   isLoading = true;
 

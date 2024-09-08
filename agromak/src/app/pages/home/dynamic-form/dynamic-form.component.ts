@@ -14,6 +14,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {addIcons} from "ionicons";
 import * as icons from "ionicons/icons";
 import {
+  AlertController,
   IonButton,
   IonCheckbox,
   IonCol,
@@ -105,7 +106,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
               private categoryService: CategoryService,
               private imageService: ImageService,
               private ref: ChangeDetectorRef,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController,
+              private alertController: AlertController
+  ) {
     this.form = this.fb.group({});
 
     for (const iconName in icons) {
@@ -178,7 +181,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     }
     if (this.isEdit) {
       this.updateForm();
-      this.images = this.ad!.images ?? [];
       this.oldImages = this.ad!.images ? [...this.ad!.images] : [];
     }
     this.form.updateValueAndValidity();
@@ -188,7 +190,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     const formData = {category: this.chosenCategory, ...this.form.value}
     if (this.isEdit) {
       formData['id'] = this.ad!.id;
-      formData['oldImages'] = this.oldImages;
     }
 
     if (this.form.valid) {
@@ -268,5 +269,21 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       return;
     }
     this.form.controls[name].setValue(obj.value);
+  }
+
+  async deleteImage(imageURL: string) {
+    const alert = await this.alertController.create({
+      header: 'Are you sure you want to delete this image?',
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'Delete',
+        handler: async () => {
+          await this.imageService.deleteAdImage(this.ad!.id, imageURL);
+        }
+      }]
+    });
+    await alert.present();
   }
 }

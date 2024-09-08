@@ -68,41 +68,27 @@ export class AdManagementService {
 
     const adRef = await this.angularFirestore.collection('ads').add(data);
 
-    if (dynamicAd.images) {
-      return await this.imageService.uploadAdImages(adRef.id, dynamicAd.images);
+    if (dynamicAd.images && dynamicAd.images.length > 0) {
+      await this.imageService.uploadAdImages(adRef.id, dynamicAd.images);
     }
-
-    return;
   }
 
   async updateAd(ad: UpdateDynamicAd) {
-    const imagesToDelete: string[] = ad.oldImages
-      ? ad.oldImages.filter((oldImage) => !ad.images?.filter(x => typeof x === 'string')?.includes(oldImage))
-      : [];
+    const adDocRef = this.apiService.docRef(`ads/${ad.id}`);
 
-    if (imagesToDelete.length > 0) {
-      await this.imageService.deleteImages(ad, imagesToDelete);
-    }
-
-    const adDocRef = doc(this.firestore, `ads/${ad.id}`)
-
-    const {oldImages, ...adDataWithoutOldImages} = ad;
+    const {images, ...adDataWithoutImages} = ad;
 
     const updatedAdData = {
-      ...adDataWithoutOldImages,
+      ...adDataWithoutImages,
       title_lowercase: ad.title.toLowerCase(),
       keywords: this.extractKeywords(ad.title.toLowerCase()),
-      ownerId: this.user.uid,
-      ownerName: this.user.displayName,
-      images: deleteField()
     }
 
     await updateDoc(adDocRef, updatedAdData)
 
-    if (ad.images && ad.images.length > 0) {
-      return await this.imageService.uploadAdImages(ad.id, ad.images);
+    if (images && images.length > 0) {
+      await this.imageService.uploadAdImages(ad.id, images);
     }
-    return;
   }
 
   async deleteAd(ad: Ad) {
