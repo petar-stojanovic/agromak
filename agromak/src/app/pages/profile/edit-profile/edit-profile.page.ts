@@ -107,7 +107,8 @@ export class EditProfilePage implements OnInit {
       const loading = await this.loadingController.create();
       await loading.present();
 
-      await this.imageService.uploadProfileImage(image);
+      const compressedImage = await this.imageService.compressImage(image);
+      await this.imageService.uploadProfileImage(compressedImage);
 
       await loading.dismiss();
 

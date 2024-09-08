@@ -30,13 +30,12 @@ export class ImageService {
     })
   }
 
-  async uploadProfileImage(cameraFile: Photo) {
-
+  async uploadProfileImage(base64Image: string) {
     const path = `profile/${this.user.uid}/profile.png`;
     const storageRef = ref(this.storage, path);
 
     try {
-      await uploadString(storageRef, cameraFile.base64String!, 'base64')
+      await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
 
       const imageUrl = await getDownloadURL(storageRef);
 
@@ -46,7 +45,6 @@ export class ImageService {
         }
       );
       return true;
-
     } catch (e) {
       console.log("ERROR - ", e)
       return null;
@@ -144,12 +142,8 @@ export class ImageService {
 
   async compressImage(image: Photo): Promise<string> {
     console.log(image)
-    console.log('Size in megaBytes is now:', this.imageCompress.byteCount(image.base64String!) / (1024 * 1024));
 
-    const compressedImage = await this.imageCompress
+    return await this.imageCompress
       .compressFile(`data:image/jpeg;base64,${image.base64String!}`, 0, 75, 75, 512, 512);
-
-    console.log('Size in megaBytes is now:', this.imageCompress.byteCount(compressedImage) / (1024 * 1024));
-    return compressedImage;
   }
 }
