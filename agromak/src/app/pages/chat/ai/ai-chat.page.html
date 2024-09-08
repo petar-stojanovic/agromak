@@ -29,6 +29,11 @@
 
       <ion-text class="selectable my-user-message">
         <div class="message-box">
+          @if (message.image) {
+            <ion-card class="message-image">
+              <ion-img [src]="message.image" alt="image"/>
+            </ion-card>
+          }
           <p class="message">{{ message.message }}</p>
         </div>
       </ion-text>

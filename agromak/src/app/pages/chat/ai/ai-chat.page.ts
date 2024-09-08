@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   IonBackButton,
   IonButton,
-  IonButtons,
+  IonButtons, IonCard,
   IonContent,
   IonFooter,
   IonHeader,
@@ -39,7 +39,7 @@ import {NgxImageCompressService} from "ngx-image-compress";
   templateUrl: './ai-chat.page.html',
   styleUrls: ['./ai-chat.page.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent, IonImg, DatePipe, IonSpinner]
+  imports: [FormsModule, ReactiveFormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonThumbnail, IonText, IonLabel, IonFooter, IonIcon, IonInput, IonButton, AsyncPipe, IonBackButton, IonButtons, MarkdownComponent, IonImg, DatePipe, IonSpinner, IonCard]
 })
 export class AiChatPage implements OnInit, OnDestroy {
   image: Photo | null = null;
