@@ -96,6 +96,8 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }
     });
     await modal.present();
+    await modal.onWillDismiss();
+    this.fetchAds();
   }
 
   promoteAd(ad: Ad, $event: MouseEvent) {
@@ -126,5 +128,9 @@ export class MyAdsComponent implements OnInit, OnDestroy {
   swapOrderDirection() {
     this.orderDirection = this.orderDirection === 'desc' ? 'asc' : 'desc';
     this.fetchAds();
+  }
+
+  onClosed() {
+    console.log('Ad Details Modal Closed');
   }
 }

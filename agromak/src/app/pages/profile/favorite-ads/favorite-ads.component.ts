@@ -52,6 +52,7 @@ export class FavoriteAdsComponent implements OnInit {
   }
 
   fetchAds() {
+    this.isLoading = true;
     this.adFetchingService.fetchAds(AdFetchType.FAVORITE, {order: "desc"}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 

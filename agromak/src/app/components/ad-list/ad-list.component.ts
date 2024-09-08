@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, TemplateRef} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  output,
+  Output,
+  SimpleChanges,
+  TemplateRef
+} from '@angular/core';
 import {Ad} from "../../shared/models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
@@ -38,7 +48,7 @@ import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data"
   ],
   standalone: true
 })
-export class AdListComponent implements OnChanges {
+export class AdListComponent implements OnChanges, OnDestroy {
   @Input()
   ads: Ad[] = [];
 
@@ -60,12 +70,18 @@ export class AdListComponent implements OnChanges {
   @Output()
   adDetailsClosed = new EventEmitter<void>();
 
+  onClosed = output();
+
   placeholderArray = new Array(6);
 
   #currentInfiniteEvent?: InfiniteScrollCustomEvent;
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService) {
+  }
+
+  ngOnDestroy(): void {
+    this.onClosed.emit();
   }
 
 
