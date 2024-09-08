@@ -78,10 +78,12 @@
 
 </ion-content>
 <ion-footer class="ion-no-border">
-
-    <ion-input class="ion-padding-horizontal" #chatInput (ionChange)="sendMessage($event)" placeholder="Start typing here to chat...">
-      <ion-button fill="clear" slot="end" type="submit">
-        <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
-      </ion-button>
+  <div class="flex ion-align-items-end">
+    <ion-input class="ion-padding-horizontal" #chatInput (keydown.enter)="sendMessage()"
+               placeholder="Start typing here to chat...">
     </ion-input>
+    <ion-button class="chat-button" fill="clear" (click)="sendMessage()">
+      <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+  </div>
 </ion-footer>

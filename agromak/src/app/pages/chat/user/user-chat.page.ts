@@ -100,7 +100,7 @@ export class UserChatPage implements OnInit, OnDestroy {
 
           this.ref.markForCheck();
 
-          setTimeout(() =>{
+          setTimeout(() => {
             this.scrollToBottom();
           }, 100);
         }
@@ -120,11 +120,13 @@ export class UserChatPage implements OnInit, OnDestroy {
     await modal.present();
   }
 
-  async sendMessage(event: CustomEvent) {
-    if (event.detail.value === '') {
+  async sendMessage() {
+    const value = this.chatInput.value?.toString().trim();
+    console.log(value)
+    if (!value) {
       return;
     }
-    await this.chatService.sendMessage(this.chatId, event.detail.value);
+    await this.chatService.sendMessage(this.chatId, value);
     this.chatInput.value = null;
     this.scrollToBottom();
   }

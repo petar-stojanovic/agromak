@@ -1,8 +1,4 @@
 ion-header {
-  & ion-toolbar {
-    //padding: 8px 0;
-  }
-
   & ion-item {
     & ion-thumbnail {
       --size: 2.5rem;
@@ -33,10 +29,14 @@ ion-thumbnail {
 
 
 ion-footer {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 0.25rem 0.75rem 0.75rem;
 
   & ion-icon {
     font-size: 1.5rem;
+  }
+
+  & .chat-button {
+    margin-inline: 0;
   }
 
   & ion-input {

@@ -31,6 +31,13 @@ ion-thumbnail {
       min-width: 2.25rem;
       border: 1px solid var(--ion-color-medium-tint);
     }
+
+    & .message-image {
+      border-radius: 1rem;
+      max-width: 10rem;
+      margin-left: auto;
+      margin-right: 0;
+    }
   }
 }
 
@@ -65,33 +72,31 @@ ion-thumbnail {
 }
 
 ion-footer {
-  box-shadow: none;
   padding: 0.75rem 0.25rem;
 
   & ion-icon {
     font-size: 1.5rem;
   }
 
-  & .chat-button{
+  & .chat-button {
     margin-inline: 0;
   }
+
+  & ion-input {
+    color: var(--ion-color-dark);
+
+    --highlight-color-focused: none;
+    --highlight-color-invalid: none;
+    --highlight-color-valid: none;
+
+    border-radius: 1.5rem;
+    background: var(--ion-color-light);
+
+    box-shadow: var(--ion-box-shadow);
+    border: 1px solid var(--ion-color-secondary-shade);
+    --padding-start: 1rem;
+  }
 }
-
-ion-input {
-  color: var(--ion-color-dark);
-
-  --highlight-color-focused: none;
-  --highlight-color-invalid: none;
-  --highlight-color-valid: none;
-
-  border-radius: 1.5rem;
-  background: var(--ion-color-light);
-
-  box-shadow: var(--ion-box-shadow);
-  border: 1px solid var(--ion-color-secondary-shade);
-  --padding-start: 1rem;
-}
-
 
 .image-container {
   position: relative;
@@ -112,11 +117,4 @@ ion-input {
 .openai-logo {
   width: 4rem;
   background-image: none;
-}
-
-.message-image {
-  border-radius: 1rem;
-  max-width: 10rem;
-  margin-left: auto;
-  margin-right: 0;
 }
