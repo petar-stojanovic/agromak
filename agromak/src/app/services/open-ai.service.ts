@@ -48,7 +48,7 @@ export class OpenAiService {
           }
 
           return {
-            role: message.from === 'YOU' ? 'user' : 'assistant',
+            role: message.from === 'AI' ? 'assistant' : 'user',
             content: content
           };
         })

@@ -71,10 +71,10 @@
     }
   </div>
 
-  <ion-input class="ion-padding-horizontal" #chatInput (ionChange)="sendMessage($event)"
+  <ion-input class="ion-padding-horizontal" #chatInput (keydown.enter)="sendMessage()"
              placeholder="Start typing here to chat...">
     <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
-    <ion-button fill="clear" slot="end" type="submit">
+    <ion-button fill="clear" slot="end" type="submit" (click)="sendMessage()">
       <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
     </ion-button>
   </ion-input>

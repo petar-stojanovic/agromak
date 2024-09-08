@@ -99,13 +99,14 @@ export class AiChatPage implements OnInit, OnDestroy {
     }
   }
 
-  async sendMessage(event: CustomEvent) {
-    const value = event.detail.value.trim();
-    if (value === '') {
+  async sendMessage() {
+    const value = this.chatInput.value?.toString().trim();
+    console.log(value)
+    if (!value) {
       return;
     }
-    this.chatInput.value = null;
     await this.generateContentWithOpenAI(value);
+    this.chatInput.value = null;
   }
 
   async generateContentWithOpenAI(question: string) {
@@ -113,11 +114,11 @@ export class AiChatPage implements OnInit, OnDestroy {
     this.messageIsLoading = true;
 
     let userMessage: AiMessage;
-    if (this.image) {
+    if (this.compressedImage) {
       userMessage = {
         from: this.user?.uid || 'YOU',
         message: question,
-        image: `data:image/jpeg;base64,${this.image.base64String}`
+        image: this.compressedImage
       }
     } else {
       userMessage = {

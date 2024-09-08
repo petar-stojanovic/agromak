@@ -85,6 +85,22 @@ export class ImageService {
     }
   }
 
+  async uploadAiChatImage(chatId: string, base64Image: string, messageId: string) {
+    const path = `aiChats/${chatId}/${messageId}.jpeg`;
+    const storageRef = ref(this.storage, path);
+
+    try {
+      await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
+
+      const imageUrl = await getDownloadURL(storageRef);
+
+      return imageUrl;
+    } catch (e) {
+      console.log("ERROR - ", e)
+      return null;
+    }
+  }
+
   async deleteImages(ad: any, imagesToDelete: string[]) {
     for (const imageUrl of imagesToDelete) {
       try {
