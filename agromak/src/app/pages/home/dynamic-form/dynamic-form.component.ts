@@ -280,7 +280,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       }, {
         text: 'Delete',
         handler: async () => {
+          this.oldImages = this.oldImages.filter(img => img !== imageURL);
           await this.imageService.deleteAdImage(this.ad!.id, imageURL);
+          this.ref.markForCheck();
         }
       }]
     });
