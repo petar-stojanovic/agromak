@@ -161,3 +161,11 @@ h2 {
 p, ol, li {
   margin: 0;
 }
+
+
+ion-toast.toast-notification {
+
+  &::part(button) {
+    color: var(--ion-color-light);
+  }
+}

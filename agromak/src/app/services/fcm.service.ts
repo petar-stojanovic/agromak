@@ -84,6 +84,7 @@ export class FcmService {
         icon: 'globe',
         header: notification.title,
         message: notification.body,
+        cssClass: 'toast-notification',
         position: 'top',
         swipeGesture: "vertical",
         buttons: [
