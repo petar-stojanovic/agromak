@@ -123,7 +123,7 @@ export class ImageService {
    */
   async deleteAdImage(adId: string, imageURL: string) {
     await this.deleteImages([imageURL]);
-    const adDocRef = doc(this.firestore, `ads/${adId}`);
+    const adDocRef = this.apiService.docRef(`ads/${adId}`);
 
     await updateDoc(adDocRef, {
       images: arrayRemove(imageURL)
