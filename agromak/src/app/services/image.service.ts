@@ -30,6 +30,10 @@ export class ImageService {
     })
   }
 
+  /**
+   * Uploads a profile image to Firebase Storage and updates Firestore user document with the image URL.
+   * @param base64Image - The base64 representation of the image.
+   */
   async uploadProfileImage(base64Image: string) {
     const path = `profile/${this.user.uid}/profile.png`;
     const storageRef = ref(this.storage, path);
@@ -42,42 +46,53 @@ export class ImageService {
 
   }
 
+  /**
+   * Uploads ad images to Firebase Storage, updates Firestore ad document with the image URLs.
+   * @param adId - The ID of the ad.
+   * @param images - Array of base64 image strings.
+   */
   async uploadAdImages(adId: string, images: string[]) {
     const basePath = `ads/${adId}`;
-    const adDocRef = this.apiService.docRef(basePath);
 
     const adDocSnapshot = await this.apiService.getDocById(basePath);
     const adData = adDocSnapshot.data() as Ad;
 
-    const existingImages = adData?.images || [];
+    const allImages = adData?.images || [];
 
-    const imagesToUpload = [];
     for (const img of images) {
-      const imgName = `/${Date.now()}.jpeg`;
-      const storageRef = ref(this.storage, basePath + imgName);
+      const storageRef = ref(this.storage, `${basePath}/${Date.now()}.jpeg` );
       const compressedImage = await this.compressImage(img, true);
 
       await uploadString(storageRef, compressedImage, 'data_url', {contentType: 'image/jpeg'});
 
       const imageUrl = await getDownloadURL(storageRef);
-      imagesToUpload.push(imageUrl);
+      allImages.push(imageUrl);
     }
-    const allImages = [...existingImages, ...imagesToUpload];
 
-    await updateDoc(adDocRef, {images: allImages});
-
-    return allImages;
+    await this.apiService.updateDocument(basePath, {images: allImages});
   }
 
+  /**
+   * Uploads a single AI chat image to Firebase Storage and returns the image URL.
+   * @param chatId - The ID of the chat.
+   * @param base64Image - The base64 representation of the image.
+   * @param messageId - The ID of the message.
+   * @returns The URL of the uploaded image.
+   */
   async uploadAiChatImage(chatId: string, base64Image: string, messageId: string) {
     const path = `aiChats/${chatId}/${messageId}.jpeg`;
     const storageRef = ref(this.storage, path);
 
     await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
-
     return await getDownloadURL(storageRef);
   }
 
+
+  /**
+   * Deletes images from Firebase Storage.
+   * @param ad - The ad object.
+   * @param imagesToDelete - Array of image URLs to delete.
+   */
   async deleteImages(ad: any, imagesToDelete: string[]) {
     for (const imageUrl of imagesToDelete) {
       const storageRef = ref(this.storage, imageUrl);
@@ -85,14 +100,23 @@ export class ImageService {
     }
   }
 
+  /**
+   * Reads a file as a base64 string from a given path.
+   * @param path - The path to the file.
+   * @returns Base64 encoded string.
+   */
   async readAsBase64(path: string): Promise<string> {
-    const file = await Filesystem.readFile({
-      path: path
-    });
+    const file = await Filesystem.readFile({path});
     return file.data as string;
   }
 
 
+  /**
+   * Compresses a base64 image using.
+   * @param base64Image - The base64 string of the image.
+   * @param isHighRes - Boolean indicating if high resolution is needed.
+   * @returns Compressed base64 image string.
+   */
   async compressImage(base64Image: string, isHighRes = false): Promise<string> {
     return isHighRes
       ? await this.imageCompress
@@ -101,6 +125,11 @@ export class ImageService {
         .compressFile(`data:image/jpeg;base64,${base64Image!}`, 0, 75, 75, 512, 512)
   }
 
+  /**
+   * Deletes an ad image from Firebase Storage and updates the ad document in Firestore.
+   * @param adId - The ID of the ad.
+   * @param imageURL - The URL of the image to delete.
+   */
   async deleteAdImage(adId: string, imageURL: string) {
     console.log(imageURL)
     const storageRef = ref(this.storage, imageURL);

@@ -10,7 +10,7 @@ import {
   getDocs, or,
   orderBy,
   query,
-  setDoc,
+  setDoc, updateDoc,
   where
 } from "@angular/fire/firestore";
 import firebase from "firebase/compat";
@@ -46,7 +46,7 @@ export class ApiService {
 
   updateDocument(path: string, data: any) {
     const dataRef = this.docRef(path);
-    return setDoc(dataRef, data, {merge: true});
+    return updateDoc(dataRef, data);
   }
 
   getDocById(path: string) {
