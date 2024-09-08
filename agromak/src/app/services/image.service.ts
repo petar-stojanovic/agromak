@@ -8,7 +8,7 @@ import {doc, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
-import {GalleryPhoto, Photo} from "@capacitor/camera";
+import {GalleryPhoto} from "@capacitor/camera";
 import {NgxImageCompressService} from "ngx-image-compress";
 
 @Injectable({
@@ -90,9 +90,7 @@ export class ImageService {
     try {
       await uploadString(storageRef, base64Image, 'data_url', {contentType: 'image/jpeg'});
 
-      const imageUrl = await getDownloadURL(storageRef);
-
-      return imageUrl;
+      return await getDownloadURL(storageRef);
     } catch (e) {
       console.log("ERROR - ", e)
       return null;
@@ -123,27 +121,12 @@ export class ImageService {
     return file.data
   }
 
-  createFileFromBase64(base64: string): File {
-    const imageBlob = this.dataURItoBlob(base64);
-    const imageName = 'image';
-    return new File([imageBlob], imageName, {type: 'image/jpeg'});
-  }
 
-  private dataURItoBlob(dataURI: string) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([int8Array], {type: 'image/jpeg'});
-  }
-
-
-  async compressImage(image: Photo): Promise<string> {
-    console.log(image)
-
-    return await this.imageCompress
-      .compressFile(`data:image/jpeg;base64,${image.base64String!}`, 0, 75, 75, 512, 512);
+  async compressImage(base64Image: string, isHighRes = false): Promise<string> {
+    return isHighRes
+      ? await this.imageCompress
+        .compressFile(`data:image/jpeg;base64,${base64Image!}`, 0, 75, 75, 1024, 1024)
+      : await this.imageCompress
+        .compressFile(`data:image/jpeg;base64,${base64Image!}`, 0, 75, 75, 512, 512)
   }
 }

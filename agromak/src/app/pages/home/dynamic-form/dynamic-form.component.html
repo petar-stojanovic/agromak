@@ -124,16 +124,19 @@
             <ion-label>{{ control.label }}</ion-label>
             <ion-icon name="caret-down-outline"></ion-icon>
           </ion-item>
-          <ion-grid *ngIf="images">
-            <ion-row>
-              @for (img of images; track $index) {
-                <ion-col size="4">
-                  <img [src]="getImageSource(img)" alt="image" class="img-fluid">
-                  <ion-icon class="delete-image-icon" name="close-outline" (click)="images.splice($index,1)"></ion-icon>
-                </ion-col>
-              }
-            </ion-row>
-          </ion-grid>
+          @if (images) {
+            <ion-grid>
+              <ion-row>
+                @for (img of images; track $index) {
+                  <ion-col size="4">
+                    <img [src]="getImageSource(img)" alt="image" class="img-fluid">
+                    <ion-icon class="delete-image-icon" name="close-outline"
+                              (click)="images.splice($index,1)"></ion-icon>
+                  </ion-col>
+                }
+              </ion-row>
+            </ion-grid>
+          }
         </div>
 
       }

@@ -92,7 +92,7 @@ export class AiChatPage implements OnInit, OnDestroy {
       if (image) {
         this.image = image;
 
-        this.compressedImage = await this.imageService.compressImage(image);
+        this.compressedImage = await this.imageService.compressImage(image.base64String!);
       }
     } catch (error) {
       console.info('Error uploading image', error);
