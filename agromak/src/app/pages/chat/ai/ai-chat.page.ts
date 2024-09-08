@@ -10,7 +10,8 @@ import {
   IonImg,
   IonInput,
   IonItem,
-  IonLabel, IonSpinner,
+  IonLabel,
+  IonSpinner,
   IonText,
   IonThumbnail,
   IonTitle,
@@ -31,6 +32,7 @@ import {AiChatService} from "../../../services/ai-chat.service";
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../../../shared/models/user";
 import {Subscription} from "rxjs";
+import {NgxImageCompressService} from "ngx-image-compress";
 
 @Component({
   selector: 'app-ai-chat',
@@ -58,6 +60,7 @@ export class AiChatPage implements OnInit, OnDestroy {
   constructor(private openAiService: OpenAiService,
               private imageService: ImageService,
               private ng2ImgMaxService: Ng2ImgMaxService,
+              private imageCompress: NgxImageCompressService,
               private authService: AuthService,
               private aiChatService: AiChatService,
               private route: ActivatedRoute) {
@@ -78,15 +81,21 @@ export class AiChatPage implements OnInit, OnDestroy {
 
 
   async uploadImage() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Photos
-    });
+    try {
+      const image: Photo = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Base64,
+        source: CameraSource.Photos
+      });
 
-    if (image) {
-      this.image = image;
+      if (image) {
+        this.image = image;
+
+        this.compressedImage = await this.imageService.compressImage(image);
+      }
+    } catch (error) {
+      console.info('Error uploading image', error);
     }
   }
 
@@ -96,7 +105,7 @@ export class AiChatPage implements OnInit, OnDestroy {
       return;
     }
     this.chatInput.value = null;
-    this.generateContentWithOpenAI(value);
+    await this.generateContentWithOpenAI(value);
   }
 
   async generateContentWithOpenAI(question: string) {

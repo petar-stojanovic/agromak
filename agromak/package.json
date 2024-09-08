@@ -44,6 +44,7 @@
     "firebase": "^10.7.2",
     "ionicons": "^7.2.1",
     "ng2-img-max": "^2.2.9",
+    "ngx-image-compress": "^18.1.5",
     "ngx-markdown": "^18.0.0",
     "openai": "^4.55.4",
     "rxjs": "~7.8.0",

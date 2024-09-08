@@ -63,9 +63,9 @@
 </ion-content>
 <ion-footer>
   <div class="image-container">
-    @if (image) {
+    @if (compressedImage) {
       <div>
-        <img [src]="'data:image/jpeg;base64,'+image.base64String" alt="image" class="img-fluid">
+        <ion-img [src]="compressedImage" alt="image" class="img-fluid"/>
         <ion-icon class="delete-image-icon" name="close-outline" (click)="image=null; compressedImage=null"></ion-icon>
       </div>
     }

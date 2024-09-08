@@ -9,6 +9,7 @@ import {Auth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
 import {GalleryPhoto, Photo} from "@capacitor/camera";
+import {NgxImageCompressService} from "ngx-image-compress";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class ImageService {
   constructor(private auth: Auth,
               private firestore: Firestore,
               private angularFirestore: AngularFirestore,
+              private imageCompress: NgxImageCompressService,
               private afAuth: AngularFireAuth,
               private authService: AuthService,
               private storage: Storage) {
@@ -121,5 +123,17 @@ export class ImageService {
       int8Array[i] = byteString.charCodeAt(i);
     }
     return new Blob([int8Array], {type: 'image/jpeg'});
+  }
+
+
+  async compressImage(image: Photo): Promise<string> {
+    console.log(image)
+    console.log('Size in megaBytes is now:', this.imageCompress.byteCount(image.base64String!) / (1024 * 1024));
+
+    const compressedImage = await this.imageCompress
+      .compressFile(`data:image/jpeg;base64,${image.base64String!}`, 0, 75, 75, 512, 512);
+
+    console.log('Size in megaBytes is now:', this.imageCompress.byteCount(compressedImage) / (1024 * 1024));
+    return compressedImage;
   }
 }

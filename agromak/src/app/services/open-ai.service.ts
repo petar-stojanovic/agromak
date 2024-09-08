@@ -18,7 +18,7 @@ export class OpenAiService {
   async generateContentWithOpenAI(messages: AiMessage[]) {
 
     const stream = await this.openai.chat.completions.create({
-      "model": "gpt-4o-mini",
+      "model": "gpt-4o-2024-08-06",
       "stream": true,
       "messages": [
         {
