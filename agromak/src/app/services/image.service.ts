@@ -1,14 +1,9 @@
 import {Filesystem} from '@capacitor/filesystem';
-
 import {Injectable} from '@angular/core';
-import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {deleteObject, getDownloadURL, ref, Storage, uploadString} from "@angular/fire/storage";
 import {AuthService} from "./auth.service";
-import {arrayRemove, doc, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
-import {Auth} from "@angular/fire/auth";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {arrayRemove, doc, Firestore, updateDoc} from "@angular/fire/firestore";
 import {User} from "../shared/models/user";
-import {GalleryPhoto} from "@capacitor/camera";
 import {NgxImageCompressService} from "ngx-image-compress";
 import {Ad} from "../shared/models/ad";
 import {ApiService} from "./api.service";
@@ -43,7 +38,6 @@ export class ImageService {
 
     const userDocRef = doc(this.firestore, `users/${this.user.uid}`)
     await updateDoc(userDocRef, {photoURL: imageUrl});
-
   }
 
   /**
@@ -60,7 +54,7 @@ export class ImageService {
     const allImages = adData?.images || [];
 
     for (const img of images) {
-      const storageRef = ref(this.storage, `${basePath}/${Date.now()}.jpeg` );
+      const storageRef = ref(this.storage, `${basePath}/${Date.now()}.jpeg`);
       const compressedImage = await this.compressImage(img, true);
 
       await uploadString(storageRef, compressedImage, 'data_url', {contentType: 'image/jpeg'});
@@ -87,13 +81,11 @@ export class ImageService {
     return await getDownloadURL(storageRef);
   }
 
-
   /**
    * Deletes images from Firebase Storage.
-   * @param ad - The ad object.
    * @param imagesToDelete - Array of image URLs to delete.
    */
-  async deleteImages(ad: any, imagesToDelete: string[]) {
+  async deleteImages(imagesToDelete: string[]) {
     for (const imageUrl of imagesToDelete) {
       const storageRef = ref(this.storage, imageUrl);
       await deleteObject(storageRef);
@@ -109,7 +101,6 @@ export class ImageService {
     const file = await Filesystem.readFile({path});
     return file.data as string;
   }
-
 
   /**
    * Compresses a base64 image using.
@@ -131,9 +122,7 @@ export class ImageService {
    * @param imageURL - The URL of the image to delete.
    */
   async deleteAdImage(adId: string, imageURL: string) {
-    console.log(imageURL)
-    const storageRef = ref(this.storage, imageURL);
-    await deleteObject(storageRef);
+    await this.deleteImages([imageURL]);
     const adDocRef = doc(this.firestore, `ads/${adId}`);
 
     await updateDoc(adDocRef, {

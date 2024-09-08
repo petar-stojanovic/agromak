@@ -93,7 +93,7 @@ export class AdManagementService {
 
   async deleteAd(ad: Ad) {
     const adDocRef = doc(this.firestore, `ads/${ad.id}`);
-    await this.imageService.deleteImages(ad, ad.images);
+    await this.imageService.deleteImages(ad.images);
     return await deleteDoc(adDocRef);
   }
 

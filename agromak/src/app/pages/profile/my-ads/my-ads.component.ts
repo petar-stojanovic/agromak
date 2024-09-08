@@ -121,7 +121,6 @@ export class MyAdsComponent implements OnInit, OnDestroy {
       }]
     });
     await alert.present();
-
   }
 
   swapOrderDirection() {
