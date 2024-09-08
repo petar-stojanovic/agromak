@@ -67,20 +67,22 @@
   }
 </ion-content>
 <ion-footer>
-  <div class="image-container">
-    @if (compressedImage) {
-      <div>
-        <ion-img [src]="compressedImage" alt="image" class="img-fluid"/>
-        <ion-icon class="delete-image-icon" name="close-outline" (click)="image=null; compressedImage=null"></ion-icon>
-      </div>
-    }
-  </div>
+  <div class="flex ion-align-items-end">
+    <ion-button class="chat-button" fill="clear" (click)="uploadImage()">
+      <ion-icon color="dark" slot="icon-only" name="add-circle-outline"></ion-icon>
+    </ion-button>
 
-  <ion-input class="ion-padding-horizontal" #chatInput (keydown.enter)="sendMessage()"
-             placeholder="Start typing here to chat...">
-    <ion-icon color="dark" slot="start" name="add-circle-outline" (click)="uploadImage()"></ion-icon>
-    <ion-button fill="clear" slot="end" type="submit" (click)="sendMessage()">
+    <ion-input #chatInput (keydown.enter)="sendMessage()" placeholder="Start typing here to chat...">
+      @if (compressedImage) {
+        <ion-card class="image-container">
+          <ion-img [src]="compressedImage" alt="image" class="img-fluid"/>
+          <ion-icon class="delete-image-icon" name="close-outline"
+                    (click)="image=null; compressedImage=null"></ion-icon>
+        </ion-card>
+      }
+    </ion-input>
+    <ion-button class="chat-button" fill="clear" (click)="sendMessage()">
       <ion-icon color="dark" slot="icon-only" name="send-outline" aria-hidden="true"></ion-icon>
     </ion-button>
-  </ion-input>
+  </div>
 </ion-footer>

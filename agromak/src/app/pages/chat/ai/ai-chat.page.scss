@@ -66,11 +66,14 @@ ion-thumbnail {
 
 ion-footer {
   box-shadow: none;
-
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 0.25rem;
 
   & ion-icon {
     font-size: 1.5rem;
+  }
+
+  & .chat-button{
+    margin-inline: 0;
   }
 }
 
@@ -81,7 +84,7 @@ ion-input {
   --highlight-color-invalid: none;
   --highlight-color-valid: none;
 
-  border-radius: 10rem;
+  border-radius: 1.5rem;
   background: var(--ion-color-light);
 
   box-shadow: var(--ion-box-shadow);
@@ -92,15 +95,18 @@ ion-input {
 
 .image-container {
   position: relative;
-  max-width: 75px;
+  max-width: 4rem;
+  border-radius: 14px;
 }
 
 .delete-image-icon {
   position: absolute;
-  right: 0;
+  right: 0.25rem;
+  top: 0.25rem;
   border-radius: 10rem;
-  font-size: 1rem !important;
-  background: #b80205;
+  font-size: 1.25rem !important;
+  background: var(--ion-color-light);
+  color: var(--ion-color-dark);
 }
 
 .openai-logo {
@@ -112,4 +118,5 @@ ion-input {
   border-radius: 1rem;
   max-width: 10rem;
   margin-left: auto;
+  margin-right: 0;
 }
