@@ -26,8 +26,6 @@
         <ion-thumbnail slot="start">
           @if (ad.images && ad.images.length > 0) {
             <img [src]="ad.images[0]" alt="image"/>
-          } @else if (ad.subcategory) {
-            <img src="assets/images/crops/{{ad.subcategory}}.png" class="placeholder-image" alt="placeholder"/>
           } @else {
             <img src="assets/images/no-image.png" alt="placeholder"/>
           }

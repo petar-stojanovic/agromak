@@ -10,6 +10,12 @@
       }
     },
     {
+      "type": "",
+      "name": "subCategory",
+      "label": "Category",
+      "validators": {}
+    },
+    {
       "type": "radio",
       "name": "itemCondition",
       "label": "Item condition",

@@ -14,7 +14,6 @@ import {
   IonToolbar,
   ModalController
 } from '@ionic/angular/standalone';
-import {AddProductModalComponent} from "./add-product-modal/add-product-modal.component";
 import {AdFetchingService} from "../../services/ad-fetching.service";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
@@ -48,7 +47,6 @@ export class HomePage implements OnInit {
   ads$ = this.adFetchingService.ads$
     .pipe(tap((ads) => {
       this.lastVisibleAd = ads[ads.length - 1];
-      // this.shuffleAds(ads);
     }));
   orderDirection: 'asc' | 'desc' = 'desc';
 
@@ -81,20 +79,12 @@ export class HomePage implements OnInit {
     await event?.target.complete();
   }
 
-  async openModal() {
-    const modal = await this.modalCtrl.create({
-      component: AddProductModalComponent,
-    });
-    await modal.present();
-  }
-
   async openDynamicModal() {
     const modal = await this.modalCtrl.create({
       component: DynamicFormModalComponent,
     });
     await modal.present();
   }
-
 
   search(event: CustomEvent) {
     if (event.detail.value === '') {
@@ -103,7 +93,6 @@ export class HomePage implements OnInit {
     return this.openSearchModal(event.detail.value);
   }
 
-  // TODO: return to default search function after complete implementation
   private async openSearchModal(searchValue: string) {
     const modal = await this.modalCtrl.create({
       component: SearchAdsModalComponent,
@@ -114,22 +103,9 @@ export class HomePage implements OnInit {
     await modal.present();
     await this.userService.updateUserSearchHistory(searchValue.trim());
     await modal.onWillDismiss()
-    console.log("REFRESHING ADS");
+
     await this.refreshAds();
     this.searchbar.value = null;
   }
 
-  private shuffleAds(ads: Ad[]) {
-    let currentIndex = ads.length;
-
-    while (currentIndex != 0) {
-
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      [ads[currentIndex], ads[randomIndex]] = [
-        ads[randomIndex], ads[currentIndex]];
-    }
-    return ads;
-  }
 }

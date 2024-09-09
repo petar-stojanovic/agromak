@@ -11,7 +11,7 @@ export interface Ad {
   phone: string;
   description: string;
   category: string;
-  subcategory: string;
+  subCategory: string;
   images: string[];
   ownerId: string;
   ownerName?: string;

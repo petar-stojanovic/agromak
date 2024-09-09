@@ -182,6 +182,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     if (this.isEdit) {
       this.updateForm();
       this.oldImages = this.ad!.images ? [...this.ad!.images] : [];
+      this.form.get('images')!.setValue(null);
+      this.chosenCategory = `${this.ad!.category} > ${this.ad!.subCategory}`;
     }
     this.form.updateValueAndValidity();
   }
@@ -206,8 +208,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     const {data, role} = await modal.onWillDismiss();
 
     if (data !== undefined) {
-      this.chosenCategory = data;
-      this.form.get('category')!.setValue(data);
+      this.chosenCategory = `${data.category} > ${data.subCategory}`;
+      this.form.get('category')!.setValue(data.category);
+      this.form.get('subCategory')!.setValue(data.subCategory);
     }
     this.ref.markForCheck();
   }

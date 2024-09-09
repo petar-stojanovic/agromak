@@ -12,23 +12,26 @@
 
 <ion-content>
 
-  <ion-accordion-group multiple="true" *ngIf="categories">
-    <ion-accordion *ngFor="let category of categories"
-                   [value]="category.name">
-      <ion-item slot="header">
-        <ion-label class="font-weight-bold">{{ category.name }}</ion-label>
-      </ion-item>
-      <div slot="content">
-        <ion-list>
-          <ion-item [button]="true" *ngFor="let subcategory of category.sub_categories" lines="none"
-                    (click)="selectCategory(subcategory)">
-            <ion-label class="ion-margin-start">{{ subcategory.name }}</ion-label>
+  @if (categories) {
+    <ion-accordion-group multiple="true">
+      @for (category of categories; track $index) {
+        <ion-accordion [value]="category.name">
+          <ion-item slot="header">
+            <ion-label class="font-weight-bold">{{ category.name }}</ion-label>
           </ion-item>
+          <div slot="content">
+            <ion-list>
+              @for (subcategory of category.sub_categories; track $index) {
+                <ion-item [button]="true" lines="none" (click)="selectCategory(category, subcategory)">
+                  <ion-label class="ion-margin-start">{{ subcategory.name }}</ion-label>
+                </ion-item>
+              }
+            </ion-list>
+          </div>
+        </ion-accordion>
+      }
 
-        </ion-list>
-      </div>
-    </ion-accordion>
-
-  </ion-accordion-group>
+    </ion-accordion-group>
+  }
 
 </ion-content>

@@ -18,7 +18,7 @@ import {
 } from "@ionic/angular/standalone";
 import {Category, SubCategory} from "../../shared/models/category";
 import {CategoryService} from "../../services/category.service";
-import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, JsonPipe} from "@angular/common";
 import {arrowBack} from "ionicons/icons";
 import {addIcons} from "ionicons";
 
@@ -42,8 +42,6 @@ import {addIcons} from "ionicons";
     IonAccordion,
     IonLabel,
     AsyncPipe,
-    NgForOf,
-    NgIf,
     JsonPipe,
     IonSpinner
   ],
@@ -51,7 +49,7 @@ import {addIcons} from "ionicons";
 })
 export class SelectCategoryModalComponent {
 
-  categories!: Category[];
+  categories?: Category[];
 
   constructor(private categoryService: CategoryService,
               private ref: ChangeDetectorRef,
@@ -68,7 +66,7 @@ export class SelectCategoryModalComponent {
     await this.modalCtrl.dismiss();
   }
 
-  async selectCategory(subcategory: SubCategory) {
-    await this.modalCtrl.dismiss(subcategory.name);
+  async selectCategory(category: Category, subCategory: SubCategory) {
+    await this.modalCtrl.dismiss({category: category.name, subCategory: subCategory.name});
   }
 }

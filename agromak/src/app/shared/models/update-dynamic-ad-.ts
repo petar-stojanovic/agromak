@@ -1,6 +1,7 @@
 export interface UpdateDynamicAd {
   id: string;
   category: string;
+  subCategory: string;
   itemCondition: string;
   title: string;
   title_lowercase: string;

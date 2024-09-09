@@ -60,7 +60,6 @@ export class AdManagementService {
       title_lowercase: dynamicAd.title.toLowerCase(),
       keywords: this.extractKeywords(dynamicAd.title.toLowerCase()),
       ownerId: this.user.uid,
-      ownerName: this.user.displayName,
       viewCount: 1,
       uploadedAt: new Date(),
       images: []
