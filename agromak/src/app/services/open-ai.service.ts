@@ -99,26 +99,31 @@ export class OpenAiService {
   async generateRelatedKeywords(searchQuery: string) {
     const completion = await this.openai.chat.completions.create({
       "model": "gpt-4o-mini",
+      frequency_penalty: 0.75,
       "messages": [
         {
           "role": "system",
-          "content": "You are a smart and helpful assistant for a marketplace/classified app. When provided with a user's search query, generate a list of up to 10 highly relevant keywords or phrases that are contextually aligned with the user's intent. These keywords should be in lowercase and vary in length (single words or short phrases) to cover different aspects of the original search term, helping to refine and enhance search results and display related advertisements.\n" +
+          "content": "You are a smart and helpful assistant for an online marketplace/classified app similar to Ebay or Craigslist. When provided with a user's search query, generate a list of up to 10 highly relevant keywords or phrases that are contextually aligned with the user's intent. These keywords should be in lowercase and vary in length (single words or short phrases) to cover different aspects of the original search term, helping to refine and enhance search results and display related advertisements.\n" +
             "\n" +
             "For example, if the search query is \"iphone,\" the list might include keywords such as: [\"iphone\", \"apple\", \"smartphone\", \"mobile phone\", \"iphone cases\", \"iphone charger\", \"ios\", \"iphone 14\", \"iphone repair\", \"iphone accessories\"].\n" +
             "\n" +
             "Key points to follow:\n" +
             "\n" +
-            "1. **Understand User Intent**: Focus on the user's original search term and identify the underlying intent, such as buying, selling, repairing, or finding information.\n" +
-            "   \n" +
-            "2. **Generate Relevant Variations**: Include synonyms, related terms, and specific models, features, or services related to the query to cover a range of possible interests.\n" +
+            "1. **Understand User Intent and Identify Multiple Contexts**: Focus on the user's original search term and identify the underlying intent, such as buying, selling, repairing, or finding information. Analyze the search term to identify different possible contexts or meanings (e.g., \"apple\" could refer to both a fruit and a tech company).\n" +
             "\n" +
-            "3. **Handle Phrases Effectively**: If the search query is a multi-word phrase, generate keywords and phrases relevant to the entire phrase, not just individual words. The keywords should reflect the overall meaning or context.\n" +
+            "2. **Generate Relevant Keywords for Each Context**: For each identified context, generate relevant keywords or phrases that are highly aligned with the user's potential intent, whether it's related to products, services, or information.\n" +
             "\n" +
-            "4. **Prioritize Relevance**: Ensure each keyword is contextually accurate and highly relevant to the user's search to avoid irrelevant results.\n" +
+            "3. **Handle Phrases and Ambiguity Effectively**: If the search query is a multi-word phrase, generate keywords and phrases relevant to the entire phrase, not just individual words. The keywords should reflect the overall meaning or context. When the query has multiple common interpretations, ensure the keywords list represents the diversity of meanings to provide comprehensive search results\n" +
             "\n" +
-            "5. **Keep it Concise**: Limit the list to the most relevant keywords (up to 10) that best match the user's query, ensuring a focused and useful set of suggestions.\n" +
+            "4. **Ensure Contextual Relevance**: Each keyword or phrase should be accurate and directly related to the possible meanings of the query to avoid irrelevant results.\n" +
             "\n" +
-            "Output the list of keywords in a format that can be easily processed, such as an array: [\"keyword1\", \"keyword2\", \"keyword3\", ...].\n"
+            "5. **Keep it Concise and Diverse**: Limit the list to the most relevant keywords (up to 10) across all potential contexts, ensuring a focused yet comprehensive set of suggestions.\n" +
+            "\n" +
+            "6. **Keep it short**: The keywords should be one or two words long, preferably only one word. If a phrase is necessary, it should be short and concise.\n" +
+            "\n" +
+            "7. **Always include the original search query in the list of keywords to maintain relevance and context.**\n" +
+            "\n" +
+            "Output the list of keywords in an array: [\"keyword1\", \"keyword2\", \"keyword3\", ...].\n"
         },
         {
           "role": "user",
@@ -126,6 +131,6 @@ export class OpenAiService {
         },
       ],
     });
-    console.log(completion.choices[0].message);
+    console.log(completion.choices[0].message.content);
   }
 }

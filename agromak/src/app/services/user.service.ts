@@ -49,7 +49,10 @@ export class UserService {
 
   async updateUserSearchHistory(searchValue: string) {
     const data = {
-      searchHistory: FieldValue.arrayUnion(searchValue.toLowerCase()),
+      searchHistory: FieldValue.arrayUnion({
+        searchValue: searchValue.toLowerCase(),
+        timestamp: new Date()
+      }),
     }
     await this.apiService.updateDocument(`usersSearchHistory/${this.user.uid}`, data);
   }

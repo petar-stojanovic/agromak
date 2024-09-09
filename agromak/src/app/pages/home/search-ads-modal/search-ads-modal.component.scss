@@ -46,6 +46,7 @@ ion-toolbar {
 
 .logo-icon {
   fill: var(--ion-color-primary);
+  pointer-events: none;
 
   border-radius: 50%;
   width: 1.75rem;
