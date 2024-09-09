@@ -82,29 +82,8 @@ export class AdFetchingService {
   private getAllAdsQuery(params: AdListAdditionalData): Observable<Ad[]> {
     const {searchValue, lastVisibleAd, order, similarAd} = params;
 
-    return this.apiService
-      .docDataQuery(`usersSearchHistory/${this.user.uid}`)
-      .pipe(
-        take(1),
-        switchMap((userSearchHistory: { id: string, searchHistory: string[] }) => {
-          const userSearches = userSearchHistory.searchHistory;
-          console.log(userSearches);
-
-          return (userSearches && userSearches.length > 2)
-            ? this.searchAdsBasedOnUserSearchedHistory(lastVisibleAd, userSearches, order)
-            : this.searchAllAds(lastVisibleAd, order);
-        })
-      )
-  }
-
-  private searchAdsBasedOnUserSearchedHistory(lastVisibleAd: Ad | undefined, userSearches: string[], order: "asc" | "desc") {
     return this.queryAdsCollection(ref =>
-      ref.where('keywords', 'array-contains-any', userSearches)
-        .orderBy('uploadedAt', order), lastVisibleAd);
-  }
-
-  private searchAllAds(lastVisibleAd: Ad | undefined, order: "asc" | "desc") {
-    return this.queryAdsCollection(ref => ref.orderBy('uploadedAt', order), lastVisibleAd);
+      ref.orderBy('uploadedAt', order), lastVisibleAd);
   }
 
   private getSearchedAdsQuery(params: AdListAdditionalData): Observable<Ad[]> {
