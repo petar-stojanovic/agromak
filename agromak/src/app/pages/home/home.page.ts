@@ -26,15 +26,17 @@ import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {UserService} from "../../services/user.service";
-import {tap} from "rxjs";
+import {filter, map, tap} from "rxjs";
 import {HideHeaderDirective} from "../../shared/directives/hide-header.directive";
+import {AdRecommendationService} from "../../services/ad-recommendation.service";
+import {AdCardComponent} from "../../components/ad-card/ad-card.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe, HideHeaderDirective],
+  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe, HideHeaderDirective, AdCardComponent],
 })
 export class HomePage implements OnInit {
 
@@ -48,11 +50,17 @@ export class HomePage implements OnInit {
     .pipe(tap((ads) => {
       this.lastVisibleAd = ads[ads.length - 1];
     }));
+
+  recommendedAdsArray$ = this.adRecommendationService.getRecommendations().pipe(
+    map(ads => ads.filter(ad => ad.length > 0)),
+    tap((ads: Ad[][]) => console.log("RECOMMENDED ADS", ads))
+  )
   orderDirection: 'asc' | 'desc' = 'desc';
 
   constructor(private modalCtrl: ModalController,
               private adFetchingService: AdFetchingService,
-              private userService: UserService
+              private userService: UserService,
+              private adRecommendationService: AdRecommendationService
   ) {
     addIcons({add, 'logo': 'assets/logo.svg'})
   }
@@ -66,7 +74,7 @@ export class HomePage implements OnInit {
 
   }
 
-  getAds() {
+   getAds() {
     this.adFetchingService.fetchAds(this.adFetchType, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
@@ -103,9 +111,7 @@ export class HomePage implements OnInit {
       }
     });
     await modal.present();
-    await this.userService.updateUserSearchHistory(searchValue.trim());
     await modal.onWillDismiss()
-
     await this.refreshAds();
     this.searchbar.value = null;
   }

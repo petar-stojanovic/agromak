@@ -90,7 +90,7 @@ export class AdFetchingService {
           const userSearches = userSearchHistory.searchHistory;
           console.log(userSearches);
 
-          return userSearches.length > 2
+          return (userSearches && userSearches.length > 2)
             ? this.searchAdsBasedOnUserSearchedHistory(lastVisibleAd, userSearches, order)
             : this.searchAllAds(lastVisibleAd, order);
         })
@@ -197,5 +197,11 @@ export class AdFetchingService {
       .toLowerCase()
       .split(' ')
       .filter(word => word.length > 2);
+  }
+
+  getAdsByKeywords(keywords: string[]): Observable<Ad[]> {
+    return this.queryAdsCollection(ref =>
+      ref.where('keywords', 'array-contains-any', keywords)
+        .orderBy('uploadedAt', "desc"));
   }
 }

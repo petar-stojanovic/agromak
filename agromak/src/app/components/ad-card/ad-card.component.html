@@ -1,0 +1,25 @@
+<ion-item class="ad ion-no-padding" (click)="openAdDetailsModal(ad())" lines="none">
+  <ion-thumbnail slot="start">
+    @if (ad().images && ad().images.length > 0) {
+      <img [src]="ad().images[0]" alt="image"/>
+    } @else {
+      <img src="assets/images/no-image.png" alt="placeholder"/>
+    }
+  </ion-thumbnail>
+  <ion-label class="ad-label">
+    <ion-text>
+      <h2 class="ad-title">{{ ad().title }}</h2>
+    </ion-text>
+    <div>
+      <ion-badge>{{ ad().subCategory ?? ad().category }}</ion-badge>
+    </div>
+    <div class="ad-details flex justify-space-between">
+      <ion-text color="medium">
+        <p class="font-weight-600">{{ ad().location }}</p>
+      </ion-text>
+      <ion-text color="primary">
+        <p class="ad-price">{{ ad().price }} {{ ad().currency }}</p>
+      </ion-text>
+    </div>
+  </ion-label>
+</ion-item>

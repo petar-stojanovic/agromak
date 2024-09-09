@@ -13,6 +13,15 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+<!--  @if (recommendedAdsArray$ | async; as recommendedAdsArray) {-->
+<!--    @for (adArray of recommendedAdsArray; track $index) {-->
+<!--      @for (ad of adArray; track $index) {-->
+<!--        <app-ad-card [ad]="ad"></app-ad-card>-->
+<!--      }-->
+<!--      <hr>-->
+<!--    }-->
+<!--  }-->
+
   @if (ads$ | async; as ads) {
     <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType"
                  [additionalData]="{order: orderDirection, lastVisibleAd: lastVisibleAd}"></app-ad-list>

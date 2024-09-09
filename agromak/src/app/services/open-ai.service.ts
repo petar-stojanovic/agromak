@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import OpenAI from "openai";
 import {ChatCompletionCreateParamsStreaming,} from "openai/src/resources/chat/completions";
 import {AiMessage} from "../shared/models/ai-message";
 import {OPEN_AI_SETTINGS} from "../../../api-keys";
+import {ApiService} from "./api.service";
+import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ import {OPEN_AI_SETTINGS} from "../../../api-keys";
 export class OpenAiService {
   openai: OpenAI;
 
-  constructor(private http: HttpClient) {
+  constructor(private apiService: ApiService,
+              private firestore: Firestore
+  ) {
     this.openai = new OpenAI(OPEN_AI_SETTINGS);
   }
 
@@ -97,6 +100,14 @@ export class OpenAiService {
 
 
   async generateRelatedKeywords(searchQuery: string) {
+    searchQuery = searchQuery.toLowerCase();
+    const querySnapshot = await this.apiService.getDocById(`openaiKeywords/keywords`);
+    const keywords = (querySnapshot.data() as any).keywords;
+    if (keywords[searchQuery]) {
+      console.log();
+      return keywords[searchQuery];
+    }
+
     const completion = await this.openai.chat.completions.create({
       "model": "gpt-4o-mini",
       frequency_penalty: 0.75,
@@ -131,6 +142,16 @@ export class OpenAiService {
         },
       ],
     });
-    console.log(completion.choices[0].message.content);
+    const resultText = completion.choices[0].message.content;
+    const resultArray = JSON.parse(resultText!);
+
+    await this.apiService.updateDocument(`openaiKeywords/keywords`, {
+      keywords: {
+        ...keywords,
+        [searchQuery]: resultArray
+      }
+    });
+    console.log(resultArray);
+    return resultArray;
   }
 }

@@ -6,7 +6,8 @@ import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import {AdFetchingService} from "./ad-fetching.service";
 import firebase from "firebase/compat/app";
-import FieldValue = firebase.firestore.FieldValue;
+import {UserSearchHistory} from "../shared/models/user-search-history";
+import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
@@ -48,12 +49,37 @@ export class UserService {
   }
 
   async updateUserSearchHistory(searchValue: string) {
-    const data = {
-      searchHistory: FieldValue.arrayUnion({
-        searchValue: searchValue.toLowerCase(),
-        timestamp: new Date()
-      }),
+    const userId = this.user.uid;
+    const searchValueLower = searchValue.toLowerCase();
+
+    const userDoc = await this.apiService.getDocById(`usersSearchHistory/${userId}`);
+    const currentHistory = (userDoc.data() as UserSearchHistory).searchHistory || [];
+
+    const historyMap = new Map<string, { count: number; timestamp: Timestamp }>();
+
+    currentHistory.forEach(entry => {
+      historyMap.set(entry.searchValue, { count: entry.count, timestamp: entry.timestamp });
+    });
+
+    if (historyMap.has(searchValueLower)) {
+      const entry = historyMap.get(searchValueLower)!;
+      historyMap.set(searchValueLower, { count: entry.count + 1, timestamp: Timestamp.now() });
+    } else {
+      historyMap.set(searchValueLower, { count: 1, timestamp: Timestamp.now() });
     }
-    await this.apiService.updateDocument(`usersSearchHistory/${this.user.uid}`, data);
+
+    const updatedHistory = Array.from(historyMap, ([searchValue, { count, timestamp }]) => ({
+      searchValue,
+      count,
+      timestamp
+    }));
+
+    const data = {
+      searchHistory: updatedHistory,
+    };
+    await this.apiService.updateDocument(`usersSearchHistory/${userId}`, data);
   }
+
+
+
 }
