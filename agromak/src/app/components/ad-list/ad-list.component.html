@@ -35,7 +35,7 @@
             <h2 class="ad-title">{{ ad.title }}</h2>
           </ion-text>
           <div>
-            <ion-badge>{{ ad.category }}</ion-badge>
+            <ion-badge>{{ ad.subCategory ?? ad.category }}</ion-badge>
           </div>
           <div class="ad-details flex justify-space-between">
             <ion-text color="medium">
