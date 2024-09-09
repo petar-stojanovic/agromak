@@ -18,7 +18,7 @@ export class OpenAiService {
   async generateContentWithOpenAI(messages: AiMessage[]) {
 
     const stream = await this.openai.chat.completions.create({
-      "model": "gpt-4o-2024-08-06",
+      "model": "gpt-4o-mini",
       "stream": true,
       "messages": [
         {
@@ -95,49 +95,37 @@ export class OpenAiService {
     return stream;
   }
 
-  async test(messages: AiMessage[]) {
 
-    const stream = await this.openai.chat.completions.create({
-      "model": "gpt-4o",
-      "stream": true,
+  async generateRelatedKeywords(searchQuery: string) {
+    const completion = await this.openai.chat.completions.create({
+      "model": "gpt-4o-mini",
       "messages": [
         {
           "role": "system",
-          "content": "You are a helpful assistant. Assume the role of a helpful assistant specialized in facilitating product sales." +
-            "You are designed to provide assistance related to selling items and answering questions about products." +
-            "Only respond to queries directly related to selling, product information, or relevant inquiries." +
-            "Do not generate responses for requests involving tasks unrelated to the selling process, " +
-            "such as requests for writing Python scripts or any other non-sales-related topics." +
-            "Keep responses short, simple, and easy to understand"
+          "content": "You are a smart and helpful assistant for a marketplace/classified app. When provided with a user's search query, generate a list of up to 10 highly relevant keywords or phrases that are contextually aligned with the user's intent. These keywords should be in lowercase and vary in length (single words or short phrases) to cover different aspects of the original search term, helping to refine and enhance search results and display related advertisements.\n" +
+            "\n" +
+            "For example, if the search query is \"iphone,\" the list might include keywords such as: [\"iphone\", \"apple\", \"smartphone\", \"mobile phone\", \"iphone cases\", \"iphone charger\", \"ios\", \"iphone 14\", \"iphone repair\", \"iphone accessories\"].\n" +
+            "\n" +
+            "Key points to follow:\n" +
+            "\n" +
+            "1. **Understand User Intent**: Focus on the user's original search term and identify the underlying intent, such as buying, selling, repairing, or finding information.\n" +
+            "   \n" +
+            "2. **Generate Relevant Variations**: Include synonyms, related terms, and specific models, features, or services related to the query to cover a range of possible interests.\n" +
+            "\n" +
+            "3. **Handle Phrases Effectively**: If the search query is a multi-word phrase, generate keywords and phrases relevant to the entire phrase, not just individual words. The keywords should reflect the overall meaning or context.\n" +
+            "\n" +
+            "4. **Prioritize Relevance**: Ensure each keyword is contextually accurate and highly relevant to the user's search to avoid irrelevant results.\n" +
+            "\n" +
+            "5. **Keep it Concise**: Limit the list to the most relevant keywords (up to 10) that best match the user's query, ensuring a focused and useful set of suggestions.\n" +
+            "\n" +
+            "Output the list of keywords in a format that can be easily processed, such as an array: [\"keyword1\", \"keyword2\", \"keyword3\", ...].\n"
         },
-        ...messages.map(message => {
-          const content: any[] = [
-            {
-              type: 'text',
-              text: message.message
-            }
-          ];
-
-          if (message.image) {
-            content.push({
-              type: 'image_url',
-              image_url: {
-                url: message.image
-              }
-            });
-          }
-
-          return {
-            role: message.from === 'YOU' ? 'user' : 'assistant',
-            content: content
-          };
-        })
+        {
+          "role": "user",
+          "content": "Search query: " + searchQuery
+        },
       ],
-      "max_tokens": 200
-    } as ChatCompletionCreateParamsStreaming);
-
-    return stream;
+    });
+    console.log(completion.choices[0].message);
   }
-
-
 }

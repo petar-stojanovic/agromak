@@ -27,6 +27,7 @@ import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline, searchOutline} from "ionicons/icons";
 import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
 import {tap} from "rxjs";
+import {OpenAiService} from "../../../services/open-ai.service";
 
 @Component({
   selector: 'app-search-ads-modal',
@@ -73,16 +74,21 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
   isSearchBarOpened = false;
 
   constructor(private modalCtrl: ModalController,
-              private adFetchingService: AdFetchingService) {
+              private adFetchingService: AdFetchingService,
+              private openAiService: OpenAiService
+              ) {
     addIcons({filterCircleOutline, arrowBack, searchOutline})
   }
 
 
   ngOnInit() {
     this.fetchAds();
+    this.openAiService.generateRelatedKeywords(this.searchValue);
   }
 
   fetchAds() {
+    this.isLoading = true;
+    this.clearAds();
     this.adFetchingService.fetchAds(AdFetchType.SEARCHED, {
       searchValue: this.searchValue.toLowerCase(),
       order: this.orderDirection
@@ -103,19 +109,17 @@ export class SearchAdsModalComponent implements OnInit, OnDestroy {
 
   onDidDismiss(event: CustomEvent) {
     if (event.detail.role === "confirm") {
-      this.isLoading = true;
-      this.clearAds();
       this.fetchAds();
     }
   }
 
-  search(event: CustomEvent) {
+  async search(event: CustomEvent) {
     if (event.detail.value === '') {
       return;
     }
     this.searchValue = event.detail.value;
-    this.clearAds();
     this.fetchAds();
+    await this.openAiService.generateRelatedKeywords(this.searchValue);
     this.isSearchBarOpened = false;
   }
 
