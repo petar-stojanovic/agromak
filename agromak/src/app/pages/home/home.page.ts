@@ -86,18 +86,20 @@ export class HomePage implements OnInit {
     await modal.present();
   }
 
-  search(event: CustomEvent) {
-    if (event.detail.value === '') {
+  search() {
+    const value = this.searchbar.value?.toString().trim();
+    console.log(value)
+    if (!value) {
       return;
     }
-    return this.openSearchModal(event.detail.value);
+    return this.openSearchModal(value);
   }
 
   private async openSearchModal(searchValue: string) {
     const modal = await this.modalCtrl.create({
       component: SearchAdsModalComponent,
       componentProps: {
-        searchValue: searchValue.trim()
+        searchValue: searchValue
       }
     });
     await modal.present();

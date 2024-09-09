@@ -1,7 +1,7 @@
 <ion-header #header class="ion-no-border">
   <ion-toolbar>
     <ion-text class="flex ion-align-items-center">
-      <ion-searchbar (ionChange)="search($event)" #searchbar showCancelButton="focus" class="searchbar">
+      <ion-searchbar (keydown.enter)="search()" #searchbar showCancelButton="focus" class="searchbar">
         <ion-icon class="logo-icon" name="logo"/>
       </ion-searchbar>
     </ion-text>
