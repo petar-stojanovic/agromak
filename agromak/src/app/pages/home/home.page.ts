@@ -26,7 +26,7 @@ import {AdListComponent} from "../../components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
 import {AdFetchType} from "../../shared/ad-fetch-type.enum";
 import {UserService} from "../../services/user.service";
-import {filter, map, tap} from "rxjs";
+import {Observable, map, take, tap} from "rxjs";
 import {HideHeaderDirective} from "../../shared/directives/hide-header.directive";
 import {AdRecommendationService} from "../../services/ad-recommendation.service";
 import {AdCardComponent} from "../../components/ad-card/ad-card.component";
@@ -52,10 +52,7 @@ export class HomePage implements OnInit {
       this.lastVisibleAd = ads[ads.length - 1];
     }));
 
-  recommendedAdsArray$ = this.adRecommendationService.getRecommendations().pipe(
-    map(ads => ads.filter(ad => ad.length > 0)),
-    tap((ads: Ad[][]) => console.log("RECOMMENDED ADS", ads))
-  )
+  recommendedAdsArray$?: Observable<Ad[][]>
   orderDirection: 'asc' | 'desc' = 'desc';
 
   constructor(private modalCtrl: ModalController,
@@ -75,7 +72,12 @@ export class HomePage implements OnInit {
 
   }
 
-   getAds() {
+  getAds() {
+    this.recommendedAdsArray$ = this.adRecommendationService.getRecommendations().pipe(
+      take(1),
+      map(ads => ads.filter(ad => ad.length > 0)),
+      tap((ads: Ad[][]) => console.log("RECOMMENDED ADS", ads))
+    )
     this.adFetchingService.fetchAds(this.adFetchType, {order: this.orderDirection}).pipe(tap(() => this.isLoading = false)).subscribe();
   }
 
