@@ -1,27 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef,
-  input,
-  OnInit, Renderer2,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, Renderer2, ViewChild} from '@angular/core';
 import {Ad} from "../../../shared/models/ad";
 import {
   IonBadge,
-  IonCard, IonCardContent,
+  IonCard,
+  IonCardContent,
   IonCardHeader,
   IonCardTitle,
   IonImg,
   IonItem,
   IonLabel,
   IonText,
-  IonThumbnail
+  IonThumbnail, ModalController
 } from "@ionic/angular/standalone";
-import {SwiperOptions} from "swiper/types";
 import Swiper from "swiper";
+import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
 
 @Component({
   selector: 'app-recommended-ads-list',
@@ -48,19 +40,23 @@ export class RecommendedAdsListComponent implements AfterViewInit {
   swiper?: ElementRef<{ swiper: Swiper }>;
 
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2,
+              private modalCtrl: ModalController
+  ) {
   }
 
   ngAfterViewInit() {
-    // this.swiper?.nativeElement.swiper
 
-    this.renderer.setProperty(this.swiper!.nativeElement, 'slidesPerView',2)
-    // this.renderer.setProperty(this.swiper!.nativeElement, 'centeredSlides',true)
-    // this.renderer.setProperty(this.swiper!.nativeElement, 'loop',true)
-    this.renderer.setProperty(this.swiper!.nativeElement, 'spaceBetween',5)
-    this.renderer.setProperty(this.swiper!.nativeElement, 'autoHeight',false)
+    this.renderer.setProperty(this.swiper!.nativeElement, 'slidesPerView', 2)
+    this.renderer.setProperty(this.swiper!.nativeElement, 'spaceBetween', 5)
+    this.renderer.setProperty(this.swiper!.nativeElement, 'autoHeight', false)
   }
 
-  openAdDetailsModal(ad: Ad) {
+  async openAdDetailsModal(ad: Ad) {
+    const modal = await this.modalCtrl.create({
+      component: AdDetailsModalComponent,
+      componentProps: {ad}
+    });
+    await modal.present();
   }
 }
