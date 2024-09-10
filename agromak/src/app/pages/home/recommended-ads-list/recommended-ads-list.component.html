@@ -1,7 +1,10 @@
 <div class="background">
-  <ion-text>
-    <p class="title">Recommended Ads</p>
-  </ion-text>
+  <div class="title">
+    <p>Because you searched for <b>{{ searchValue() }}</b></p>
+    <ion-button fill="clear">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  </div>
   <swiper-container #swiper>
     @for (ad of ads(); track $index) {
       <swiper-slide>

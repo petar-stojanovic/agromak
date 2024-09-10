@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, Renderer2, ViewChild} from '@angular/core';
 import {Ad} from "../../../shared/models/ad";
 import {
-  IonBadge,
+  IonBadge, IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardTitle,
+  IonCardTitle, IonIcon,
   IonImg,
   IonItem,
   IonLabel,
@@ -14,6 +14,8 @@ import {
 } from "@ionic/angular/standalone";
 import Swiper from "swiper";
 import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
+import {trashOutline} from "ionicons/icons";
+import {addIcons} from "ionicons";
 
 @Component({
   selector: 'app-recommended-ads-list',
@@ -30,12 +32,16 @@ import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-d
     IonCardTitle,
     IonCardHeader,
     IonCardContent,
+    IonIcon,
+    IonButton,
   ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class RecommendedAdsListComponent implements AfterViewInit {
   ads = input.required<Ad[]>();
+  searchValue = input.required<string>();
+
   @ViewChild('swiper')
   swiper?: ElementRef<{ swiper: Swiper }>;
 
@@ -43,6 +49,7 @@ export class RecommendedAdsListComponent implements AfterViewInit {
   constructor(private renderer: Renderer2,
               private modalCtrl: ModalController
   ) {
+    addIcons({trashOutline})
   }
 
   ngAfterViewInit() {

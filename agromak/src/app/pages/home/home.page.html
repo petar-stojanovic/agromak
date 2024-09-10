@@ -15,7 +15,7 @@
 
   @if (recommendedAdsArray$ | async; as recommendedAdsArray) {
     @for (adArray of recommendedAdsArray; track $index) {
-      <app-recommended-ads-list [ads]="adArray"></app-recommended-ads-list>
+      <app-recommended-ads-list [ads]="adArray.ads" [searchValue]="adArray.searchValue"></app-recommended-ads-list>
     }
   }
 

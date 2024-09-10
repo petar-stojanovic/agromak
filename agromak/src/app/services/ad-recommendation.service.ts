@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {UserSearchHistory} from "../shared/models/user-search-history";
 import {ApiService} from "./api.service";
 import firebase from "firebase/compat/app";
-import Timestamp = firebase.firestore.Timestamp;
 import {User} from "../shared/models/user";
 import {AuthService} from "./auth.service";
-import {filter, mergeMap, of, switchMap, take} from "rxjs";
+import {combineLatest, map, mergeMap, Observable, switchMap, take} from "rxjs";
 import {AdFetchingService} from "./ad-fetching.service";
-import {combineLatest} from "rxjs";
+import {Ad} from "../shared/models/ad";
+import Timestamp = firebase.firestore.Timestamp;
 
 export const RECENCY_WEIGHT = 0.7;
 export const COUNT_WEIGHT = 1 - RECENCY_WEIGHT;
@@ -28,7 +28,7 @@ export class AdRecommendationService {
 
   }
 
-  getRecommendations() {
+  getRecommendations(): Observable<{ searchValue: string, ads: Ad[] }[]> {
     return this.authService.user$
       .pipe(
         switchMap(async user => {
@@ -51,17 +51,20 @@ export class AdRecommendationService {
             const combinedScore = recencyScore * RECENCY_WEIGHT + count * COUNT_WEIGHT;
             return {searchValue, score: combinedScore};
           }).sort((a, b) => b.score - a.score)
-            .map(entry => entry.searchValue)
+            .map(entry => ({searchValue: entry.searchValue, keywords: keywords[entry.searchValue]}));
 
 
+          const adsWithSearchValue$: Observable<{ searchValue: string, ads: Ad[] }>[]
+            = scores.map(({searchValue, keywords}) => {
+            return this.adFetchingService.getAdsByKeywords(keywords).pipe(
+              take(1),
+              map(ads => ({searchValue, ads}))
+            )
+          });
 
-          const searchKeywords = scores.map(searchValue => keywords[searchValue]);
-
-          const ads$ = searchKeywords.map(keyword => this.adFetchingService.getAdsByKeywords(keyword).pipe(take(1)));
-
-          return combineLatest(ads$);
+          return combineLatest(adsWithSearchValue$);
         }),
-        mergeMap(adsArray  => adsArray )
+        mergeMap(adsArray => adsArray)
       )
 
   }
