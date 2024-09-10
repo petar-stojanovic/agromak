@@ -1,7 +1,7 @@
 <div class="background">
   <div class="title">
     <p>Because you searched for <b>{{ searchValue() }}</b></p>
-    <ion-button fill="clear">
+    <ion-button fill="clear" (click)="deleteSearchHistory()">
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>
   </div>

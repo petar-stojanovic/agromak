@@ -8,6 +8,7 @@ import {AdFetchingService} from "./ad-fetching.service";
 import firebase from "firebase/compat/app";
 import {UserSearchHistory} from "../shared/models/user-search-history";
 import Timestamp = firebase.firestore.Timestamp;
+import {updateDoc} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -58,17 +59,17 @@ export class UserService {
     const historyMap = new Map<string, { count: number; timestamp: Timestamp }>();
 
     currentHistory.forEach(entry => {
-      historyMap.set(entry.searchValue, { count: entry.count, timestamp: entry.timestamp });
+      historyMap.set(entry.searchValue, {count: entry.count, timestamp: entry.timestamp});
     });
 
     if (historyMap.has(searchValueLower)) {
       const entry = historyMap.get(searchValueLower)!;
-      historyMap.set(searchValueLower, { count: entry.count + 1, timestamp: Timestamp.now() });
+      historyMap.set(searchValueLower, {count: entry.count + 1, timestamp: Timestamp.now()});
     } else {
-      historyMap.set(searchValueLower, { count: 1, timestamp: Timestamp.now() });
+      historyMap.set(searchValueLower, {count: 1, timestamp: Timestamp.now()});
     }
 
-    const updatedHistory = Array.from(historyMap, ([searchValue, { count, timestamp }]) => ({
+    const updatedHistory = Array.from(historyMap, ([searchValue, {count, timestamp}]) => ({
       searchValue,
       count,
       timestamp
@@ -80,6 +81,17 @@ export class UserService {
     await this.apiService.updateDocument(`usersSearchHistory/${userId}`, data);
   }
 
+  async deleteUserSearchHistory(searchValue: string) {
+    const userId = this.user.uid;
+    const userDoc = await this.apiService.getDocById(`usersSearchHistory/${userId}`);
+    const currentHistory = (userDoc.data() as UserSearchHistory).searchHistory || [];
+    const updatedHistory = currentHistory.filter(it => it.searchValue !== searchValue);
+
+    const data = {
+      searchHistory: updatedHistory,
+    };
+    await this.apiService.updateDocument(`usersSearchHistory/${userId}`, data);
+  }
 
 
 }

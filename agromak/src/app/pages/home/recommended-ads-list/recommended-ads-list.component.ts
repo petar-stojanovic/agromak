@@ -1,6 +1,16 @@
-import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, Renderer2, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  input,
+  output,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import {Ad} from "../../../shared/models/ad";
 import {
+  AlertController,
   IonBadge, IonButton,
   IonCard,
   IonCardContent,
@@ -16,6 +26,7 @@ import Swiper from "swiper";
 import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
 import {trashOutline} from "ionicons/icons";
 import {addIcons} from "ionicons";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-recommended-ads-list',
@@ -41,13 +52,16 @@ import {addIcons} from "ionicons";
 export class RecommendedAdsListComponent implements AfterViewInit {
   ads = input.required<Ad[]>();
   searchValue = input.required<string>();
+  destroy = output<void>();
 
   @ViewChild('swiper')
   swiper?: ElementRef<{ swiper: Swiper }>;
 
 
   constructor(private renderer: Renderer2,
-              private modalCtrl: ModalController
+              private modalCtrl: ModalController,
+              private userService: UserService,
+              private alertController: AlertController
   ) {
     addIcons({trashOutline})
   }
@@ -65,5 +79,22 @@ export class RecommendedAdsListComponent implements AfterViewInit {
       componentProps: {ad}
     });
     await modal.present();
+  }
+
+  async deleteSearchHistory() {
+    const alert = await this.alertController.create({
+      subHeader: `Are you sure?`,
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'Delete',
+        handler: async () => {
+          await this.userService.deleteUserSearchHistory(this.searchValue());
+          this.destroy.emit();
+        }
+      }]
+    });
+    await alert.present();
   }
 }
