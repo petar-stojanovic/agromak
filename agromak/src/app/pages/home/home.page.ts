@@ -30,13 +30,14 @@ import {filter, map, tap} from "rxjs";
 import {HideHeaderDirective} from "../../shared/directives/hide-header.directive";
 import {AdRecommendationService} from "../../services/ad-recommendation.service";
 import {AdCardComponent} from "../../components/ad-card/ad-card.component";
+import {RecommendedAdsListComponent} from "./recommended-ads-list/recommended-ads-list.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe, HideHeaderDirective, AdCardComponent],
+  imports: [NgForOf, NgIf, RouterLink, AdListComponent, IonHeader, IonToolbar, IonText, IonThumbnail, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabButton, IonIcon, AsyncPipe, HideHeaderDirective, AdCardComponent, RecommendedAdsListComponent],
 })
 export class HomePage implements OnInit {
 

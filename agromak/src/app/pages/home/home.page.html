@@ -13,14 +13,11 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-<!--  @if (recommendedAdsArray$ | async; as recommendedAdsArray) {-->
-<!--    @for (adArray of recommendedAdsArray; track $index) {-->
-<!--      @for (ad of adArray; track $index) {-->
-<!--        <app-ad-card [ad]="ad"></app-ad-card>-->
-<!--      }-->
-<!--      <hr>-->
-<!--    }-->
-<!--  }-->
+  @if (recommendedAdsArray$ | async; as recommendedAdsArray) {
+    @for (adArray of recommendedAdsArray; track $index) {
+      <app-recommended-ads-list [ads]="adArray"></app-recommended-ads-list>
+    }
+  }
 
   @if (ads$ | async; as ads) {
     <app-ad-list [ads]="ads" [isLoading]="isLoading" [adFetchType]="adFetchType"
