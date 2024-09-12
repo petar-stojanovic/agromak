@@ -34,10 +34,12 @@
     </ion-text>
 
     <div class="flex gap-1 ion-wrap ion-text-uppercase">
+      @if (owner && owner.city){
       <ion-badge>
         <ion-icon name="location-outline"></ion-icon>
-        <ion-text> {{ ad.location }}</ion-text>
+        <ion-text> {{ owner.city }}</ion-text>
       </ion-badge>
+      }
       <ion-badge>
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-text>{{ ad.uploadedAt.toDate() | date:'dd.MM.yyyy' }}</ion-text>

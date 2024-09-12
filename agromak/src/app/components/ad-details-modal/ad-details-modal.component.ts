@@ -135,6 +135,8 @@ export class AdDetailsModalComponent implements OnInit, OnDestroy {
 
     this.authService.getUserProfile(this.ad.ownerId).subscribe((user) => {
       this.owner = user as User;
+      console.log("OWNER", this.owner);
+
     });
   }
 
