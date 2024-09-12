@@ -46,15 +46,14 @@ ion-input.md,
 ion-select.md {
   height: 4rem !important;
   --background: var(--ion-color-light);
-}
-
-ion-input{
   --padding-end: 3rem;
 }
 
 ion-textarea.md {
-  height: 8rem !important;
+  min-height: 8rem !important;
   --padding-end: 3rem;
+  --padding-bottom: 1rem;
+  --padding-top: 0.5rem;
 }
 
 .open-categories-modal, .open-images {

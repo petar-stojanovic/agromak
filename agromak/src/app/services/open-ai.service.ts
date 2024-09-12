@@ -4,7 +4,7 @@ import {ChatCompletionCreateParamsStreaming,} from "openai/src/resources/chat/co
 import {AiMessage} from "../shared/models/ai-message";
 import {OPEN_AI_SETTINGS} from "../../../api-keys";
 import {ApiService} from "./api.service";
-import {doc, Firestore, updateDoc} from "@angular/fire/firestore";
+import {Firestore} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,59 @@ export class OpenAiService {
     } as ChatCompletionCreateParamsStreaming);
 
     return stream;
+  }
+
+
+  async generateAdTitle(message: string, category: string, subcategory: string) {
+    const completion = await this.openai.chat.completions.create({
+      "model": "gpt-4o-mini",
+      frequency_penalty: 0.75,
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a smart, practical, helpful and straightforward assistant for an online marketplace/classified app like to Ebay or Craigslist." +
+            "Given the user's input, generate a clear and concise advertisement title that accurately describes the item, " +
+            "highlights its key features or selling points, and is appropriate for the specified product category" +
+            "Avoid overly promotional language and keep the title under 60 characters." +
+            "\n" +
+            "\n" +
+            "Category: " + category +
+            "\n" +
+            "\n" +
+            "Subcategory: " + subcategory +
+            "\n" +
+            "\n" +
+            "User input: " + message
+        },
+      ],
+    });
+    return completion.choices[0].message.content;
+  }
+
+  async generateAdDescription(title: string, category: string, subcategory: string) {
+    const completion = await this.openai.chat.completions.create({
+      "model": "gpt-4o-mini",
+      frequency_penalty: 0.75,
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a smart, practical, helpful and straightforward assistant for an online marketplace/classified app like to Ebay or Craigslist." +
+            "Given the Ad title, category and subcategory, generate a clear and concise advertisement description that accurately describes the item, " +
+            "highlight its key features and selling points" +
+            "Avoid overly promotional language, and be normal just like people selling on Ebay." +
+            "\n" +
+            "\n" +
+            "Category: " + category +
+            "\n" +
+            "\n" +
+            "Subcategory: " + subcategory +
+            "\n" +
+            "\n" +
+            "Ad Title: " + title
+        },
+      ],
+    });
+    return completion.choices[0].message.content;
   }
 
   async generateDescriptionForAd(prompt: string, category: string, subcategory: string, intention: string) {

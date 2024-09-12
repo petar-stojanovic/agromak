@@ -45,6 +45,7 @@ import {ErrorMessagePipe} from "../../../shared/pipes/error-message.pipe";
 import {Camera} from "@capacitor/camera";
 import {Ad} from "../../../shared/models/ad";
 import {ImageService} from "../../../services/image.service";
+import {OpenAiService} from "../../../services/open-ai.service";
 
 
 @Component({
@@ -107,7 +108,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
               private imageService: ImageService,
               private ref: ChangeDetectorRef,
               private loadingController: LoadingController,
-              private alertController: AlertController
+              private alertController: AlertController,
+              private openAiService: OpenAiService
   ) {
     this.form = this.fb.group({});
 
@@ -290,5 +292,55 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       }]
     });
     await alert.present();
+  }
+
+
+  async openAiTitleModal() {
+    const alert = await this.alertController.create({
+      header: 'What are you selling',
+      cssClass: 'message-alert',
+      inputs: [
+        {
+          type: 'textarea',
+          name: 'message',
+          placeholder: 'Type your prompt here',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'Cancel',
+        },
+        {
+          text: 'Generate Title',
+          role: 'send',
+          handler: async (data) => {
+            console.log(data['message']);
+            const message = data['message'];
+            const category = this.form.get('category')?.value;
+            const subcategory = this.form.get('subCategory')?.value;
+            if (!category || !subcategory) {
+              return true;
+            }
+
+            const aiResponse = await this.openAiService.generateAdTitle(message, category, subcategory);
+            this.form.get('title')?.setValue(aiResponse);
+
+            return true;
+          },
+        }]
+    });
+
+    await alert.present();
+  }
+
+  async generateAdDescription() {
+    const {title, category, subCategory} = this.form.value;
+    console.log(title, category, subCategory)
+    if (!title || !category || !subCategory) {
+      return;
+    }
+    const aiResponse = await this.openAiService.generateAdDescription(title, category, subCategory);
+    this.form.get('description')?.setValue(aiResponse);
   }
 }
