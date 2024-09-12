@@ -48,8 +48,13 @@ ion-select.md {
   --background: var(--ion-color-light);
 }
 
+ion-input{
+  --padding-end: 3rem;
+}
+
 ion-textarea.md {
   height: 8rem !important;
+  --padding-end: 3rem;
 }
 
 .open-categories-modal, .open-images {
@@ -74,4 +79,10 @@ ion-radio-group, ion-toggle {
   gap: 0.5rem;
   flex-direction: column;
   border: 1px solid #bcc5d4;
+}
+
+.ai-button {
+  position: absolute;
+  right: 0;
+  z-index: 2;
 }

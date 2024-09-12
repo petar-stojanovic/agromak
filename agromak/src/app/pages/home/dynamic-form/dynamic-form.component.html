@@ -34,7 +34,11 @@
             fill="outline"
             labelPlacement="floating"
           >
-
+          @if (control.name === "title") {
+            <ion-button fill="clear" class="ai-button">
+              <ion-icon name="sparkles" slot="icon-only"></ion-icon>
+            </ion-button>
+          }
           </ion-input>
         </div>
 
@@ -69,7 +73,13 @@
           rows="5"
           fill="outline"
           labelPlacement="floating"
-        ></ion-textarea>
+        >
+          @if (control.name === "description") {
+            <ion-button fill="clear" class="ai-button">
+              <ion-icon name="sparkles" slot="icon-only"></ion-icon>
+            </ion-button>
+          }
+        </ion-textarea>
       } @else if (control.type === 'checkbox') {
         <ion-checkbox
           [formControlName]="control.name"
