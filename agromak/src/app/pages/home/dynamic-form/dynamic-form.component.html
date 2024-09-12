@@ -68,15 +68,15 @@
           fill="outline"
           labelPlacement="floating"
         >
-          @if (control.name === "description") {
-            <ion-button fill="clear" class="ai-button" (click)="generateAdDescription()"
-                        [disabled]="form.controls['category'].errors || form.controls['title'].errors || form.controls['description'].value !== ''">
+          @if (control.name === "title") {
+            <ion-button fill="clear" class="ai-button" (click)="openAiTitleModal()"
+                        [disabled]="form.controls['category'].errors || form.controls['title'].value !== ''">
               <ion-icon name="sparkles" slot="icon-only"></ion-icon>
             </ion-button>
           }
-          @if (control.name === "title") {
-            <ion-button fill="clear" class="ai-button" (click)="openAiTitleModal()"
-                        [disabled]="form.controls['category'].errors">
+          @if (control.name === "description") {
+            <ion-button fill="clear" class="ai-button" (click)="generateAdDescription()"
+                        [disabled]="form.controls['category'].errors || form.controls['title'].errors || form.controls['description'].value !== ''">
               <ion-icon name="sparkles" slot="icon-only"></ion-icon>
             </ion-button>
           }

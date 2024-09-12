@@ -72,7 +72,7 @@ export class OpenAiService {
           "content": "You are a smart, practical, helpful and straightforward assistant for an online marketplace/classified app like to Ebay or Craigslist." +
             "Given the user's input, generate a clear and concise advertisement title that accurately describes the item, " +
             "highlights its key features or selling points, and is appropriate for the specified product category" +
-            "Avoid overly promotional language and keep the title under 60 characters." +
+            "Avoid overly promotional language and keep the title under 100 characters." +
             "\n" +
             "\n" +
             "Category: " + category +
@@ -99,6 +99,7 @@ export class OpenAiService {
             "Given the Ad title, category and subcategory, generate a clear and concise advertisement description that accurately describes the item, " +
             "highlight its key features and selling points" +
             "Avoid overly promotional language, and be normal just like people selling on Ebay." +
+            "Do not use **bold**, *italic*, ### headings, or any other markdown-specific formatting" +
             "\n" +
             "\n" +
             "Category: " + category +

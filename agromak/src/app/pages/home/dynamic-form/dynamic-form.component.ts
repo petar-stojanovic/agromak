@@ -335,12 +335,16 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   async generateAdDescription() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
     const {title, category, subCategory} = this.form.value;
-    console.log(title, category, subCategory)
     if (!title || !category || !subCategory) {
+      await loading.dismiss();
       return;
     }
     const aiResponse = await this.openAiService.generateAdDescription(title, category, subCategory);
     this.form.get('description')?.setValue(aiResponse);
+    await loading.dismiss();
   }
 }
