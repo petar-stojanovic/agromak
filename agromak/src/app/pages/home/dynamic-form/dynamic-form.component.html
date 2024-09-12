@@ -1,5 +1,11 @@
 <div class="ion-padding">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="flex ion-align-items-center number-info">
+      <ion-icon class="popover-icon" name="alert-circle-outline"></ion-icon>
+      <ion-text>
+        Location and mobile number are from your profile.<br> Update them there if needed.
+      </ion-text>
+    </div>
 
     @for (control of jsonFormData.controls; track $index) {
 

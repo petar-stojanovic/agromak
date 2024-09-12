@@ -85,3 +85,13 @@ ion-radio-group, ion-toggle {
   right: 0;
   z-index: 2;
 }
+
+.number-info {
+  font-size: 0.75rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  & ion-icon {
+    font-size: 2rem;
+  }
+}
