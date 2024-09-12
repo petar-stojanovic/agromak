@@ -35,13 +35,13 @@
       "validators": {}
     },
     {
-      "type": "text",
+      "type": "textarea",
       "name": "title",
       "label": "Title",
       "value": "",
       "validators": {
         "required": true,
-        "maxLength": 60,
+        "maxLength": 100,
         "minLength": 5
       }
     },
