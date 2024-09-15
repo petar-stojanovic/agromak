@@ -22,14 +22,14 @@ import {Ad} from "../../shared/models/ad";
 import {add} from "ionicons/icons";
 import {RouterLink} from "@angular/router";
 import {DynamicFormModalComponent} from "./dynamic-form-modal/dynamic-form-modal.component";
-import {AdListComponent} from "../../components/ad-list/ad-list.component";
+import {AdListComponent} from "../../shared/components/ad-list/ad-list.component";
 import {SearchAdsModalComponent} from "./search-ads-modal/search-ads-modal.component";
-import {AdFetchType} from "../../shared/ad-fetch-type.enum";
+import {AdFetchType} from "../../shared/enums/ad-fetch-type.enum";
 import {UserService} from "../../services/user.service";
 import {map, Observable, take, tap} from "rxjs";
 import {HideHeaderDirective} from "../../shared/directives/hide-header.directive";
 import {AdRecommendationService} from "../../services/ad-recommendation.service";
-import {AdCardComponent} from "../../components/ad-card/ad-card.component";
+import {AdCardComponent} from "../../shared/components/ad-card/ad-card.component";
 import {RecommendedAdsListComponent} from "./recommended-ads-list/recommended-ads-list.component";
 
 @Component({

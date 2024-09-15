@@ -29,7 +29,7 @@ import {Camera, CameraResultType, CameraSource} from "@capacitor/camera";
 import {ImageService} from "../../../services/image.service";
 import {HttpClient} from "@angular/common/http";
 import {JsonFormControls, JsonFormData} from "../../../shared/models/json-form-data";
-import {InputErrorComponent} from "../../../components/input-error/input-error.component";
+import {InputErrorComponent} from "../../../shared/components/input-error/input-error.component";
 import {combineLatest} from "rxjs";
 import {User} from "../../../shared/models/user";
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {User} from "../shared/models/user";
-import {AdFetchType} from "../shared/ad-fetch-type.enum";
+import {AdFetchType} from "../shared/enums/ad-fetch-type.enum";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import {AdFetchingService} from "./ad-fetching.service";

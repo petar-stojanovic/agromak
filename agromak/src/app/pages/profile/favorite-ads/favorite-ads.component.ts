@@ -10,12 +10,12 @@ import {
   IonToolbar,
   ModalController
 } from "@ionic/angular/standalone";
-import {AdListComponent} from "../../../components/ad-list/ad-list.component";
+import {AdListComponent} from "../../../shared/components/ad-list/ad-list.component";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {addIcons} from "ionicons";
 import {arrowBack} from "ionicons/icons";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
+import {AdFetchType} from "../../../shared/enums/ad-fetch-type.enum";
 import {tap} from "rxjs";
 
 @Component({

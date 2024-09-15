@@ -33,7 +33,7 @@ import {CommonModule} from "@angular/common";
 import {MyAdsComponent} from "./my-ads/my-ads.component";
 import {FavoriteAdsComponent} from "./favorite-ads/favorite-ads.component";
 import {AdFetchingService} from "../../services/ad-fetching.service";
-import {ProfileInfoComponent} from "../../components/profile-info/profile-info.component";
+import {ProfileInfoComponent} from "../../shared/components/profile-info/profile-info.component";
 
 @Component({
   selector: 'app-profile',

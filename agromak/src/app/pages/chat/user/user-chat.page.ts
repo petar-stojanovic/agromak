@@ -29,7 +29,7 @@ import {MarkdownComponent} from "ngx-markdown";
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../shared/models/user";
 import {Ad} from "../../../shared/models/ad";
-import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
+import {AdDetailsModalComponent} from "../../../shared/components/ad-details-modal/ad-details-modal.component";
 import {addIcons} from "ionicons";
 import {sendOutline} from "ionicons/icons";
 import {AdManagementService} from "../../../services/ad-management.service";

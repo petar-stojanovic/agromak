@@ -38,9 +38,9 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {InputErrorComponent} from "../../../components/input-error/input-error.component";
+import {InputErrorComponent} from "../../../shared/components/input-error/input-error.component";
 import {CategoryService} from "../../../services/category.service";
-import {SelectCategoryModalComponent} from "../../../components/select-category-modal/select-category-modal.component";
+import {SelectCategoryModalComponent} from "../../../shared/components/select-category-modal/select-category-modal.component";
 import {ErrorMessagePipe} from "../../../shared/pipes/error-message.pipe";
 import {Camera} from "@capacitor/camera";
 import {Ad} from "../../../shared/models/ad";

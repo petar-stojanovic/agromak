@@ -23,7 +23,7 @@ import {
   IonThumbnail, ModalController
 } from "@ionic/angular/standalone";
 import Swiper from "swiper";
-import {AdDetailsModalComponent} from "../../../components/ad-details-modal/ad-details-modal.component";
+import {AdDetailsModalComponent} from "../../../shared/components/ad-details-modal/ad-details-modal.component";
 import {trashOutline} from "ionicons/icons";
 import {addIcons} from "ionicons";
 import {UserService} from "../../../services/user.service";

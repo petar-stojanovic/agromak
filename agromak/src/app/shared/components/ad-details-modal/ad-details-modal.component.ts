@@ -21,7 +21,7 @@ import {
   ModalController,
   ToastController
 } from "@ionic/angular/standalone";
-import {Ad} from "../../shared/models/ad";
+import {Ad} from "../../models/ad";
 import {AsyncPipe, DatePipe, NgIf} from "@angular/common";
 import {addIcons} from "ionicons";
 import {
@@ -36,16 +36,16 @@ import {
   informationCircleOutline,
   locationOutline
 } from "ionicons/icons";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
 import {map, Subscription, tap} from "rxjs";
-import {User} from "../../shared/models/user";
+import {User} from "../../models/user";
 import {ProfileInfoComponent} from "../profile-info/profile-info.component";
-import {UserChatService} from "../../services/user-chat.service";
-import {UserService} from "../../services/user.service";
-import {AdManagementService} from "../../services/ad-management.service";
+import {UserChatService} from "../../../services/user-chat.service";
+import {UserService} from "../../../services/user.service";
+import {AdManagementService} from "../../../services/ad-management.service";
 import {AdListComponent} from "../ad-list/ad-list.component";
-import {AdFetchType} from "../../shared/ad-fetch-type.enum";
-import {AdFetchingService} from "../../services/ad-fetching.service";
+import {AdFetchType} from "../../enums/ad-fetch-type.enum";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 
 const icons = {
   callOutline,

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 import {ValidationErrors} from "@angular/forms";
 import {KeyValuePipe} from "@angular/common";
 import {IonNote} from "@ionic/angular/standalone";
-import {ErrorMessagePipe} from "../../shared/pipes/error-message.pipe";
+import {ErrorMessagePipe} from "../../pipes/error-message.pipe";
 
 @Component({
   selector: 'app-input-error',

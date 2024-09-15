@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   TemplateRef
 } from '@angular/core';
-import {Ad} from "../../shared/models/ad";
+import {Ad} from "../../models/ad";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {
   IonBadge,
@@ -24,10 +24,10 @@ import {
   ModalController
 } from "@ionic/angular/standalone";
 import {AdDetailsModalComponent} from "../ad-details-modal/ad-details-modal.component";
-import {AdFetchingService} from "../../services/ad-fetching.service";
+import {AdFetchingService} from "../../../services/ad-fetching.service";
 import {NgTemplateOutlet} from "@angular/common";
-import {AdFetchType} from "../../shared/ad-fetch-type.enum";
-import {AdListAdditionalData} from "../../shared/models/ad-list-additional-data";
+import {AdFetchType} from "../../enums/ad-fetch-type.enum";
+import {AdListAdditionalData} from "../../models/ad-list-additional-data";
 
 
 @Component({

@@ -22,10 +22,10 @@ import {
   ModalController,
 } from "@ionic/angular/standalone";
 import {AdFetchingService} from "../../../services/ad-fetching.service";
-import {AdListComponent} from "../../../components/ad-list/ad-list.component";
+import {AdListComponent} from "../../../shared/components/ad-list/ad-list.component";
 import {addIcons} from "ionicons";
 import {arrowBack, filterCircleOutline, searchOutline} from "ionicons/icons";
-import {AdFetchType} from "../../../shared/ad-fetch-type.enum";
+import {AdFetchType} from "../../../shared/enums/ad-fetch-type.enum";
 import {tap} from "rxjs";
 import {OpenAiService} from "../../../services/open-ai.service";
 import {UserService} from "../../../services/user.service";

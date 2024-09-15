@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {Ad} from "../../shared/models/ad";
+import {Ad} from "../../models/ad";
 import {IonBadge, IonItem, IonLabel, IonText, IonThumbnail} from "@ionic/angular/standalone";
 
 @Component({
@@ -22,6 +22,6 @@ export class AdCardComponent {
   }
 
   openAdDetailsModal(ad: Ad) {
-    
+
   }
 }

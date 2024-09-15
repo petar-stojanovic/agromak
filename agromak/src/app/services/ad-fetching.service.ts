@@ -6,7 +6,7 @@ import {BehaviorSubject, first, map, Observable, of, switchMap, take, tap} from 
 import {User} from "../shared/models/user";
 import {documentId} from "@angular/fire/firestore";
 import {ApiService} from "./api.service";
-import {AdFetchType} from "../shared/ad-fetch-type.enum";
+import {AdFetchType} from "../shared/enums/ad-fetch-type.enum";
 import {AdListAdditionalData} from "../shared/models/ad-list-additional-data";
 import firebase from "firebase/compat/app";
 import CollectionReference = firebase.firestore.CollectionReference;
