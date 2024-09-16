@@ -47,7 +47,6 @@ export class AuthService {
 
   async register(email: string, password: string, displayName: string) {
     const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
-
     return this.updateUserData(userCredential.user, {displayName});
   }
 
@@ -60,15 +59,11 @@ export class AuthService {
     if (user) {
       const userCredential = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken));
       if (userCredential) {
-
         const userRef = this.angularFirestore.doc(`users/${userCredential.user.uid}`);
         userRef.get().subscribe((data) => {
-          if (data.exists) {
-            console.log("USER REF DATA -", data);
-            return of(null)
-          } else {
-            return this.updateUserData(userCredential.user);
-          }
+          return data.exists
+            ? of(null)
+            : this.updateUserData(userCredential.user);
         });
       }
     }

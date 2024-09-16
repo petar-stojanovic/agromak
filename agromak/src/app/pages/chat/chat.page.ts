@@ -78,7 +78,6 @@ export class ChatPage implements OnInit, OnDestroy {
         this.userReceivedChats = userReceivedChats as ChatRoom[];
         console.log(this.userSentChats, this.userReceivedChats);
         console.log(aiChats);
-
         this.isLoading = false;
       });
   }

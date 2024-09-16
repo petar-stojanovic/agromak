@@ -132,7 +132,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   createForm(controls: JsonFormControls[]) {
     for (const control of controls) {
-      // console.log(control)
       const validatorsToAdd = [];
       for (const [key, value] of Object.entries(control.validators)) {
         switch (key) {

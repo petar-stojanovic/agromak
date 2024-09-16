@@ -61,6 +61,12 @@
           </ion-item>
         }
 
+      } @empty {
+        <ion-item class="chat" lines="none">
+          <ion-label>
+            <h2 class="font-weight-bold">You have no chats</h2>
+          </ion-label>
+        </ion-item>
       }
 
     } @else if (segment === 'ai') {
@@ -110,6 +116,12 @@
             </ion-label>
           </ion-item>
         }
+      } @empty {
+        <ion-item class="chat" lines="none">
+          <ion-label>
+            <h2 class="font-weight-bold">You have no chats</h2>
+          </ion-label>
+        </ion-item>
       }
     }
 
