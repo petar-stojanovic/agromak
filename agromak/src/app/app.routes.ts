@@ -31,9 +31,4 @@ export const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
-  {
-    path: 'user',
-    loadComponent: () => import('./pages/chat/user/user-chat.page').then(m => m.UserChatPage)
-  },
-
 ];
