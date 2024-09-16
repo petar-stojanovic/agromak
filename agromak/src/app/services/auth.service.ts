@@ -34,11 +34,7 @@ export class AuthService {
             .valueChanges()
             .pipe(
               map(userData => {
-                if (userData) {
-                  return userData;
-                } else {
-                  throw new Error('User not found');
-                }
+                return userData!;
               })
             );
         } else {
@@ -55,7 +51,7 @@ export class AuthService {
     return this.updateUserData(userCredential.user, {displayName});
   }
 
-  async login(email: string, password: string) {
+  async signIn(email: string, password: string) {
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 

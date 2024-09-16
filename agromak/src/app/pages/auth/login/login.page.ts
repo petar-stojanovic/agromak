@@ -87,7 +87,7 @@ export class LoginPage {
     const formValue = this.form.value;
 
     this.authService
-      .login(formValue.email, formValue.password)
+      .signIn(formValue.email, formValue.password)
       .then(user => {
           this.router.navigateByUrl('/app/home',);
         }
