@@ -6,7 +6,7 @@ import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import {AdFetchingService} from "./ad-fetching.service";
 import firebase from "firebase/compat/app";
-import {UserSearchHistory} from "../shared/models/user-search-history";
+import {SearchHistory, UserSearchHistory} from "../shared/models/user-search-history";
 import Timestamp = firebase.firestore.Timestamp;
 import {updateDoc} from "@angular/fire/firestore";
 
@@ -54,7 +54,10 @@ export class UserService {
     const searchValueLower = searchValue.toLowerCase();
 
     const userDoc = await this.apiService.getDocById(`usersSearchHistory/${userId}`);
-    const currentHistory = (userDoc.data() as UserSearchHistory).searchHistory || [];
+
+    const currentHistory: SearchHistory[] = !userDoc.exists()
+      ? []
+      : (userDoc.data() as UserSearchHistory).searchHistory;
 
     const historyMap = new Map<string, { count: number; timestamp: Timestamp }>();
 
@@ -78,7 +81,10 @@ export class UserService {
     const data = {
       searchHistory: updatedHistory,
     };
-    await this.apiService.updateDocument(`usersSearchHistory/${userId}`, data);
+
+    !userDoc.exists()
+      ? await this.apiService.setDocument(`usersSearchHistory/${userId}`, data)
+      : await this.apiService.updateDocument(`usersSearchHistory/${userId}`, data)
   }
 
   async deleteUserSearchHistory(searchValue: string) {

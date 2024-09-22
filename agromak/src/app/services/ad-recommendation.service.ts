@@ -34,7 +34,10 @@ export class AdRecommendationService {
         switchMap(async user => {
           this.user = user;
           const userDoc = await this.apiService.getDocById(`usersSearchHistory/${this.user.uid}`);
-          const currentHistory = (userDoc.data() as UserSearchHistory).searchHistory || [];
+          if(!userDoc.exists()){
+            return [];
+          }
+          const currentHistory = (userDoc.data() as UserSearchHistory).searchHistory;
           const querySnapshot = await this.apiService.getDocById(`openaiKeywords/keywords`);
           const keywords = (querySnapshot.data() as any).keywords;
 
