@@ -37,6 +37,5 @@ bootstrapApplication(AppComponent, {
     provideDatabase(() => getDatabase()),
 
     {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}
-
   ],
 });
