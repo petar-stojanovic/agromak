@@ -1,5 +1,5 @@
 # AGROMAK
-## Mobile Application for classified ads integrated with OpenAI in Macedonia
+## Mobile Application for classified ads in Macedonia integrated with OpenAI
 
 ### Main Features
 
